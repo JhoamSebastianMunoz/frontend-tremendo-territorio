@@ -70,7 +70,7 @@ export const Header = () => {
             </ul>
             </nav>
 
-          {/* Menú móvil - botón hamburguesa */}
+          {/* Menú móvil */}
             <div className="md:hidden">
             <button className="text-white hover:text-green-200">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

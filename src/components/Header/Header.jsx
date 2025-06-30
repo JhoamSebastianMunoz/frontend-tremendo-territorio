@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Home } from '../Home/Home';
 import {Usuarios } from '../Usuarios/Usuarios';
@@ -7,6 +7,7 @@ import { Contacto } from '../Contacto/Contacto';
 import { IniciarSesion } from '../IniciarSesion/IniciarSesion';
 
 export const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
     <div>
       {/* Header */}
@@ -29,7 +30,7 @@ export const Header = () => {
             <ul className="flex items-center space-x-8">
                 <li>
                 <Link 
-                    to='/inicio' 
+                    to='/' 
                     className="text-white hover:text-green-200 transition-colors duration-200 font-medium"
                 >
                     Inicio
@@ -70,20 +71,78 @@ export const Header = () => {
             </ul>
             </nav>
 
-          {/* Menú móvil */}
+{/* Menú móvil - BOTÓN ACTUALIZADO */}
             <div className="md:hidden">
-            <button className="text-white hover:text-green-200">
+            <button 
+                className="text-white hover:text-green-200"
+                onClick={() => setIsMenuOpen(!isMenuOpen)} // AGREGAR ESTA LÍNEA
+            >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
             </div>
         </div>
+
+        {/*  MENÚ MÓVIL DESPLEGABLE */}
+        {isMenuOpen && (
+            <div className="md:hidden mt-4 border-t border-green-500 pt-4">
+            <nav>
+                <ul className="space-y-2 px-6">
+                <li>
+                    <Link
+                    to="/inicio"
+                    className="block px-4 py-2 text-white hover:text-green-200 hover:bg-green-700 rounded transition-colors duration-200 font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    Inicio
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                    to="/usuarios"
+                    className="block px-4 py-2 text-white hover:text-green-200 hover:bg-green-700 rounded transition-colors duration-200 font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    Usuarios
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                    to="/territorio"
+                    className="block px-4 py-2 text-white hover:text-green-200 hover:bg-green-700 rounded transition-colors duration-200 font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    Territorio
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                    to="/contacto"
+                    className="block px-4 py-2 text-white hover:text-green-200 hover:bg-green-700 rounded transition-colors duration-200 font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    Contacto
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                    to="/iniciarSesion"
+                    className="block px-4 py-2 bg-green-700 hover:bg-green-800 rounded transition-colors duration-200 font-medium text-white"
+                    onClick={() => setIsMenuOpen(false)}
+                    >
+                    Iniciar Sesión
+                    </Link>
+                </li>
+                </ul>
+            </nav>
+            </div>
+        )}
         </header>
         
       {/* Rutas */}
         <Routes>
-        <Route path='/inicio' element={<Home/>} />
+        <Route path='/' element={<Home/>} />
         <Route path='/usuarios' element={<Usuarios/>} />
         <Route path='/territorio' element={<Territorio/>} />
         <Route path='/contacto' element={<Contacto/>} />

@@ -91,7 +91,7 @@ export const Header = () => {
                 <ul className="space-y-2 px-6">
                 <li>
                     <Link
-                    to="/inicio"
+                    to="/"
                     className="block px-4 py-2 text-white hover:text-green-200 hover:bg-green-700 rounded transition-colors duration-200 font-medium"
                     onClick={() => setIsMenuOpen(false)}
                     >

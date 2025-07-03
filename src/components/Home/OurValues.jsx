@@ -32,15 +32,15 @@ export const OurValues = () => {
                   <img 
                     src="https://cdn-icons-png.flaticon.com/512/2515/2515183.png" 
                     alt="Campo" 
-                    className="w-8 h-8"
+                    className="w-10 h-10"
                   />
                 </div>
                 <span className="text-white font-bold text-xl">Del Campo a tu Mesa</span>
                 <div className="bg-white bg-opacity-20 rounded-full p-2">
                   <img 
-                    src="https://cdn-icons-png.flaticon.com/512/3082/3082041.png" 
+                    src="https://res.cloudinary.com/dppf30duk/image/upload/v1751493867/comer_cz99ip.png" 
                     alt="Mesa" 
-                    className="w-8 h-8 filter brightness-0 invert"
+                    className="w-10 h-10 "
                   />
                 </div>
               </div>

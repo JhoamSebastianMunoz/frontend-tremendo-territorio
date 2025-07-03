@@ -1,4 +1,4 @@
-export const Enlaces = () => {
+export const Links = () => {
     return (
         <>
             <a 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Enlaces } from './Enlaces';
+import { Links } from './Links';
 
 export const Footer = () => {
     return (
@@ -19,7 +19,7 @@ export const Footer = () => {
                             Enlaces
                         </h2>
                         <div className="flex justify-center space-x-6">
-                            <Enlaces/>
+                            <Links/>
                         </div>
                     </div>
                     <div className="text-center md:text-right">

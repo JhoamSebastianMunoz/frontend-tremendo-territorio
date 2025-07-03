@@ -5,6 +5,7 @@ import { Users } from '../Users/Users';
 import { Territory } from '../Territory/Territory';
 import { ContactUs } from '../ContactUs/ContactUs';
 import  { LoginScreen } from '../LoginScreen/LoginScreen';
+import { Register } from '../Register/Register';
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -147,6 +148,7 @@ export const Header = () => {
         <Route path='/territory' element={<Territory/>} />
         <Route path='/contactUs' element={<ContactUs/>} />
         <Route path='/loginScreen' element={<LoginScreen/>} />
+        <Route path='/register' element={<Register/>} />
         </Routes>
     </div>
     )

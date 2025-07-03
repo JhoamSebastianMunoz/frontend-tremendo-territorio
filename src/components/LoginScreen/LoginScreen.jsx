@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, Eye, EyeOff } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginScreen = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -9,6 +10,12 @@ export const LoginScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [shake, setShake] = useState(false);
+
+  const navigate = useNavigate();
+
+  const goToRegister= () =>{
+    navigate('/register')
+  }
 
   // Imágenes de ejemplo (en un proyecto real, estas vendrían del backend)
   const securityImages = [
@@ -200,7 +207,7 @@ export const LoginScreen = () => {
               </button>
               <div className="text-gray-500">
                 ¿No tienes cuenta?{' '}
-                <button className="text-green-600 hover:text-green-700 font-medium transition-colors">
+                <button onClick={goToRegister} className="text-green-600 hover:text-green-700 font-medium transition-colors">
                   Crear una cuenta nueva
                 </button>
               </div>

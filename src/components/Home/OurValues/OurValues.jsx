@@ -1,4 +1,6 @@
 import React from 'react';
+import { CardOurValues } from './CardOurValues';
+import CardOurValues2 from './CardOurValues2';
 
 export const OurValues = () => {
   return (
@@ -50,45 +52,34 @@ export const OurValues = () => {
 
         {/* Tarjetas de valores */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+
           {/* Tarjeta 1 - 20 km de Radio */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-            <div className="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <span className="text-white font-bold text-xl">20</span>
-            </div>
-            <h3 className="text-gray-800 font-semibold text-lg">km de Radio</h3>
-          </div>
+          <CardOurValues
+          title={'20'} 
+          paragraph={'km de Radio'}
+          />
 
           {/* Tarjeta 2 - 100% Trazabilidad */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-            <div className="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <span className="text-white font-bold text-lg">100%</span>
-            </div>
-            <h3 className="text-gray-800 font-semibold text-lg">Trazabilidad</h3>
-          </div>
+          <CardOurValues
+          title={'100%'} 
+          paragraph={'Trazabilidad'}
+          />
 
           {/* Tarjeta 3 - Historias */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-            <div className="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <img 
-                src="https://cdn-icons-png.flaticon.com/512/1040/1040226.png" 
-                alt="Infinito" 
-                className="w-8 h-8 filter brightness-0 invert"
-              />
-            </div>
-            <h3 className="text-gray-800 font-semibold text-lg">Historias</h3>
-          </div>
+          <CardOurValues2
+          src={'https://cdn-icons-png.flaticon.com/512/1040/1040226.png'} 
+          alt={'Infinito'} 
+          paragraph={'Historias'}
+          />
 
           {/* Tarjeta 4 - Amor Local */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-            <div className="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <img 
-                src="https://cdn-icons-png.flaticon.com/512/833/833472.png" 
-                alt="Corazón" 
-                className="w-8 h-8 filter brightness-0 invert"
-              />
-            </div>
-            <h3 className="text-gray-800 font-semibold text-lg">Amor Local</h3>
-          </div>
+          <CardOurValues2
+          src={'https://cdn-icons-png.flaticon.com/512/833/833472.png'} 
+          alt={'Corazón'} 
+          paragraph={'Amor Local'}
+          />
+
         </div>
       </div>
     </div>

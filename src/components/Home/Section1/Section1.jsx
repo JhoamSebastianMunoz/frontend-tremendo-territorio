@@ -1,4 +1,8 @@
 import React from 'react';
+import { ButtonPrimary } from '../../Atoms/ButtonPrimary/ButtonPrimary';
+import { H1 } from '../../Atoms/H1/H1';
+import { H2 } from '../../Atoms/H2/H2';
+
 
 export const Section1 = () => {
     return (
@@ -17,14 +21,14 @@ export const Section1 = () => {
       {/* Contenido principal */}
         <div className="relative z-10 text-center px-8 max-w-6xl mx-auto">
         {/* Título principal */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+        <H1>
             Tremendo Territorio
-        </h1>
+        </H1>
 
         {/* Subtítulo */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-white mb-12 font-light leading-relaxed">
+        <H2>
             Conectamos al Campo con Quienes Quieren Conocerlo y Dignificarlo.
-        </h2>
+        </H2>
 
         {/* Descripción */}
         <p className="text-lg md:text-xl text-white mb-12 max-w-4xl mx-auto leading-relaxed font-light">
@@ -36,13 +40,13 @@ export const Section1 = () => {
 
         {/* Botones de acción */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <ButtonPrimary >
             Descubre las Historias
-            </button>
+            </ButtonPrimary>
 
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <ButtonPrimary  className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Conoce el Territorio
-            </button>
+            </ButtonPrimary>
         </div>
         </div>
 

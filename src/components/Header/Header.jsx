@@ -6,8 +6,15 @@ import { Territory } from '../Territory/Territory';
 import { ContactUs } from '../ContactUs/ContactUs';
 import  { LoginScreen } from '../LoginScreen/LoginScreen';
 import { Register } from '../Register/Register';
+import { useGetElements } from '../../hooks/useGetElements/useGetElements';
 
 export const Header = () => {
+    // Uso del Contexto para el uso del logo
+    const { getLogo, isLoading, error } = useGetElements();
+
+    if (isLoading) return <p className="text-white">Cargando logo...</p>;
+    if (error) return <p className="text-red-500">Error al cargar logo</p>;
+    //-------------------------------------------
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
     <div>
@@ -18,7 +25,7 @@ export const Header = () => {
             <div className="flex items-center space-x-4">
             <div className="w-17 h-17 rounded-full overflow-hidden bg-white p-0.9">
                 <img 
-                src="https://res.cloudinary.com/dppf30duk/image/upload/v1751501033/logotipo-tremendo-territorio_mbhgta.jpg" 
+                src={getLogo} 
                 alt="logo" 
                 className="w-full h-full object-cover rounded-full"
                 />

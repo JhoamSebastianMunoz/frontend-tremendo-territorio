@@ -3,6 +3,7 @@ import { CheckCircle, Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginScreen = () => {
+  const [username, setUsername] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [pin, setPin] = useState(['', '', '', '']);
   const [isPinEnabled, setIsPinEnabled] = useState(false);
@@ -10,22 +11,52 @@ export const LoginScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [shake, setShake] = useState(false);
+  const [securityImages, setSecurityImages] = useState([]);
+  const [isUsernameSubmitted, setIsUsernameSubmitted] = useState(false);
 
   const navigate = useNavigate();
+  const API_BASE_URL = 'https://secuencia432-tremendoterritorio-production.up.railway.app/api';
 
-  const goToRegister= () =>{
-    navigate('/register')
-  }
+  const goToRegister = () => {
+    navigate('/register');
+  };
 
-  // Imágenes de ejemplo (en un proyecto real, estas vendrían del backend)
-  const securityImages = [
-    { id: 1, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799986/samples/coffee.jpg', alt: 'Antiguedades' },
-    { id: 2, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799985/samples/balloons.jpg', alt: 'Globo-aerostático' },
-    { id: 3, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/animals/reindeer.jpg', alt: 'Reno' }
-  ];
+  const handleUsernameSubmit = async (e) => {
+    e.preventDefault();
+    if (!username.trim()) return;
 
-  // Simular cual es la imagen correcta (en un proyecto real, esto vendría del contexto del usuario)
-  const correctImageId = 2;
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/login/start`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username.trim()
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Usuario no encontrado');
+      }
+
+      const data = await response.json();
+      setSecurityImages(data.images.map(img => ({
+        id: img.id,
+        src: img.cloudinary_url,
+        alt: `Imagen ${img.id}`
+      })));
+      setIsUsernameSubmitted(true);
+    } catch (err) {
+      setError(err.message || 'Error al conectar con el servidor');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleImageSelect = (imageId) => {
     setSelectedImage(imageId);
@@ -68,29 +99,56 @@ export const LoginScreen = () => {
     setIsLoading(true);
     setError('');
 
-    // Simular validación (en un proyecto real, esto sería una llamada al backend)
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/login/complete`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username.trim(),
+          selectedImageId: selectedImage,
+          pin: pin.join('')
+        }),
+      });
 
-    if (selectedImage !== correctImageId || pin.join('') !== '1234') {
-      setError('Imagen o PIN incorrectos. Intenta de nuevo.');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'PIN o imagen incorrectos');
+      }
+
+      const data = await response.json();
+      
+      // Guardar token en localStorage o context
+      localStorage.setItem('authToken', data.token);
+      
+      // Redireccionar o manejar login exitoso
+      alert('¡Inicio de sesión exitoso!');
+      // navigate('/dashboard'); // Descomenta para redireccionar
+      
+    } catch (err) {
+      setError(err.message || 'Error al iniciar sesión');
       setShake(true);
       setTimeout(() => setShake(false), 500);
       setPin(['', '', '', '']);
-      setSelectedImage(null);
-      setIsPinEnabled(false);
-    } else {
-      // Login exitoso
-      alert('¡Inicio de sesión exitoso!');
+    } finally {
+      setIsLoading(false);
     }
+  };
 
-    setIsLoading(false);
+  const handleBackToUsername = () => {
+    setIsUsernameSubmitted(false);
+    setSecurityImages([]);
+    setSelectedImage(null);
+    setPin(['', '', '', '']);
+    setIsPinEnabled(false);
+    setError('');
   };
 
   const isFormComplete = selectedImage && pin.every(digit => digit);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-500 via-green-600 to-green-700 flex flex-col">
-
       {/* Contenido Principal */}
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -108,97 +166,153 @@ export const LoginScreen = () => {
               </div>
             )}
 
-            {/* Selección de Imagen */}
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">
-                Selecciona tu imagen de seguridad
-              </h3>
-              <div className="grid grid-cols-3 gap-4">
-                {securityImages.map((image) => (
-                  <div
-                    key={image.id}
-                    onClick={() => handleImageSelect(image.id)}
-                    className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                      selectedImage === image.id 
-                        ? 'ring-4 ring-green-500 ring-offset-2 scale-105' 
-                        : 'hover:ring-2 hover:ring-green-300'
-                    } rounded-xl overflow-hidden`}
+            {/* Formulario de Username */}
+            {!isUsernameSubmitted ? (
+              <form onSubmit={handleUsernameSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="username" className="block text-lg font-semibold text-gray-700 mb-3 text-center">
+                    Ingresa tu nombre de usuario
+                  </label>
+                  <input
+                    type="text"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+                    placeholder="Ej: capella01"
+                    disabled={isLoading}
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={!username.trim() || isLoading}
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    username.trim() && !isLoading
+                      ? 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg transform hover:scale-105'
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
+                >
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                      Verificando...
+                    </div>
+                  ) : (
+                    'Continuar'
+                  )}
+                </button>
+              </form>
+            ) : (
+              <>
+                {/* Botón para regresar */}
+                <div className="mb-6">
+                  <button
+                    onClick={handleBackToUsername}
+                    className="text-green-600 hover:text-green-700 font-medium transition-colors"
                   >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-24 object-cover"
-                    />
-                    {selectedImage === image.id && (
-                      <div className="absolute inset-0 bg-green-500 bg-opacity-30 flex items-center justify-center">
-                        <CheckCircle className="w-8 h-8 text-white" />
+                    ← Cambiar usuario
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">Usuario: <span className="font-semibold">{username}</span></p>
+                </div>
+
+                {/* Selección de Imagen */}
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">
+                    Selecciona tu imagen de seguridad
+                  </h3>
+                  <div className="grid grid-cols-3 gap-4">
+                    {securityImages.map((image) => (
+                      <div
+                        key={image.id}
+                        onClick={() => handleImageSelect(image.id)}
+                        className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                          selectedImage === image.id 
+                            ? 'ring-4 ring-green-500 ring-offset-2 scale-105' 
+                            : 'hover:ring-2 hover:ring-green-300'
+                        } rounded-xl overflow-hidden`}
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-24 object-cover"
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/150?text=Error';
+                          }}
+                        />
+                        {selectedImage === image.id && (
+                          <div className="absolute inset-0 bg-green-500 bg-opacity-30 flex items-center justify-center">
+                            <CheckCircle className="w-8 h-8 text-white" />
+                          </div>
+                        )}
                       </div>
-                    )}
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Sección PIN */}
-            <div 
-              id="pin-section" 
-              className={`transition-all duration-500 ${
-                isPinEnabled ? 'opacity-100' : 'opacity-40 pointer-events-none'
-              }`}
-            >
-              <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">
-                Ahora, ingresa tu PIN
-              </h3>
-              
-              <div className="flex justify-center mb-6">
-                <div className="flex space-x-3">
-                  {pin.map((digit, index) => (
-                    <input
-                      key={index}
-                      id={`pin-${index}`}
-                      type={showPin ? 'text' : 'password'}
-                      value={digit}
-                      onChange={(e) => handlePinChange(index, e.target.value)}
-                      onKeyDown={(e) => handleKeyDown(e, index)}
-                      maxLength={1}
-                      className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all ${
-                        digit ? 'border-green-500 bg-green-50' : 'border-gray-300'
-                      } ${shake ? 'animate-bounce' : ''}`}
-                      disabled={!isPinEnabled}
-                    />
-                  ))}
                 </div>
-              </div>
 
-              <button
-                onClick={() => setShowPin(!showPin)}
-                className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-green-600 transition-colors"
-                disabled={!isPinEnabled}
-              >
-                {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
-                {showPin ? 'Ocultar PIN' : 'Mostrar PIN'}
-              </button>
-            </div>
+                {/* Sección PIN */}
+                <div 
+                  id="pin-section" 
+                  className={`transition-all duration-500 ${
+                    isPinEnabled ? 'opacity-100' : 'opacity-40 pointer-events-none'
+                  }`}
+                >
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">
+                    Ahora, ingresa tu PIN
+                  </h3>
+                  
+                  <div className="flex justify-center mb-6">
+                    <div className="flex space-x-3">
+                      {pin.map((digit, index) => (
+                        <input
+                          key={index}
+                          id={`pin-${index}`}
+                          type={showPin ? 'text' : 'password'}
+                          value={digit}
+                          onChange={(e) => handlePinChange(index, e.target.value)}
+                          onKeyDown={(e) => handleKeyDown(e, index)}
+                          maxLength={1}
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all ${
+                            digit ? 'border-green-500 bg-green-50' : 'border-gray-300'
+                          } ${shake ? 'animate-bounce' : ''}`}
+                          disabled={!isPinEnabled}
+                        />
+                      ))}
+                    </div>
+                  </div>
 
-            {/* Botón de Ingreso */}
-            <button
-              onClick={handleLogin}
-              disabled={!isFormComplete || isLoading}
-              className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
-                isFormComplete && !isLoading
-                  ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg transform hover:scale-105'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              }`}
-            >
-              {isLoading ? (
-                <div className="flex items-center justify-center">
-                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                  Ingresando...
+                  <button
+                    onClick={() => setShowPin(!showPin)}
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-green-600 transition-colors"
+                    disabled={!isPinEnabled}
+                  >
+                    {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
+                    {showPin ? 'Ocultar PIN' : 'Mostrar PIN'}
+                  </button>
                 </div>
-              ) : (
-                'Ingresar'
-              )}
-            </button>
+
+                {/* Botón de Ingreso */}
+                <button
+                  onClick={handleLogin}
+                  disabled={!isFormComplete || isLoading}
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    isFormComplete && !isLoading
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg transform hover:scale-105'
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
+                >
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                      Ingresando...
+                    </div>
+                  ) : (
+                    'Ingresar'
+                  )}
+                </button>
+              </>
+            )}
 
             {/* Enlaces Adicionales */}
             <div className="mt-6 text-center space-y-3">
@@ -218,4 +332,3 @@ export const LoginScreen = () => {
     </div>
   );
 };
-

@@ -9,17 +9,17 @@ export const OurValues = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Texto principal */}
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-green-800 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-light leading-tight font-primary-brand">
               El Valor de Nuestro Territorio
             </h2>
             
-            <p className="text-gray-700 text-lg leading-relaxed">
+            <p className="text-gray-700 text-lg leading-relaxed font-primary-brand">
               Cada producto tiene una historia que contar. Desde las montañas de los Andes 
               hasta los valles fértiles, nuestros campesinos no sólo cultivan alimentos, sino 
               cultura, tradición y vida.
             </p>
             
-            <p className="text-gray-700 text-lg leading-relaxed">
+            <p className="text-gray-700 text-lg leading-relaxed font-primary-brand">
               En Tremendo Territorio, cada bocado de comida viene con la historia completa: quién 
               la cultivó, cómo la cultivó, y por qué es especial. Porque cuando sabes de dónde 
               viene tu comida, cada bocado sabe mejor.
@@ -28,7 +28,7 @@ export const OurValues = () => {
 
           {/* Botón destacado */}
           <div className="flex justify-center lg:justify-end">
-            <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-3xl px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+            <div className="bg-gradient-to-r from-primary-light2 to-primary-light2 rounded-3xl px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="flex items-center space-x-3">
                 <div className="bg-yellow-400 rounded-full p-2">
                   <img 
@@ -37,7 +37,7 @@ export const OurValues = () => {
                     className="w-10 h-10"
                   />
                 </div>
-                <span className="text-white font-bold text-xl">Del Campo a tu Mesa</span>
+                <span className="text-white font-bold text-xl font-primary-brand">Del Campo a tu Mesa</span>
                 <div className="bg-white bg-opacity-20 rounded-full p-2">
                   <img 
                     src="https://res.cloudinary.com/dppf30duk/image/upload/v1751493867/comer_cz99ip.png" 
@@ -53,31 +53,30 @@ export const OurValues = () => {
         {/* Tarjetas de valores */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-
           {/* Tarjeta 1 - 20 km de Radio */}
           <CardOurValues
-          title={'20'} 
-          paragraph={'km de Radio'}
+            title={'20'} 
+            paragraph={'km de Radio'}
           />
 
           {/* Tarjeta 2 - 100% Trazabilidad */}
           <CardOurValues
-          title={'100%'} 
-          paragraph={'Trazabilidad'}
+            title={'100%'} 
+            paragraph={'Trazabilidad'}
           />
 
           {/* Tarjeta 3 - Historias */}
           <CardOurValues2
-          src={'https://cdn-icons-png.flaticon.com/512/1040/1040226.png'} 
-          alt={'Infinito'} 
-          paragraph={'Historias'}
+            src={'https://cdn-icons-png.flaticon.com/512/1040/1040226.png'} 
+            alt={'Infinito'} 
+            paragraph={'Historias'}
           />
 
           {/* Tarjeta 4 - Amor Local */}
           <CardOurValues2
-          src={'https://cdn-icons-png.flaticon.com/512/833/833472.png'} 
-          alt={'Corazón'} 
-          paragraph={'Amor Local'}
+            src={'https://cdn-icons-png.flaticon.com/512/833/833472.png'} 
+            alt={'Corazón'} 
+            paragraph={'Amor Local'}
           />
 
         </div>

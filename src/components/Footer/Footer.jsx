@@ -7,7 +7,7 @@ export const Footer = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <div className="text-center md:text-left">
-                        <h2 className="text-2xl font-bold text-green-400 mb-4">
+                        <h2 className="text-2xl font-bold text-primary-light2 mb-4">
                             Tremendo Territorio
                         </h2>
                         <p className="text-gray-300 text-sm leading-relaxed">
@@ -15,7 +15,7 @@ export const Footer = () => {
                         </p>
                     </div>
                     <div className="text-center">
-                        <h2 className="text-2xl font-bold text-green-400 mb-6">
+                        <h2 className="text-2xl font-bold text-primary-light2 mb-6">
                             Enlaces
                         </h2>
                         <div className="flex justify-center space-x-6">
@@ -23,7 +23,7 @@ export const Footer = () => {
                         </div>
                     </div>
                     <div className="text-center md:text-right">
-                        <h2 className="text-2xl font-bold text-green-400 mb-4">
+                        <h2 className="text-2xl font-bold text-primary-light2 mb-4">
                             Contacto
                         </h2>
                         <div className="text-gray-300 text-sm space-y-2">

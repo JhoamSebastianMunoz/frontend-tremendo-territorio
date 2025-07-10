@@ -13,9 +13,9 @@ export const Register = () => {
   const [error, setError] = useState('');
   const [shake, setShake] = useState(false);
 
-// Navegación para redirigir a Login del usuario
+  // Navegación para redirigir a Login del usuario
   const navigate = useNavigate();
-  const goToLoginScreen = () =>{
+  const goToLoginScreen = () => {
     navigate('/loginScreen')
   };
 
@@ -24,7 +24,13 @@ export const Register = () => {
     { id: 1, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/people/jazz.jpg', alt: 'Orquesta' },
     { id: 2, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799986/samples/coffee.jpg', alt: 'Antiguedades' },
     { id: 3, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799985/samples/balloons.jpg', alt: 'Globo-aerostático' },
-    { id: 4, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/animals/reindeer.jpg', alt: 'Reno' }
+    { id: 4, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/animals/reindeer.jpg', alt: 'Reno' },
+    { id: 5, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799976/samples/animals/cat.jpg', alt: 'Gato' },
+    { id: 6, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799976/samples/ecommerce/analog-classic.jpg', alt: 'Reloj' },
+    { id: 7, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799976/samples/food/dessert.jpg', alt: 'Postre' },
+    { id: 8, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/ecommerce/shoes.png', alt: 'Tenis' },
+    { id: 9, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/bike.jpg', alt: 'Bicicleta-mujer' },
+    { id: 10, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/ecommerce/leather-bag-gray.jpg', alt: 'Bolso' }
   ];
 
   const handleImageSelect = (imageId) => {
@@ -105,7 +111,7 @@ export const Register = () => {
   const selectedImageData = securityImages.find(img => img.id === selectedImage);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-500 via-green-600 to-green-700 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-primary-light2 via-primary-light to-primary-gradient flex flex-col font-primary-brand">
 
       {/* Contenido Principal */}
       <div className="flex-1 flex items-center justify-center px-6 py-8">
@@ -113,8 +119,8 @@ export const Register = () => {
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">Crea tu cuenta</h2>
-              <p className="text-xl text-green-600 font-semibold">
+              <h2 className="text-3xl font-bold text-gray-800 mb-2 font-primary-brand">Crea tu cuenta</h2>
+              <p className="text-xl text-primary-light2 font-semibold font-primary-brand">
                 Paso {currentStep}: {currentStep === 1 ? 'Elige tu imagen de seguridad' : 'Define tu PIN de seguridad'}
               </p>
             </div>
@@ -122,14 +128,14 @@ export const Register = () => {
             {/* Indicador de Progreso */}
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center space-x-4">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${
-                  currentStep >= 1 ? 'bg-green-500' : 'bg-gray-300'
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-primary-brand ${
+                  currentStep >= 1 ? 'bg-primary-light2' : 'bg-gray-300'
                 }`}>
                   1
                 </div>
-                <div className={`h-1 w-16 ${currentStep >= 2 ? 'bg-green-500' : 'bg-gray-300'} transition-colors duration-300`}></div>
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${
-                  currentStep >= 2 ? 'bg-green-500' : 'bg-gray-300'
+                <div className={`h-1 w-16 ${currentStep >= 2 ? 'bg-primary-light2' : 'bg-gray-300'} transition-colors duration-300`}></div>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-primary-brand ${
+                  currentStep >= 2 ? 'bg-primary-light2' : 'bg-gray-300'
                 }`}>
                   2
                 </div>
@@ -138,7 +144,7 @@ export const Register = () => {
 
             {/* Error Message */}
             {error && (
-              <div className={`mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center transition-all ${shake ? 'animate-pulse' : ''}`}>
+              <div className={`mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center transition-all font-primary-brand ${shake ? 'animate-pulse' : ''}`}>
                 {error}
               </div>
             )}
@@ -147,7 +153,7 @@ export const Register = () => {
             {currentStep === 1 && (
               <div className="space-y-6">
                 <div className="text-center">
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-gray-600 mb-6 font-primary-brand">
                     Selecciona una imagen que recordarás para iniciar sesión
                   </p>
                 </div>
@@ -159,8 +165,8 @@ export const Register = () => {
                       onClick={() => handleImageSelect(image.id)}
                       className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
                         selectedImage === image.id 
-                          ? 'ring-4 ring-green-500 ring-offset-2 scale-105' 
-                          : 'hover:ring-2 hover:ring-green-300'
+                          ? 'ring-4 ring-primary-light2 ring-offset-2 scale-105' 
+                          : 'hover:ring-2 hover:ring-primary-light'
                       } rounded-xl overflow-hidden`}
                     >
                       <img
@@ -169,11 +175,11 @@ export const Register = () => {
                         className="w-full h-24 object-cover"
                       />
                       {selectedImage === image.id && (
-                        <div className="absolute inset-0 bg-green-500 bg-opacity-30 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-primary-light2 bg-opacity-30 flex items-center justify-center">
                           <CheckCircle className="w-8 h-8 text-white" />
                         </div>
                       )}
-                      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 text-center">
+                      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 text-center font-primary-brand">
                         {image.alt}
                       </div>
                     </div>
@@ -182,9 +188,9 @@ export const Register = () => {
 
                 <button
                   onClick={handleNextStep}
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center ${
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center font-primary-brand ${
                     selectedImage
-                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg transform hover:scale-105'
+                      ? 'bg-gradient-to-r from-secondary-light to-secondary-hover hover:from-secondary-hover hover:to-secondary-dark text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                   disabled={!selectedImage}
@@ -201,24 +207,24 @@ export const Register = () => {
                 {/* Imagen Seleccionada */}
                 {selectedImageData && (
                   <div className="flex flex-col items-center mb-6">
-                    <p className="text-gray-600 mb-3">Tu imagen de seguridad:</p>
+                    <p className="text-gray-600 mb-3 font-primary-brand">Tu imagen de seguridad:</p>
                     <div className="relative">
                       <img
                         src={selectedImageData.src}
                         alt={selectedImageData.alt}
-                        className="w-20 h-20 object-cover rounded-xl ring-2 ring-green-500"
+                        className="w-20 h-20 object-cover rounded-xl ring-2 ring-primary-light2"
                       />
                       <div className="absolute -top-2 -right-2">
-                        <CheckCircle className="w-6 h-6 text-green-500 bg-white rounded-full" />
+                        <CheckCircle className="w-6 h-6 text-primary-light2 bg-white rounded-full" />
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500 mt-2">{selectedImageData.alt}</p>
+                    <p className="text-sm text-gray-500 mt-2 font-primary-brand">{selectedImageData.alt}</p>
                   </div>
                 )}
 
                 {/* Entrada de PIN */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
                     Crea tu PIN de 4 dígitos
                   </h3>
                   
@@ -233,8 +239,8 @@ export const Register = () => {
                           onChange={(e) => handlePinChange(index, e.target.value)}
                           onKeyDown={(e) => handleKeyDown(e, index)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all ${
-                            digit ? 'border-green-500 bg-green-50' : 'border-gray-300'
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 transition-all font-primary-brand ${
+                            digit ? 'border-primary-light2 bg-primary-light_text_hover' : 'border-gray-300'
                           }`}
                           placeholder="•"
                         />
@@ -244,7 +250,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setShowPin(!showPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-green-600 transition-colors"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-light2 transition-colors font-primary-brand"
                   >
                     {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
                     {showPin ? 'Ocultar PIN' : 'Mostrar PIN'}
@@ -253,7 +259,7 @@ export const Register = () => {
 
                 {/* Confirmación de PIN */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
                     Confirma tu PIN
                   </h3>
                   
@@ -268,8 +274,8 @@ export const Register = () => {
                           onChange={(e) => handlePinChange(index, e.target.value, true)}
                           onKeyDown={(e) => handleKeyDown(e, index, true)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all ${
-                            digit ? 'border-green-500 bg-green-50' : 'border-gray-300'
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 transition-all font-primary-brand ${
+                            digit ? 'border-primary-light2 bg-primary-light_text_hover' : 'border-gray-300'
                           } ${shake ? 'animate-bounce' : ''}`}
                           placeholder="•"
                           disabled={!isPinComplete}
@@ -280,7 +286,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setShowConfirmPin(!showConfirmPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-green-600 transition-colors"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-light2 transition-colors font-primary-brand"
                     disabled={!isPinComplete}
                   >
                     {showConfirmPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
@@ -293,9 +299,9 @@ export const Register = () => {
                   <button
                     onClick={handleRegister}
                     disabled={!isStep2Complete || isLoading}
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-primary-brand ${
                       isStep2Complete && !isLoading
-                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg transform hover:scale-105'
+                        ? 'bg-gradient-to-r from-secondary-light to-secondary-hover hover:from-secondary-hover hover:to-secondary-dark text-white shadow-lg transform hover:scale-105'
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
@@ -311,7 +317,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setCurrentStep(1)}
-                    className="w-full py-3 rounded-xl font-medium text-green-600 border-2 border-green-600 hover:bg-green-50 transition-all duration-300 flex items-center justify-center"
+                    className="w-full py-3 rounded-xl font-medium text-primary-light2 border-2 border-primary-light2 hover:bg-primary-light_text_hover transition-all duration-300 flex items-center justify-center font-primary-brand"
                     disabled={isLoading}
                   >
                     <ArrowLeft className="w-5 h-5 mr-2" />
@@ -323,9 +329,9 @@ export const Register = () => {
 
             {/* Enlaces Adicionales */}
             <div className="mt-6 text-center">
-              <div className="text-gray-500">
+              <div className="text-gray-500 font-primary-brand">
                 ¿Ya tienes cuenta?{' '}
-                <button onClick={goToLoginScreen} className="text-green-600 hover:text-green-700 font-medium transition-colors">
+                <button onClick={goToLoginScreen} className="text-primary-light2 hover:text-primary-hover font-medium transition-colors">
                   Iniciar Sesión
                 </button>
               </div>
@@ -336,4 +342,3 @@ export const Register = () => {
     </div>
   );
 };
-

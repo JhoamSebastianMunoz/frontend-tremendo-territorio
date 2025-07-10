@@ -15,6 +15,7 @@ export const LoginScreen = () => {
   const [isUsernameSubmitted, setIsUsernameSubmitted] = useState(false);
 
   const navigate = useNavigate();
+
   const API_BASE_URL = 'https://secuencia432-tremendoterritorio-production.up.railway.app/api';
 
   const goToRegister = () => {
@@ -40,17 +41,24 @@ export const LoginScreen = () => {
       });
 
       if (!response.ok) {
+        if (response.status === 400) {
+          throw new Error('Usuario no encontrado o error de validación');
+        }
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Usuario no encontrado');
+        throw new Error(errorData.message || 'Error al verificar usuario');
       }
 
       const data = await response.json();
+      
+      // Mapear las imágenes según la estructura del backend
       setSecurityImages(data.images.map(img => ({
         id: img.id,
         src: img.cloudinary_url,
         alt: `Imagen ${img.id}`
       })));
+
       setIsUsernameSubmitted(true);
+
     } catch (err) {
       setError(err.message || 'Error al conectar con el servidor');
     } finally {
@@ -62,10 +70,10 @@ export const LoginScreen = () => {
     setSelectedImage(imageId);
     setIsPinEnabled(true);
     setError('');
-    
+   
     // Animación suave de transición
     setTimeout(() => {
-      document.getElementById('pin-section')?.scrollIntoView({ 
+      document.getElementById('pin-section')?.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest'
       });
@@ -74,7 +82,7 @@ export const LoginScreen = () => {
 
   const handlePinChange = (index, value) => {
     if (value.length > 1) return; // Solo un dígito por campo
-    
+   
     const newPin = [...pin];
     newPin[index] = value;
     setPin(newPin);
@@ -113,24 +121,32 @@ export const LoginScreen = () => {
       });
 
       if (!response.ok) {
+        if (response.status === 400) {
+          throw new Error('PIN o imagen incorrecta, o usuario bloqueado');
+        }
         const errorData = await response.json();
-        throw new Error(errorData.message || 'PIN o imagen incorrectos');
+        throw new Error(errorData.message || 'Error al iniciar sesión');
       }
 
       const data = await response.json();
-      
-      // Guardar token en localStorage o context
+     
+      // Guardar token en localStorage
       localStorage.setItem('authToken', data.token);
-      
-      // Redireccionar o manejar login exitoso
+     
+      // Mostrar mensaje de éxito
       alert('¡Inicio de sesión exitoso!');
-      // navigate('/dashboard'); // Descomenta para redireccionar
       
+      // Aquí puedes redirigir al dashboard u otra página
+      // navigate('/dashboard');
+     
     } catch (err) {
       setError(err.message || 'Error al iniciar sesión');
       setShake(true);
       setTimeout(() => setShake(false), 500);
       setPin(['', '', '', '']);
+      
+      // Limpiar el foco del PIN después de un error
+      document.getElementById('pin-0')?.focus();
     } finally {
       setIsLoading(false);
     }
@@ -214,7 +230,9 @@ export const LoginScreen = () => {
                   >
                     ← Cambiar usuario
                   </button>
-                  <p className="text-sm text-gray-600 mt-2 font-primary-brand">Usuario: <span className="font-semibold">{username}</span></p>
+                  <p className="text-sm text-gray-600 mt-2 font-primary-brand">
+                    Usuario: <span className="font-semibold">{username}</span>
+                  </p>
                 </div>
 
                 {/* Selección de Imagen */}
@@ -222,14 +240,14 @@ export const LoginScreen = () => {
                   <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
                     Selecciona tu imagen de seguridad
                   </h3>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 gap-4 max-h-60 overflow-y-auto">
                     {securityImages.map((image) => (
                       <div
                         key={image.id}
                         onClick={() => handleImageSelect(image.id)}
                         className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                          selectedImage === image.id 
-                            ? 'ring-4 ring-primary-light2 ring-offset-2 scale-105' 
+                          selectedImage === image.id
+                            ? 'ring-4 ring-primary-light2 ring-offset-2 scale-105'
                             : 'hover:ring-2 hover:ring-primary-light'
                         } rounded-xl overflow-hidden`}
                       >
@@ -252,8 +270,8 @@ export const LoginScreen = () => {
                 </div>
 
                 {/* Sección PIN */}
-                <div 
-                  id="pin-section" 
+                <div
+                  id="pin-section"
                   className={`transition-all duration-500 ${
                     isPinEnabled ? 'opacity-100' : 'opacity-40 pointer-events-none'
                   }`}
@@ -261,7 +279,7 @@ export const LoginScreen = () => {
                   <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
                     Ahora, ingresa tu PIN
                   </h3>
-                  
+                 
                   <div className="flex justify-center mb-6">
                     <div className="flex space-x-3">
                       {pin.map((digit, index) => (

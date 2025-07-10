@@ -1,50 +1,112 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, ArrowLeft, Eye, EyeOff, ArrowRight } from 'lucide-react';
 
 export const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [pin, setPin] = useState(['', '', '', '']);
-  const [confirmPin, setConfirmPin] = useState(['', '', '', '']);
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    selectedImageId: null,
+    pin: ['', '', '', ''],
+    confirmPin: ['', '', '', '']
+  });
   const [showPin, setShowPin] = useState(false);
   const [showConfirmPin, setShowConfirmPin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [shake, setShake] = useState(false);
-
-  // Navegación para redirigir a Login del usuario
+  const [availableImages, setAvailableImages] = useState([]);
+  
   const navigate = useNavigate();
+  const API_BASE_URL = 'https://secuencia432-tremendoterritorio-production.up.railway.app/api';
+
   const goToLoginScreen = () => {
-    navigate('/loginScreen')
+    navigate('/loginScreen');
   };
 
-  // Set completo de 10 imágenes de seguridad
-  const securityImages = [
-    { id: 1, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/people/jazz.jpg', alt: 'Orquesta' },
-    { id: 2, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799986/samples/coffee.jpg', alt: 'Antiguedades' },
-    { id: 3, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799985/samples/balloons.jpg', alt: 'Globo-aerostático' },
-    { id: 4, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/animals/reindeer.jpg', alt: 'Reno' },
-    { id: 5, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799976/samples/animals/cat.jpg', alt: 'Gato' },
-    { id: 6, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799976/samples/ecommerce/analog-classic.jpg', alt: 'Reloj' },
-    { id: 7, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799976/samples/food/dessert.jpg', alt: 'Postre' },
-    { id: 8, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/ecommerce/shoes.png', alt: 'Tenis' },
-    { id: 9, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/bike.jpg', alt: 'Bicicleta-mujer' },
-    { id: 10, src: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/ecommerce/leather-bag-gray.jpg', alt: 'Bolso' }
-  ];
+  // Cargar imágenes disponibles desde el backend
+  useEffect(() => {
+    const fetchAvailableImages = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`${API_BASE_URL}/register/get-images`, {
+          method: 'GET',
+          headers: {
+            'accept': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al cargar las imágenes disponibles');
+        }
+
+        const data = await response.json();
+        setAvailableImages(data.images.map(img => ({
+          id: img.id,
+          src: img.cloudinary_url,
+          alt: `Imagen ${img.id}`
+        })));
+      } catch (err) {
+        setError(err.message || 'Error al cargar las imágenes');
+        // Fallback: usar imágenes por defecto si el backend falla
+        setAvailableImages([
+          { id: 1, src: 'https://via.placeholder.com/150?text=1', alt: 'Imagen 1' },
+          { id: 2, src: 'https://via.placeholder.com/150?text=2', alt: 'Imagen 2' },
+          { id: 3, src: 'https://via.placeholder.com/150?text=3', alt: 'Imagen 3' },
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchAvailableImages();
+  }, []);
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    setError('');
+  };
 
   const handleImageSelect = (imageId) => {
-    setSelectedImage(imageId);
+    setFormData(prev => ({
+      ...prev,
+      selectedImageId: imageId
+    }));
     setError('');
   };
 
   const handleNextStep = () => {
-    if (!selectedImage) {
-      setError('Por favor selecciona una imagen de seguridad');
-      setShake(true);
-      setTimeout(() => setShake(false), 500);
-      return;
+    // Validar paso 1
+    if (currentStep === 1) {
+      if (!formData.username.trim()) {
+        setError('Por favor ingresa tu nombre de usuario');
+        triggerShake();
+        return;
+      }
+      if (!formData.email.trim()) {
+        setError('Por favor ingresa tu email');
+        triggerShake();
+        return;
+      }
+      if (!formData.selectedImageId) {
+        setError('Por favor selecciona una imagen de seguridad');
+        triggerShake();
+        return;
+      }
+      
+      // Validar formato de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        setError('Por favor ingresa un email válido');
+        triggerShake();
+        return;
+      }
     }
+
     setCurrentStep(2);
     setError('');
   };
@@ -52,12 +114,14 @@ export const Register = () => {
   const handlePinChange = (index, value, isConfirm = false) => {
     if (value.length > 1) return;
     
-    const targetPin = isConfirm ? confirmPin : pin;
-    const setTargetPin = isConfirm ? setConfirmPin : setPin;
-    
-    const newPin = [...targetPin];
+    const pinField = isConfirm ? 'confirmPin' : 'pin';
+    const newPin = [...formData[pinField]];
     newPin[index] = value;
-    setTargetPin(newPin);
+    
+    setFormData(prev => ({
+      ...prev,
+      [pinField]: newPin
+    }));
 
     // Auto-focus al siguiente campo
     if (value && index < 3) {
@@ -67,7 +131,8 @@ export const Register = () => {
   };
 
   const handleKeyDown = (e, index, isConfirm = false) => {
-    const targetPin = isConfirm ? confirmPin : pin;
+    const pinField = isConfirm ? 'confirmPin' : 'pin';
+    const targetPin = formData[pinField];
     
     if (e.key === 'Backspace' && !targetPin[index] && index > 0) {
       const prevInput = document.getElementById(`${isConfirm ? 'confirm-' : ''}pin-${index - 1}`);
@@ -75,44 +140,78 @@ export const Register = () => {
     }
   };
 
-  const handleRegister = async () => {
-    const pinString = pin.join('');
-    const confirmPinString = confirmPin.join('');
+  const triggerShake = () => {
+    setShake(true);
+    setTimeout(() => setShake(false), 500);
+  };
 
+  const handleRegister = async () => {
+    const pinString = formData.pin.join('');
+    const confirmPinString = formData.confirmPin.join('');
+
+    // Validaciones
     if (!pinString || pinString.length !== 4) {
       setError('Por favor completa tu PIN de 4 dígitos');
+      triggerShake();
       return;
     }
 
     if (pinString !== confirmPinString) {
       setError('Los PINs no coinciden. Intenta de nuevo.');
-      setShake(true);
-      setTimeout(() => setShake(false), 500);
-      setConfirmPin(['', '', '', '']);
+      triggerShake();
+      setFormData(prev => ({
+        ...prev,
+        confirmPin: ['', '', '', '']
+      }));
       return;
     }
 
     setIsLoading(true);
     setError('');
 
-    // Simular registro (en un proyecto real, esto sería una llamada al backend)
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const response = await fetch(`${API_BASE_URL}/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formData.username.trim(),
+          email: formData.email.trim(),
+          pin: pinString,
+          selectedImageId: formData.selectedImageId
+        }),
+      });
 
-    // Simular registro exitoso
-    alert('¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.');
-    
-    setIsLoading(false);
+      if (!response.ok) {
+        if (response.status === 400) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Error de validación o imagen ya usada');
+        }
+        throw new Error('Error al registrar usuario');
+      }
+
+      const data = await response.json();
+      
+      // Registro exitoso
+      alert('¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.');
+      navigate('/loginScreen');
+      
+    } catch (err) {
+      setError(err.message || 'Error al crear la cuenta');
+      triggerShake();
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const isPinComplete = pin.every(digit => digit);
-  const isConfirmPinComplete = confirmPin.every(digit => digit);
+  const isPinComplete = formData.pin.every(digit => digit);
+  const isConfirmPinComplete = formData.confirmPin.every(digit => digit);
   const isStep2Complete = isPinComplete && isConfirmPinComplete;
-
-  const selectedImageData = securityImages.find(img => img.id === selectedImage);
+  const selectedImageData = availableImages.find(img => img.id === formData.selectedImageId);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary-light2 via-primary-light to-primary-gradient flex flex-col font-primary-brand">
-
       {/* Contenido Principal */}
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -121,7 +220,7 @@ export const Register = () => {
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-800 mb-2 font-primary-brand">Crea tu cuenta</h2>
               <p className="text-xl text-primary-light2 font-semibold font-primary-brand">
-                Paso {currentStep}: {currentStep === 1 ? 'Elige tu imagen de seguridad' : 'Define tu PIN de seguridad'}
+                Paso {currentStep}: {currentStep === 1 ? 'Datos personales e imagen' : 'Define tu PIN de seguridad'}
               </p>
             </div>
 
@@ -149,51 +248,94 @@ export const Register = () => {
               </div>
             )}
 
-            {/* PASO 1: Selección de Imagen */}
+            {/* PASO 1: Datos personales e imagen */}
             {currentStep === 1 && (
               <div className="space-y-6">
+                {/* Campos de entrada */}
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2 font-primary-brand">
+                      Nombre de usuario
+                    </label>
+                    <input
+                      type="text"
+                      id="username"
+                      value={formData.username}
+                      onChange={(e) => handleInputChange('username', e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 focus:border-primary-light2 transition-all font-primary-brand"
+                      placeholder="Ej: capella02"
+                      disabled={isLoading}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2 font-primary-brand">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 focus:border-primary-light2 transition-all font-primary-brand"
+                      placeholder="capella02@email.com"
+                      disabled={isLoading}
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Selección de imagen */}
                 <div className="text-center">
-                  <p className="text-gray-600 mb-6 font-primary-brand">
+                  <p className="text-gray-600 mb-4 font-primary-brand">
                     Selecciona una imagen que recordarás para iniciar sesión
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 max-h-80 overflow-y-auto">
-                  {securityImages.map((image) => (
-                    <div
-                      key={image.id}
-                      onClick={() => handleImageSelect(image.id)}
-                      className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                        selectedImage === image.id 
-                          ? 'ring-4 ring-primary-light2 ring-offset-2 scale-105' 
-                          : 'hover:ring-2 hover:ring-primary-light'
-                      } rounded-xl overflow-hidden`}
-                    >
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-24 object-cover"
-                      />
-                      {selectedImage === image.id && (
-                        <div className="absolute inset-0 bg-primary-light2 bg-opacity-30 flex items-center justify-center">
-                          <CheckCircle className="w-8 h-8 text-white" />
-                        </div>
-                      )}
-                      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 text-center font-primary-brand">
-                        {image.alt}
+                {isLoading && availableImages.length === 0 ? (
+                  <div className="flex items-center justify-center py-8">
+                    <div className="w-8 h-8 border-2 border-primary-light2 border-t-transparent rounded-full animate-spin mr-2"></div>
+                    <span className="text-gray-600 font-primary-brand">Cargando imágenes...</span>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-3 gap-3 max-h-60 overflow-y-auto">
+                    {availableImages.map((image) => (
+                      <div
+                        key={image.id}
+                        onClick={() => handleImageSelect(image.id)}
+                        className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                          formData.selectedImageId === image.id
+                            ? 'ring-4 ring-primary-light2 ring-offset-2 scale-105'
+                            : 'hover:ring-2 hover:ring-primary-light'
+                        } rounded-xl overflow-hidden`}
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-20 object-cover"
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/150?text=Error';
+                          }}
+                        />
+                        {formData.selectedImageId === image.id && (
+                          <div className="absolute inset-0 bg-primary-light2 bg-opacity-30 flex items-center justify-center">
+                            <CheckCircle className="w-6 h-6 text-white" />
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
 
                 <button
                   onClick={handleNextStep}
                   className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center font-primary-brand ${
-                    selectedImage
+                    formData.username && formData.email && formData.selectedImageId
                       ? 'bg-gradient-to-r from-secondary-light to-secondary-hover hover:from-secondary-hover hover:to-secondary-dark text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
-                  disabled={!selectedImage}
+                  disabled={!formData.username || !formData.email || !formData.selectedImageId || isLoading}
                 >
                   Siguiente
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -204,9 +346,12 @@ export const Register = () => {
             {/* PASO 2: Creación del PIN */}
             {currentStep === 2 && (
               <div className="space-y-6">
-                {/* Imagen Seleccionada */}
+                {/* Imagen y datos seleccionados */}
                 {selectedImageData && (
                   <div className="flex flex-col items-center mb-6">
+                    <p className="text-gray-600 mb-3 font-primary-brand">
+                      Usuario: <span className="font-semibold">{formData.username}</span>
+                    </p>
                     <p className="text-gray-600 mb-3 font-primary-brand">Tu imagen de seguridad:</p>
                     <div className="relative">
                       <img
@@ -218,7 +363,6 @@ export const Register = () => {
                         <CheckCircle className="w-6 h-6 text-primary-light2 bg-white rounded-full" />
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500 mt-2 font-primary-brand">{selectedImageData.alt}</p>
                   </div>
                 )}
 
@@ -230,7 +374,7 @@ export const Register = () => {
                   
                   <div className="flex justify-center mb-4">
                     <div className="flex space-x-3">
-                      {pin.map((digit, index) => (
+                      {formData.pin.map((digit, index) => (
                         <input
                           key={index}
                           id={`pin-${index}`}
@@ -265,7 +409,7 @@ export const Register = () => {
                   
                   <div className="flex justify-center mb-4">
                     <div className="flex space-x-3">
-                      {confirmPin.map((digit, index) => (
+                      {formData.confirmPin.map((digit, index) => (
                         <input
                           key={index}
                           id={`confirm-pin-${index}`}

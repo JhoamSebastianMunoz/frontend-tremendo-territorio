@@ -1,7 +1,16 @@
 import React from 'react';
 import { ButtonPrimary } from '../../Atoms/ButtonPrimary/ButtonPrimary';
-
+import { useNavigate } from 'react-router-dom';
 export const Section1 = () => {
+
+    const navigate = useNavigate();
+
+    const goToRegister = () => {
+        navigate('/territory')
+    }
+    const goToUsers = () =>{
+        navigate('/users')
+    }
     return (
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Imagen de fondo */}
@@ -37,11 +46,11 @@ export const Section1 = () => {
 
                 {/* Botones de acción */}
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <ButtonPrimary>
+                    <ButtonPrimary onClick={goToUsers}>
                         Descubre las Historias
                     </ButtonPrimary>
 
-                    <ButtonPrimary >
+                    <ButtonPrimary onClick={goToRegister}>
                         Conoce el Territorio
                     </ButtonPrimary>
                 </div>

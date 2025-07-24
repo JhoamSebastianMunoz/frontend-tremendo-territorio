@@ -21,7 +21,7 @@ export const Section1 = () => {
                     className="w-full h-full object-cover"
                 />
                 {/* Overlay verde con opacidad usando color personalizado */}
-                <div className="absolute inset-0 bg-primary-light opacity-70"></div>
+                <div className="absolute inset-0 bg-primary-first opacity-70"></div>
             </div>
 
             {/* Contenido principal */}
@@ -57,7 +57,7 @@ export const Section1 = () => {
             </div>
 
             {/* Elementos decorativos */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-gradient to-transparent opacity-50"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-third to-transparent opacity-50"></div>
             
             {/* Partículas flotantes opcionales */}
             <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white opacity-30 rounded-full animate-pulse"></div>

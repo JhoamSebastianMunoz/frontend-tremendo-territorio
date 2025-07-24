@@ -3,15 +3,15 @@ import { CardUniqueFeatures } from './CardUniqueFeatures';
 
 export const UniqueFeatures = () => {
   return (
-    <div className="bg-gradient-to-br from-primary-light_hover to-primary-light via-primary-light2 py-16 px-8 relative">
+    <div className="bg-gradient-to-br from-primary-second to-primary-first via-primary-first py-16 px-8 relative">
       <div className="max-w-7xl mx-auto">
         {/* Título principal */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 font-primary-brand">
             Características Únicas
           </h2>
-          <div className="w-24 h-1 bg-secondary-light mx-auto mb-6"></div>
-          <p className="text-xl text-primary-light_text_hover max-w-2xl mx-auto font-primary-brand">
+          <div className="w-24 h-1 bg-primary-second mx-auto mb-6"></div>
+          <p className="text-xl text-primary-fifth max-w-2xl mx-auto font-primary-brand">
             Tecnología al servicio del territorio y sus historias.
           </p>
         </div>
@@ -69,8 +69,8 @@ export const UniqueFeatures = () => {
         </div>
 
         {/* Elementos decorativos usando colores del brand */}
-        <div className="absolute top-1/4 left-0 w-32 h-32 bg-primary-hover rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-40 h-40 bg-secondary-hover rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-32 h-32 bg-primary-second rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-40 h-40 bg-primary-sixth rounded-full opacity-10 blur-3xl"></div>
       </div>
     </div>
   );

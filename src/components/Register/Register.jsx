@@ -211,7 +211,7 @@ export const Register = () => {
   const selectedImageData = availableImages.find(img => img.id === formData.selectedImageId);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-light2 via-primary-light to-primary-gradient flex flex-col font-primary-brand">
+    <div className="min-h-screen bg-gradient-to-b from-primary-first via-primary-first to-primary-third flex flex-col font-primary-brand">
       {/* Contenido Principal */}
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -219,7 +219,7 @@ export const Register = () => {
             {/* Encabezado */}
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-800 mb-2 font-primary-brand">Crea tu cuenta</h2>
-              <p className="text-xl text-primary-light2 font-semibold font-primary-brand">
+              <p className="text-xl text-primary-first font-semibold font-primary-brand">
                 Paso {currentStep}: {currentStep === 1 ? 'Datos personales e imagen' : 'Define tu PIN de seguridad'}
               </p>
             </div>
@@ -228,13 +228,13 @@ export const Register = () => {
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center space-x-4">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-primary-brand ${
-                  currentStep >= 1 ? 'bg-primary-light2' : 'bg-gray-300'
+                  currentStep >= 1 ? 'bg-primary-first' : 'bg-gray-300'
                 }`}>
                   1
                 </div>
-                <div className={`h-1 w-16 ${currentStep >= 2 ? 'bg-primary-light2' : 'bg-gray-300'} transition-colors duration-300`}></div>
+                <div className={`h-1 w-16 ${currentStep >= 2 ? 'bg-primary-first' : 'bg-gray-300'} transition-colors duration-300`}></div>
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-primary-brand ${
-                  currentStep >= 2 ? 'bg-primary-light2' : 'bg-gray-300'
+                  currentStep >= 2 ? 'bg-primary-first' : 'bg-gray-300'
                 }`}>
                   2
                 </div>
@@ -262,7 +262,7 @@ export const Register = () => {
                       id="username"
                       value={formData.username}
                       onChange={(e) => handleInputChange('username', e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 focus:border-primary-light2 transition-all font-primary-brand"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-primary-brand"
                       placeholder="Ej: capella02"
                       disabled={isLoading}
                       required
@@ -278,7 +278,7 @@ export const Register = () => {
                       id="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 focus:border-primary-light2 transition-all font-primary-brand"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-primary-brand"
                       placeholder="capella02@email.com"
                       disabled={isLoading}
                       required
@@ -295,7 +295,7 @@ export const Register = () => {
 
                 {isLoading && availableImages.length === 0 ? (
                   <div className="flex items-center justify-center py-8">
-                    <div className="w-8 h-8 border-2 border-primary-light2 border-t-transparent rounded-full animate-spin mr-2"></div>
+                    <div className="w-8 h-8 border-2 border-primary-first border-t-transparent rounded-full animate-spin mr-2"></div>
                     <span className="text-gray-600 font-primary-brand">Cargando imágenes...</span>
                   </div>
                 ) : (
@@ -306,8 +306,8 @@ export const Register = () => {
                         onClick={() => handleImageSelect(image.id)}
                         className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
                           formData.selectedImageId === image.id
-                            ? 'ring-4 ring-primary-light2 ring-offset-2 scale-105'
-                            : 'hover:ring-2 hover:ring-primary-light'
+                            ? 'ring-4 ring-primary-first ring-offset-2 scale-105'
+                            : 'hover:ring-2 hover:ring-primary-first'
                         } rounded-xl overflow-hidden`}
                       >
                         <img
@@ -319,7 +319,7 @@ export const Register = () => {
                           }}
                         />
                         {formData.selectedImageId === image.id && (
-                          <div className="absolute inset-0 bg-primary-light2 bg-opacity-30 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-primary-first bg-opacity-30 flex items-center justify-center">
                             <CheckCircle className="w-6 h-6 text-white" />
                           </div>
                         )}
@@ -332,7 +332,7 @@ export const Register = () => {
                   onClick={handleNextStep}
                   className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center font-primary-brand ${
                     formData.username && formData.email && formData.selectedImageId
-                      ? 'bg-gradient-to-r from-secondary-light to-secondary-hover hover:from-secondary-hover hover:to-secondary-dark text-white shadow-lg transform hover:scale-105'
+                      ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-fourth text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                   disabled={!formData.username || !formData.email || !formData.selectedImageId || isLoading}
@@ -357,10 +357,10 @@ export const Register = () => {
                       <img
                         src={selectedImageData.src}
                         alt={selectedImageData.alt}
-                        className="w-20 h-20 object-cover rounded-xl ring-2 ring-primary-light2"
+                        className="w-20 h-20 object-cover rounded-xl ring-2 ring-primary-first"
                       />
                       <div className="absolute -top-2 -right-2">
-                        <CheckCircle className="w-6 h-6 text-primary-light2 bg-white rounded-full" />
+                        <CheckCircle className="w-6 h-6 text-primary-first bg-white rounded-full" />
                       </div>
                     </div>
                   </div>
@@ -383,8 +383,8 @@ export const Register = () => {
                           onChange={(e) => handlePinChange(index, e.target.value)}
                           onKeyDown={(e) => handleKeyDown(e, index)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 transition-all font-primary-brand ${
-                            digit ? 'border-primary-light2 bg-primary-light_text_hover' : 'border-gray-300'
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-primary-brand ${
+                            digit ? 'border-primary-first bg-primary-fifth' : 'border-gray-300'
                           }`}
                           placeholder="•"
                         />
@@ -394,7 +394,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setShowPin(!showPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-light2 transition-colors font-primary-brand"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-primary-brand"
                   >
                     {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
                     {showPin ? 'Ocultar PIN' : 'Mostrar PIN'}
@@ -418,8 +418,8 @@ export const Register = () => {
                           onChange={(e) => handlePinChange(index, e.target.value, true)}
                           onKeyDown={(e) => handleKeyDown(e, index, true)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 transition-all font-primary-brand ${
-                            digit ? 'border-primary-light2 bg-primary-light_text_hover' : 'border-gray-300'
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-primary-brand ${
+                            digit ? 'border-primary-first bg-primary-fifth' : 'border-gray-300'
                           } ${shake ? 'animate-bounce' : ''}`}
                           placeholder="•"
                           disabled={!isPinComplete}
@@ -430,7 +430,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setShowConfirmPin(!showConfirmPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-light2 transition-colors font-primary-brand"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-primary-brand"
                     disabled={!isPinComplete}
                   >
                     {showConfirmPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
@@ -445,7 +445,7 @@ export const Register = () => {
                     disabled={!isStep2Complete || isLoading}
                     className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-primary-brand ${
                       isStep2Complete && !isLoading
-                        ? 'bg-gradient-to-r from-secondary-light to-secondary-hover hover:from-secondary-hover hover:to-secondary-dark text-white shadow-lg transform hover:scale-105'
+                        ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-fourth text-white shadow-lg transform hover:scale-105'
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
@@ -461,7 +461,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setCurrentStep(1)}
-                    className="w-full py-3 rounded-xl font-medium text-primary-light2 border-2 border-primary-light2 hover:bg-primary-light_text_hover transition-all duration-300 flex items-center justify-center font-primary-brand"
+                    className="w-full py-3 rounded-xl font-medium text-primary-first border-2 border-primary-first hover:bg-primary-fifth transition-all duration-300 flex items-center justify-center font-primary-brand"
                     disabled={isLoading}
                   >
                     <ArrowLeft className="w-5 h-5 mr-2" />
@@ -475,7 +475,7 @@ export const Register = () => {
             <div className="mt-6 text-center">
               <div className="text-gray-500 font-primary-brand">
                 ¿Ya tienes cuenta?{' '}
-                <button onClick={goToLoginScreen} className="text-primary-light2 hover:text-primary-hover font-medium transition-colors">
+                <button onClick={goToLoginScreen} className="text-primary-first hover:text-primary-second font-medium transition-colors">
                   Iniciar Sesión
                 </button>
               </div>

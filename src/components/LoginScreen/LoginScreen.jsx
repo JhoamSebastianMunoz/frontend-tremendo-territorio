@@ -164,7 +164,7 @@ export const LoginScreen = () => {
   const isFormComplete = selectedImage && pin.every(digit => digit);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-light2 via-primary-light_hover to-primary-light_hover_active flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-primary-first via-primary-second to-primary-third flex flex-col">
       {/* Contenido Principal */}
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -172,7 +172,7 @@ export const LoginScreen = () => {
             {/* Encabezado */}
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-800 mb-2 font-primary-brand">¡Hola de nuevo!</h2>
-              <p className="text-xl text-primary-light2 font-semibold font-primary-brand">Inicia Sesión</p>
+              <p className="text-xl text-primary-first font-semibold font-primary-brand">Inicia Sesión</p>
             </div>
 
             {/* Error Message */}
@@ -194,7 +194,7 @@ export const LoginScreen = () => {
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 focus:border-primary-light2 transition-all font-primary-brand"
+                    className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-primary-brand"
                     placeholder="Ej: capella01"
                     disabled={isLoading}
                     required
@@ -206,7 +206,7 @@ export const LoginScreen = () => {
                   disabled={!username.trim() || isLoading}
                   className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-primary-brand ${
                     username.trim() && !isLoading
-                      ? 'bg-gradient-to-r from-secondary-light to-secondary-hover hover:from-secondary-hover hover:to-secondary-light text-white shadow-lg transform hover:scale-105'
+                      ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-second text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >
@@ -226,7 +226,7 @@ export const LoginScreen = () => {
                 <div className="mb-6">
                   <button
                     onClick={handleBackToUsername}
-                    className="text-primary-light2 hover:text-primary-light_hover font-medium transition-colors font-primary-brand"
+                    className="text-primary-first hover:text-primary-second font-medium transition-colors font-primary-brand"
                   >
                     ← Cambiar usuario
                   </button>
@@ -247,8 +247,8 @@ export const LoginScreen = () => {
                         onClick={() => handleImageSelect(image.id)}
                         className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
                           selectedImage === image.id
-                            ? 'ring-4 ring-primary-light2 ring-offset-2 scale-105'
-                            : 'hover:ring-2 hover:ring-primary-light'
+                            ? 'ring-4 ring-primary-first ring-offset-2 scale-105'
+                            : 'hover:ring-2 hover:ring-primary-first'
                         } rounded-xl overflow-hidden`}
                       >
                         <img
@@ -260,7 +260,7 @@ export const LoginScreen = () => {
                           }}
                         />
                         {selectedImage === image.id && (
-                          <div className="absolute inset-0 bg-primary-light2 bg-opacity-30 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-primary-first bg-opacity-30 flex items-center justify-center">
                             <CheckCircle className="w-8 h-8 text-white" />
                           </div>
                         )}
@@ -291,8 +291,8 @@ export const LoginScreen = () => {
                           onChange={(e) => handlePinChange(index, e.target.value)}
                           onKeyDown={(e) => handleKeyDown(e, index)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-light2 transition-all font-primary-brand ${
-                            digit ? 'border-primary-light2 bg-primary-light bg-opacity-10' : 'border-gray-300'
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-primary-brand ${
+                            digit ? 'border-primary-first bg-primary-first bg-opacity-10' : 'border-gray-300'
                           } ${shake ? 'animate-bounce' : ''}`}
                           disabled={!isPinEnabled}
                         />
@@ -302,7 +302,7 @@ export const LoginScreen = () => {
 
                   <button
                     onClick={() => setShowPin(!showPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-light2 transition-colors font-primary-brand"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-primary-brand"
                     disabled={!isPinEnabled}
                   >
                     {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
@@ -316,7 +316,7 @@ export const LoginScreen = () => {
                   disabled={!isFormComplete || isLoading}
                   className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-primary-brand ${
                     isFormComplete && !isLoading
-                      ? 'bg-gradient-to-r from-secondary-light to-secondary-hover hover:from-secondary-hover hover:to-secondary-light text-white shadow-lg transform hover:scale-105'
+                      ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-second text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >
@@ -334,12 +334,12 @@ export const LoginScreen = () => {
 
             {/* Enlaces Adicionales */}
             <div className="mt-6 text-center space-y-3">
-              <button className="text-primary-light2 hover:text-primary-light_hover font-medium transition-colors font-primary-brand">
+              <button className="text-primary-first hover:text-primary-second font-medium transition-colors font-primary-brand">
                 ¿Olvidaste tu PIN?
               </button>
               <div className="text-gray-500 font-primary-brand">
                 ¿No tienes cuenta?{' '}
-                <button onClick={goToRegister} className="text-primary-light2 hover:text-primary-light_hover font-medium transition-colors">
+                <button onClick={goToRegister} className="text-primary-first hover:text-primary-second font-medium transition-colors">
                   Crear una cuenta nueva
                 </button>
               </div>

@@ -6,7 +6,7 @@ export const OurObjectives = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
-                        <h2 className="text-4xl lg:text-5xl font-bold text-primary-light mb-8 font-primary-brand">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-primary-first mb-8 font-primary-brand">
                             Nuestros Objetivos
                         </h2>
                         
@@ -39,8 +39,8 @@ export const OurObjectives = () => {
                         </div>
                         
                         {/* Elementos decorativos usando colores del brand */}
-                        <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary-light_text_hover rounded-full opacity-50 blur-xl"></div>
-                        <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary-dark rounded-full opacity-30 blur-xl"></div>
+                        <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary-fifth rounded-full opacity-50 blur-xl"></div>
+                        <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary-fourth rounded-full opacity-30 blur-xl"></div>
                     </div>
                 </div>
             </div>

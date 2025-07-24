@@ -3,14 +3,14 @@ import  { Links } from '../Footer/Links'
 
 export const ContactUs = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-light2 via-primary-light_hover to-primary-light_hover_active flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-primary-first via-primary-second to-primary-third flex flex-col">
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-800 mb-2">¡Contáctanos!</h2>
-              <p className="text-xl text-primary-light2 font-primary-brand">
+              <p className="text-xl text-primary-first font-primary-brand">
                 Conectando historias, territorio y sabores
               </p>
             </div>
@@ -24,13 +24,13 @@ export const ContactUs = () => {
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-center space-x-3">
-                    <svg className="w-5 h-5 text-primary-light2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-primary-first" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                     </svg>
                     <a 
                       href="mailto:tt@tremendoterritorio.co"
-                      className="text-gray-700 hover:text-primary-light2 transition-colors duration-300"
+                      className="text-gray-700 hover:text-primary-first transition-colors duration-300"
                     >
                       tt@tremendoterritorio.co
                     </a>
@@ -41,7 +41,7 @@ export const ContactUs = () => {
                     </svg>
                     <a 
                       href="tel:+573001234567"
-                      className="text-gray-700 hover:text-primary-light2 transition-colors duration-300"
+                      className="text-gray-700 hover:text-primary-first transition-colors duration-300"
                     >
                       +57 300 123 4567
                     </a>

@@ -9,7 +9,7 @@ export const OurValues = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Texto principal */}
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-light leading-tight font-primary-brand">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-first leading-tight font-primary-brand">
               El Valor de Nuestro Territorio
             </h2>
             
@@ -28,7 +28,7 @@ export const OurValues = () => {
 
           {/* Botón destacado */}
           <div className="flex justify-center lg:justify-end">
-            <div className="bg-gradient-to-r from-primary-light2 to-primary-light2 rounded-3xl px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+            <div className="bg-gradient-to-r from-primary-first to-primary-first rounded-3xl px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="flex items-center space-x-3">
                 <div className="bg-yellow-400 rounded-full p-2">
                   <img 

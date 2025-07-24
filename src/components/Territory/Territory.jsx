@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Territory = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-light2 via-primary-light_hover to-primary-light_hover_active flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-primary-first via-primary-second to-primary-third flex flex-col">
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="p-8">

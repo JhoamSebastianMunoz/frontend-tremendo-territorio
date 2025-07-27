@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardUser } from './CardUser';
-import { useNavigate } from 'react-router-dom';
+import {  Route, Routes, useNavigate } from 'react-router-dom';
 
 export const UsersSection = () => {
 
@@ -8,6 +8,9 @@ export const UsersSection = () => {
     const goToRegister = () =>{
         navigate('/register')
     };
+    const goToFarmsView = () => {
+    navigate('/farmsView');
+};
 
     return (
         <div className="bg-white py-16 px-8">
@@ -28,7 +31,7 @@ export const UsersSection = () => {
                         title={'Guardián de la Tierra'} 
                         paragraph1={'Dedica su vida crear productos cultivados de manera sostenible y auténtica.'} 
                         paragraph2={'Un Productor Agrícola de más de 300 cultiva productos desde hace más de 15 años. Conocimientos del campo son su visión de futuro. Que su grano de frijol, de manza esta libre de químicos de síntesis y ha logrado por dignificar el trabajo agrícola. Con su familia vive todo como en sus tradiciones, buscando alternativas novedosas donde las nuevas técnicas incluidas en él tiempo agricola. Es si carea del territorio, buscando siempre historia y dignidad.'}
-                        button={'Soy Campesino'} onClick={goToRegister}
+                        button={'Soy Campesino'} onClick={goToFarmsView}
                     />
 
                     {/* Tarjeta 2: El Sabio del Sabor Rural*/}

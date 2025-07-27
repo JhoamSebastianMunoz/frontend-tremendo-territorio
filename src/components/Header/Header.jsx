@@ -6,6 +6,7 @@ import { Territory } from '../Territory/Territory';
 import { ContactUs } from '../ContactUs/ContactUs';
 import  { LoginScreen } from '../LoginScreen/LoginScreen';
 import { Register } from '../Register/Register';
+import { FarmsView } from  '../FarmsView/FarmsView'
 import { useGetElements } from '../../hooks/useGetElements/useGetElements';
 
 export const Header = () => {
@@ -157,6 +158,7 @@ export const Header = () => {
         <Route path='/contactUs' element={<ContactUs/>} />
         <Route path='/loginScreen' element={<LoginScreen/>} />
         <Route path='/register' element={<Register/>} />
+        <Route path='/farmsView' element={<FarmsView/>} ></Route>
         </Routes>
     </div>
     )

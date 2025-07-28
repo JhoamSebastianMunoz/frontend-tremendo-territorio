@@ -33,7 +33,7 @@ export const FarmsView = () => {
                 verduras: ['Zanahorias', 'Pepino', 'Rábano'],
                 Experiencial: ['Diente de León']
             },
-            phone: '+573001234567'
+            phone: '+573232967700'
         },
         {
             id: 2,
@@ -57,7 +57,7 @@ export const FarmsView = () => {
                 frutas: ['Aguacate', 'Limón'],
                 condimentos: ['Cilantro', 'Perejil']
             },
-            phone: '+573009876543'
+            phone: '+573116957990'
         },
         {
             id: 3,

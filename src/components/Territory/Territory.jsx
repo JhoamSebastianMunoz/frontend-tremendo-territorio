@@ -8,7 +8,7 @@ export const Territory = () => {
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">¡Yo soy Territorio!</h2>
+                <h2 className="text-3xl font-bold text-gray-800 mb-2">¡Yo soy Admin!</h2>
             </div>
           </div>
         </div>

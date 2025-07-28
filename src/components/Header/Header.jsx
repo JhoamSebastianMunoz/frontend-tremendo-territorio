@@ -42,7 +42,7 @@ export const Header = () => {
                     to='/' 
                     className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-primary-brand"
                 >
-                    Inicio
+                    Conócenos
                 </Link>
                 </li>
                 <li>
@@ -55,10 +55,10 @@ export const Header = () => {
                 </li>
                 <li>
                 <Link 
-                    to='/territory'
+                    to='/admin'
                     className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-primary-brand"
                 >
-                    Territorio
+                    Administrar
                 </Link>
                 </li>
                 <li>
@@ -66,7 +66,7 @@ export const Header = () => {
                     to='/contactUs' 
                     className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-primary-brand"
                 >
-                    Contacto
+                    Contáctanos
                 </Link>
                 </li>
                 <li>
@@ -104,7 +104,7 @@ export const Header = () => {
                     className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
                     onClick={() => setIsMenuOpen(false)}
                     >
-                    Inicio
+                    Conócenos
                     </Link>
                 </li>
                 <li>
@@ -118,11 +118,11 @@ export const Header = () => {
                 </li>
                 <li>
                     <Link
-                    to="/territory"
+                    to="/admin"
                     className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
                     onClick={() => setIsMenuOpen(false)}
                     >
-                    Territorio
+                    Administrar
                     </Link>
                 </li>
                 <li>
@@ -131,7 +131,7 @@ export const Header = () => {
                     className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
                     onClick={() => setIsMenuOpen(false)}
                     >
-                    Contacto
+                    Contáctanos
                     </Link>
                 </li>
                 <li>
@@ -154,7 +154,7 @@ export const Header = () => {
         <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/users' element={<Users/>} />
-        <Route path='/territory' element={<Territory/>} />
+        <Route path='/admin' element={<Territory/>} />
         <Route path='/contactUs' element={<ContactUs/>} />
         <Route path='/loginScreen' element={<LoginScreen/>} />
         <Route path='/register' element={<Register/>} />

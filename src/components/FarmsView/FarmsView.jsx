@@ -1,20 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { MainSection } from './MainSection/MainSection';
 import { RestaurantCard } from './RestaurantCard/RestaurantCard';
 
+// Componente para resaltar términos de búsqueda
+const HighlightText = ({ text, highlight }) => {
+    if (!highlight.trim()) {
+        return <span>{text}</span>;
+    }
+
+    const regex = new RegExp(`(${highlight})`, 'gi');
+    const parts = text.split(regex);
+
+    return (
+        <span>
+            {parts.map((part, index) => 
+                regex.test(part) ? (
+                    <mark key={index} className="bg-yellow-200 text-primary-first font-semibold rounded px-1">
+                        {part}
+                    </mark>
+                ) : (
+                    <span key={index}>{part}</span>
+                )
+            )}
+        </span>
+    );
+};
+
 export const FarmsView = () => {
-    const [viewMode, setViewMode] = useState('grid');
+    const [searchTerm, setSearchTerm] = useState('');
 
     const restaurantsData = [
         {
             id: 1,
-            // Múltiples imágenes para el carrusel
             images: [
                 {
                     url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799986/samples/man-on-a-street.jpg',
                     alt: 'Restaurante El Sembrador - Exterior del restaurante'
                 },
-
                 {
                     url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/people/kitchen-bar.jpg',
                     alt: 'Restaurante El Sembrador - Cocina'
@@ -84,58 +106,117 @@ export const FarmsView = () => {
                 tuberculos: ['Papas', 'Yuca'],
                 verduras: ['Repollo', 'Pimentón']
             },
-            phone: '+573005551234'
+            phone: '+573113383510'
         }
     ];
 
-    const toggleView = (mode) => {
-        setViewMode(mode);
+    // Función para filtrar restaurantes
+    const filteredRestaurants = useMemo(() => {
+        if (!searchTerm.trim()) {
+            return restaurantsData;
+        }
+
+        const searchLower = searchTerm.toLowerCase().trim();
+        
+        return restaurantsData.filter(restaurant => {
+            // Buscar por nombre del restaurante
+            const nameMatch = restaurant.nameRestaurant.toLowerCase().includes(searchLower);
+            
+            // Buscar por ubicación
+            const locationMatch = restaurant.distance.toLowerCase().includes(searchLower);
+            
+            // Buscar por productos requeridos
+            const productsMatch = Object.values(restaurant.requirements).flat().some(product => 
+                product.toLowerCase().includes(searchLower)
+            );
+            
+            // Buscar por categorías de productos
+            const categoryMatch = Object.keys(restaurant.requirements).some(category => 
+                category.toLowerCase().includes(searchLower)
+            );
+
+            return nameMatch || locationMatch || productsMatch || categoryMatch;
+        });
+    }, [searchTerm, restaurantsData]);
+
+    const clearSearch = () => {
+        setSearchTerm('');
     };
 
     return (
         <div className="bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen">
             {/* Main Section Header */}
             <MainSection />
-            
-            {/* View Toggle */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-                <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                    <button
-                        onClick={() => toggleView('grid')}
-                        className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
-                            viewMode === 'grid'
-                                ? 'bg-primary-first text-white shadow-lg transform scale-105'
-                                : 'bg-white text-primary-first border-2 border-primary-first hover:bg-primary-first hover:text-white'
-                        }`}
-                    >
-                        📋 Vista en Cuadrícula
-                    </button>
-                    <button
-                        onClick={() => toggleView('list')}
-                        className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
-                            viewMode === 'list'
-                                ? 'bg-primary-first text-white shadow-lg transform scale-105'
-                                : 'bg-white text-primary-first border-2 border-primary-first hover:bg-primary-first hover:text-white'
-                        }`}
-                    >
-                        📄 Vista Detallada
-                    </button>
+           
+            {/* Search and Filter Section */}
+            <div className="max-w-7xl mt-4 mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+                {/* Search Input */}
+                <div className="flex flex-col gap-4 mb-8">
+                    <div className="relative max-w-2xl mx-auto w-full">
+                        <div className="relative">
+                            <input
+                                type="text"
+                                placeholder="Buscar por restaurante, ubicación o productos (ej: Lechugas, Tomates, El Sembrador...)"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white font-primary-brand"
+                            />
+                            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-first text-xl">
+                                🔍
+                            </div>
+                            {searchTerm && (
+                                <button
+                                    onClick={clearSearch}
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary-first transition-colors duration-200 text-xl"
+                                >
+                                    ✕
+                                </button>
+                            )}
+                        </div>
+                        
+                        {/* Search Results Counter */}
+                        <div className="text-center mt-3">
+                            <span className="text-primary-first font-medium font-primary-brand">
+                                {filteredRestaurants.length === restaurantsData.length 
+                                    ? `Mostrando ${restaurantsData.length} restaurantes`
+                                    : `${filteredRestaurants.length} de ${restaurantsData.length} restaurantes encontrados`
+                                }
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
+                {/* No Results Message */}
+                {filteredRestaurants.length === 0 && searchTerm && (
+                    <div className="text-center py-12">
+                        <div className="text-6xl mb-4">🔍</div>
+                        <h3 className="text-2xl font-bold text-primary-first mb-2 font-primary-brand">
+                            No se encontraron resultados
+                        </h3>
+                        <p className="text-gray-600 font-primary-brand mb-4">
+                            No encontramos restaurantes que coincidan con "{searchTerm}"
+                        </p>
+                        <button
+                            onClick={clearSearch}
+                            className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-primary-brand"
+                        >
+                            Ver todos los restaurantes
+                        </button>
+                    </div>
+                )}
+
                 {/* Restaurants Grid */}
-                <div className={`grid gap-8 mb-8 ${
-                    viewMode === 'grid' 
-                        ? 'grid-cols-1 lg:grid-cols-2 xl:grid-cols-3' 
-                        : 'grid-cols-1 max-w-4xl mx-auto'
-                }`}>
-                    {restaurantsData.map((restaurant) => (
-                        <RestaurantCard
-                            key={restaurant.id}
-                            {...restaurant}
-                            viewMode={viewMode}
-                        />
-                    ))}
-                </div>
+                {filteredRestaurants.length > 0 && (
+                    <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                        {filteredRestaurants.map((restaurant) => (
+                            <RestaurantCard
+                                key={restaurant.id}
+                                {...restaurant}
+                                searchTerm={searchTerm}
+                            />
+                        ))}
+                    </div>
+                )}
 
                 {/* Statistics Bar */}
                 <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-primary-fifth mb-8">

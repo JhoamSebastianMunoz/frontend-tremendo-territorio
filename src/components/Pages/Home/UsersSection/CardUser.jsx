@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import { ButtonPrimary } from '../../Atoms/ButtonPrimary/ButtonPrimary';
+import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
 
 export const CardUser = ({icon, title, paragraph1, paragraph2, button, ...props}) => {
   return (

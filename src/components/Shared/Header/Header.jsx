@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Home } from '../Home/Home';
-import { Users } from '../Users/Users';
-import { Territory } from '../Territory/Territory';
-import { ContactUs } from '../ContactUs/ContactUs';
-import  { LoginScreen } from '../LoginScreen/LoginScreen';
-import { Register } from '../Register/Register';
-import { FarmsView } from  '../FarmsView/FarmsView'
-import { useGetElements } from '../../hooks/useGetElements/useGetElements';
+import { Home } from '../../Pages/Home/Home';
+import { Users } from '../../Pages/Users/Users';
+import { Admin } from '../../Pages/Admin/Admin';
+import { ContactUs } from '../../Pages/ContactUs/ContactUs';
+import  { LoginScreen } from '../../Pages/LoginScreen/LoginScreen';
+import { Register } from '../../Pages/Register/Register';
+import { FarmsView } from  '../../Pages/FarmsView/FarmsView'
+import { useGetElements } from '../../../hooks/useGetElements/useGetElements';
 
 export const Header = () => {
     // Uso del Contexto para el uso del logo
@@ -154,7 +154,7 @@ export const Header = () => {
         <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/users' element={<Users/>} />
-        <Route path='/admin' element={<Territory/>} />
+        <Route path='/admin' element={<Admin/>} />
         <Route path='/contactUs' element={<ContactUs/>} />
         <Route path='/loginScreen' element={<LoginScreen/>} />
         <Route path='/register' element={<Register/>} />

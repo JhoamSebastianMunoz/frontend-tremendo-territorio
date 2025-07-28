@@ -1,5 +1,5 @@
 import React from 'react';
-import  { Links } from '../Footer/Links'
+import  { Links } from '../../Shared/Footer/Links'
 
 export const ContactUs = () => {
   return (

@@ -9,7 +9,7 @@ export const Section1 = () => {
         navigate('/territory')
     }
     const goToUsers = () =>{
-        navigate('/users')
+        navigate('/stories')
     }
     return (
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -50,9 +50,6 @@ export const Section1 = () => {
                         Descubre las Historias
                     </ButtonPrimary>
 
-                    <ButtonPrimary onClick={goToRegister}>
-                        Conoce el Territorio
-                    </ButtonPrimary>
                 </div>
             </div>
 

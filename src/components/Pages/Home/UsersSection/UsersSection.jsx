@@ -10,7 +10,10 @@ export const UsersSection = () => {
     };
     const goToFarmsView = () => {
     navigate('/farmsView');
-};
+    };
+    const goToStories = () =>{
+        navigate('/stories')
+    };
 
     return (
         <div className="bg-white py-16 px-8">
@@ -49,7 +52,7 @@ export const UsersSection = () => {
                         title={'Consumidor Final'} 
                         paragraph1={'"Quien elige con consciencia, transforma territorios"'} 
                         paragraph2={'Un Profesional Agrícola de más cultiva productos desde hace más de 15 años. Conocimientos del campo son su visión de futuro. Que su grano de frijol, de manza esta libre de químicos. Con su familia como motor, que en las tradiciones, en el valor del esfuerzo y el territorio que aporta tierra donde la historia y la tradición territorial atraviesa historia y dignidad.'}
-                        button={'Soy Consumidor'} onClick={goToRegister}
+                        button={'Soy Consumidor'} onClick={goToStories}
                     />
                 </div>
             </div>

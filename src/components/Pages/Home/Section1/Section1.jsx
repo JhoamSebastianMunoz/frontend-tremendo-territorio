@@ -5,10 +5,7 @@ export const Section1 = () => {
 
     const navigate = useNavigate();
 
-    const goToRegister = () => {
-        navigate('/territory')
-    }
-    const goToUsers = () =>{
+    const goToStories = () =>{
         navigate('/stories')
     }
     return (
@@ -46,7 +43,7 @@ export const Section1 = () => {
 
                 {/* Botones de acción */}
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <ButtonPrimary onClick={goToUsers}>
+                    <ButtonPrimary onClick={goToStories}>
                         Descubre las Historias
                     </ButtonPrimary>
 

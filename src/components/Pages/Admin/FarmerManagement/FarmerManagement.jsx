@@ -8,17 +8,24 @@ export const FarmerManagement = () => {
 
     const farmers = [
         {
-            name: 'Carlos Rodríguez',
-            location: 'Vereda El Jardín, Quimbaya',
-            products: 'Tomate, Cilantro',
-            amount: '50 kg disponibles',
+            name: 'Juan De Dios Herrera',
+            location: 'vereda Carare, km 10.2-Barichara',
+            products: 'Frijol',
+            amount: '1250 kg disponibles',
             verification: true,
         },
         {
-            name: 'María González',
-            location: 'Vereda La Esperanza, Armenia',
-            products: 'Lechuga, Zanahoria',
-            amount: '30 kg disponibles',
+            name: 'Marta Lucia Cardona',
+            location: 'vereda Arbolito, km 4.2-Barichara',
+            products: 'Maíz',
+            amount: '510 kg disponibles',
+            verification: false,
+        },
+        {
+            name: 'Eliecer Coronado',
+            location: 'vereda butaregua, km 11.2-Barichara',
+            products: ['Maíz',', ', 'Yuca'],
+            amount: '2510 kg disponibles',
             verification: false,
         }
     ];

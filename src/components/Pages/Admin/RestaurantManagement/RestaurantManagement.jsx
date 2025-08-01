@@ -10,26 +10,26 @@ export const RestaurantManagement = () => {
 
     const restaurants = [
         {
-            name: 'Restaurante El Sembrador',
-            location: 'Armenia, Quindío - 2.5 km',
+            name: 'El Puntal',
+            location: 'Carrera 6 # 6-13, Barichara',
             contact: '573232967700',
-            requiredProducts: 'Tomate, Cilantro, Cebolla',
+            requiredProducts: 'Lechuga, Espinaca, Apio, Yuca, Diente de León',
             state: 'Activo',
             action: 'Editar',
         },
         {
-            name: 'Cocina Verde',
-            location: 'Circasia, Quindío - 8.2 km',
-            contact: '3116957990',
-            requiredProducts: 'Lechuga, Zanahoria, Apio',
+            name: 'Noa Light Food',
+            location: 'Carrera 7 N 6 -34, Barichara',
+            contact: '573116957990',
+            requiredProducts: 'Tomates, Cebolla, Pimentón, Espinaca, Acelga, Aguacate, Limón, Cilantro, Perejil',
             state: 'Activo',
             action: 'Editar',
         },
         {
-            name: 'Casa del Campo',
-            location: 'Montenegro, Quindío - 12.1 km',
-            contact: '3113383510',
-            requiredProducts: 'Lechuga, Zanahoria, Apio',
+            name: 'El Bodegón de Toñita',
+            location: 'Carrera 7 # 5-63 Plazuela de la Catedral, Barichara',
+            contact: '573113383510',
+            requiredProducts: 'Maíz, Frijol, Papas, Yuca, Repollo, Pimentón',
             state: 'Activo',
             action: 'Editar',
         }

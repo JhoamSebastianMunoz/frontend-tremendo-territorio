@@ -62,9 +62,9 @@ export const GetDataAdminProvider = ({ children }) => {
     };
 
     const chartData = {
-        labels: ['Tomate', 'Cilantro', 'Lechuga', 'Cebolla', 'Zanahoria'],
+        labels: ['Maiz', 'Yuca', 'Frijol', 'Tomate', 'Zanahoria', 'Lechuga', 'Pimentón', 'Espinaca', 'Apio', 'Diente de León', 'Cebolla','Aguacate', 'Limón', 'Cilantro', 'Perejil', 'Papas', 'Repollo'],
         datasets: [{
-            data: [30, 25, 20, 15, 10],
+            data: [30, 25, 20, 15, 2, 8, 12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
             backgroundColor: [
                 '#5E5630',
                 '#C58A3E',

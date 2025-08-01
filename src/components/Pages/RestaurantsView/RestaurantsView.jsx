@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useContext } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { MainSection } from './MainSection/MainSection';
-import { RestaurantCard } from './RestaurantCard/RestaurantCard';
+import { MainSection } from './MainSection/MainSection'
+import { FarmCard } from './FarmCard/FarmCard'
 import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin'
 
 // Componente para resaltar términos de búsqueda
@@ -28,37 +28,37 @@ const HighlightText = ({ text, highlight }) => {
     );
 };
 
-export const FarmsView = () => {
+export const RestaurantsView = () => {
+
     const [searchTerm, setSearchTerm] = useState('');
     const { data, 
             chartData,
             chartOptions } = useContext(GetAdminContext)
-
-    const restaurantsData = [
+    
+    
+    const farmsData = [
         {
             id: 1,
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799986/samples/man-on-a-street.jpg',
-                    alt: 'Restaurante El Sembrador - Exterior del restaurante'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1751500396/campo-tremendo-territorio_ukcrnr.jpg',
+                    alt: 'finca 1 Barichara'
                 },
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/people/kitchen-bar.jpg',
-                    alt: 'Restaurante El Sembrador - Cocina'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca3_vny8ua.jpg',
+                    alt: 'finca 1 Barichara img 2'
                 },
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799986/samples/coffee.jpg',
-                    alt: 'Restaurante El Sembrador - cultura cafetera'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010243/finca6_vpizxa.jpg',
+                    alt: 'finca 1 Barichara img 3'
                 }
             ],
-            nameRestaurant: 'El Puntal',
-            distance: 'Carrera 6 # 6-13, Barichara',
-            location: 'Deliciosa comida típica, rescatando los sabores ancestrales de Barichara y Santander. Está ubicada a pocos metros del Parque Principal de Barichara, uno de los puntos más conocidos del municipio. Se encuentra en una zona central y tranquila, rodeada de calles empedradas y casas coloniales típicas del pueblo.',
-            icon: '🍽️',
-            requirements: {
-                hortalizas: ['Lechugas', 'Espinaca', 'Apio'],
-                legumbre: ['Yuca'],
-                Experiencial: ['Diente de León']
+            nameFarm: 'Juan De Dios Herrera',
+            distance: 'vereda Carare, km 10.2-Barichara',
+            location: 'finca Aromas del Campo, Finca enfocada en el cultivo de frijoles, donde se cuidan cada etapa del proceso para ofrecer granos de excelente calidad, esenciales en la alimentación tradicional y saludable.',
+            icon: '🌾',
+            offers: {
+                legumbre: ['Frijol'],
             },
             phone: '+573232967700'
         },
@@ -66,23 +66,20 @@ export const FarmsView = () => {
             id: 2,
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799977/samples/food/fish-vegetables.jpg',
-                    alt: 'Cocina Verde - plato fuerte'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca4_j97aby.jpg',
+                    alt: 'Finca 2 Barichara'
                 },
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799986/samples/breakfast.jpg',
-                    alt: 'Cocina Verde - desayunos'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca1_r0wyty.jpg',
+                    alt: 'Finca 2 Barichara img 2'
                 }
             ],
-            nameRestaurant: 'Noa Light Food',
-            distance: 'Carrera 7 N 6 -34, Barichara',
-            location: 'Noa Light Food es un espacio creado con todo el cariño para disfrutar de las bondades de nuestras preparaciones, que no solo nutren el cuerpo, sino también el espíritu. Nuestro menú se centra en preparaciones vegetarianas, complementadas con proteínas al gusto, elaboradas con ingredientes frescos de este hermoso entorno y de temporada.',
+            nameFarm: 'Marta Lucia Cardona',
+            distance: 'vereda Arbolito, km 4.2 -Barichara',
+            location: 'Finca La Piedra Viva, Finca especializada en el cultivo de maíz, comprometida con prácticas agrícolas responsables para ofrecer cosechas frescas y nutritivas que apoyan la seguridad alimentaria local. ',
             icon: '🌿',
-            requirements: {
-                verduras: ['Tomates', 'Cebolla', 'Pimentón'],
-                hortalizas: ['Espinaca', 'Acelga'],
-                frutas: ['Aguacate', 'Limón'],
-                condimentos: ['Cilantro', 'Perejil']
+            offers: {
+                grano: ['Maíz'],
             },
             phone: '+573116957990'
         },
@@ -90,68 +87,68 @@ export const FarmsView = () => {
             id: 3,
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799976/samples/food/dessert.jpg',
-                    alt: 'Casa del Campo - Postre'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca5_socla6.jpg',
+                    alt: 'Finca 3 Barichara'
                 },
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799988/cld-sample-4.jpg',
-                    alt: 'Casa del Campo - Ambiente familiar'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca2_rkna0k.jpg',
+                    alt: 'Finca 3 Barichara img 2'
                 },
                 {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799979/samples/food/spices.jpg',
-                    alt: 'Casa del Campo - ingredientes'
+                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/bike.jpg',
+                    alt: 'Finca 3 Barichara img 3'
                 }
             ],
-            nameRestaurant: 'El Bodegón de Toñita',
-            distance: 'Carrera 7 # 5-63 Plazuela de la Catedral, Barichara',
-            location: 'ubicados en la plazuela de la catedral y deleitarse con los exquisitos frappe, granizados, jugos naturales, helados y los deliciosos tostones con pollo y maíz, sándwich y hamburguesas. Y por supuesto el mejor sitio para tomarse un buen vino, una cerveza o el trago de tu preferencia !!',
+            nameFarm: 'Eliecer Coronado',
+            distance: 'vereda butaregua, km 11.2-Barichara',
+            location: 'Finca Mirador del Sol, Finca dedicada al cultivo de yuca, donde se trabaja con técnicas sostenibles para obtener raíces de alta calidad, promoviendo la agricultura local y el desarrollo rural.',
             icon: '🏠',
-            requirements: {
-                granos: ['Maíz', 'Frijol'],
-                tuberculos: ['Papas', 'Yuca'],
-                verduras: ['Repollo', 'Pimentón']
+            offers: {
+                granos: ['Maíz'],
+                tuberculos: [ 'Yuca'],
             },
             phone: '+573113383510'
         }
     ];
 
-    // Función para filtrar restaurantes
-    const filteredRestaurants = useMemo(() => {
+    // Función para filtrar Agricultores
+    const filteredFarms = useMemo(() => {
         if (!searchTerm.trim()) {
-            return restaurantsData;
+            return farmsData;
         }
 
         const searchLower = searchTerm.toLowerCase().trim();
         
-        return restaurantsData.filter(restaurant => {
-            // Buscar por nombre del restaurante
-            const nameMatch = restaurant.nameRestaurant.toLowerCase().includes(searchLower);
+        return farmsData.filter(farm => {
+            // Buscar por nombre del agricultor
+            const nameMatch = farm.nameFarm.toLowerCase().includes(searchLower);
             
             // Buscar por ubicación
-            const locationMatch = restaurant.distance.toLowerCase().includes(searchLower);
+            const locationMatch = farm.distance.toLowerCase().includes(searchLower);
             
             // Buscar por productos requeridos
-            const productsMatch = Object.values(restaurant.requirements).flat().some(product => 
+            const productsMatch = Object.values(farm.offers).flat().some(product => 
                 product.toLowerCase().includes(searchLower)
             );
             
             // Buscar por categorías de productos
-            const categoryMatch = Object.keys(restaurant.requirements).some(category => 
+            const categoryMatch = Object.keys(farm.offers).some(category => 
                 category.toLowerCase().includes(searchLower)
             );
 
             return nameMatch || locationMatch || productsMatch || categoryMatch;
         });
-    }, [searchTerm, restaurantsData]);
+    }, [searchTerm, farmsData]);
 
     const clearSearch = () => {
         setSearchTerm('');
     };
-
+    
     return (
-        <div className="bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen">
+        
+    <div className='bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen' >
         {/*sección principal */}
-            <MainSection />
+            <MainSection/>
                 {/* Dashboard Principal */}
                     <div className=" my-4 space-y-8 gap-4">
                     {/* KPI Cards */}
@@ -174,18 +171,18 @@ export const FarmsView = () => {
                     ))}
                     </div>
                 </div>
-
+        
                     {/* Charts and Map */}
                     <div className='flex justify-center items-center' >
                     <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
                     <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                        <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Demanda</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Cosecha</h3>
                         <div className="h-80">
                             <Doughnut data={chartData} options={chartOptions} />
                         </div>
                     </div>
+                    </div>
                 </div>
-            </div>
 
         {/*Busqueda y filtro de la sección */}
             <div className="max-w-7xl mt-4 mx-auto px-4 sm:px-6 lg:px-8 pb-8">
@@ -193,12 +190,12 @@ export const FarmsView = () => {
                 <div className="flex flex-col gap-4 mb-8">
                     <div className="relative max-w-2xl mx-auto w-full">
                         <div className="relative">
-                            <input
-                                type="text"
-                                placeholder="Buscar por restaurante, ubicación o productos (ej: Lechugas, Tomates, El Sembrador...)"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white font-primary-brand"
+                            <input 
+                            type="text" 
+                            placeholder='Buscar por agricultor, ubicación o productos(ej: Frijol, Maíz, Yuca...) '
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white font-primary-brand"
                             />
                             <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-first text-xl">
                                 🔍
@@ -216,9 +213,9 @@ export const FarmsView = () => {
                         {/* Search Results Counter */}
                         <div className="text-center mt-3">
                             <span className="text-primary-first font-medium font-primary-brand">
-                                {filteredRestaurants.length === restaurantsData.length 
-                                    ? `Mostrando ${restaurantsData.length} restaurantes`
-                                    : `${filteredRestaurants.length} de ${restaurantsData.length} restaurantes encontrados`
+                                {filteredFarms.length === farmsData.length 
+                                    ? `Mostrando ${farmsData.length} Agricultores`
+                                    : `${filteredFarms.length} de ${farmsData.length} Agricultores encontrados`
                                 }
                             </span>
                         </div>
@@ -226,31 +223,31 @@ export const FarmsView = () => {
                 </div>
 
                 {/* No Results Message */}
-                {filteredRestaurants.length === 0 && searchTerm && (
+                {filteredFarms.length === 0 && searchTerm && (
                     <div className="text-center py-12">
                         <div className="text-6xl mb-4">🔍</div>
                         <h3 className="text-2xl font-bold text-primary-first mb-2 font-primary-brand">
                             No se encontraron resultados
                         </h3>
                         <p className="text-gray-600 font-primary-brand mb-4">
-                            No encontramos restaurantes que coincidan con "{searchTerm}"
+                            No encontramos agricultores que coincidan con "{searchTerm}"
                         </p>
                         <button
                             onClick={clearSearch}
                             className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-primary-brand"
                         >
-                            Ver todos los restaurantes
+                            Ver todos los agricultores
                         </button>
                     </div>
                 )}
 
-                {/* Restaurants Grid */}
-                {filteredRestaurants.length > 0 && (
+                {/* farms Grid */}
+                {filteredFarms.length > 0 && (
                     <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                        {filteredRestaurants.map((restaurant) => (
-                            <RestaurantCard
-                                key={restaurant.id}
-                                {...restaurant}
+                        {filteredFarms.map((farm) => (
+                            <FarmCard
+                                key={farm.id}
+                                {...farm}
                                 searchTerm={searchTerm}
                             />
                         ))}

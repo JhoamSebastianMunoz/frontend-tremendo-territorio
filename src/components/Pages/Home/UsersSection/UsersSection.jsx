@@ -5,8 +5,9 @@ import {  Route, Routes, useNavigate } from 'react-router-dom';
 export const UsersSection = () => {
 
     const navigate = useNavigate();
-    const goToRegister = () =>{
-        navigate('/register')
+
+    const goToRestaurantsView = () =>{
+        navigate('/restaurantsView')
     };
     const goToFarmsView = () => {
     navigate('/farmsView');
@@ -43,7 +44,7 @@ export const UsersSection = () => {
                         title={'El Sabio del Sabor Rural'} 
                         paragraph1={'Lleva el campo a la mesa, con respeto por los alimentos y sus orígenes.'} 
                         paragraph2={'Este cliente es una primera productora gastronómica que busca dar valor a los alimentos de tierra, convierte en sabores del pueblo, que la historia y lo rural en el corazón del presente. Busca preparar comidas típicas, recetas tradicionales, transformar platos, con ingredientes autóctonos que han logrado disfrutar por generaciones y también el territorio.'}
-                        button={'Soy Restaurante'} onClick={goToRegister}
+                        button={'Soy Restaurante'} onClick={goToRestaurantsView}
                     />
 
                     {/* Tarjeta 3: Consumidor Final */}

@@ -7,6 +7,7 @@ import { ContactUs } from '../../Pages/ContactUs/ContactUs';
 import  { LoginScreen } from '../../Pages/LoginScreen/LoginScreen';
 import { Register } from '../../Pages/Register/Register';
 import { FarmsView } from  '../../Pages/FarmsView/FarmsView'
+import { RestaurantsView } from '../../Pages/RestaurantsView/RestaurantsView'
 import { useGetElements } from '../../../hooks/useGetElements/useGetElements';
 
 export const Header = () => {
@@ -80,7 +81,7 @@ export const Header = () => {
                             Agricultor
                         </Link>
                         <Link
-                            to="/loginScreen"
+                            to="/restaurantsView"
                             className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-primary-brand"
                             onClick={() => setIsInteractDropdownOpen(false)}
                         >
@@ -185,7 +186,7 @@ export const Header = () => {
                         Agricultor
                         </Link>
                         <Link
-                        to="/loginScreen"
+                        to="/restaurantsView"
                         className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
                         onClick={() => {
                             setIsMenuOpen(false);
@@ -250,6 +251,7 @@ export const Header = () => {
         <Route path='/loginScreen' element={<LoginScreen/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='/farmsView' element={<FarmsView/>} ></Route>
+        <Route path='/restaurantsView' element={<RestaurantsView/>} ></Route>
         </Routes>
     </div>
     )

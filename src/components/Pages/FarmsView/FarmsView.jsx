@@ -3,6 +3,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { MainSection } from './MainSection/MainSection';
 import { RestaurantCard } from './RestaurantCard/RestaurantCard';
 import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin'
+import { UserProfileForm } from './UserProfileForm/UserProfileForm'
 
 // Componente para resaltar términos de búsqueda
 const HighlightText = ({ text, highlight }) => {
@@ -152,6 +153,7 @@ export const FarmsView = () => {
         <div className="bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen">
         {/*sección principal */}
             <MainSection />
+            <UserProfileForm/>
                 {/* Dashboard Principal */}
                     <div className=" my-4 space-y-8 gap-4">
                     {/* KPI Cards */}

@@ -1,3 +1,5 @@
+import { UserProfileForm }from './UserProfileForm/UserProfileForm'
+
 import React, { useState, useMemo, useContext } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { MainSection } from './MainSection/MainSection'
@@ -149,6 +151,7 @@ export const RestaurantsView = () => {
     <div className='bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen' >
         {/*sección principal */}
             <MainSection/>
+            <UserProfileForm/>
                 {/* Dashboard Principal */}
                     <div className=" my-4 space-y-8 gap-4">
                     {/* KPI Cards */}

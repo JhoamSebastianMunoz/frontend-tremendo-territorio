@@ -1,5 +1,6 @@
 import React from 'react';
 import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
+import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary'
 
 // Componente para resaltar términos de búsqueda
 const HighlightText = ({ text, highlight }) => {
@@ -165,12 +166,11 @@ export const FarmCard = ({
                     >
                         📱 WhatsApp
                     </button>
-                    <button
+                    <ButtonSecondary
                         onClick={handleCall}
-                        className="w-full bg-primary-first hover:bg-primary-third text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 font-primary-brand"
                     >
                         📞 Llamar
-                    </button>
+                    </ButtonSecondary>
                 </div>
             </div>
         </div>

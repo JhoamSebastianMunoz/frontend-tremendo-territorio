@@ -1,5 +1,4 @@
-import { UserProfileForm }from './UserProfileForm/UserProfileForm'
-
+import { UserProfileForm } from './UserProfileForm/UserProfileForm'
 import React, { useState, useMemo, useContext } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { MainSection } from './MainSection/MainSection'
@@ -31,7 +30,7 @@ const HighlightText = ({ text, highlight }) => {
 };
 
 export const RestaurantsView = () => {
-
+    const [activeTab, setActiveTab] = useState('offers')
     const [searchTerm, setSearchTerm] = useState('');
     const { data, 
             chartData,
@@ -107,7 +106,7 @@ export const RestaurantsView = () => {
             icon: '🏠',
             offers: {
                 granos: ['Maíz'],
-                tuberculos: [ 'Yuca'],
+                tuberculos: ['Yuca'],
             },
             phone: '+573113383510'
         }
@@ -147,122 +146,157 @@ export const RestaurantsView = () => {
     };
     
     return (
-        
-    <div className='bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen' >
-        {/*sección principal */}
+        <div className='bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen'>
+            {/* Sección principal */}
             <MainSection/>
-            <UserProfileForm/>
-                {/* Dashboard Principal */}
-                    <div className=" my-4 space-y-8 gap-4">
-                    {/* KPI Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {[
-                        { number: data.restaurantes, label: 'Restaurantes Registrados' },
-                        { number: data.agricultores, label: 'Agricultores Activos' },
-                        { number: data.platos, label: 'Platos con Trazabilidad' },
-                        { number: data.productos, label: 'Productos Disponibles' }
-                        ].map((kpi, index) => (
-                        <div key={index} className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-first to-primary-second"></div>
-                        <div className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-primary-first to-primary-second bg-clip-text text-transparent">
-                            {kpi.number}
-                        </div>
-                        <div className="text-gray-600 font-semibold text-lg font-primary-brand">
-                            {kpi.label}
-                        </div>
-                        </div>
-                    ))}
-                    </div>
-                </div>
-        
-                    {/* Charts and Map */}
-                    <div className='flex justify-center items-center' >
-                    <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
-                    <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                        <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Cosecha</h3>
-                        <div className="h-80">
-                            <Doughnut data={chartData} options={chartOptions} />
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-        {/*Busqueda y filtro de la sección */}
-            <div className="max-w-7xl mt-4 mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-                {/*Input de busqueda */}
-                <div className="flex flex-col gap-4 mb-8">
-                    <div className="relative max-w-2xl mx-auto w-full">
-                        <div className="relative">
-                            <input 
-                            type="text" 
-                            placeholder='Buscar por agricultor, ubicación o productos(ej: Frijol, Maíz, Yuca...) '
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white font-primary-brand"
-                            />
-                            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-first text-xl">
-                                🔍
-                            </div>
-                            {searchTerm && (
-                                <button
-                                    onClick={clearSearch}
-                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary-first transition-colors duration-200 text-xl"
-                                >
-                                    ✕
-                                </button>
-                            )}
-                        </div>
-                        
-                        {/* Search Results Counter */}
-                        <div className="text-center mt-3">
-                            <span className="text-primary-first font-medium font-primary-brand">
-                                {filteredFarms.length === farmsData.length 
-                                    ? `Mostrando ${farmsData.length} Agricultores`
-                                    : `${filteredFarms.length} de ${farmsData.length} Agricultores encontrados`
-                                }
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* No Results Message */}
-                {filteredFarms.length === 0 && searchTerm && (
-                    <div className="text-center py-12">
-                        <div className="text-6xl mb-4">🔍</div>
-                        <h3 className="text-2xl font-bold text-primary-first mb-2 font-primary-brand">
-                            No se encontraron resultados
-                        </h3>
-                        <p className="text-gray-600 font-primary-brand mb-4">
-                            No encontramos agricultores que coincidan con "{searchTerm}"
-                        </p>
+            
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-center gap-2 flex-wrap px-4 my-6 bg-white rounded-2xl p-2 shadow-lg">
+                    {[
+                        {id: 'profile', label:'Datos del Usuario'},
+                        {id: 'statistics', label: 'Estadísticas'},
+                        {id: 'offers', label: 'Ofertas de Agricultores'}
+                    ].map(tab =>(
                         <button
-                            onClick={clearSearch}
-                            className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-primary-brand"
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id)}
+                            className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
+                                activeTab === tab.id
+                                    ? 'bg-primary-first text-white shadow-lg transform scale-105'
+                                    : 'text-gray-600 hover:bg-gray-100'
+                            }`}
                         >
-                            Ver todos los agricultores
+                            <span>{tab.label}</span>
                         </button>
+                    ))}
+                </div>
+
+                {activeTab === 'profile' && (
+                    <div>
+                        {/* Sección de la información por editar del usuario */}
+                        <UserProfileForm/>
                     </div>
                 )}
 
-                {/* farms Grid */}
-                {filteredFarms.length > 0 && (
-                    <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                        {filteredFarms.map((farm) => (
-                            <FarmCard
-                                key={farm.id}
-                                {...farm}
-                                searchTerm={searchTerm}
-                            />
-                        ))}
-                    </div>
-                )}
-
-                {/* Pride Banner */}
-                <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl">
-                    <div className="text-lg font-medium font-primary-brand">
-                        "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾
+                {activeTab === 'statistics' && (
+                    <div>
+                        {/* Dashboard Principal */}
+                        <div className="my-4 space-y-8 gap-4">
+                            {/* KPI Cards */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {[
+                                    { number: data.restaurantes, label: 'Restaurantes Registrados' },
+                                    { number: data.agricultores, label: 'Agricultores Activos' },
+                                    { number: data.platos, label: 'Platos con Trazabilidad' },
+                                    { number: data.productos, label: 'Productos Disponibles' }
+                                ].map((kpi, index) => (
+                                    <div key={index} className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
+                                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-first to-primary-second"></div>
+                                        <div className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-primary-first to-primary-second bg-clip-text text-transparent">
+                                            {kpi.number}
+                                        </div>
+                                        <div className="text-gray-600 font-semibold text-lg font-primary-brand">
+                                            {kpi.label}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                {/* Charts and Map */}
+                <div className='flex justify-center items-center' >
+                    <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
+                        <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
+                            <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Demanda</h3>
+                            <div className="h-80">
+                                <Doughnut data={chartData} options={chartOptions} />
+                            </div>
+                        </div>
                     </div>
                 </div>
+                    </div>
+                )}
+
+                {activeTab === 'offers' && (
+                    <div>
+                        {/* Búsqueda y filtro de la sección */}
+                        <div className="mt-4 pb-8">
+                            {/* Input de búsqueda */}
+                            <div className="flex flex-col gap-4 mb-8">
+                                <div className="relative max-w-2xl mx-auto w-full">
+                                    <div className="relative">
+                                        <input 
+                                            type="text" 
+                                            placeholder='Buscar por agricultor, ubicación o productos(ej: Frijol, Maíz, Yuca...) '
+                                            value={searchTerm}
+                                            onChange={(e) => setSearchTerm(e.target.value)}
+                                            className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white font-primary-brand"
+                                        />
+                                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-first text-xl">
+                                            🔍
+                                        </div>
+                                        {searchTerm && (
+                                            <button
+                                                onClick={clearSearch}
+                                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary-first transition-colors duration-200 text-xl"
+                                            >
+                                                ✕
+                                            </button>
+                                        )}
+                                    </div>
+                                    
+                                    {/* Search Results Counter */}
+                                    <div className="text-center mt-3">
+                                        <span className="text-primary-first font-medium font-primary-brand">
+                                            {filteredFarms.length === farmsData.length 
+                                                ? `Mostrando ${farmsData.length} Agricultores`
+                                                : `${filteredFarms.length} de ${farmsData.length} Agricultores encontrados`
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* No Results Message */}
+                            {filteredFarms.length === 0 && searchTerm && (
+                                <div className="text-center py-12">
+                                    <div className="text-6xl mb-4">🔍</div>
+                                    <h3 className="text-2xl font-bold text-primary-first mb-2 font-primary-brand">
+                                        No se encontraron resultados
+                                    </h3>
+                                    <p className="text-gray-600 font-primary-brand mb-4">
+                                        No encontramos agricultores que coincidan con "{searchTerm}"
+                                    </p>
+                                    <button
+                                        onClick={clearSearch}
+                                        className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-primary-brand"
+                                    >
+                                        Ver todos los agricultores
+                                    </button>
+                                </div>
+                            )}
+
+                            {/* farms Grid */}
+                            {filteredFarms.length > 0 && (
+                                <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                                    {filteredFarms.map((farm) => (
+                                        <FarmCard
+                                            key={farm.id}
+                                            {...farm}
+                                            searchTerm={searchTerm}
+                                        />
+                                    ))}
+                                </div>
+                            )}
+
+                            {/* Pride Banner */}
+                            <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl">
+                                <div className="text-lg font-medium font-primary-brand">
+                                    "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

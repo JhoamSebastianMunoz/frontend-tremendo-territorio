@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { GetContext } from '../../../../contexts/UsersInformation/UsersInformation'
 import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
+import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
+import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary'
 
 export const UserProfileForm = () => {
     const {
@@ -252,17 +254,13 @@ export const UserProfileForm = () => {
                                 </div>
                                 
                                 {/* Botón para agregar producto manualmente */}
-                                <div className="flex justify-center mt-4">
-                                    <button
+                                <div className="flex justify-center">
+                                    <ButtonSecondary
                                         type="button"
                                         onClick={addNewProduct}
-                                        className="flex items-center px-6 py-3 bg-primary-first text-white rounded-xl hover:bg-primary-third transition-all duration-300 shadow-md hover:shadow-lg"
                                     >
-                                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                        </svg>
-                                        Agregar otro producto
-                                    </button>
+                                        ➕ Agregar otro producto
+                                    </ButtonSecondary>
                                 </div>
                             </div>
                         </div>
@@ -297,14 +295,13 @@ export const UserProfileForm = () => {
                                 <div className="space-y-4">
                                     <div className="text-6xl">📷</div>
                                     <div>
-                                        <button
+                                        <ButtonSecondary
                                             type="button"
                                             onClick={() => fileInputRef.current?.click()}
                                             disabled={uploading}
-                                            className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 disabled:opacity-50"
                                         >
                                             {uploading ? 'Subiendo...' : 'Seleccionar Imágenes'}
-                                        </button>
+                                        </ButtonSecondary>
                                     </div>
                                     <p className="text-gray-500 text-sm">
                                         Selecciona múltiples imágenes de tu Finca
@@ -342,10 +339,9 @@ export const UserProfileForm = () => {
                 )}
                 {/* Botón de Envío */}
                 <div className="text-center">
-                    <button
+                    <ButtonPrimary
                         type="submit"
                         disabled={isSubmitting}
-                        className="bg-gradient-to-r from-primary-first to-primary-second text-white px-12 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:transform-none"
                     >
                         {isSubmitting ? (
                             <span className="flex items-center">
@@ -358,7 +354,7 @@ export const UserProfileForm = () => {
                         ) : (
                             '📩 Actualizar Perfil '
                         )}
-                    </button>
+                    </ButtonPrimary>
                 </div>
             </form>
         </div>

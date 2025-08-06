@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
-import { GetContext } from '../../../../contexts/UsersInformation/UsersInformation'
+import { GetContext } from '../../../../contexts/UsersInformation/UsersInformation';
 import { ImageCarousel } from '../../RestaurantsView/ImageCarousel/ImageCarousel';
+import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
+import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary';
 
 export const UserProfileForm = () => {
     const {personalData, 
@@ -270,14 +272,13 @@ export const UserProfileForm = () => {
                                 <div className="space-y-4">
                                     <div className="text-6xl">📷</div>
                                     <div>
-                                        <button
+                                        <ButtonSecondary
                                             type="button"
                                             onClick={() => fileInputRef.current?.click()}
                                             disabled={uploading}
-                                            className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 disabled:opacity-50"
                                         >
                                             {uploading ? 'Subiendo...' : 'Seleccionar Imágenes'}
-                                        </button>
+                                        </ButtonSecondary>
                                     </div>
                                     <p className="text-gray-500 text-sm">
                                         Selecciona múltiples imágenes de tu restaurante
@@ -315,10 +316,9 @@ export const UserProfileForm = () => {
                 )}
                 {/* Botón de Envío */}
                 <div className="text-center">
-                    <button
+                    <ButtonPrimary
                         type="submit"
                         disabled={isSubmitting}
-                        className="bg-gradient-to-r from-primary-first to-primary-second text-white px-12 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:transform-none"
                     >
                         {isSubmitting ? (
                             <span className="flex items-center">
@@ -331,7 +331,7 @@ export const UserProfileForm = () => {
                         ) : (
                             '📩 Actualizar Perfil '
                         )}
-                    </button>
+                    </ButtonPrimary>
                 </div>
             </form>
         </div>

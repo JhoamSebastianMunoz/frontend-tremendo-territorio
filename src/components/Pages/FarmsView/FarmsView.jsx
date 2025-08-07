@@ -3,7 +3,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { MainSection } from './MainSection/MainSection';
 import { RestaurantCard } from './RestaurantCard/RestaurantCard';
 import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin'
-import { UserProfileForm } from './UserProfileForm/UserProfileForm'
+import { FarmProfileForm } from './FarmProfileForm/FarmProfileForm'
 
 // Componente para resaltar términos de búsqueda
 const HighlightText = ({ text, highlight }) => {
@@ -180,7 +180,7 @@ export const FarmsView = () => {
             {activeTab === 'profile' &&(
                 <div>
                     {/*Sección de la información por editar del usuario */}
-                    <UserProfileForm/>
+                    <FarmProfileForm/>
                 </div>
             )}
 

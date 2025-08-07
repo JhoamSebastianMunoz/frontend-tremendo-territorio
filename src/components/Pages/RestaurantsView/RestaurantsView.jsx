@@ -1,4 +1,4 @@
-import { UserProfileForm } from './UserProfileForm/UserProfileForm'
+import { RestaurantProfileForm } from './RestaurantProfileForm/RestaurantProfileForm'
 import React, { useState, useMemo, useContext } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { MainSection } from './MainSection/MainSection'
@@ -174,7 +174,7 @@ export const RestaurantsView = () => {
                 {activeTab === 'profile' && (
                     <div>
                         {/* Sección de la información por editar del usuario */}
-                        <UserProfileForm/>
+                        <RestaurantProfileForm/>
                     </div>
                 )}
 
@@ -206,7 +206,7 @@ export const RestaurantsView = () => {
                 <div className='flex justify-center items-center' >
                     <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
                         <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                            <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Demanda</h3>
+                            <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Oferta</h3>
                             <div className="h-80">
                                 <Doughnut data={chartData} options={chartOptions} />
                             </div>

@@ -2,14 +2,14 @@ import React from 'react';
 import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
 import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary'
 
-// Componente para resaltar términos de búsqueda
+// Componente para resaltar términos de búsqueda dentro de un texto
 const HighlightText = ({ text, highlight }) => {
     if (!highlight || !highlight.trim()) {
-        return <span>{text}</span>;
+        return <span>{text}</span>; // Si no hay texto a resaltar, se muestra tal cual
     }
 
-    const regex = new RegExp(`(${highlight})`, 'gi');
-    const parts = text.split(regex);
+    const regex = new RegExp(`(${highlight})`, 'gi'); // Expresión regular para encontrar coincidencias
+    const parts = text.split(regex); // Divide el texto original en partes coincidentes y no coincidentes
 
     return (
         <span>
@@ -26,6 +26,7 @@ const HighlightText = ({ text, highlight }) => {
     );
 };
 
+// Componente que representa una tarjeta de información de una finca (productor)
 export const FarmCard = ({
     images = [],
     img,
@@ -37,6 +38,7 @@ export const FarmCard = ({
     phone,
     searchTerm = ''
 }) => {
+    // Mapea categorías a íconos representativos
     const getCategoryIcon = (category) => {
         const icons = {
             hortalizas: '🥬',
@@ -49,6 +51,7 @@ export const FarmCard = ({
         return icons[category] || '🌱';
     };
 
+    // Mapea categorías a títulos legibles
     const getCategoryTitle = (category) => {
         const titles = {
             hortalizas: 'Hortalizas',
@@ -61,6 +64,7 @@ export const FarmCard = ({
         return titles[category] || category.charAt(0).toUpperCase() + category.slice(1);
     };
 
+    // Acción para abrir WhatsApp con mensaje predeterminado
     const handleWhatsApp = () => {
         const message = encodeURIComponent(
             `¡Hola! Soy un Restaurante del Territorio de Barichara y me interesa conocer más sobre los productos que están ofertando en ${nameFarm}. ¿Podríamos coordinar una reunión?`
@@ -68,26 +72,28 @@ export const FarmCard = ({
         window.open(`https://wa.me/${phone.replace(/\+/g, '')}?text=${message}`, '_blank');
     };
 
+    // Acción para realizar llamada telefónica
     const handleCall = () => {
         window.open(`tel:${phone}`, '_self');
     };
 
-    // Preparar las imágenes para el carrusel
+    // Prepara las imágenes a mostrar en el carrusel
     const carouselImages = images.length > 0
         ? images
         : img
             ? [{ url: img, alt: `${nameFarm} - Imagen principal` }]
             : [];
 
-    // Función para verificar si un producto coincide con la búsqueda
+    // Verifica si un producto coincide con el texto de búsqueda
     const isProductHighlighted = (product) => {
         return searchTerm && product.toLowerCase().includes(searchTerm.toLowerCase());
     };
 
-    // Vista en cuadrícula (única vista disponible)
+    // Renderizado del componente
     return (
         <div className="bg-white rounded-2xl shadow-lg border-2 border-primary-fifth hover:border-primary-first transition-all duration-300 overflow-hidden group hover:shadow-xl transform hover:-translate-y-2">
-            {/* Carrusel de imágenes del restaurante */}
+            
+            {/* Sección del carrusel de imágenes */}
             <div className="h-48 relative overflow-hidden">
                 <ImageCarousel
                     images={carouselImages}
@@ -96,13 +102,15 @@ export const FarmCard = ({
                     showIndicators={true}
                     showArrows={true}
                 />
+                {/* Superposición visual sobre la imagen */}
                 <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
 
-            {/* Contenido de la tarjeta */}
+            {/* Contenido principal de la tarjeta */}
             <div className="p-6">
-                {/* Header del restaurante */}
+
+                {/* Encabezado con ícono, nombre y ubicación */}
                 <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-primary-first to-primary-second rounded-full flex items-center justify-center text-white text-lg flex-shrink-0">
                         {icon}
@@ -120,12 +128,12 @@ export const FarmCard = ({
                     </div>
                 </div>
 
-                {/* Descripción */}
+                {/* Descripción de la finca */}
                 <p className="text-gray-600 text-sm italic mb-4 font-primary-brand leading-relaxed">
                     <HighlightText text={location} highlight={searchTerm} />
                 </p>
 
-                {/* Productos requeridos */}
+                {/* Lista de productos ofrecidos por categorías */}
                 <div className="mb-6">
                     <h4 className="text-primary-first font-semibold mb-3 font-primary-brand">
                         Ofrecemos:
@@ -133,12 +141,14 @@ export const FarmCard = ({
                     <div className="space-y-3">
                         {Object.entries(offers).map(([category, products]) => (
                             <div key={category}>
+                                {/* Título de la categoría con ícono */}
                                 <div className="flex items-center gap-2 text-primary-first text-sm font-medium mb-2">
                                     <span>{getCategoryIcon(category)}</span>
                                     <span className="font-primary-brand">
                                         <HighlightText text={getCategoryTitle(category)} highlight={searchTerm} />:
                                     </span>
                                 </div>
+                                {/* Lista de productos como etiquetas */}
                                 <div className="flex flex-wrap gap-2">
                                     {products.map((product, index) => (
                                         <span
@@ -158,7 +168,7 @@ export const FarmCard = ({
                     </div>
                 </div>
 
-                {/* Botones de contacto */}
+                {/* Botones de contacto: WhatsApp y llamada */}
                 <div className="flex flex-col gap-2">
                     <button
                         onClick={handleWhatsApp}
@@ -166,9 +176,7 @@ export const FarmCard = ({
                     >
                         📱 WhatsApp
                     </button>
-                    <ButtonSecondary
-                        onClick={handleCall}
-                    >
+                    <ButtonSecondary onClick={handleCall}>
                         📞 Llamar
                     </ButtonSecondary>
                 </div>

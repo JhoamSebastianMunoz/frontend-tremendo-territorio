@@ -5,7 +5,7 @@ import { MainSection } from './MainSection/MainSection'
 import { FarmCard } from './FarmCard/FarmCard'
 import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin'
 
-// Componente para resaltar términos de búsqueda
+// Componente que resalta texto coincidente con el término de búsqueda
 const HighlightText = ({ text, highlight }) => {
     if (!highlight.trim()) {
         return <span>{text}</span>;
@@ -30,13 +30,16 @@ const HighlightText = ({ text, highlight }) => {
 };
 
 export const RestaurantsView = () => {
+    // Estado que gestiona la pestaña activa (perfil, estadísticas u ofertas)
     const [activeTab, setActiveTab] = useState('offers')
+
+    // Estado que almacena el término de búsqueda ingresado por el usuario
     const [searchTerm, setSearchTerm] = useState('');
-    const { data, 
-            chartData,
-            chartOptions } = useContext(GetAdminContext)
+
+    // Obtiene los datos del contexto del administrador (datos, gráfico y opciones del gráfico)
+    const { data, chartData, chartOptions } = useContext(GetAdminContext)
     
-    
+    // Datos simulados de fincas/agricultores
     const farmsData = [
         {
             id: 1,
@@ -112,7 +115,7 @@ export const RestaurantsView = () => {
         }
     ];
 
-    // Función para filtrar Agricultores
+    // Filtra las fincas según el término de búsqueda ingresado
     const filteredFarms = useMemo(() => {
         if (!searchTerm.trim()) {
             return farmsData;
@@ -141,16 +144,18 @@ export const RestaurantsView = () => {
         });
     }, [searchTerm, farmsData]);
 
+    // Limpia el término de búsqueda
     const clearSearch = () => {
         setSearchTerm('');
     };
     
     return (
         <div className='bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen'>
-            {/* Sección principal */}
+            {/* Renderiza la sección principal (título, presentación, etc.) */}
             <MainSection/>
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Navegación por pestañas */}
                 <div className="flex justify-center gap-2 flex-wrap px-4 my-6 bg-white rounded-2xl p-2 shadow-lg">
                     {[
                         {id: 'profile', label:'Datos del Usuario'},
@@ -171,18 +176,18 @@ export const RestaurantsView = () => {
                     ))}
                 </div>
 
+                {/* Sección: Datos del perfil */}
                 {activeTab === 'profile' && (
                     <div>
-                        {/* Sección de la información por editar del usuario */}
                         <RestaurantProfileForm/>
                     </div>
                 )}
 
+                {/* Sección: Estadísticas y KPIs */}
                 {activeTab === 'statistics' && (
                     <div>
-                        {/* Dashboard Principal */}
                         <div className="my-4 space-y-8 gap-4">
-                            {/* KPI Cards */}
+                            {/* Tarjetas de métricas clave */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {[
                                     { number: data.restaurantes, label: 'Restaurantes Registrados' },
@@ -202,25 +207,26 @@ export const RestaurantsView = () => {
                                 ))}
                             </div>
                         </div>
-                {/* Charts and Map */}
-                <div className='flex justify-center items-center' >
-                    <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
-                        <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                            <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Oferta</h3>
-                            <div className="h-80">
-                                <Doughnut data={chartData} options={chartOptions} />
+
+                        {/* Gráfico de productos en oferta */}
+                        <div className='flex justify-center items-center'>
+                            <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
+                                <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
+                                    <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Oferta</h3>
+                                    <div className="h-80">
+                                        <Doughnut data={chartData} options={chartOptions} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                    </div>
                 )}
 
+                {/* Sección: Ofertas de Agricultores */}
                 {activeTab === 'offers' && (
                     <div>
-                        {/* Búsqueda y filtro de la sección */}
+                        {/* Input de búsqueda */}
                         <div className="mt-4 pb-8">
-                            {/* Input de búsqueda */}
                             <div className="flex flex-col gap-4 mb-8">
                                 <div className="relative max-w-2xl mx-auto w-full">
                                     <div className="relative">
@@ -244,7 +250,7 @@ export const RestaurantsView = () => {
                                         )}
                                     </div>
                                     
-                                    {/* Search Results Counter */}
+                                    {/* Conteo de resultados */}
                                     <div className="text-center mt-3">
                                         <span className="text-primary-first font-medium font-primary-brand">
                                             {filteredFarms.length === farmsData.length 
@@ -256,7 +262,7 @@ export const RestaurantsView = () => {
                                 </div>
                             </div>
 
-                            {/* No Results Message */}
+                            {/* Mensaje si no hay coincidencias */}
                             {filteredFarms.length === 0 && searchTerm && (
                                 <div className="text-center py-12">
                                     <div className="text-6xl mb-4">🔍</div>
@@ -275,7 +281,7 @@ export const RestaurantsView = () => {
                                 </div>
                             )}
 
-                            {/* farms Grid */}
+                            {/* Renderizado de tarjetas de agricultores */}
                             {filteredFarms.length > 0 && (
                                 <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                                     {filteredFarms.map((farm) => (
@@ -288,7 +294,7 @@ export const RestaurantsView = () => {
                                 </div>
                             )}
 
-                            {/* Pride Banner */}
+                            {/* Banner final de orgullo agrícola */}
                             <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl">
                                 <div className="text-lg font-medium font-primary-brand">
                                     "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾

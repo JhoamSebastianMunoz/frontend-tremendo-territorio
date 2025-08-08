@@ -2,15 +2,18 @@ import React from 'react';
 import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
 import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary'
 
-// Componente para resaltar términos de búsqueda
+// Componente auxiliar para resaltar texto que coincida con una búsqueda
 const HighlightText = ({ text, highlight }) => {
+    // Si no hay término a resaltar, se muestra el texto normal
     if (!highlight || !highlight.trim()) {
         return <span>{text}</span>;
     }
 
+    // Se crea una expresión regular con el término a resaltar (ignorando mayúsculas/minúsculas)
     const regex = new RegExp(`(${highlight})`, 'gi');
-    const parts = text.split(regex);
+    const parts = text.split(regex); // Se divide el texto original por el término encontrado
 
+    // Se renderiza el texto resaltando las coincidencias
     return (
         <span>
             {parts.map((part, index) => 
@@ -26,17 +29,20 @@ const HighlightText = ({ text, highlight }) => {
     );
 };
 
+// Componente principal: tarjeta individual de un restaurante
 export const RestaurantCard = ({
-    images = [],
-    img,
-    nameRestaurant,
-    distance,
-    location,
-    icon,
-    requirements,
-    phone,
-    searchTerm = ''
+    images = [],       
+    img,               
+    nameRestaurant,    
+    distance,          
+    location,          
+    icon,              
+    requirements,      
+    phone,             
+    searchTerm = ''    
 }) => {
+
+    // Retorna un emoji representativo según la categoría de productos
     const getCategoryIcon = (category) => {
         const icons = {
             hortalizas: '🥬',
@@ -46,9 +52,10 @@ export const RestaurantCard = ({
             granos: '🌾',
             tuberculos: '🥔'
         };
-        return icons[category] || '🌱';
+        return icons[category] || '🌱'; // Icono por defecto si no coincide
     };
 
+    // Retorna el título con formato capitalizado según la categoría
     const getCategoryTitle = (category) => {
         const titles = {
             hortalizas: 'Hortalizas',
@@ -61,6 +68,7 @@ export const RestaurantCard = ({
         return titles[category] || category.charAt(0).toUpperCase() + category.slice(1);
     };
 
+    // Abre WhatsApp con un mensaje prediseñado al número del restaurante
     const handleWhatsApp = () => {
         const message = encodeURIComponent(
             `¡Hola! Soy productor agrícola y me interesa conocer más sobre los productos que necesitan en ${nameRestaurant}. ¿Podríamos coordinar una reunión?`
@@ -68,26 +76,28 @@ export const RestaurantCard = ({
         window.open(`https://wa.me/${phone.replace(/\+/g, '')}?text=${message}`, '_blank');
     };
 
+    // Llama directamente al número del restaurante
     const handleCall = () => {
         window.open(`tel:${phone}`, '_self');
     };
 
-    // Preparar las imágenes para el carrusel
+    // Prepara el array de imágenes a mostrar en el carrusel
     const carouselImages = images.length > 0
         ? images
         : img
             ? [{ url: img, alt: `${nameRestaurant} - Imagen principal` }]
             : [];
 
-    // Función para verificar si un producto coincide con la búsqueda
+    // Verifica si un producto debe ser resaltado en base al término de búsqueda
     const isProductHighlighted = (product) => {
         return searchTerm && product.toLowerCase().includes(searchTerm.toLowerCase());
     };
 
-    // Vista en cuadrícula (única vista disponible)
+    // Estructura de la tarjeta visual
     return (
         <div className="bg-white rounded-2xl shadow-lg border-2 border-primary-fifth hover:border-primary-first transition-all duration-300 overflow-hidden group hover:shadow-xl transform hover:-translate-y-2">
-            {/* Carrusel de imágenes del restaurante */}
+
+            {/* Carrusel de imágenes */}
             <div className="h-48 relative overflow-hidden">
                 <ImageCarousel
                     images={carouselImages}
@@ -96,13 +106,15 @@ export const RestaurantCard = ({
                     showIndicators={true}
                     showArrows={true}
                 />
+                {/* Superposición visual para oscurecer ligeramente las imágenes */}
                 <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
 
-            {/* Contenido de la tarjeta */}
+            {/* Contenido textual de la tarjeta */}
             <div className="p-6">
-                {/* Header del restaurante */}
+
+                {/* Encabezado: nombre, ícono y distancia */}
                 <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-primary-first to-primary-second rounded-full flex items-center justify-center text-white text-lg flex-shrink-0">
                         {icon}
@@ -120,17 +132,19 @@ export const RestaurantCard = ({
                     </div>
                 </div>
 
-                {/* Descripción */}
+                {/* Ubicación (dirección) del restaurante */}
                 <p className="text-gray-600 text-sm italic mb-4 font-primary-brand leading-relaxed">
                     <HighlightText text={location} highlight={searchTerm} />
                 </p>
 
-                {/* Productos requeridos */}
+                {/* Lista de productos requeridos */}
                 <div className="mb-6">
                     <h4 className="text-primary-first font-semibold mb-3 font-primary-brand">
                         Requerimos:
                     </h4>
+
                     <div className="space-y-3">
+                        {/* Recorre las categorías y productos */}
                         {Object.entries(requirements).map(([category, products]) => (
                             <div key={category}>
                                 <div className="flex items-center gap-2 text-primary-first text-sm font-medium mb-2">
@@ -139,6 +153,7 @@ export const RestaurantCard = ({
                                         <HighlightText text={getCategoryTitle(category)} highlight={searchTerm} />:
                                     </span>
                                 </div>
+                                {/* Muestra los productos como chips visuales */}
                                 <div className="flex flex-wrap gap-2">
                                     {products.map((product, index) => (
                                         <span
@@ -158,7 +173,7 @@ export const RestaurantCard = ({
                     </div>
                 </div>
 
-                {/* Botones de contacto */}
+                {/* Botones de contacto: WhatsApp y Llamada */}
                 <div className="flex flex-col gap-2">
                     <button
                         onClick={handleWhatsApp}

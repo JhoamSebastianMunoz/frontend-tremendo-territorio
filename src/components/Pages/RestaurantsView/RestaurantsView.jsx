@@ -59,12 +59,13 @@ export const RestaurantsView = () => {
             ],
             nameFarm: 'Juan De Dios Herrera',
             distance: 'vereda Carare, km 10.2-Barichara',
+            qualificationAverage: '4.9',
             location: 'finca Aromas del Campo, Finca enfocada en el cultivo de frijoles, donde se cuidan cada etapa del proceso para ofrecer granos de excelente calidad, esenciales en la alimentación tradicional y saludable.',
             icon: '🌾',
             offers: {
-                legumbre: ['Frijol'],
+                legumbre: ['frijol'],
             },
-            phone: '+573232967700'
+            phone: '+573232967700',
         },
         {
             id: 2,
@@ -80,12 +81,13 @@ export const RestaurantsView = () => {
             ],
             nameFarm: 'Marta Lucia Cardona',
             distance: 'vereda Arbolito, km 4.2 -Barichara',
+            qualificationAverage: '4.7',
             location: 'Finca La Piedra Viva, Finca especializada en el cultivo de maíz, comprometida con prácticas agrícolas responsables para ofrecer cosechas frescas y nutritivas que apoyan la seguridad alimentaria local. ',
             icon: '🌿',
             offers: {
                 grano: ['Maíz'],
             },
-            phone: '+573116957990'
+            phone: '+573116957990',
         },
         {
             id: 3,
@@ -105,13 +107,14 @@ export const RestaurantsView = () => {
             ],
             nameFarm: 'Eliecer Coronado',
             distance: 'vereda butaregua, km 11.2-Barichara',
+            qualificationAverage: '4.0',
             location: 'Finca Mirador del Sol, Finca dedicada al cultivo de yuca, donde se trabaja con técnicas sostenibles para obtener raíces de alta calidad, promoviendo la agricultura local y el desarrollo rural.',
             icon: '🏠',
             offers: {
                 granos: ['Maíz'],
                 tuberculos: ['Yuca'],
             },
-            phone: '+573113383510'
+            phone: '+573113383510',
         }
     ];
 

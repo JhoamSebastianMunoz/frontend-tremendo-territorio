@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Home } from '../../Pages/Home/Home';
-import { Stories } from '../../Pages/Stories/Stories';
+// import { Stories } from '../../Pages/Stories/Stories';
+import { CommentsSection } from '../../Pages/CommentsSection/CommentsSection';
 import { Admin } from '../../Pages/Admin/Admin';
 import { ContactUs } from '../../Pages/ContactUs/ContactUs';
 import  { LoginScreen } from '../../Pages/LoginScreen/LoginScreen';
@@ -88,7 +89,7 @@ export const Header = () => {
                             Restaurante
                         </Link>
                         <Link
-                            to="/stories"
+                            to="/commentsSection"
                             className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-primary-brand"
                             onClick={() => setIsInteractDropdownOpen(false)}
                         >
@@ -196,7 +197,7 @@ export const Header = () => {
                         Restaurante
                         </Link>
                         <Link
-                        to="/stories"
+                        to="/commentsSection"
                         className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
                         onClick={() => {
                             setIsMenuOpen(false);
@@ -245,7 +246,7 @@ export const Header = () => {
       {/* Rutas */}
         <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/stories' element={<Stories/>} />
+        <Route path='/commentsSection' element={<CommentsSection/>} />
         <Route path='/admin' element={<Admin/>} />
         <Route path='/contactUs' element={<ContactUs/>} />
         <Route path='/loginScreen' element={<LoginScreen/>} />

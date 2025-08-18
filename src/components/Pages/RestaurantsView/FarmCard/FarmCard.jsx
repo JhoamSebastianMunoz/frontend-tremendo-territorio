@@ -1,6 +1,11 @@
-import React from 'react';
-import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
-import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary'
+import React, { useContext, useState } from 'react';
+import { RatingContext } from '../../../../contexts/Rating/Rating';
+import { useNavigate } from 'react-router-dom';
+import { ImageCarousel } from './ImageCarousel/ImageCarousel';
+import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
+import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary';
+import { RatingStars } from '../../../Shared/RatingStars/RatingStars';
+
 
 // Componente para resaltar términos de búsqueda dentro de un texto
 const HighlightText = ({ text, highlight }) => {
@@ -32,6 +37,7 @@ export const FarmCard = ({
     img,
     nameFarm,
     distance,
+    qualificationAverage,
     location,
     icon,
     offers,
@@ -63,6 +69,11 @@ export const FarmCard = ({
         };
         return titles[category] || category.charAt(0).toUpperCase() + category.slice(1);
     };
+    
+    //Estado para manejar las calificaciones
+    const [ rating, setRating ] = useState(0);
+
+    const { renderStar } = useContext(RatingContext);
 
     // Acción para abrir WhatsApp con mensaje predeterminado
     const handleWhatsApp = () => {
@@ -88,6 +99,16 @@ export const FarmCard = ({
     const isProductHighlighted = (product) => {
         return searchTerm && product.toLowerCase().includes(searchTerm.toLowerCase());
     };
+
+    //Estado para manejar los comentarios que redacten los usuarios
+    const [ comment, setComment ] = useState('');
+
+    // Redirigir a la vista de Comentarios
+    const navigate = useNavigate()
+
+    const goToCommentsSection = () =>{
+        navigate('/commentsSection')
+    }
 
     // Renderizado del componente
     return (
@@ -125,6 +146,15 @@ export const FarmCard = ({
                                 <HighlightText text={distance} highlight={searchTerm} />
                             </span>
                         </div>
+                        <div className='flex gap-1'>
+                            <span className='text-sm text-gray-500'>
+                                {qualificationAverage}
+                            </span>
+                            <div>
+                                {renderStar(Math.round(Number(qualificationAverage)))}
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -179,6 +209,33 @@ export const FarmCard = ({
                     <ButtonSecondary onClick={handleCall}>
                         📞 Llamar
                     </ButtonSecondary>
+                </div>
+                
+                <div className='flex mt-4'>
+                        <p>
+                            Calificar: <RatingStars value={rating} onChange={setRating} />
+                        </p>
+                </div>
+
+                <div className=''>
+                    <div className='flex gap-2 m-4'>
+                        <textarea 
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-first'
+                        placeholder='🖋 Escribe tu comentario...'>
+                        </textarea>
+                        <ButtonPrimary
+                        onClick={() => console.log('Enviar calificación: ', rating, 'Comentario: ', comment)}>
+                            Enviar
+                        </ButtonPrimary>
+                    </div>
+                    <div className=' m-4'>
+                        <ButtonSecondary
+                        onClick={goToCommentsSection}>
+                            Ver Comentarios
+                        </ButtonSecondary>
+                    </div>
                 </div>
             </div>
         </div>

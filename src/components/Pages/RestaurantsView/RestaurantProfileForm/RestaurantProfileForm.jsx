@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GetContext } from '../../../../contexts/UsersInformation/UsersInformation';
-import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
+import { ImageCarousel } from '../FarmCard/ImageCarousel/ImageCarousel';
 import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
 import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
-import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary'
+import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
+import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
 
 // Componente auxiliar para resaltar texto que coincida con una búsqueda
 const HighlightText = ({ text, highlight }) => {
@@ -66,19 +67,6 @@ export const RestaurantCard = ({
             tuberculos: 'Tubérculos'
         };
         return titles[category] || category.charAt(0).toUpperCase() + category.slice(1);
-    };
-
-    // Abre WhatsApp con un mensaje prediseñado al número del restaurante
-    const handleWhatsApp = () => {
-        const message = encodeURIComponent(
-            `¡Hola! Soy productor agrícola y me interesa conocer más sobre los productos que necesitan en ${nameRestaurant}. ¿Podríamos coordinar una reunión?`
-        );
-        window.open(`https://wa.me/${phone.replace(/\+/g, '')}?text=${message}`, '_blank');
-    };
-
-    // Llama directamente al número del restaurante
-    const handleCall = () => {
-        window.open(`tel:${phone}`, '_self');
     };
 
     // Prepara el array de imágenes a mostrar en el carrusel
@@ -175,17 +163,13 @@ export const RestaurantCard = ({
 
                 {/* Botones de contacto: WhatsApp y Llamada */}
                 <div className="flex flex-col gap-2">
-                    <button
-                        onClick={handleWhatsApp}
-                        className="w-full bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 font-primary-brand"
-                    >
-                        📱 WhatsApp
-                    </button>
-                    <ButtonSecondary
-                        onClick={handleCall}
-                    >
-                        📞 Llamar
-                    </ButtonSecondary>
+                    <ButtonWhatsApp 
+                    nameClient={nameRestaurant} 
+                    userMessage='¡Hola! Soy productor agrícola y me interesa conocer más sobre los productos que necesitan en' 
+                    phone={phone}/>
+                    
+                    <ButtonCall
+                    phone={phone}/>
                 </div>
             </div>
         </div>

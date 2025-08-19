@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { useNavigate } from 'react-router-dom';
 import { ImageCarousel } from './ImageCarousel/ImageCarousel';
-import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
-import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary';
+import { ButtonPrimary } from '../../../Shared/buttons/ButtonPrimary/ButtonPrimary';
+import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary';
 import { RatingStars } from '../../../Shared/RatingStars/RatingStars';
+import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
+import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
 
 
 // Componente para resaltar términos de búsqueda dentro de un texto
@@ -74,19 +76,6 @@ export const FarmCard = ({
     const [ rating, setRating ] = useState(0);
 
     const { renderStar } = useContext(RatingContext);
-
-    // Acción para abrir WhatsApp con mensaje predeterminado
-    const handleWhatsApp = () => {
-        const message = encodeURIComponent(
-            `¡Hola! Soy un Restaurante del Territorio de Barichara y me interesa conocer más sobre los productos que están ofertando en ${nameFarm}. ¿Podríamos coordinar una reunión?`
-        );
-        window.open(`https://wa.me/${phone.replace(/\+/g, '')}?text=${message}`, '_blank');
-    };
-
-    // Acción para realizar llamada telefónica
-    const handleCall = () => {
-        window.open(`tel:${phone}`, '_self');
-    };
 
     // Prepara las imágenes a mostrar en el carrusel
     const carouselImages = images.length > 0
@@ -200,15 +189,13 @@ export const FarmCard = ({
 
                 {/* Botones de contacto: WhatsApp y llamada */}
                 <div className="flex flex-col gap-2">
-                    <button
-                        onClick={handleWhatsApp}
-                        className="w-full bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 font-primary-brand"
-                    >
-                        📱 WhatsApp
-                    </button>
-                    <ButtonSecondary onClick={handleCall}>
-                        📞 Llamar
-                    </ButtonSecondary>
+                    <ButtonWhatsApp 
+                    nameClient={nameFarm}  
+                    userMessage='¡Hola! Soy un Restaurante del Territorio de Barichara y me interesa conocer más sobre los productos que estás ofertando ' 
+                    phone={phone}/>
+
+                    <ButtonCall 
+                    phone={phone}/> 
                 </div>
                 
                 <div className='flex mt-4'>

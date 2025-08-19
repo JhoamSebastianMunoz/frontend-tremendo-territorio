@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { GetContext } from '../../../../contexts/UsersInformation/UsersInformation';
 import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
-import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
-import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary';
+import { ButtonPrimary } from '../../../Shared/buttons/ButtonPrimary/ButtonPrimary';
+import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary';
 
 export const FarmProfileForm = () => {
     // Extraer valores del contexto con destructuring organizado

@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { CommentsContext } from '../../../../contexts/Comments/Comments';
 import { Carousel } from '../MainSection/Carousel/Carousel';
-import { ButtonSecondary } from '../../../Atoms/ButtonSecondary/ButtonSecondary';
+import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
+import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
 
 export const MainSection = () => {
   //Contexto de los comentarios
@@ -15,21 +16,6 @@ export const MainSection = () => {
   // Datos del agricultor
   const nameFarm = "Juan De Dios Herrera";
   const phone = "+573232967700";
-
-  // Acción para abrir WhatsApp con un mensaje predeterminado
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent(
-      `¡Hola! Soy un Restaurante del Territorio de Barichara y me interesa conocer más sobre los productos que están ofertando en ${nameFarm}. ¿Podríamos coordinar una reunión?`
-    );
-    // Abre una nueva pestaña con el chat de WhatsApp
-    window.open(`https://wa.me/${phone.replace(/\+/g, '')}?text=${message}`, '_blank');
-  };
-
-  // Acción para realizar una llamada telefónica
-  const handleCall = () => {
-    // Abre la app de teléfono en el dispositivo
-    window.open(`tel:${phone}`, '_self');
-  };
 
   return (
     <div className="bg-white rounded-3xl p-8 shadow-xl border-4 border-primary-fifth">
@@ -78,17 +64,14 @@ export const MainSection = () => {
             </a>
 
             {/* WhatsApp */}
-            <button
-              onClick={handleWhatsApp}
-              className="w-full bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 font-primary-brand"
-            >
-              📱 WhatsApp
-            </button>
-
+            <ButtonWhatsApp
+            nameClient={nameFarm} 
+            userMessage=''
+            phone={phone}
+            />
             {/* Llamar */}
-            <ButtonSecondary onClick={handleCall}>
-              📞 Llamar
-            </ButtonSecondary>
+            <ButtonCall 
+            phone={phone}/>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonPrimary } from '../../../Atoms/ButtonPrimary/ButtonPrimary';
+import { ButtonPrimary } from '../../../Shared/buttons/ButtonPrimary/ButtonPrimary';
 import { useNavigate } from 'react-router-dom';
 export const Section1 = () => {
 

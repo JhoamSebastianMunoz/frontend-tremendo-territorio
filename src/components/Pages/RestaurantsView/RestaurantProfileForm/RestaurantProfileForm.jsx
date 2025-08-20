@@ -48,10 +48,10 @@ export const RestaurantProfileForm = () => {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header del formulario */}
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-primary-first mb-2">
+                    <h1 className="text-4xl font-bold font-title text-primary-first mb-2">
                         Actualizar Perfil
                     </h1>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-gray-600 text-lg font-body">
                         Mantén actualizada la información de tu restaurante
                     </p>
                 </div>
@@ -78,7 +78,7 @@ export const RestaurantProfileForm = () => {
                     {/* SECCIÓN: Datos Personales */}
                     {activeTab === 'personal' && (
                         <div className="bg-white rounded-3xl p-8 shadow-xl">
-                            <h2 className="text-2xl font-bold text-primary-first mb-6 flex items-center">
+                            <h2 className="text-2xl font-bold font-subtitle text-primary-first mb-6 flex items-center">
                                 <span className="mr-3">👦🏾</span>
                                 Información Personal
                             </h2>
@@ -86,7 +86,7 @@ export const RestaurantProfileForm = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Campo: Nombre */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Nombre *
                                     </label>
                                     <input
@@ -101,7 +101,7 @@ export const RestaurantProfileForm = () => {
 
                                 {/* Campo: Apellido */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Apellido *
                                     </label>
                                     <input
@@ -116,7 +116,7 @@ export const RestaurantProfileForm = () => {
 
                                 {/* Campo: Cédula */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Cédula *
                                     </label>
                                     <input
@@ -131,7 +131,7 @@ export const RestaurantProfileForm = () => {
 
                                 {/* Campo: Email */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Correo Electrónico (opcional)
                                     </label>
                                     <input
@@ -145,7 +145,7 @@ export const RestaurantProfileForm = () => {
 
                                 {/* Campo: Teléfono */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Teléfono *
                                     </label>
                                     <input
@@ -164,7 +164,7 @@ export const RestaurantProfileForm = () => {
                     {/* SECCIÓN: Información del Restaurante */}
                     {activeTab === 'restaurant' && (
                         <div className="bg-white rounded-3xl p-8 shadow-xl">
-                            <h2 className="text-2xl font-bold text-primary-first mb-6 flex items-center">
+                            <h2 className="text-2xl font-bold font-subtitle text-primary-first mb-6 flex items-center">
                                 <span className="mr-3">🏪</span>
                                 Información del Restaurante
                             </h2>
@@ -174,7 +174,7 @@ export const RestaurantProfileForm = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Campo: Nombre del restaurante */}
                                     <div className="md:col-span-2">
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Nombre del Restaurante *
                                         </label>
                                         <input
@@ -189,7 +189,7 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Campo: Descripción */}
                                     <div className="md:col-span-2">
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Descripción
                                         </label>
                                         <textarea
@@ -203,7 +203,7 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Campo: Ubicación */}
                                     <div className="md:col-span-2">
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Ubicación *
                                         </label>
                                         <input
@@ -218,7 +218,7 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Campo: Horario de apertura */}
                                     <div>
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Horario de Apertura
                                         </label>
                                         <input
@@ -231,7 +231,7 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Campo: Horario de cierre */}
                                     <div>
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Horario de Cierre
                                         </label>
                                         <input
@@ -244,7 +244,7 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Campo: Capacidad */}
                                     <div>
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Capacidad (personas)
                                         </label>
                                         <input
@@ -259,7 +259,7 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Campo: Teléfono del restaurante */}
                                     <div>
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Teléfono del Restaurante
                                         </label>
                                         <input
@@ -273,7 +273,7 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Campo: Red social */}
                                     <div>
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Red Social
                                         </label>
                                         <input
@@ -288,7 +288,7 @@ export const RestaurantProfileForm = () => {
 
                                 {/* SUBSECCIÓN: Productos requeridos dinámicos */}
                                 <div className="md:col-span-2">
-                                    <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                    <h3 className="text-xl font-semibold font-subtitle text-gray-800 mb-4 flex items-center">
                                         <span className="mr-2">🌱</span>
                                         Productos Requeridos en el Restaurante
                                     </h3>
@@ -298,14 +298,14 @@ export const RestaurantProfileForm = () => {
                                             <div key={product.id} className="bg-gray-50 rounded-xl p-6 border-2 border-gray-100">
                                                 {/* Header del producto con opción de eliminar */}
                                                 <div className="flex justify-between items-center mb-4">
-                                                    <h4 className="text-lg font-medium text-gray-700">
+                                                    <h4 className="text-lg font-medium font-subtitle text-gray-700">
                                                         Producto {index + 1}
                                                     </h4>
                                                     {restaurantData.requires.length > 1 && (
                                                         <button
                                                             type="button"
                                                             onClick={() => removeRestaurantProduct(product.id)}
-                                                            className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all duration-200"
+                                                            className="text-red-500 font-body hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all duration-200"
                                                             title="Eliminar producto"
                                                         >
                                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -319,7 +319,7 @@ export const RestaurantProfileForm = () => {
                                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                                     {/* Nombre del producto */}
                                                     <div>
-                                                        <label className="block text-gray-700 font-medium mb-2">
+                                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                                             Producto que requiere *
                                                         </label>
                                                         <input
@@ -333,7 +333,7 @@ export const RestaurantProfileForm = () => {
 
                                                     {/* Unidad de medida */}
                                                     <div>
-                                                        <label className="block text-gray-700 font-medium mb-2">
+                                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                                             Unidad de medida *
                                                         </label>
                                                         <input
@@ -347,7 +347,7 @@ export const RestaurantProfileForm = () => {
 
                                                     {/* Cantidad requerida */}
                                                     <div>
-                                                        <label className="block text-gray-700 font-medium mb-2">
+                                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                                             Cantidad Requerida *
                                                         </label>
                                                         <input
@@ -417,7 +417,7 @@ export const RestaurantProfileForm = () => {
                                                 {uploading ? 'Subiendo...' : 'Seleccionar Imágenes'}
                                             </ButtonSecondary>
                                         </div>
-                                        <p className="text-gray-500 text-sm">
+                                        <p className="text-gray-500 font-body text-sm">
                                             Selecciona múltiples imágenes de tu restaurante
                                         </p>
                                     </div>
@@ -426,7 +426,7 @@ export const RestaurantProfileForm = () => {
                                 {/* Lista de imágenes cargadas */}
                                 {images.length > 0 && (
                                     <div>
-                                        <h3 className="text-lg font-medium text-gray-700 mb-4">
+                                        <h3 className="text-lg font-medium font-body text-gray-700 mb-4">
                                             Imágenes Cargadas ({images.length})
                                         </h3>
                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -440,7 +440,7 @@ export const RestaurantProfileForm = () => {
                                                     <button
                                                         type="button"
                                                         onClick={() => removeImage(index)}
-                                                        className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm hover:bg-red-600 transition-colors duration-300 opacity-0 group-hover:opacity-100"
+                                                        className="absolute -top-2 -right-2 bg-red-500 text-white font-body w-6 h-6 rounded-full flex items-center justify-center text-sm hover:bg-red-600 transition-colors duration-300 opacity-0 group-hover:opacity-100"
                                                     >
                                                         ✕
                                                     </button>

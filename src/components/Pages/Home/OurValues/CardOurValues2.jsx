@@ -10,7 +10,7 @@ const CardOurValues2 = ({src, alt, paragraph}) => {
             className="w-8 h-8 filter brightness-0 invert"
           />
         </div>
-        <h3 className="text-gray-800 font-semibold text-lg font-primary-brand">{paragraph}</h3>
+        <h3 className="text-gray-800 font-semibold text-lg font-body">{paragraph}</h3>
     </div>
   )
 }

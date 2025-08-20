@@ -7,13 +7,13 @@ export const History = () => {
         <div className="bg-white rounded-3xl p-8 shadow-xl border-l-8 border-primary-second">
             
             {/* Título de la sección */}
-            <h2 className="text-3xl font-bold text-primary-third mb-6 font-primary-brand flex items-center space-x-2">
+            <h2 className="text-3xl font-bold text-primary-third mb-6 font-subtitle flex items-center space-x-2">
                 <span>📖</span>
                 <span>Mi Historia</span>
             </h2>
 
             {/* Texto descriptivo con la historia del agricultor */}
-            <p className="text-primary-first text-lg leading-relaxed italic font-primary-brand">
+            <p className="text-primary-first text-lg leading-relaxed italic font-body">
                 "Soy Juan De Dios Herrera, llevo 18 años cultivando esta tierra hermosa de Barichara que heredé de mi abuelo.
                 Desde niño aprendí los secretos de la agricultura tradicional santandereana. Mi finca La Esperanza ha sido
                 testigo de generaciones de trabajo honesto y dedicado. Cultivo más de 15 variedades diferentes, desde granos

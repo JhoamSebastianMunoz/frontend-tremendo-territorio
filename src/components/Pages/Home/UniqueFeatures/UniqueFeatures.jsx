@@ -7,11 +7,11 @@ export const UniqueFeatures = () => {
       <div className="max-w-7xl mx-auto">
         {/* Título principal */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 font-primary-brand">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 font-subtitle">
             Características Únicas
           </h2>
           <div className="w-24 h-1 bg-primary-second mx-auto mb-6"></div>
-          <p className="text-xl text-primary-fifth max-w-2xl mx-auto font-primary-brand">
+          <p className="text-xl text-primary-fifth max-w-2xl mx-auto font-body">
             Tecnología al servicio del territorio y sus historias.
           </p>
         </div>

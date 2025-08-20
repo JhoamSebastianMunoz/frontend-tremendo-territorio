@@ -14,7 +14,6 @@ export const Statistics = () => {
         renderStar,
         qualificationAverage } = useContext(RatingContext);
 
-
     // Retorna el JSX que renderiza las estadísticas
     return (
         <div className="bg-white rounded-2xl p-6 shadow-lg">
@@ -24,20 +23,20 @@ export const Statistics = () => {
                 {/* Bloque: Calificación promedio */}
                 <div className="space-y-2">
                     {/* Valor numérico fijo (puedes hacerlo dinámico si se calcula a partir de los comentarios) */}
-                    <div className="text-3xl font-bold text-primary-second font-primary-brand">{qualificationAverage}</div>
+                    <div className="text-3xl font-bold text-primary-second font-body">{qualificationAverage}</div>
                     {/* Representación visual de estrellas */}
                     <div className="text-primary-second text-xl">{renderStar(Math.round(Number(qualificationAverage)))}</div>
                     {/* Texto descriptivo */}
-                    <div className="text-primary-first font-primary-brand">Calificación promedio</div>
+                    <div className="text-primary-first font-body">Calificación promedio</div>
                 </div>
 
                 {/* Bloque: Número de restaurantes que reseñan */}
                 <div className="space-y-2">
                     {/* Número total de comentarios obtenidos del contexto */}
-                    <div className="text-3xl font-bold text-primary-second font-primary-brand">
+                    <div className="text-3xl font-bold text-primary-second font-body">
                         {comments.length}
                     </div>
-                    <div className="text-primary-first font-primary-brand">
+                    <div className="text-primary-first font-body">
                         Restaurantes que reseñan
                     </div>
                 </div>
@@ -45,8 +44,8 @@ export const Statistics = () => {
                 {/* Bloque: Porcentaje de recomendación */}
                 <div className="space-y-2">
                     {/* Porcentaje fijo (podría calcularse dinámicamente si se analiza la data) */}
-                    <div className="text-3xl font-bold text-primary-second font-primary-brand">{`${(qualificationAverage*2)*10} %`}</div>
-                    <div className="text-primary-first font-primary-brand">Recomendación</div>
+                    <div className="text-3xl font-bold text-primary-second font-body">{`${(qualificationAverage*2)*10} %`}</div>
+                    <div className="text-primary-first font-body">Recomendación</div>
                 </div>
 
             </div>

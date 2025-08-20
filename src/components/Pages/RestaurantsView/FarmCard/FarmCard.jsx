@@ -126,17 +126,17 @@ export const FarmCard = ({
                         {icon}
                     </div>
                     <div className="flex-1">
-                        <h3 className="text-xl font-bold text-primary-first mb-1 font-primary-brand">
+                        <h3 className="text-xl font-bold text-primary-first mb-1 font-subtitle">
                             <HighlightText text={nameFarm} highlight={searchTerm} />
                         </h3>
                         <div className="flex items-center gap-2 text-primary-first text-sm">
                             <span>📍</span>
-                            <span className="font-medium font-primary-brand">
+                            <span className="font-medium font-body">
                                 <HighlightText text={distance} highlight={searchTerm} />
                             </span>
                         </div>
                         <div className='flex gap-1'>
-                            <span className='text-sm text-gray-500'>
+                            <span className='text-sm font-body text-gray-500'>
                                 {qualificationAverage}
                             </span>
                             <div>
@@ -148,13 +148,13 @@ export const FarmCard = ({
                 </div>
 
                 {/* Descripción de la finca */}
-                <p className="text-gray-600 text-sm italic mb-4 font-primary-brand leading-relaxed">
+                <p className="text-gray-600 text-sm italic mb-4 font-body leading-relaxed">
                     <HighlightText text={location} highlight={searchTerm} />
                 </p>
 
                 {/* Lista de productos ofrecidos por categorías */}
                 <div className="mb-6">
-                    <h4 className="text-primary-first font-semibold mb-3 font-primary-brand">
+                    <h4 className="text-primary-first font-semibold mb-3 font-subtitle">
                         Ofrecemos:
                     </h4>
                     <div className="space-y-3">
@@ -163,7 +163,7 @@ export const FarmCard = ({
                                 {/* Título de la categoría con ícono */}
                                 <div className="flex items-center gap-2 text-primary-first text-sm font-medium mb-2">
                                     <span>{getCategoryIcon(category)}</span>
-                                    <span className="font-primary-brand">
+                                    <span className="font-body">
                                         <HighlightText text={getCategoryTitle(category)} highlight={searchTerm} />:
                                     </span>
                                 </div>
@@ -172,7 +172,7 @@ export const FarmCard = ({
                                     {products.map((product, index) => (
                                         <span
                                             key={index}
-                                            className={`px-3 py-1 rounded-full text-xs border font-primary-brand transition-all duration-300 ${
+                                            className={`px-3 py-1 rounded-full text-xs border font-body transition-all duration-300 ${
                                                 isProductHighlighted(product)
                                                     ? 'bg-yellow-100 text-primary-first border-yellow-400 shadow-md transform scale-105'
                                                     : 'bg-primary-fourth text-primary-first border-primary-first'
@@ -197,7 +197,7 @@ export const FarmCard = ({
                     <ButtonCall 
                     phone={phone}/> 
                 </div>
-                
+            
                 <div className='flex mt-4'>
                         <p>
                             Calificar: <RatingStars value={rating} onChange={setRating} />
@@ -209,7 +209,7 @@ export const FarmCard = ({
                         <textarea 
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
-                        className='w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-first'
+                        className='w-full font-body p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-first'
                         placeholder='🖋 Escribe tu comentario...'>
                         </textarea>
                         <ButtonPrimary

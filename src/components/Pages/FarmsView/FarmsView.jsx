@@ -205,13 +205,13 @@ return (
                     { number: data.platos, label: 'Platos con Trazabilidad' },
                     { number: data.productos, label: 'Productos Disponibles' }
                     ].map((kpi, index) => (
-                    <div key={index} className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
+                    <div key={index} className="bg-white bg-opacity-95 font-subtitle backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-first to-primary-second">
                         </div>
-                        <div className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-primary-first to-primary-second bg-clip-text text-transparent">
+                        <div className="text-5xl font-extrabold font-subtitle mb-3 bg-gradient-to-r from-primary-first to-primary-second bg-clip-text text-transparent">
                             {kpi.number}
                         </div>
-                        <div className="text-gray-600 font-semibold text-lg font-primary-brand">
+                        <div className="text-gray-600 font-semibold text-lg font-subtitle">
                             {kpi.label}
                         </div>
                     </div>
@@ -223,7 +223,7 @@ return (
             <div className='flex justify-center items-center' >
                 <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
                     <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                        <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Demanda</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 Productos en Demanda</h3>
                         <div className="h-80">
                             <Doughnut data={chartData} options={chartOptions} />
                         </div>
@@ -247,7 +247,7 @@ return (
                                 placeholder="Buscar por restaurante, ubicación o productos (ej: Lechugas, Tomates, El Sembrador...)"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white font-primary-brand"
+                                className="w-full font-body px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white"
                             />
                             <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-first text-xl">
                                 🔍
@@ -255,7 +255,7 @@ return (
                             {searchTerm && (
                                 <button
                                     onClick={clearSearch}
-                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary-first transition-colors duration-200 text-xl"
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 font-body hover:text-primary-first transition-colors duration-200 text-xl"
                                 >
                                     ✕
                                 </button>
@@ -264,7 +264,7 @@ return (
                         
                         {/* Indicador de cantidad de resultados */}
                         <div className="text-center mt-3">
-                            <span className="text-primary-first font-medium font-primary-brand">
+                            <span className="text-primary-first font-medium font-body">
                                 {filteredRestaurants.length === restaurantsData.length 
                                     ? `Mostrando ${restaurantsData.length} restaurantes`
                                     : `${filteredRestaurants.length} de ${restaurantsData.length} restaurantes encontrados`
@@ -278,15 +278,15 @@ return (
                 {filteredRestaurants.length === 0 && searchTerm && (
                     <div className="text-center py-12">
                         <div className="text-6xl mb-4">🔍</div>
-                        <h3 className="text-2xl font-bold text-primary-first mb-2 font-primary-brand">
+                        <h3 className="text-2xl font-bold text-primary-first mb-2 font-body">
                             No se encontraron resultados
                         </h3>
-                        <p className="text-gray-600 font-primary-brand mb-4">
+                        <p className="text-gray-600 font-body mb-4">
                             No encontramos restaurantes que coincidan con "{searchTerm}"
                         </p>
                         <button
                             onClick={clearSearch}
-                            className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-primary-brand"
+                            className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-body"
                         >
                             Ver todos los restaurantes
                         </button>
@@ -308,7 +308,7 @@ return (
 
                 {/* Frase de cierre con orgullo agrícola */}
                 <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl">
-                    <div className="text-lg font-medium font-primary-brand">
+                    <div className="text-lg font-medium font-body">
                         "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾
                     </div>
                 </div>

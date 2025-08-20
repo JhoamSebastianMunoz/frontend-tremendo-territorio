@@ -211,15 +211,15 @@ export const Register = () => {
   const selectedImageData = availableImages.find(img => img.id === formData.selectedImageId);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-first via-primary-first to-primary-third flex flex-col font-primary-brand">
+    <div className="min-h-screen bg-gradient-to-b from-primary-first via-primary-first to-primary-third flex flex-col font-body">
       {/* Contenido Principal */}
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2 font-primary-brand">Crea tu cuenta</h2>
-              <p className="text-xl text-primary-first font-semibold font-primary-brand">
+              <h2 className="text-3xl font-bold text-gray-800 mb-2 font-title">Crea tu cuenta</h2>
+              <p className="text-xl text-primary-first font-semibold font-subtitle">
                 Paso {currentStep}: {currentStep === 1 ? 'Datos personales e imagen' : 'Define tu PIN de seguridad'}
               </p>
             </div>
@@ -227,13 +227,13 @@ export const Register = () => {
             {/* Indicador de Progreso */}
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center space-x-4">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-primary-brand ${
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-body ${
                   currentStep >= 1 ? 'bg-primary-first' : 'bg-gray-300'
                 }`}>
                   1
                 </div>
                 <div className={`h-1 w-16 ${currentStep >= 2 ? 'bg-primary-first' : 'bg-gray-300'} transition-colors duration-300`}></div>
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-primary-brand ${
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold font-body ${
                   currentStep >= 2 ? 'bg-primary-first' : 'bg-gray-300'
                 }`}>
                   2
@@ -243,7 +243,7 @@ export const Register = () => {
 
             {/* Error Message */}
             {error && (
-              <div className={`mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center transition-all font-primary-brand ${shake ? 'animate-pulse' : ''}`}>
+              <div className={`mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center transition-all font-body ${shake ? 'animate-pulse' : ''}`}>
                 {error}
               </div>
             )}
@@ -254,7 +254,7 @@ export const Register = () => {
                 {/* Campos de entrada */}
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2 font-primary-brand">
+                    <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2 font-subtitle">
                       Nombre de usuario
                     </label>
                     <input
@@ -262,7 +262,7 @@ export const Register = () => {
                       id="username"
                       value={formData.username}
                       onChange={(e) => handleInputChange('username', e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-primary-brand"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-body"
                       placeholder="Ej: capella02"
                       disabled={isLoading}
                       required
@@ -270,7 +270,7 @@ export const Register = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2 font-primary-brand">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2 font-subtitle">
                       Email
                     </label>
                     <input
@@ -278,7 +278,7 @@ export const Register = () => {
                       id="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-primary-brand"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-body"
                       placeholder="capella02@email.com"
                       disabled={isLoading}
                       required
@@ -288,7 +288,7 @@ export const Register = () => {
 
                 {/* Selección de imagen */}
                 <div className="text-center">
-                  <p className="text-gray-600 mb-4 font-primary-brand">
+                  <p className="text-gray-600 mb-4 font-body">
                     Selecciona una imagen que recordarás para iniciar sesión
                   </p>
                 </div>
@@ -296,7 +296,7 @@ export const Register = () => {
                 {isLoading && availableImages.length === 0 ? (
                   <div className="flex items-center justify-center py-8">
                     <div className="w-8 h-8 border-2 border-primary-first border-t-transparent rounded-full animate-spin mr-2"></div>
-                    <span className="text-gray-600 font-primary-brand">Cargando imágenes...</span>
+                    <span className="text-gray-600 font-body">Cargando imágenes...</span>
                   </div>
                 ) : (
                   <div className="grid grid-cols-3 gap-3 max-h-60 overflow-y-auto">
@@ -330,7 +330,7 @@ export const Register = () => {
 
                 <button
                   onClick={handleNextStep}
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center font-primary-brand ${
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center font-body ${
                     formData.username && formData.email && formData.selectedImageId
                       ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-fourth text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -349,10 +349,10 @@ export const Register = () => {
                 {/* Imagen y datos seleccionados */}
                 {selectedImageData && (
                   <div className="flex flex-col items-center mb-6">
-                    <p className="text-gray-600 mb-3 font-primary-brand">
+                    <p className="text-gray-600 mb-3 font-subtitle">
                       Usuario: <span className="font-semibold">{formData.username}</span>
                     </p>
-                    <p className="text-gray-600 mb-3 font-primary-brand">Tu imagen de seguridad:</p>
+                    <p className="text-gray-600 mb-3 font-subtitle">Tu imagen de seguridad:</p>
                     <div className="relative">
                       <img
                         src={selectedImageData.src}
@@ -368,7 +368,7 @@ export const Register = () => {
 
                 {/* Entrada de PIN */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-subtitle">
                     Crea tu PIN de 4 dígitos
                   </h3>
                   
@@ -383,7 +383,7 @@ export const Register = () => {
                           onChange={(e) => handlePinChange(index, e.target.value)}
                           onKeyDown={(e) => handleKeyDown(e, index)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-primary-brand ${
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-body ${
                             digit ? 'border-primary-first bg-primary-fifth' : 'border-gray-300'
                           }`}
                           placeholder="•"
@@ -394,7 +394,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setShowPin(!showPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-primary-brand"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-body"
                   >
                     {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
                     {showPin ? 'Ocultar PIN' : 'Mostrar PIN'}
@@ -403,7 +403,7 @@ export const Register = () => {
 
                 {/* Confirmación de PIN */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-subtitle">
                     Confirma tu PIN
                   </h3>
                   
@@ -418,7 +418,7 @@ export const Register = () => {
                           onChange={(e) => handlePinChange(index, e.target.value, true)}
                           onKeyDown={(e) => handleKeyDown(e, index, true)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-primary-brand ${
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-body ${
                             digit ? 'border-primary-first bg-primary-fifth' : 'border-gray-300'
                           } ${shake ? 'animate-bounce' : ''}`}
                           placeholder="•"
@@ -430,7 +430,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setShowConfirmPin(!showConfirmPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-primary-brand"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-body"
                     disabled={!isPinComplete}
                   >
                     {showConfirmPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
@@ -443,7 +443,7 @@ export const Register = () => {
                   <button
                     onClick={handleRegister}
                     disabled={!isStep2Complete || isLoading}
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-primary-brand ${
+                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-body ${
                       isStep2Complete && !isLoading
                         ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-fourth text-white shadow-lg transform hover:scale-105'
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -461,7 +461,7 @@ export const Register = () => {
 
                   <button
                     onClick={() => setCurrentStep(1)}
-                    className="w-full py-3 rounded-xl font-medium text-primary-first border-2 border-primary-first hover:bg-primary-fifth transition-all duration-300 flex items-center justify-center font-primary-brand"
+                    className="w-full py-3 rounded-xl font-medium text-primary-first border-2 border-primary-first hover:bg-primary-fifth transition-all duration-300 flex items-center justify-center font-body"
                     disabled={isLoading}
                   >
                     <ArrowLeft className="w-5 h-5 mr-2" />
@@ -473,9 +473,9 @@ export const Register = () => {
 
             {/* Enlaces Adicionales */}
             <div className="mt-6 text-center">
-              <div className="text-gray-500 font-primary-brand">
+              <div className="text-gray-500 font-body">
                 ¿Ya tienes cuenta?{' '}
-                <button onClick={goToLoginScreen} className="text-primary-first hover:text-primary-second font-medium transition-colors">
+                <button onClick={goToLoginScreen} className="text-primary-first hover:text-primary-second font-medium font-subtitle transition-colors">
                   Iniciar Sesión
                 </button>
               </div>

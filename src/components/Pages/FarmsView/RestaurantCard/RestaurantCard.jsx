@@ -108,12 +108,12 @@ export const RestaurantCard = ({
                         {icon}
                     </div>
                     <div className="flex-1">
-                        <h3 className="text-xl font-bold text-primary-first mb-1 font-primary-brand">
+                        <h3 className="text-xl font-bold text-primary-first mb-1 font-subtitle">
                             <HighlightText text={nameRestaurant} highlight={searchTerm} />
                         </h3>
                         <div className="flex items-center gap-2 text-primary-first text-sm">
                             <span>📍</span>
-                            <span className="font-medium font-primary-brand">
+                            <span className="font-medium font-body">
                                 <HighlightText text={distance} highlight={searchTerm} />
                             </span>
                         </div>
@@ -121,13 +121,13 @@ export const RestaurantCard = ({
                 </div>
 
                 {/* Ubicación (dirección) del restaurante */}
-                <p className="text-gray-600 text-sm italic mb-4 font-primary-brand leading-relaxed">
+                <p className="text-gray-600 text-sm italic mb-4 font-body leading-relaxed">
                     <HighlightText text={location} highlight={searchTerm} />
                 </p>
 
                 {/* Lista de productos requeridos */}
                 <div className="mb-6">
-                    <h4 className="text-primary-first font-semibold mb-3 font-primary-brand">
+                    <h4 className="text-primary-first font-semibold mb-3 font-subtitle">
                         Requerimos:
                     </h4>
 
@@ -137,7 +137,7 @@ export const RestaurantCard = ({
                             <div key={category}>
                                 <div className="flex items-center gap-2 text-primary-first text-sm font-medium mb-2">
                                     <span>{getCategoryIcon(category)}</span>
-                                    <span className="font-primary-brand">
+                                    <span className="font-body">
                                         <HighlightText text={getCategoryTitle(category)} highlight={searchTerm} />:
                                     </span>
                                 </div>
@@ -146,7 +146,7 @@ export const RestaurantCard = ({
                                     {products.map((product, index) => (
                                         <span
                                             key={index}
-                                            className={`px-3 py-1 rounded-full text-xs border font-primary-brand transition-all duration-300 ${
+                                            className={`px-3 py-1 rounded-full text-xs border font-body transition-all duration-300 ${
                                                 isProductHighlighted(product)
                                                     ? 'bg-yellow-100 text-primary-first border-yellow-400 shadow-md transform scale-105'
                                                     : 'bg-primary-fourth text-primary-first border-primary-first'

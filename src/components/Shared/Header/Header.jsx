@@ -30,14 +30,11 @@ export const Header = () => {
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo y Título */}
             <div className="flex items-center space-x-4">
-            <div className="w-17 h-17 rounded-full overflow-hidden bg-white p-0.9">
                 <img 
                 src={getLogo} 
                 alt="logo" 
-                className="w-auto h-14 object-cover rounded-full"
+                className="w-auto h-16 object-cover rounded-full"
                 />
-            </div>
-            <h2 className="text-2xl font-bold text-white p-3 font-primary-brand">Tremendo Territorio</h2>
             </div>
 
           {/* Navegación Desktop */}
@@ -46,7 +43,7 @@ export const Header = () => {
                 <li>
                 <Link 
                     to='/' 
-                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-primary-brand"
+                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-subtitle"
                 >
                     Conócenos
                 </Link>
@@ -56,7 +53,7 @@ export const Header = () => {
                 <li className="relative">
                 <div className="relative">
                     <button 
-                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-primary-brand flex items-center"
+                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-subtitle flex items-center"
                     onClick={() => setIsInteractDropdownOpen(!isInteractDropdownOpen)}
                     >
                     Interactuar
@@ -76,21 +73,21 @@ export const Header = () => {
                         <div className="py-1">
                         <Link
                             to="/farmsView"
-                            className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-primary-brand"
+                            className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-subtitle"
                             onClick={() => setIsInteractDropdownOpen(false)}
                         >
                             Agricultor
                         </Link>
                         <Link
                             to="/restaurantsView"
-                            className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-primary-brand"
+                            className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-subtitle"
                             onClick={() => setIsInteractDropdownOpen(false)}
                         >
                             Restaurante
                         </Link>
                         <Link
                             to="/commentsSection"
-                            className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-primary-brand"
+                            className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-subtitle"
                             onClick={() => setIsInteractDropdownOpen(false)}
                         >
                             Consumidor
@@ -104,7 +101,7 @@ export const Header = () => {
                 <li>
                 <Link 
                     to='/admin'
-                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-primary-brand"
+                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-subtitle"
                 >
                     Administrar
                 </Link>
@@ -112,7 +109,7 @@ export const Header = () => {
                 <li>
                 <Link 
                     to='/contactUs' 
-                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-primary-brand"
+                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-subtitle"
                 >
                     Contáctanos
                 </Link>
@@ -120,7 +117,7 @@ export const Header = () => {
                 <li>
                 <Link 
                     to='/loginScreen' 
-                    className="bg-primary-second hover:bg-primary-sixth px-4 py-2 rounded-md transition-colors duration-200 font-medium font-primary-brand"
+                    className="bg-primary-second hover:bg-primary-sixth px-4 py-2 rounded-md transition-colors duration-200 font-medium font-subtitle"
                 >
                     Iniciar Sesión
                 </Link>
@@ -131,7 +128,7 @@ export const Header = () => {
             {/* Menú móvil - BOTÓN */}
             <div className="md:hidden">
             <button 
-                className="text-white hover:text-primary-fifth"
+                className="text-white hover:text-primary-fifth mr-12"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,7 +146,7 @@ export const Header = () => {
                 <li>
                     <Link
                     to="/"
-                    className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
+                    className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
                     onClick={() => setIsMenuOpen(false)}
                     >
                     Conócenos
@@ -159,7 +156,7 @@ export const Header = () => {
                 {/* Dropdown para Interactuar - Mobile */}
                 <li>
                     <button
-                    className="w-full text-left px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand flex items-center justify-between"
+                    className="w-full text-left px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle flex items-center justify-between"
                     onClick={() => setIsMobileInteractDropdownOpen(!isMobileInteractDropdownOpen)}
                     >
                     Interactuar
@@ -178,7 +175,7 @@ export const Header = () => {
                     <div className="ml-4 mt-2 space-y-1">
                         <Link
                         to="/farmsView"
-                        className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
+                        className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
                         onClick={() => {
                             setIsMenuOpen(false);
                             setIsMobileInteractDropdownOpen(false);
@@ -188,7 +185,7 @@ export const Header = () => {
                         </Link>
                         <Link
                         to="/restaurantsView"
-                        className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
+                        className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
                         onClick={() => {
                             setIsMenuOpen(false);
                             setIsMobileInteractDropdownOpen(false);
@@ -198,7 +195,7 @@ export const Header = () => {
                         </Link>
                         <Link
                         to="/commentsSection"
-                        className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
+                        className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
                         onClick={() => {
                             setIsMenuOpen(false);
                             setIsMobileInteractDropdownOpen(false);
@@ -213,7 +210,7 @@ export const Header = () => {
                 <li>
                     <Link
                     to="/admin"
-                    className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
+                    className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
                     onClick={() => setIsMenuOpen(false)}
                     >
                     Administrar
@@ -222,7 +219,7 @@ export const Header = () => {
                 <li>
                     <Link
                     to="/contactUs"
-                    className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-primary-brand"
+                    className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
                     onClick={() => setIsMenuOpen(false)}
                     >
                     Contáctanos
@@ -231,7 +228,7 @@ export const Header = () => {
                 <li>
                     <Link
                     to="/loginScreen"
-                    className="block px-4 py-2 bg-primary-second hover:bg-primary-sixth rounded transition-colors duration-200 font-medium text-white font-primary-brand"
+                    className="block px-4 py-2 bg-primary-second hover:bg-primary-sixth rounded transition-colors duration-200 font-medium text-white font-subtitle"
                     onClick={() => setIsMenuOpen(false)}
                     >
                     Iniciar Sesión

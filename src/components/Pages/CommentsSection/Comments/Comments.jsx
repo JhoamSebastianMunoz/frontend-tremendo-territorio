@@ -49,7 +49,7 @@ export const Comments = () => {
     return (
         <div className="bg-white rounded-3xl p-8 shadow-xl border-l-8 border-primary-first">
             {/* Título de la sección */}
-            <h2 className="text-3xl font-bold text-primary-third mb-6 font-primary-brand flex items-center space-x-2">
+            <h2 className="text-3xl font-bold text-primary-third mb-6 font-subtitle flex items-center space-x-2">
                 <span>💬</span>
                 <span>Reseñas de Restaurantes</span>
             </h2>
@@ -64,15 +64,15 @@ export const Comments = () => {
                         <div className="flex justify-between items-start mb-4">
                             <div className="flex items-center space-x-4">
                                 {/* Avatar con iniciales del autor */}
-                                <div className="w-14 h-14 bg-gradient-to-br from-primary-second to-primary-sixth rounded-full flex items-center justify-center text-white font-bold text-lg font-primary-brand">
+                                <div className="w-14 h-14 bg-gradient-to-br from-primary-second to-primary-sixth rounded-full flex items-center justify-center text-white font-bold text-lg font-body">
                                     {comment.authorInitials}
                                 </div>
                                 {/* Información del autor */}
                                 <div className="flex-1">
-                                    <h4 className="font-bold text-primary-third text-lg font-primary-brand">
+                                    <h4 className="font-bold text-primary-third text-lg font-subtitle">
                                         {comment.authorName}
                                     </h4>
-                                    <p className="text-primary-first text-sm font-primary-brand">
+                                    <p className="text-primary-first text-sm font-body">
                                         {comment.date}
                                     </p>
                                 </div>
@@ -84,7 +84,7 @@ export const Comments = () => {
                         </div>
                         
                         {/* Texto del comentario */}
-                        <p className="text-primary-third leading-relaxed font-primary-brand">
+                        <p className="text-primary-third leading-relaxed font-body">
                             "{comment.text}"
                         </p>
                     </div>
@@ -96,7 +96,7 @@ export const Comments = () => {
                 <div className="text-center">
                     <button
                         onClick={() => setShowCommentForm(true)}
-                        className="bg-primary-second hover:bg-primary-sixth text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-primary-brand flex items-center mx-auto space-x-2"
+                        className="bg-primary-second hover:bg-primary-sixth text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-body flex items-center mx-auto space-x-2"
                     >
                         <span>✏️</span>
                         <span>Escribir Reseña</span>
@@ -107,33 +107,33 @@ export const Comments = () => {
             {/* Formulario para nuevo comentario */}
             {showCommentForm && (
                 <div className="mt-8 bg-primary-fifth rounded-2xl p-6 border-2 border-primary-second">
-                    <h3 className="text-xl font-bold text-primary-first mb-4 font-primary-brand">
+                    <h3 className="text-xl font-bold text-primary-first mb-4 font-body">
                         Agregar Nueva Reseña
                     </h3>
                     
                     <div className="space-y-4">
                         {/* Campo para el nombre del restaurante */}
                         <div>
-                            <label className="block text-primary-first font-semibold mb-2 font-primary-brand">
+                            <label className="block text-primary-first font-semibold mb-2 font-subtitle">
                                 Nombre del Restaurante *
                             </label>
                             <input
                                 type="text"
                                 value={newComment.authorName}
                                 onChange={(e) => setNewComment({...newComment, authorName: e.target.value})}
-                                className="w-full px-4 py-3 border border-primary-fourth rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-second focus:border-primary-second font-primary-brand"
+                                className="w-full px-4 py-3 border border-primary-fourth rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-second focus:border-primary-second font-body"
                                 placeholder="Ej: Restaurante La Mesa Verde"
                             />
                         </div>
 
                         {/* Campo para la calificación */}
                         <div>
-                            <label className="block text-primary-first font-semibold mb-2 font-primary-brand">
+                            <label className="block text-primary-first font-semibold mb-2 font-subtitle">
                                 Calificación
                             </label>
                             <div className="flex items-center space-x-2">
                                 <RatingStars value={newComment.rating} onChange={e => setNewComment({...newComment, rating:e})}/>
-                                <span className="ml-4 text-primary-first font-primary-brand">
+                                <span className="ml-4 text-primary-first font-body">
                                     {newComment.rating} de 5 estrellas
                                 </span>
                             </div>
@@ -141,14 +141,14 @@ export const Comments = () => {
 
                         {/* Campo para el texto del comentario */}
                         <div>
-                            <label className="block text-primary-first font-semibold mb-2 font-primary-brand">
+                            <label className="block text-primary-first font-semibold mb-2 font-subtitle">
                                 Tu Reseña *
                             </label>
                             <textarea
                                 value={newComment.text}
                                 onChange={(e) => setNewComment({...newComment, text: e.target.value})}
                                 rows="4"
-                                className="w-full px-4 py-3 border border-primary-fourth rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-second focus:border-primary-second resize-none font-primary-brand"
+                                className="w-full px-4 py-3 border border-primary-fourth rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-second focus:border-primary-second resize-none font-body"
                                 placeholder="Comparte tu experiencia con este agricultor..."
                             />
                         </div>
@@ -159,7 +159,7 @@ export const Comments = () => {
                             <button
                                 type="button"
                                 onClick={handleSubmitComment}
-                                className="flex-1 bg-primary-second hover:bg-primary-first text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-primary-brand"
+                                className="flex-1 bg-primary-second hover:bg-primary-first text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-body"
                             >
                                 Publicar Reseña
                             </button>
@@ -170,7 +170,7 @@ export const Comments = () => {
                                     setShowCommentForm(false);
                                     setNewComment({ authorName: '', rating: 5, text: '' });
                                 }}
-                                className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 font-primary-brand"
+                                className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 font-body"
                             >
                                 Cancelar
                             </button>

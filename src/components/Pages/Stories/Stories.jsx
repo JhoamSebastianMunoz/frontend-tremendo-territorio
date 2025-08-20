@@ -8,7 +8,7 @@ export const Stories = () => {
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">¡Historias de Tremendo Territorio y de nuestros usuarios.!</h2>
+                <h2 className="text-3xl font-bold text-gray-800 mb-2 font-title">¡Historias de Tremendo Territorio y de nuestros usuarios.!</h2>
             </div>
           </div>
         </div>

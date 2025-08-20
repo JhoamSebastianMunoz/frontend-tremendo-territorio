@@ -21,7 +21,7 @@ export const Crops = () => {
     return (
         <div className="bg-white rounded-3xl p-8 shadow-xl border-l-8 border-primary-sixth">
             {/* Título de la sección */}
-            <h2 className="text-3xl font-bold text-primary-third mb-6 font-primary-brand flex items-center space-x-2">
+            <h2 className="text-3xl font-bold text-primary-third mb-6 font-subtitle flex items-center space-x-2">
                 <span>🌱</span>
                 <span>Mis Cultivos</span>
             </h2>
@@ -36,7 +36,7 @@ export const Crops = () => {
                         {/* Icono del producto */}
                         <div className="text-3xl mb-2">{product.icon}</div>
                         {/* Nombre del producto */}
-                        <div className="text-primary-third text-sm font-bold font-primary-brand">{product.name}</div>
+                        <div className="text-primary-third text-sm font-bold font-body">{product.name}</div>
                     </div>
                 ))}
             </div>

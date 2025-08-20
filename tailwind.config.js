@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     "./index.html",
@@ -18,11 +19,11 @@ export default {
           sixth: '#D94820',   // Naranja rojizo 
         }
       },
-      fontFamily: {
-        // Fuentes personalizadas del brand
-        'primary-brand': ['Inter', 'system-ui', 'sans-serif'], // Fuente primaria del brand con fallbacks
-      },
-    },
+        fontFamily: {
+          'title': ['Hornbill', 'serif'],            // Para títulos
+          'subtitle': ['"Averia Libre"', 'sans-serif'], // Para subtítulos
+          'body': ['Inter', 'system-ui', 'sans-serif'], // Para cuerpo de texto
+      },    },
   },
   plugins: [], // Array de plugins adicionales de Tailwind (actualmente vacío)
 };

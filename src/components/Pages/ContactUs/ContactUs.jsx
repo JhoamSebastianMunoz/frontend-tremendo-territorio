@@ -9,8 +9,8 @@ export const ContactUs = () => {
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">¡Contáctanos!</h2>
-              <p className="text-xl text-primary-first font-primary-brand">
+              <h2 className="text-3xl font-bold font-subtitle text-gray-800 mb-2">¡Contáctanos!</h2>
+              <p className="text-xl text-primary-first font-body">
                 Conectando historias, territorio y sabores
               </p>
             </div>
@@ -19,7 +19,7 @@ export const ContactUs = () => {
             <div className="space-y-8">
               {/* Información de contacto */}
               <div className="text-center">
-                <h3 className="text-2xl font-primary-brand text-gray-800 mb-4">
+                <h3 className="text-2xl font-subtitle text-gray-800 mb-4">
                   Tremendo Territorio
                 </h3>
                 <div className="space-y-3">
@@ -30,7 +30,7 @@ export const ContactUs = () => {
                     </svg>
                     <a 
                       href="mailto:tt@tremendoterritorio.co"
-                      className="text-gray-700 hover:text-primary-first transition-colors duration-300"
+                      className="text-gray-700 font-body hover:text-primary-first transition-colors duration-300"
                     >
                       tt@tremendoterritorio.co
                     </a>
@@ -41,7 +41,7 @@ export const ContactUs = () => {
                     </svg>
                     <a 
                       href="tel:+573001234567"
-                      className="text-gray-700 hover:text-primary-first transition-colors duration-300"
+                      className="text-gray-700 font-body hover:text-primary-first transition-colors duration-300"
                     >
                       +57 300 123 4567
                     </a>
@@ -54,13 +54,13 @@ export const ContactUs = () => {
 
               {/* Redes sociales */}
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                <h3 className="text-2xl font-bold font-subtitle text-gray-800 mb-6">
                   Síguenos en nuestras redes
                 </h3>
                 <div className="flex justify-center space-x-6">
                   <Links />
                 </div>
-                <p className="text-gray-600 text-sm mt-4">
+                <p className="text-gray-600 font-body text-sm mt-4">
                   Mantente conectado con nosotros y descubre más sobre nuestro territorio
                 </p>
               </div>
@@ -70,10 +70,10 @@ export const ContactUs = () => {
 
               {/* Mensaje adicional */}
               <div className="text-center bg-green-50 p-6 rounded-2xl">
-                <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                <h4 className="text-lg font-semibold font-body text-gray-800 mb-2">
                   ¿Tienes alguna pregunta?
                 </h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 font-body text-sm">
                   No dudes en contactarnos. Estamos aquí para ayudarte a descubrir 
                   las mejores experiencias de nuestro territorio.
                 </p>

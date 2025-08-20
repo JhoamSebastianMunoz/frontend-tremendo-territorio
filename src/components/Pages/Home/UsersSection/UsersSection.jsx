@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardUser } from './CardUser';
-import {  Route, Routes, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const UsersSection = () => {
 
@@ -20,10 +20,10 @@ export const UsersSection = () => {
         <div className="bg-white py-16 px-8">
             <div className="max-w-6xl mx-auto text-center">
                 {/* Título principal */}
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 font-primary-brand">
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 font-subtitle">
                     Tres Mundos, Miles de Historias
                 </h2>
-                <p className="text-gray-600 text-lg mb-16 max-w-2xl mx-auto font-primary-brand">
+                <p className="text-gray-600 text-lg mb-16 max-w-2xl mx-auto font-body">
                     Conectamos a quienes cultivan la tierra, transforman los alimentos y los disfrutan.
                 </p>
 

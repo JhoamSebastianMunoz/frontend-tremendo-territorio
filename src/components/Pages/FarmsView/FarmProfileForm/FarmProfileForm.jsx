@@ -48,10 +48,10 @@ export const FarmProfileForm = () => {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header del formulario */}
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-primary-first mb-2">
+                    <h1 className="text-4xl font-subtitle font-bold text-primary-first mb-2">
                         Actualizar Perfil
                     </h1>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-gray-600 text-lg font-body">
                         Mantén actualizada la información de tu finca
                     </p>
                 </div>
@@ -62,7 +62,7 @@ export const FarmProfileForm = () => {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
+                            className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-body font-medium transition-all duration-300 ${
                                 activeTab === tab.id
                                     ? 'bg-primary-first text-white shadow-lg transform scale-105'
                                     : 'text-gray-600 hover:bg-gray-100'
@@ -79,14 +79,14 @@ export const FarmProfileForm = () => {
                     {activeTab === 'personal' && (
                         <div className="bg-white rounded-3xl p-8 shadow-xl">
                             <h2 className="text-2xl font-bold text-primary-first mb-6 flex items-center">
-                                <span className="mr-3">👦🏾</span>
+                                <span className="mr-3 font-subtitle">👦🏾</span>
                                 Información Personal
                             </h2>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Campo: Nombre */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Nombre *
                                     </label>
                                     <input
@@ -101,7 +101,7 @@ export const FarmProfileForm = () => {
 
                                 {/* Campo: Apellido */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Apellido *
                                     </label>
                                     <input
@@ -116,7 +116,7 @@ export const FarmProfileForm = () => {
 
                                 {/* Campo: Cédula */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Cédula *
                                     </label>
                                     <input
@@ -131,7 +131,7 @@ export const FarmProfileForm = () => {
 
                                 {/* Campo: Email */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Correo Electrónico (opcional)
                                     </label>
                                     <input
@@ -145,7 +145,7 @@ export const FarmProfileForm = () => {
 
                                 {/* Campo: Teléfono */}
                                 <div>
-                                    <label className="block text-gray-700 font-medium mb-2">
+                                    <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                         Teléfono *
                                     </label>
                                     <input
@@ -164,7 +164,7 @@ export const FarmProfileForm = () => {
                     {/* SECCIÓN: Información de la finca */}
                     {activeTab === 'farm' && (
                         <div className="bg-white rounded-3xl p-8 shadow-xl">
-                            <h2 className="text-2xl font-bold text-primary-first mb-6 flex items-center">
+                            <h2 className="text-2xl font-bold font-subtitle text-primary-first mb-6 flex items-center">
                                 <span className="mr-3">🏡</span>
                                 Información de la Finca
                             </h2>
@@ -174,7 +174,7 @@ export const FarmProfileForm = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Campo: Nombre de la finca */}
                                     <div className="md:col-span-2">
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Nombre de la Finca *
                                         </label>
                                         <input
@@ -189,7 +189,7 @@ export const FarmProfileForm = () => {
 
                                     {/* Campo: Descripción */}
                                     <div className="md:col-span-2">
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Descripción
                                         </label>
                                         <textarea
@@ -203,7 +203,7 @@ export const FarmProfileForm = () => {
 
                                     {/* Campo: Ubicación */}
                                     <div className="md:col-span-2">
-                                        <label className="block text-gray-700 font-medium mb-2">
+                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                             Ubicación *
                                         </label>
                                         <input
@@ -219,8 +219,7 @@ export const FarmProfileForm = () => {
 
                                 {/* SUBSECCIÓN: Productos ofrecidos dinámicos */}
                                 <div className="md:col-span-2">
-                                    <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                                        <span className="mr-2">🌱</span>
+                                    <h3 className="text-xl font-semibold font-subtitle text-gray-800 mb-4 flex items-center">
                                         Productos de la Finca
                                     </h3>
 
@@ -229,14 +228,14 @@ export const FarmProfileForm = () => {
                                             <div key={product.id} className="bg-gray-50 rounded-xl p-6 border-2 border-gray-100">
                                                 {/* Header del producto con opción de eliminar */}
                                                 <div className="flex justify-between items-center mb-4">
-                                                    <h4 className="text-lg font-medium text-gray-700">
+                                                    <h4 className="text-lg font-medium font-subtitle text-gray-700">
                                                         Producto {index + 1}
                                                     </h4>
                                                     {farmData.offers.length > 1 && (
                                                         <button
                                                             type="button"
                                                             onClick={() => removeFarmProduct(product.id)}
-                                                            className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all duration-200"
+                                                            className="font-body text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all duration-200"
                                                             title="Eliminar producto"
                                                         >
                                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,7 +249,7 @@ export const FarmProfileForm = () => {
                                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                                     {/* Nombre del producto */}
                                                     <div>
-                                                        <label className="block text-gray-700 font-medium mb-2">
+                                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                                             Producto que ofrece *
                                                         </label>
                                                         <input
@@ -264,7 +263,7 @@ export const FarmProfileForm = () => {
 
                                                     {/* Unidad de medida */}
                                                     <div>
-                                                        <label className="block text-gray-700 font-medium mb-2">
+                                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                                             Unidad de medida *
                                                         </label>
                                                         <input
@@ -278,7 +277,7 @@ export const FarmProfileForm = () => {
 
                                                     {/* Capacidad de producción */}
                                                     <div>
-                                                        <label className="block text-gray-700 font-medium mb-2">
+                                                        <label className="block text-gray-700 font-medium font-subtitle mb-2">
                                                             Capacidad de producción *
                                                         </label>
                                                         <input
@@ -296,7 +295,7 @@ export const FarmProfileForm = () => {
                                     </div>
                                     
                                     {/* Botón para agregar producto manualmente */}
-                                    <div className="flex justify-center mt-4">
+                                    <div className="flex justify-center mt-4 font-body">
                                         <ButtonSecondary
                                             type="button"
                                             onClick={addNewFarmProduct}

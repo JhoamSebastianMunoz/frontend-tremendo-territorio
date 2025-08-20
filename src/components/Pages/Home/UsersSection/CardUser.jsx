@@ -10,15 +10,15 @@ export const CardUser = ({icon, title, paragraph1, paragraph2, button, ...props}
       {/* Ícono con colores del brand */}
       <div className="w-16 h-16 bg-primary-fifth rounded-full flex items-center justify-center mx-auto mb-4 mt-4">
         <div className="w-8 h-8 bg-primary-first rounded-full flex items-center justify-center">
-          <span className="text-white font-bold text-lg font-primary-brand">{icon}</span>
+          <span className="text-white font-bold text-lg font-body">{icon}</span>
         </div>
       </div>
 
-      <h3 className="text-xl font-bold text-gray-800 mb-4 font-primary-brand">{title}</h3>
-      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-primary-brand">
+      <h2 className="text-xl font-bold text-gray-800 mb-4 font-subtitle">{title}</h2>
+      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-body">
         {paragraph1}
       </p>
-      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-primary-brand">
+      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-body">
         {paragraph2}
       </p>
 

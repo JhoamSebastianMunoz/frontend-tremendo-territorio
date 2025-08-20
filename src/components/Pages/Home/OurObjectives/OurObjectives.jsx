@@ -6,11 +6,11 @@ export const OurObjectives = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
-                        <h2 className="text-4xl lg:text-5xl font-bold text-primary-first mb-8 font-primary-brand">
+                        <h2 className="text-4xl lg:text-5xl font-bold font-subtitle text-primary-first mb-8">
                             Nuestros Objetivos
                         </h2>
                         
-                        <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-primary-brand">
+                        <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-body">
                             <p>
                                 Impulsamos el aprendizaje sobre cultivos y territorios, conectando a campesinos con consumidores y gestionando sus saberes.
                             </p>
@@ -32,7 +32,7 @@ export const OurObjectives = () => {
                     <div className="relative">
                         <div className="rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                             <img 
-                                src="https://res.cloudinary.com/dppf30duk/image/upload/v1751316885/plant_owuitv.jpg" 
+                                src="https://res.cloudinary.com/dppf30duk/image/upload/v1755647582/tremendo-territorio_htvjhj.jpg" 
                                 alt="Manos plantando en la tierra - agricultura sostenible"
                                 className="w-full h-96 object-cover"
                             />

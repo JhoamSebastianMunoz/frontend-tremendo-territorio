@@ -8,7 +8,7 @@ export const GetElementsProvider = ({children}) => {
     const [error, setError ] =useState(null);
     const [isLoading, setIsLoading ] = useState(true);
 
-    const URLLogo = 'https://res.cloudinary.com/dppf30duk/image/upload/v1751501033/logotipo-tremendo-territorio_mbhgta.jpg';
+    const URLLogo = 'https://res.cloudinary.com/dppf30duk/image/upload/v1755639138/Logo_TremendoTerritorio-03_ai32lo.png';
 
     useEffect(()=>{
         const fetchLogo = async () =>{

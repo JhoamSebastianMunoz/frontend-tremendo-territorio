@@ -9,17 +9,17 @@ export const OurValues = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Texto principal */}
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-first leading-tight font-primary-brand">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-first leading-tight font-subtitle">
               El Valor de Nuestro Territorio
             </h2>
             
-            <p className="text-gray-700 text-lg leading-relaxed font-primary-brand">
+            <p className="text-gray-700 text-lg leading-relaxed font-body">
               Cada producto tiene una historia que contar. Desde las montañas de los Andes 
               hasta los valles fértiles, nuestros campesinos no sólo cultivan alimentos, sino 
               cultura, tradición y vida.
             </p>
             
-            <p className="text-gray-700 text-lg leading-relaxed font-primary-brand">
+            <p className="text-gray-700 text-lg leading-relaxed font-body">
               En Tremendo Territorio, cada bocado de comida viene con la historia completa: quién 
               la cultivó, cómo la cultivó, y por qué es especial. Porque cuando sabes de dónde 
               viene tu comida, cada bocado sabe mejor.
@@ -37,7 +37,7 @@ export const OurValues = () => {
                     className="w-10 h-10"
                   />
                 </div>
-                <span className="text-white font-bold text-xl font-primary-brand">Del Campo a tu Mesa</span>
+                <span className="text-white font-bold text-xl font-subtitle">Del Campo a tu Mesa</span>
                 <div className="bg-white bg-opacity-20 rounded-full p-2">
                   <img 
                     src="https://res.cloudinary.com/dppf30duk/image/upload/v1751493867/comer_cz99ip.png" 

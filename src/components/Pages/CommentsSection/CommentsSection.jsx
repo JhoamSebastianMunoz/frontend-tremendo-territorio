@@ -25,7 +25,7 @@ export const CommentsSection = () => {
           
           {/* Botón para volver a la vista anterior */}
           <button 
-            className="bg-primary-second hover:bg-primary-sixth px-6 py-2 rounded-full transition-all duration-300 transform hover:-translate-y-1 font-primary-brand flex items-center space-x-2"
+            className="bg-primary-second hover:bg-primary-sixth px-6 py-2 rounded-full transition-all duration-300 transform hover:-translate-y-1 font-body flex items-center space-x-2"
             onClick={goToRestaurantsView}
           >
             <span>←</span>
@@ -33,7 +33,7 @@ export const CommentsSection = () => {
           </button>
 
           {/* Frase inspiradora en el header */}
-          <div className="text-primary-fifth italic font-primary-brand">
+          <div className="text-primary-fifth italic font-body">
             "Conoce a quien cultiva tu comida"
           </div>
         </div>

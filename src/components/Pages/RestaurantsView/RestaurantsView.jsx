@@ -168,7 +168,7 @@ export const RestaurantsView = () => {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
+                            className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-medium font-subtitle transition-all duration-300 ${
                                 activeTab === tab.id
                                     ? 'bg-primary-first text-white shadow-lg transform scale-105'
                                     : 'text-gray-600 hover:bg-gray-100'
@@ -200,10 +200,10 @@ export const RestaurantsView = () => {
                                 ].map((kpi, index) => (
                                     <div key={index} className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
                                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-first to-primary-second"></div>
-                                        <div className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-primary-first to-primary-second bg-clip-text text-transparent">
+                                        <div className="text-5xl font-extrabold font-subtitle mb-3 bg-gradient-to-r from-primary-first to-primary-second bg-clip-text text-transparent">
                                             {kpi.number}
                                         </div>
-                                        <div className="text-gray-600 font-semibold text-lg font-primary-brand">
+                                        <div className="text-gray-600 font-semibold text-lg font-subtitle">
                                             {kpi.label}
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@ export const RestaurantsView = () => {
                         <div className='flex justify-center items-center'>
                             <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
                                 <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                                    <h3 className="text-2xl font-bold mb-6 text-gray-800 font-primary-brand">📈 Productos en Oferta</h3>
+                                    <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 Productos en Oferta</h3>
                                     <div className="h-80">
                                         <Doughnut data={chartData} options={chartOptions} />
                                     </div>
@@ -238,7 +238,7 @@ export const RestaurantsView = () => {
                                             placeholder='Buscar por agricultor, ubicación o productos(ej: Frijol, Maíz, Yuca...) '
                                             value={searchTerm}
                                             onChange={(e) => setSearchTerm(e.target.value)}
-                                            className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white font-primary-brand"
+                                            className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 font-body placeholder-gray-500 shadow-lg bg-white font-primary-brand"
                                         />
                                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-first text-xl">
                                             🔍
@@ -246,7 +246,7 @@ export const RestaurantsView = () => {
                                         {searchTerm && (
                                             <button
                                                 onClick={clearSearch}
-                                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary-first transition-colors duration-200 text-xl"
+                                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 font-body hover:text-primary-first transition-colors duration-200 text-xl"
                                             >
                                                 ✕
                                             </button>
@@ -255,7 +255,7 @@ export const RestaurantsView = () => {
                                     
                                     {/* Conteo de resultados */}
                                     <div className="text-center mt-3">
-                                        <span className="text-primary-first font-medium font-primary-brand">
+                                        <span className="text-primary-first font-medium font-body">
                                             {filteredFarms.length === farmsData.length 
                                                 ? `Mostrando ${farmsData.length} Agricultores`
                                                 : `${filteredFarms.length} de ${farmsData.length} Agricultores encontrados`
@@ -269,10 +269,10 @@ export const RestaurantsView = () => {
                             {filteredFarms.length === 0 && searchTerm && (
                                 <div className="text-center py-12">
                                     <div className="text-6xl mb-4">🔍</div>
-                                    <h3 className="text-2xl font-bold text-primary-first mb-2 font-primary-brand">
+                                    <h3 className="text-2xl font-bold text-primary-first mb-2 font-body">
                                         No se encontraron resultados
                                     </h3>
-                                    <p className="text-gray-600 font-primary-brand mb-4">
+                                    <p className="text-gray-600 font-body mb-4">
                                         No encontramos agricultores que coincidan con "{searchTerm}"
                                     </p>
                                     <button
@@ -299,7 +299,7 @@ export const RestaurantsView = () => {
 
                             {/* Banner final de orgullo agrícola */}
                             <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl">
-                                <div className="text-lg font-medium font-primary-brand">
+                                <div className="text-lg font-medium font-body">
                                     "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾
                                 </div>
                             </div>

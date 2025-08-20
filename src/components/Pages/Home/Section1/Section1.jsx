@@ -24,17 +24,17 @@ export const Section1 = () => {
             {/* Contenido principal */}
             <div className="relative z-10 text-center px-8 max-w-6xl mx-auto">
                 {/* Título principal */}
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-title text-white mb-8 leading-tight">
                     Tremendo Territorio
                 </h1>
 
                 {/* Subtítulo */}
-                <h2 className="text-2xl md:text-3xl lg:text-4xl text-white mb-12 font-light leading-relaxed">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl text-white mb-12 font-subtitle leading-relaxed">
                     Conectamos al Campo con Quienes Quieren Conocerlo y Dignificarlo.
                 </h2>
 
                 {/* Descripción */}
-                <p className="text-lg md:text-xl text-white mb-12 max-w-4xl mx-auto leading-relaxed font-light font-primary-brand">
+                <p className="text-lg md:text-xl text-white mb-12 max-w-4xl mx-auto leading-relaxed font-body font-primary-brand">
                     Seremos una plataforma reconocida por dignificar y visibilizar las historias, 
                     relaciones y saberes de las comunidades rurales, generando valor comunitario y 
                     fortaleciendo la identidad territorial a través de la conexión de narrativas 

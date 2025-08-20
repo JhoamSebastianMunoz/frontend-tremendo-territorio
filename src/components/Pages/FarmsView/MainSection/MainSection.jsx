@@ -16,14 +16,13 @@ export const MainSection = () => {
                 <div className="text-center mb-12">
                     {/* Ícono decorativo y título "Campo Directo" */}
                     <div className="flex items-center justify-center gap-3 mb-6">
-                        <div className="text-5xl">🌾</div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-primary-brand">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-title">
                             Campo Directo
                         </h1>
                     </div>
 
                     {/* Subtítulo que refuerza la idea del proyecto */}
-                    <div className="text-lg md:text-xl text-primary-fifth font-light font-primary-brand">
+                    <div className="text-lg md:text-xl text-primary-fifth font-light font-body">
                         Conectando el campo con la mesa
                     </div>
                 </div>
@@ -31,12 +30,12 @@ export const MainSection = () => {
                 {/* Sección informativa sobre los restaurantes cercanos */}
                 <div className="text-center max-w-4xl mx-auto">
                     {/* Título de la sección */}
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6 font-primary-brand">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 font-subtitle">
                         Restaurantes Cercanos
                     </h2>
 
                     {/* Descripción explicativa de la funcionalidad o propósito */}
-                    <p className="text-lg md:text-xl text-primary-fifth leading-relaxed font-primary-brand mb-8">
+                    <p className="text-lg md:text-xl text-primary-fifth leading-relaxed font-body mb-8">
                         Encuentra restaurantes en tu zona que buscan productos frescos y cultivados de forma responsable. 
                         Contacta directamente para negociar tus productos agrícolas y crear conexiones duraderas que 
                         beneficien tanto al campo como a la gastronomía local.
@@ -48,8 +47,8 @@ export const MainSection = () => {
                         {/* Tarjeta: Conexión directa */}
                         <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20">
                             <div className="text-3xl mb-3">🤝</div>
-                            <h3 className="text-lg font-semibold mb-2 font-primary-brand">Conexión Directa</h3>
-                            <p className="text-sm text-primary-fifth font-primary-brand">
+                            <h3 className="text-lg font-semibold mb-2 font-subtitle">Conexión Directa</h3>
+                            <p className="text-sm text-primary-fifth font-body">
                                 Sin intermediarios, negociación directa entre productores y restaurantes
                             </p>
                         </div>
@@ -57,8 +56,8 @@ export const MainSection = () => {
                         {/* Tarjeta: Radio de 20km */}
                         <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20">
                             <div className="text-3xl mb-3">📍</div>
-                            <h3 className="text-lg font-semibold mb-2 font-primary-brand">Radio de 20km</h3>
-                            <p className="text-sm text-primary-fifth font-primary-brand">
+                            <h3 className="text-lg font-semibold mb-2 font-subtitle">Radio de 20km</h3>
+                            <p className="text-sm text-primary-fifth font-body">
                                 Fortalecemos las economías locales priorizando la cercanía
                             </p>
                         </div>
@@ -66,8 +65,8 @@ export const MainSection = () => {
                         {/* Tarjeta: Productos frescos */}
                         <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20">
                             <div className="text-3xl mb-3">💚</div>
-                            <h3 className="text-lg font-semibold mb-2 font-primary-brand">Productos Frescos</h3>
-                            <p className="text-sm text-primary-fifth font-primary-brand">
+                            <h3 className="text-lg font-semibold mb-2 font-subtitle">Productos Frescos</h3>
+                            <p className="text-sm text-primary-fifth font-body">
                                 Calidad garantizada directamente desde el campo a tu cocina
                             </p>
                         </div>

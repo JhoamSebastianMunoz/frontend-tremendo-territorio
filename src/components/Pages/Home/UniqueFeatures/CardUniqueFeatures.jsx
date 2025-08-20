@@ -11,10 +11,10 @@ export const CardUniqueFeatures = ({src, alt, title, paragraph}) => {
             className="w-8 h-8 filter invert"
           />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-4 font-primary-brand">
+        <h2 className="text-2xl font-bold text-white mb-4 font-subtitle">
           {title}
-        </h3>
-        <p className="text-primary-fifth leading-relaxed font-primary-brand">
+        </h2>
+        <p className="text-primary-fifth leading-relaxed font-body">
           {paragraph}
         </p>
       </div>

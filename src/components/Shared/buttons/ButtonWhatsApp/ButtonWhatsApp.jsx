@@ -21,7 +21,7 @@ export const ButtonWhatsApp = ({nameClient, userMessage, phone}) => {
     return (
     <button
     onClick={handleWhatsApp}
-    className="w-full bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 font-primary-brand"
+    className="w-full font-body bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 font-primary-brand"
     >
         <span className='w-6 h-auto'><img src={whatsAppLogo} alt="Logo de WhatsApp" /></span> WhatsApp
     </button>

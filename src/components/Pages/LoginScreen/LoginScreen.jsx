@@ -171,13 +171,13 @@ export const LoginScreen = () => {
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2 font-primary-brand">¡Hola de nuevo!</h2>
-              <p className="text-xl text-primary-first font-semibold font-primary-brand">Inicia Sesión</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2 font-title">¡Hola de nuevo!</h2>
+              <p className="text-xl text-primary-first font-semibold font-subtitle">Inicia Sesión</p>
             </div>
 
             {/* Error Message */}
             {error && (
-              <div className={`mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center transition-all font-primary-brand ${shake ? 'animate-pulse' : ''}`}>
+              <div className={`mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center transition-all font-body ${shake ? 'animate-pulse' : ''}`}>
                 {error}
               </div>
             )}
@@ -186,7 +186,7 @@ export const LoginScreen = () => {
             {!isUsernameSubmitted ? (
               <form onSubmit={handleUsernameSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="username" className="block text-lg font-semibold text-gray-700 mb-3 text-center font-primary-brand">
+                  <label htmlFor="username" className="block text-lg font-semibold text-gray-700 mb-3 text-center font-subtitle">
                     Ingresa tu nombre de usuario
                   </label>
                   <input
@@ -194,7 +194,7 @@ export const LoginScreen = () => {
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-primary-brand"
+                    className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first focus:border-primary-first transition-all font-body"
                     placeholder="Ej: capella01"
                     disabled={isLoading}
                     required
@@ -204,7 +204,7 @@ export const LoginScreen = () => {
                 <button
                   type="submit"
                   disabled={!username.trim() || isLoading}
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-primary-brand ${
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-body ${
                     username.trim() && !isLoading
                       ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-second text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -226,18 +226,18 @@ export const LoginScreen = () => {
                 <div className="mb-6">
                   <button
                     onClick={handleBackToUsername}
-                    className="text-primary-first hover:text-primary-second font-medium transition-colors font-primary-brand"
+                    className="text-primary-first hover:text-primary-second font-medium transition-colors font-body"
                   >
                     ← Cambiar usuario
                   </button>
-                  <p className="text-sm text-gray-600 mt-2 font-primary-brand">
+                  <p className="text-sm text-gray-600 mt-2 font-subtitle">
                     Usuario: <span className="font-semibold">{username}</span>
                   </p>
                 </div>
 
                 {/* Selección de Imagen */}
                 <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-subtitle">
                     Selecciona tu imagen de seguridad
                   </h3>
                   <div className="grid grid-cols-2 gap-4 max-h-60 overflow-y-auto">
@@ -276,10 +276,10 @@ export const LoginScreen = () => {
                     isPinEnabled ? 'opacity-100' : 'opacity-40 pointer-events-none'
                   }`}
                 >
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-primary-brand">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-subtitle">
                     Ahora, ingresa tu PIN
                   </h3>
-                 
+                
                   <div className="flex justify-center mb-6">
                     <div className="flex space-x-3">
                       {pin.map((digit, index) => (
@@ -291,7 +291,7 @@ export const LoginScreen = () => {
                           onChange={(e) => handlePinChange(index, e.target.value)}
                           onKeyDown={(e) => handleKeyDown(e, index)}
                           maxLength={1}
-                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-primary-brand ${
+                          className={`w-14 h-14 text-center text-2xl font-bold border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-first transition-all font-body ${
                             digit ? 'border-primary-first bg-primary-first bg-opacity-10' : 'border-gray-300'
                           } ${shake ? 'animate-bounce' : ''}`}
                           disabled={!isPinEnabled}
@@ -302,7 +302,7 @@ export const LoginScreen = () => {
 
                   <button
                     onClick={() => setShowPin(!showPin)}
-                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-primary-brand"
+                    className="flex items-center justify-center w-full mb-6 text-gray-600 hover:text-primary-first transition-colors font-body"
                     disabled={!isPinEnabled}
                   >
                     {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
@@ -314,7 +314,7 @@ export const LoginScreen = () => {
                 <button
                   onClick={handleLogin}
                   disabled={!isFormComplete || isLoading}
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-primary-brand ${
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 font-body ${
                     isFormComplete && !isLoading
                       ? 'bg-gradient-to-r from-primary-second to-primary-sixth hover:from-primary-sixth hover:to-primary-second text-white shadow-lg transform hover:scale-105'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -334,12 +334,12 @@ export const LoginScreen = () => {
 
             {/* Enlaces Adicionales */}
             <div className="mt-6 text-center space-y-3">
-              <button className="text-primary-first hover:text-primary-second font-medium transition-colors font-primary-brand">
+              <button className="text-primary-first hover:text-primary-second font-medium transition-colors font-body">
                 ¿Olvidaste tu PIN?
               </button>
-              <div className="text-gray-500 font-primary-brand">
+              <div className="text-gray-500 font-body">
                 ¿No tienes cuenta?{' '}
-                <button onClick={goToRegister} className="text-primary-first hover:text-primary-second font-medium transition-colors">
+                <button onClick={goToRegister} className="text-primary-first hover:text-primary-second font-medium font-subtitle transition-colors">
                   Crear una cuenta nueva
                 </button>
               </div>

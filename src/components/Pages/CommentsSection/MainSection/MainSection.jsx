@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { CommentsContext } from '../../../../contexts/Comments/Comments';
 import { Carousel } from '../MainSection/Carousel/Carousel';
+import { ButtonInstagram } from '../../../Shared/buttons/ButtonInstagram/ButtonInstagram';
 import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
 import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
 
@@ -55,13 +56,7 @@ export const MainSection = () => {
           <div className="flex flex-wrap justify-center lg:justify-start gap-3"></div>
           <div className="flex flex-col gap-2">
             {/* Instagram */}
-            <a 
-              href="#" 
-              className="w-full bg-pink-500 hover:bg-pink-600 text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 font-body"
-            >
-              <span>📸</span>
-              <span>Instagram</span>
-            </a>
+            <ButtonInstagram/>
 
             {/* WhatsApp */}
             <ButtonWhatsApp

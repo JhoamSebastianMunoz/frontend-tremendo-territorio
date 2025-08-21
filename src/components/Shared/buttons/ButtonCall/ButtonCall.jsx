@@ -9,8 +9,13 @@ export const ButtonCall = ({phone}) => {
 
     return (
     <ButtonSecondary
-    onClick={handleCall}>
-        📞 Llamar
+    onClick={handleCall}
+    >
+        <div className='flex gap-4'>
+            <span className='h-6 w-auto'>📞</span> 
+            <span>Llamar</span>
+        </div>
+         
     </ButtonSecondary>
     )
 }

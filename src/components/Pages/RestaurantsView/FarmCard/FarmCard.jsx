@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { useNavigate } from 'react-router-dom';
-import { ImageCarousel } from './ImageCarousel/ImageCarousel';
+import { ImageCarousel } from '../../../Shared/ImageCarousel/ImageCarousel';
 import { ButtonPrimary } from '../../../Shared/buttons/ButtonPrimary/ButtonPrimary';
 import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary';
 import { RatingStars } from '../../../Shared/RatingStars/RatingStars';
@@ -105,13 +105,13 @@ export const FarmCard = ({
             
             {/* Sección del carrusel de imágenes */}
             <div className="h-48 relative overflow-hidden">
-                <ImageCarousel
-                    images={carouselImages}
+                <ImageCarousel 
+                    images={images}
                     autoPlay={true}
-                    interval={4000}
-                    showIndicators={true}
-                    showArrows={true}
-                />
+                    interval={5000}
+                    showPlayPause={true}
+                    onSlideChange={(index) => console.log('Slide:', index)}
+                />                
                 {/* Superposición visual sobre la imagen */}
                 <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black/30 to-transparent"></div>

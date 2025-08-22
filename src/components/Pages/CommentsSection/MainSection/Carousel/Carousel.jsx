@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageCarousel } from '../../../RestaurantsView/FarmCard/ImageCarousel/ImageCarousel';
+import { ImageCarousel } from '../../../../Shared/ImageCarousel/ImageCarousel';
 
 export const Carousel = () => {
   
@@ -26,13 +26,14 @@ export const Carousel = () => {
     <div className="mx-2">
       {/* Contenedor del carrusel con estilos de tamaño y bordes redondeados */}
       <div className="h-99 relative overflow-hidden rounded-2xl">
-        <ImageCarousel
-          images={carouselImages} // Lista de imágenes a mostrar
-          autoPlay={true}         // Activa reproducción automática
-          interval={4000}         // Intervalo entre cambios en milisegundos
-          showIndicators={true}   // Muestra los indicadores de posición
-          showArrows={true}       // Muestra flechas de navegación
-        />
+      <ImageCarousel 
+        images={images}
+        autoPlay={true}
+        interval={5000}
+        showPlayPause={true}
+        height="h-96"
+        onSlideChange={(index) => console.log('Slide:', index)}
+      />
       </div>
     </div>
   )

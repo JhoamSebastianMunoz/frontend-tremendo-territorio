@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageCarousel } from '../ImageCarousel/ImageCarousel';
+import { ImageCarousel } from '../../../Shared/ImageCarousel/ImageCarousel';
 import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
 import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
 
@@ -87,12 +87,12 @@ export const RestaurantCard = ({
 
             {/* Carrusel de imágenes */}
             <div className="h-48 relative overflow-hidden">
-                <ImageCarousel
-                    images={carouselImages}
+                <ImageCarousel 
+                    images={images}
                     autoPlay={true}
-                    interval={4000}
-                    showIndicators={true}
-                    showArrows={true}
+                    interval={5000}
+                    showPlayPause={true}
+                    onSlideChange={(index) => console.log('Slide:', index)}
                 />
                 {/* Superposición visual para oscurecer ligeramente las imágenes */}
                 <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>

@@ -307,7 +307,14 @@ return (
                 )}
 
                 {/* Frase de cierre con orgullo agrícola */}
-                <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl">
+                <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl"
+                style={{
+                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-02_azkfwr.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+                backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
+                backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
+                backgroundPosition: 'center',
+                backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
+            }}>
                     <div className="text-lg font-medium font-body">
                         "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾
                     </div>

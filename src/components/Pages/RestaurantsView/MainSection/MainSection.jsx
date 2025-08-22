@@ -3,7 +3,14 @@ import React from 'react';
 export const MainSection = () => {
     return (
         // Contenedor principal con fondo degradado y estilos generales
-        <div className="bg-gradient-to-br from-primary-first to-primary-second text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className=" text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+        style={{
+                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-03_tjxweh.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+                backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
+                backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
+                backgroundPosition: 'center',
+                backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
+            }}>
             
             {/* Elementos decorativos: círculos desenfocados que se ubican en el fondo */}
             <div className="absolute top-1/4 left-0 w-32 h-32 bg-primary-fourth rounded-full opacity-20 blur-3xl"></div>
@@ -16,7 +23,6 @@ export const MainSection = () => {
                 <div className="text-center mb-12">
                     {/* Línea que contiene el ícono y el nombre de la aplicación */}
                     <div className="flex items-center justify-center gap-3 mb-6">
-                        <div className="text-5xl">🌾</div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-title">
                             Campo Directo
                         </h1>

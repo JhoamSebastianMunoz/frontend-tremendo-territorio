@@ -3,7 +3,14 @@ import { CardUniqueFeatures } from './CardUniqueFeatures';
 
 export const UniqueFeatures = () => {
   return (
-    <div className="bg-gradient-to-br from-primary-second to-primary-first via-primary-first py-16 px-8 relative">
+    <div className="py-16 px-8 relative"
+      style={{
+        backgroundImage: `url('../../../../../src/assets/Texturas-02.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+        backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
+        backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
+        backgroundPosition: 'center',
+        backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
+      }}>
       <div className="max-w-7xl mx-auto">
         {/* Título principal */}
         <div className="text-center mb-16">
@@ -21,8 +28,8 @@ export const UniqueFeatures = () => {
           
           {/* Trazabilidad Visual */}
           <CardUniqueFeatures
-            src={'https://cdn-icons-png.flaticon.com/512/2991/2991148.png'} 
-            alt={'Video icon'}
+            src={'https://res.cloudinary.com/dppf30duk/image/upload/v1755903596/reproduce-el-video_dmjanj.png'} 
+            alt={'icono de la Trazabilidad Visual'}
             title={'Trazabilidad Visual'} 
             paragraph={'Videos del proceso completo desde la siembra hasta el plato.'}
           />
@@ -30,7 +37,7 @@ export const UniqueFeatures = () => {
           {/* Conexión Local */}
           <CardUniqueFeatures
             src={'https://cdn-icons-png.flaticon.com/512/684/684908.png'} 
-            alt={'Location icon'}
+            alt={'icono de la Conexión Local'}
             title={'Conexión Local'} 
             paragraph={'Radio de 20km para fortalecer economías locales.'}
           />
@@ -38,31 +45,31 @@ export const UniqueFeatures = () => {
           {/* Narrativas Territoriales */}
           <CardUniqueFeatures
             src={'https://cdn-icons-png.flaticon.com/512/3145/3145765.png'} 
-            alt={'Document icon'}
+            alt={'icono de las Narrativas '}
             title={'Narrativas Territoriales'} 
             paragraph={'Historias que conectan el territorio con cada bocado.'}
           />
 
           {/* Valor del Campesino */}
           <CardUniqueFeatures
-            src={'https://cdn-icons-png.flaticon.com/512/2936/2936719.png'} 
-            alt={'Farmer icon'}
+            src={'https://res.cloudinary.com/dppf30duk/image/upload/v1755903694/proteccion_pfsfiq.png'} 
+            alt={'icono del Agricultor '}
             title={'Valor del Campesino'} 
             paragraph={'Valor y reconocimiento justo al productor.'}
           />
 
           {/* Asociatividad */}
           <CardUniqueFeatures
-            src={'https://cdn-icons-png.flaticon.com/512/1005/1005141.png'} 
-            alt={'Community icon'}
+            src={'https://res.cloudinary.com/dppf30duk/image/upload/v1755903803/apreton-de-manos_zpqlmi.png'} 
+            alt={'icono de asociatividad'}
             title={'Asociatividad'} 
             paragraph={'Fortalecimiento del tejido social campesino.'}
           />
 
           {/* Colombia */}
           <CardUniqueFeatures
-            src={'https://cdn-icons-png.flaticon.com/512/197/197575.png'} 
-            alt={'Colombia flag icon'}
+            src={'https://res.cloudinary.com/dppf30duk/image/upload/v1755903162/colombia_vmnj1a.png'} 
+            alt={'icono de Colombia'}
             title={'Colombia'} 
             paragraph={'Dignificamos a quienes alimentan al país.'}
           />

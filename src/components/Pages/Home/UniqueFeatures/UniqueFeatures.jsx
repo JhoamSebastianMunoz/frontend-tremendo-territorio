@@ -5,7 +5,7 @@ export const UniqueFeatures = () => {
   return (
     <div className="py-16 px-8 relative"
       style={{
-        backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-02_azkfwr.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+        backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
         backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
         backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
         backgroundPosition: 'center',

@@ -3,9 +3,9 @@ import  { Links } from '../../Shared/Footer/Links'
 
 export const ContactUs = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-first via-primary-second to-primary-third flex flex-col">
+    <div className="min-h-screen bg-primary-fifth flex flex-col">
       <div className="flex-1 flex items-center justify-center px-6 py-8">
-        <div className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden"
+        <div className="w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden"
         style={{
                 backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
                 backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa

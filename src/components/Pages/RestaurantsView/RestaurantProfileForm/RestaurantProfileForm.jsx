@@ -44,7 +44,7 @@ export const RestaurantProfileForm = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 py-8">
+        <div className="bg-primary-fifth">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header del formulario */}
                 <div className="text-center mb-8">
@@ -64,8 +64,8 @@ export const RestaurantProfileForm = () => {
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
                                 activeTab === tab.id
-                                    ? 'bg-primary-first text-white shadow-lg transform scale-105'
-                                    : 'text-gray-600 hover:bg-gray-100'
+                                    ? 'bg-primary-second text-white shadow-lg transform scale-105'
+                                    : 'text-gray-600 hover:bg-primary-sixth'
                             }`}
                         >
                             <span className="mr-2">{tab.icon}</span>
@@ -366,12 +366,12 @@ export const RestaurantProfileForm = () => {
 
                                     {/* Botón para agregar producto manualmente */}
                                     <div className="flex justify-center mt-4">
-                                        <ButtonSecondary
+                                        <ButtonPrimary 
                                             type="button"
                                             onClick={addNewRestaurantProduct}
                                         >
                                             ➕ Agregar otro producto
-                                        </ButtonSecondary>
+                                        </ButtonPrimary>
                                     </div>
                                 </div>
                             </div>
@@ -409,13 +409,13 @@ export const RestaurantProfileForm = () => {
                                     <div className="space-y-4">
                                         <div className="text-6xl">📷</div>
                                         <div>
-                                            <ButtonSecondary
+                                            <ButtonPrimary
                                                 type="button"
                                                 onClick={() => fileInputRef.current?.click()}
                                                 disabled={uploading}
                                             >
                                                 {uploading ? 'Subiendo...' : 'Seleccionar Imágenes'}
-                                            </ButtonSecondary>
+                                            </ButtonPrimary>
                                         </div>
                                         <p className="text-gray-500 font-body text-sm">
                                             Selecciona múltiples imágenes de tu restaurante
@@ -455,7 +455,7 @@ export const RestaurantProfileForm = () => {
 
                     {/* Botón de envío del formulario */}
                     <div className="text-center">
-                        <ButtonPrimary
+                        <ButtonPrimary 
                             type="submit"
                             disabled={isSubmitting}
                         >

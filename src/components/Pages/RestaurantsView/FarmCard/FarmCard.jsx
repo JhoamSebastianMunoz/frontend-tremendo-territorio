@@ -194,7 +194,7 @@ export const FarmCard = ({
                     userMessage='¡Hola! Soy un Restaurante del Territorio de Barichara y me interesa conocer más sobre los productos que estás ofertando ' 
                     phone={phone}/>
 
-                    <ButtonCall 
+                    <ButtonCall className='w-full bg-primary-second font-body hover:bg-primary-sixth text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-4 transform hover:scale-105'
                     phone={phone}/> 
                 </div>
             
@@ -218,10 +218,10 @@ export const FarmCard = ({
                         </ButtonPrimary>
                     </div>
                     <div className=' m-4'>
-                        <ButtonSecondary
+                        <ButtonPrimary
                         onClick={goToCommentsSection}>
                             Ver Comentarios
-                        </ButtonSecondary>
+                        </ButtonPrimary>
                     </div>
                 </div>
             </div>

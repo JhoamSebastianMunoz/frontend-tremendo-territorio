@@ -65,7 +65,7 @@ export const MainSection = () => {
             phone={phone}
             />
             {/* Llamar */}
-            <ButtonCall 
+            <ButtonCall className='w-full bg-primary-second font-body hover:bg-primary-sixth text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-4 transform hover:scale-105'
             phone={phone}/>
           </div>
         </div>

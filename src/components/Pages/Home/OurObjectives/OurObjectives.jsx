@@ -2,7 +2,14 @@ import React from 'react';
 
 export const OurObjectives = () => {
     return (
-        <div className="bg-gradient-to-br from-yellow-100 via-yellow-50 to-orange-50 py-16 px-8">
+        <div className="bg-gradient-to-br from-yellow-100 via-yellow-50 to-orange-50 py-16 px-8"
+        style={{
+            backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+            backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
+            backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
+            backgroundPosition: 'center',
+            backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
+        }}>
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">

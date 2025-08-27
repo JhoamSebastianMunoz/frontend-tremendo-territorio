@@ -1,14 +1,14 @@
 import React from 'react'
 import { ButtonSecondary } from '../ButtonSecondary/ButtonSecondary';
 
-export const ButtonCall = ({phone}) => {
+export const ButtonCall = ({phone, ...props}) => {
     // Llama directamente al número del cliente
     const handleCall = () =>{
         window.open(`tel:${phone}`, '_self');
     };
 
     return (
-    <ButtonSecondary
+    <button {...props}
     onClick={handleCall}
     >
         <div className='flex gap-4'>
@@ -16,7 +16,7 @@ export const ButtonCall = ({phone}) => {
             <span>Llamar</span>
         </div>
          
-    </ButtonSecondary>
+    </button>
     )
 }
 

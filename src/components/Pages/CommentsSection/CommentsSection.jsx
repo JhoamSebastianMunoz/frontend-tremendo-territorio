@@ -17,7 +17,14 @@ export const CommentsSection = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-fifth to-primary-fourth">
+    <div className="min-h-screen bg-gradient-to-br from-primary-fifth to-primary-fourth"
+          style={{
+                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+                backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
+                backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
+                backgroundPosition: 'center',
+                backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
+            }}>
       
       {/* HEADER de navegación */}
       <div className="bg-gradient-to-r from-primary-third to-primary-first text-white py-4 px-8 shadow-lg">
@@ -40,14 +47,7 @@ export const CommentsSection = () => {
       </div>
 
       {/* CONTENIDO PRINCIPAL */}
-      <div className="max-w-6xl mx-auto px-8 py-8 space-y-8"
-      style={{
-                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
-                backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
-                backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
-                backgroundPosition: 'center',
-                backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
-            }}>
+      <div className="max-w-6xl mx-auto px-8 py-8 space-y-8 ">
         
         {/* Sección con imagen, datos del agricultor y botones de contacto */}
         <MainSection/>

@@ -4,7 +4,7 @@ import CardOurValues2 from './CardOurValues2';
 
 export const OurValues = () => {
   return (
-    <div className="bg-gradient-to-br from-yellow-50 to-orange-50 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-primary-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Texto principal */}

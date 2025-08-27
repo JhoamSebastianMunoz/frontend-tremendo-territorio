@@ -44,7 +44,7 @@ export const FarmProfileForm = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 py-8">
+        <div className="bg-primary-fifth">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header del formulario */}
                 <div className="text-center mb-8">
@@ -385,7 +385,7 @@ export const FarmProfileForm = () => {
 
                     {/* Botón de envío del formulario */}
                     <div className="text-center">
-                        <ButtonPrimary
+                        <button className='bg-primary-first font-body hover:bg-primary-third text-white px-6 py-3 rounded-2xl text-lg font-semibold font-primary-brand transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-4'
                             type="submit"
                             disabled={isSubmitting}
                         >
@@ -400,7 +400,7 @@ export const FarmProfileForm = () => {
                             ) : (
                                 '📩 Actualizar Perfil'
                             )}
-                        </ButtonPrimary>
+                        </button>
                     </div>
                 </form>
             </div>

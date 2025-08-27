@@ -168,7 +168,7 @@ export const RestaurantCard = ({
                     userMessage='¡Hola! Soy productor agrícola y me interesa conocer más sobre los productos que necesitan en' 
                     phone={phone}/>
                     
-                    <ButtonCall
+                    <ButtonCall className='w-full bg-primary-first font-body hover:bg-primary-third text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-4 transform hover:scale-105'
                     phone={phone}/>
                 </div>
             </div>

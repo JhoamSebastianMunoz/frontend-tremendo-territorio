@@ -153,7 +153,7 @@ export const RestaurantsView = () => {
     };
     
     return (
-        <div className='bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen'>
+        <div className='bg-primary-fifth'>
             {/* Renderiza la sección principal (título, presentación, etc.) */}
             <MainSection/>
             
@@ -170,8 +170,8 @@ export const RestaurantsView = () => {
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-medium font-subtitle transition-all duration-300 ${
                                 activeTab === tab.id
-                                    ? 'bg-primary-first text-white shadow-lg transform scale-105'
-                                    : 'text-gray-600 hover:bg-gray-100'
+                                    ? 'bg-primary-second font-body  text-white shadow-lg transform scale-105'
+                                    : 'text-gray-600 hover:bg-primary-sixth'
                             }`}
                         >
                             <span>{tab.label}</span>
@@ -286,7 +286,7 @@ export const RestaurantsView = () => {
 
                             {/* Renderizado de tarjetas de agricultores */}
                             {filteredFarms.length > 0 && (
-                                <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                                <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 bg-primary-fifth">
                                     {filteredFarms.map((farm) => (
                                         <FarmCard
                                             key={farm.id}

@@ -5,7 +5,7 @@ export const MainSection = () => {
         // Contenedor principal con fondo degradado y estilos generales
         <div className=" text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
         style={{
-                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-03_tjxweh.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-02_azkfwr.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
                 backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
                 backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
                 backgroundPosition: 'center',

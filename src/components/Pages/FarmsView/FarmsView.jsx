@@ -157,7 +157,7 @@ export const FarmsView = () => {
     };
 
 return (
-    <div className="bg-gradient-to-br from-primary-fifth via-yellow-50 to-orange-50 min-h-screen">
+    <div className="bg-primary-fifth">
     {/*sección principal */}
         <MainSection />
         
@@ -309,7 +309,7 @@ return (
                 {/* Frase de cierre con orgullo agrícola */}
                 <div className="bg-gradient-to-r from-primary-first to-primary-second text-white text-center py-6 px-4 rounded-2xl"
                 style={{
-                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-02_azkfwr.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-03_tjxweh.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
                 backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
                 backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
                 backgroundPosition: 'center',

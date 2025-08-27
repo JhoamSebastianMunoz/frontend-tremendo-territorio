@@ -92,19 +92,17 @@ export const Header = () => {
                         >
                             Consumidor
                         </Link>
+                        <Link 
+                            to='/admin'
+                            className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-subtitle"
+                            onClick={() => setIsInteractDropdownOpen(false)}
+                        >
+                            Administrar
+                        </Link>
                         </div>
                     </div>
                     )}
                 </div>
-                </li>
-                
-                <li>
-                <Link 
-                    to='/admin'
-                    className="text-white hover:text-primary-fifth transition-colors duration-200 font-medium font-subtitle"
-                >
-                    Administrar
-                </Link>
                 </li>
                 <li>
                 <Link 
@@ -195,19 +193,20 @@ export const Header = () => {
                         >
                         Consumidor
                         </Link>
+                        <Link
+                        to="/admin"
+                        className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
+                        onClick={() => {
+                            setIsMenuOpen(false);
+                            setIsMobileInteractDropdownOpen(false);
+                        }}
+                        >
+                        Administrar
+                        </Link>
                     </div>
                     )}
                 </li>
                 
-                <li>
-                    <Link
-                    to="/admin"
-                    className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
-                    onClick={() => setIsMenuOpen(false)}
-                    >
-                    Administrar
-                    </Link>
-                </li>
                 <li>
                     <Link
                     to="/contactUs"

@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
-import { CheckCircle, Eye, EyeOff } from 'lucide-react'; // Íconos para mostrar/ocultar PIN y check de selección
-import { useNavigate } from 'react-router-dom'; // Hook para redirección entre rutas
-import { ButtonPrimary } from '../../Shared/buttons/ButtonPrimary/ButtonPrimary'; // Botón personalizado reutilizable
+import { CheckCircle, Eye, EyeOff } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ButtonPrimary } from '../../Shared/buttons/ButtonPrimary/ButtonPrimary';
+import { useAuth } from '../../../contexts/Auth/AuthContext';
 
-// Componente principal de Login
 export const LoginScreen = () => {
   // Estados para manejar el flujo de autenticación
-  const [pin, setPin] = useState(['', '', '', '']); // Almacena los 4 dígitos del PIN
-  const [selectedImage, setSelectedImage] = useState(null); // Imagen de seguridad seleccionada
-  const [showPin, setShowPin] = useState(false); // Controlar visibilidad del PIN
-  const [isLoading, setIsLoading] = useState(false); // Estado de carga al hacer peticiones
-  const [error, setError] = useState(''); // Mensajes de error
-  const [shake, setShake] = useState(false); // Animación de error (shake)
-  const [securityImages, setSecurityImages] = useState([]); // Imágenes recibidas desde backend
-  const [isPinSubmitted, setIsPinSubmitted] = useState(false); // Controla si el PIN fue validado
-  const [username, setUsername] = useState(''); // Almacena el username del response del backend
+  const [pin, setPin] = useState(['', '', '', '']);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showPin, setShowPin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [shake, setShake] = useState(false);
+  const [securityImages, setSecurityImages] = useState([]);
+  const [isPinSubmitted, setIsPinSubmitted] = useState(false);
+  const [username, setUsername] = useState('');
+
+  // Hooks de navegación y autenticación
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
 
   // URL base de la API
   const API_BASE_URL = 'https://secuencia432-tremendoterritorio-production.up.railway.app/api';
 
-  // Hook de navegación para cambiar de pantalla
-  const navigate = useNavigate();
-  
-  // Redirige al formulario de registro
+  // Obtener la ruta desde donde vino el usuario
+  const from = location.state?.from?.pathname || '/';
+
+  // Funciones de navegación
   const goToRegister = () => {
-    navigate('/register')
+    navigate('/register');
   };
 
   // Validación y envío inicial del PIN
   const handlePinSubmit = async () => {
-    const pinValue = pin.join(''); // Unir los 4 dígitos en un solo string
+    const pinValue = pin.join('');
     if (pinValue.length !== 4) {
       setError('Por favor ingresa un PIN de 4 dígitos');
       return;
@@ -39,7 +44,6 @@ export const LoginScreen = () => {
     setError('');
 
     try {
-      // Petición al backend para validar el PIN
       const response = await fetch(`${API_BASE_URL}/auth/login/start`, {
         method: 'POST',
         headers: {
@@ -48,7 +52,6 @@ export const LoginScreen = () => {
         body: JSON.stringify({ pin: pinValue }),
       });
 
-      // Manejo de errores
       if (!response.ok) {
         if (response.status === 400) {
           throw new Error('PIN no encontrado o error de validación');
@@ -57,25 +60,20 @@ export const LoginScreen = () => {
         throw new Error(errorData.message || 'Error al verificar PIN');
       }
 
-      // Respuesta exitosa
       const data = await response.json();
       
-      // Guardar el username si existe
       if (data.username) {
         setUsername(data.username);
       }
 
-      // Mapear imágenes desde el backend
       setSecurityImages(data.images.map(img => ({
         id: img.id,
         src: img.cloudinary_url,
         alt: `Imagen ${img.id}`
       })));
       
-      setIsPinSubmitted(true); // Indicar que el PIN fue validado
-
+      setIsPinSubmitted(true);
     } catch (err) {
-      // Manejo de errores con animación
       setError(err.message || 'Error al conectar con el servidor');
       setShake(true);
       setTimeout(() => setShake(false), 500);
@@ -86,13 +84,12 @@ export const LoginScreen = () => {
 
   // Manejo de cambios en los campos del PIN
   const handlePinChange = (index, value) => {
-    if (value.length > 1) return; // Solo un dígito permitido
-    
+    if (value.length > 1) return;
+   
     const newPin = [...pin];
     newPin[index] = value;
     setPin(newPin);
 
-    // Auto-enfocar al siguiente campo
     if (value && index < 3) {
       const nextInput = document.getElementById(`pin-${index + 1}`);
       nextInput?.focus();
@@ -111,8 +108,7 @@ export const LoginScreen = () => {
   const handleImageSelect = (imageId) => {
     setSelectedImage(imageId);
     setError('');
-    
-    // Animación para desplazar hacia el botón de login
+   
     setTimeout(() => {
       document.getElementById('login-button')?.scrollIntoView({
         behavior: 'smooth',
@@ -132,7 +128,6 @@ export const LoginScreen = () => {
     setError('');
 
     try {
-      // Petición al backend con username, imagen seleccionada y PIN
       const response = await fetch(`${API_BASE_URL}/auth/login/complete`, {
         method: 'POST',
         headers: {
@@ -145,7 +140,6 @@ export const LoginScreen = () => {
         }),
       });
 
-      // Manejo de errores
       if (!response.ok) {
         if (response.status === 400) {
           throw new Error('PIN o imagen incorrecta, o usuario bloqueado');
@@ -156,12 +150,15 @@ export const LoginScreen = () => {
 
       const data = await response.json();
       
-      // Guardar token en localStorage
-      localStorage.setItem('authToken', data.token);
+      // Usar el contexto de autenticación para guardar el login
+      await login(data.token, {
+        username: username,
+        // Puedes agregar más datos del usuario aquí si los tienes
+      });
       
-      alert('¡Inicio de sesión exitoso!');
-      console.log('Login exitoso, redirigir a dashboard');
-
+      // Redirigir a la página desde donde vino o a la página por defecto
+      navigate(from, { replace: true });
+      
     } catch (err) {
       setError(err.message || 'Error al iniciar sesión');
       setShake(true);
@@ -185,21 +182,21 @@ export const LoginScreen = () => {
   const isFormComplete = selectedImage;
 
   return (
-    <div 
+    <div
       className="min-h-screen bg-gradient-to-b from-primary-first via-primary-second to-primary-third flex flex-col"
       style={{
           backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`,
           backgroundSize: 'cover',
           backgroundRepeat: 'repeat',
           backgroundPosition: 'center',
-          backgroundColor: '#5E5630' // Color de respaldo
+          backgroundColor: '#5E5630'
       }}>
-
+      
       {/* Contenido principal centrado */}
       <div className="flex-1 flex items-center justify-center px-6 py-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="p-8">
-            
+           
             {/* Encabezado de bienvenida */}
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-800 mb-2 font-title">¡Hola de nuevo!</h2>
@@ -220,7 +217,7 @@ export const LoginScreen = () => {
                   <label className="block text-lg font-semibold text-gray-700 mb-4 text-center font-subtitle">
                     Ingresa tu PIN de 4 dígitos
                   </label>
-                  
+                 
                   {/* Inputs de PIN */}
                   <div className="flex justify-center mb-6">
                     <div className="flex space-x-3">
@@ -228,7 +225,7 @@ export const LoginScreen = () => {
                         <input
                           key={index}
                           id={`pin-${index}`}
-                          type={showPin ? 'text' : 'password'} // Muestra u oculta el PIN
+                          type={showPin ? 'text' : 'password'}
                           value={digit}
                           onChange={(e) => handlePinChange(index, e.target.value)}
                           onKeyDown={(e) => handleKeyDown(e, index)}
@@ -360,7 +357,7 @@ export const LoginScreen = () => {
               </button>
               <div className="text-gray-500 font-body">
                 ¿No tienes cuenta?{' '}
-                <button 
+                <button
                   onClick={goToRegister}
                   className="text-primary-first hover:text-primary-second font-medium font-subtitle transition-colors"
                 >

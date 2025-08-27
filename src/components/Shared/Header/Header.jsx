@@ -114,14 +114,6 @@ export const Header = () => {
                     Contáctanos
                 </Link>
                 </li>
-                <li>
-                <Link 
-                    to='/loginScreen' 
-                    className="bg-primary-second hover:bg-primary-sixth px-4 py-2 rounded-md transition-colors duration-200 font-medium font-subtitle"
-                >
-                    Iniciar Sesión
-                </Link>
-                </li>
             </ul>
             </nav>
 
@@ -223,15 +215,6 @@ export const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                     >
                     Contáctanos
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                    to="/loginScreen"
-                    className="block px-4 py-2 bg-primary-second hover:bg-primary-sixth rounded transition-colors duration-200 font-medium text-white font-subtitle"
-                    onClick={() => setIsMenuOpen(false)}
-                    >
-                    Iniciar Sesión
                     </Link>
                 </li>
                 </ul>

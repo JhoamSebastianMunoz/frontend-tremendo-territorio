@@ -47,7 +47,7 @@ export const Comments = () => {
 
 
     return (
-        <div className="bg-white rounded-3xl p-8 shadow-xl border-l-8 border-primary-first">
+        <div className="bg-white rounded-3xl p-8 shadow-xl ">
             {/* Título de la sección */}
             <h2 className="text-3xl font-bold text-primary-third mb-6 font-subtitle flex items-center space-x-2">
                 <span>💬</span>

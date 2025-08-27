@@ -5,6 +5,7 @@ import { History } from './History/History';
 import { Crops } from './Crops/Crops'; 
 import { Comments } from './Comments/Comments'; 
 import { Statistics } from './Statistics/Statistics'; 
+import { ButtonPrimary } from '../../Shared/buttons/ButtonPrimary/ButtonPrimary';
 
 // Componente principal que agrupa toda la vista de comentarios y detalles del agricultor
 export const CommentsSection = () => {
@@ -27,17 +28,18 @@ export const CommentsSection = () => {
             }}>
       
       {/* HEADER de navegación */}
-      <div className="bg-gradient-to-r from-primary-third to-primary-first text-white py-4 px-8 shadow-lg">
+      <div className="">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           
           {/* Botón para volver a la vista anterior */}
-          <button 
-            className="bg-primary-second hover:bg-primary-sixth px-6 py-2 rounded-full transition-all duration-300 transform hover:-translate-y-1 font-body flex items-center space-x-2"
+          <div className='m-4'>
+          <ButtonPrimary 
             onClick={goToRestaurantsView}
           >
             <span>←</span>
             <span>Volver a Trazabilidad</span>
-          </button>
+          </ButtonPrimary>
+          </div>
 
           {/* Frase inspiradora en el header */}
           <div className="text-primary-fifth italic font-body">

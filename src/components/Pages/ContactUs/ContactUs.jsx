@@ -3,16 +3,16 @@ import  { Links } from '../../Shared/Footer/Links'
 
 export const ContactUs = () => {
   return (
-    <div className="min-h-screen bg-primary-fifth flex flex-col">
-      <div className="flex-1 flex items-center justify-center px-6 py-8">
-        <div className="w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden"
-        style={{
+    <div className="min-h-screen flex flex-col"
+    style={{
                 backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
                 backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
                 backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
                 backgroundPosition: 'center',
                 backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
             }}>
+      <div className="flex-1 flex items-center justify-center px-6 py-8">
+        <div className="w-full bg-primary-fifth  max-w-2xl rounded-2xl shadow-2xl overflow-hidden">
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { GetAdminContext } from '../../../../contexts/GetDataAdmin/GetDataAdmin'
+import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary'
 
 export const ConnectionsReport = () => {
 const { generarReporte } = useContext(GetAdminContext)
@@ -35,12 +36,13 @@ const { generarReporte } = useContext(GetAdminContext)
                     </select>
                 </div>
                 <div className="flex gap-4">
-                    <button
+                    <div className=' bg-primary-first hover:bg-primary-third flex-1 py-4 px-6 rounded-xl font-semibold text-lg hover:transform hover:-translate-y-1 transition-all duration-300 shadow-lg font-body' >
+                    <ButtonSecondary
                     onClick={() => generarReporte('pdf')}
-                    className="flex-1 bg-gradient-to-r from-primary-first to-primary-second text-white py-4 px-6 rounded-xl font-semibold text-lg hover:transform hover:-translate-y-1 transition-all duration-300 shadow-lg font-body"
                     >
                     📄 Generar PDF
-                    </button>
+                    </ButtonSecondary>
+                    </div>
                     <button
                     onClick={() => generarReporte('excel')}
                     className="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:transform hover:-translate-y-1 transition-all duration-300 shadow-lg font-body"

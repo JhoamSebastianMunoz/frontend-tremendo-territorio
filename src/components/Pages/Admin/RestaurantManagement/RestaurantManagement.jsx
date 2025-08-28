@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { GetAdminContext } from '../../../../contexts/GetDataAdmin/GetDataAdmin'
+import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary'
 import { Contact } from 'lucide-react'
 
 
@@ -54,16 +55,17 @@ export const RestaurantManagement = () => {
             </div>
 
             {/*Boton para agregar */}
-            <button
+            <div className='w-60 h-auto flex m-6'>
+            <ButtonSecondary
                 onClick={() => showNotification('Función para agregar restaurante')}
-                className="mb-6 bg-gradient-to-r from-primary-first to-primary-second text-white py-3 px-6 rounded-xl font-semibold hover:transform hover:-translate-y-1 transition-all duration-300 shadow-lg font-body"
             >
                 ➕ Agregar Restaurante
-            </button>
+            </ButtonSecondary>
+            </div>
             <div className="overflow-x-auto">
                 <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
                 <thead>
-                    <tr style={{ background: 'linear-gradient(135deg, #5E5630, #C58A3E)' }}>
+                    <tr className='bg-primary-first'>
                         <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Nombre</th>
                         <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Ubicación</th>
                         <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Contacto</th>

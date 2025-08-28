@@ -16,7 +16,13 @@ export const Admin = () => {
             chartOptions } = useContext(GetAdminContext)
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #5E5630 0%, #C58A3E 100%)' }}>
+    <div className="min-h-screen"     style={{
+                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
+                backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
+                backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
+                backgroundPosition: 'center',
+                backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
+            }}>
       <div className="max-w-7xl mx-auto p-5">
         {/* Header */}
         <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 mb-8 shadow-2xl">
@@ -42,7 +48,7 @@ export const Admin = () => {
               className={`px-6 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 font-subtitle ${
                 activeTab === tab.id
                   ? 'bg-white text-primary-first shadow-lg transform -translate-y-1'
-                  : 'bg-white bg-opacity-20 text-white hover:bg-opacity-30 hover:transform hover:-translate-y-1'
+                  : 'bg-white bg-opacity-20 text-primary-first hover:bg-opacity-30 hover:transform hover:-translate-y-1'
               }`}
             >
               {tab.label}
@@ -96,7 +102,7 @@ export const Admin = () => {
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
                   <thead>
-                    <tr style={{ background: 'linear-gradient(135deg, #5E5630, #C58A3E)' }}>
+                    <tr className='bg-primary-first'>
                       <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Fecha</th>
                       <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Restaurante</th>
                       <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Agricultor</th>

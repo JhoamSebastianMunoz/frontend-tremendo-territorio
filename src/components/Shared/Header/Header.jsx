@@ -99,7 +99,7 @@ export const Header = () => {
                                                     className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-subtitle"
                                                     onClick={() => setIsInteractDropdownOpen(false)}
                                                 >
-                                                    Consumidor
+                                                    Reseñas
                                                 </Link>
                                                 <Link
                                                     to='/admin'
@@ -237,7 +237,7 @@ export const Header = () => {
                                                     setIsMobileInteractDropdownOpen(false);
                                                 }}
                                             >
-                                                Consumidor
+                                                Reseñas
                                             </Link>
                                             <Link
                                                 to="/admin"

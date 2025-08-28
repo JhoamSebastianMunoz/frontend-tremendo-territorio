@@ -51,7 +51,7 @@ export const Comments = () => {
             {/* Título de la sección */}
             <h2 className="text-3xl font-bold text-primary-third mb-6 font-subtitle flex items-center space-x-2">
                 <span>💬</span>
-                <span>Reseñas de Restaurantes</span>
+                <span>Reseñas sobre el usuario</span>
             </h2>
 
             {/* Lista de comentarios existentes */}
@@ -115,7 +115,7 @@ export const Comments = () => {
                         {/* Campo para el nombre del restaurante */}
                         <div>
                             <label className="block text-primary-first font-semibold mb-2 font-subtitle">
-                                Nombre del Restaurante *
+                                Nombre del Restaurante, Agricultor o Usuario *
                             </label>
                             <input
                                 type="text"

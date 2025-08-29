@@ -158,8 +158,6 @@ export const FarmsView = () => {
 
 return (
     <div className="bg-primary-fifth">
-    {/*sección principal */}
-        <MainSection />
         
         {/* Botones de navegación entre pestañas */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -322,6 +320,8 @@ return (
             </div>
         </div>
         )}
+        {/*sección principal */}
+        <MainSection />
     </div>
     );
 };

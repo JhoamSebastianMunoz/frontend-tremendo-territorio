@@ -154,8 +154,6 @@ export const RestaurantsView = () => {
     
     return (
         <div className='bg-primary-fifth'>
-            {/* Renderiza la sección principal (título, presentación, etc.) */}
-            <MainSection/>
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Navegación por pestañas */}
@@ -314,6 +312,8 @@ export const RestaurantsView = () => {
                     </div>
                 )}
             </div>
+            {/* Renderiza la sección principal (título, presentación, etc.) */}
+            <MainSection/>
         </div>
     );
 };

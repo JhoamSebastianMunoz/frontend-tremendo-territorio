@@ -17,7 +17,7 @@ export const OurObjectives = () => {
                             Nuestros Objetivos
                         </h2>
                         
-                        <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-body">
+                        <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-body text-justify">
                             <p>
                                 Impulsamos el aprendizaje sobre cultivos y territorios, conectando a campesinos con consumidores y gestionando sus saberes.
                             </p>

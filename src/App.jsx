@@ -8,7 +8,7 @@ import { AuthProvider } from './contexts/Auth/AuthContext';
 
 function App() {
   return (
-    <>
+    <div className='bg-primary-fifth'>
       <AuthProvider>
         <GetDataAdminProvider>
           <GetUsersInformationProvider>
@@ -21,7 +21,7 @@ function App() {
           </GetUsersInformationProvider>
         </GetDataAdminProvider>
       </AuthProvider>
-    </>
+    </div>
   )
 };
 

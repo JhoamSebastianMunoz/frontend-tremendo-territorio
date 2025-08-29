@@ -33,8 +33,8 @@ export const UsersSection = () => {
                     <CardUser 
                         icon={'👨🌱'}
                         title={'Guardián de la Tierra'} 
-                        paragraph1={'Dedica su vida crear productos cultivados de manera sostenible y auténtica.'} 
-                        paragraph2={'Un Productor Agrícola de más de 300 cultiva productos desde hace más de 15 años. Conocimientos del campo son su visión de futuro. Que su grano de frijol, de manza esta libre de químicos de síntesis y ha logrado por dignificar el trabajo agrícola. Con su familia vive todo como en sus tradiciones, buscando alternativas novedosas donde las nuevas técnicas incluidas en él tiempo agricola. Es si carea del territorio, buscando siempre historia y dignidad.'}
+                        paragraph1={'Dedica su vida crear productos cultivados de manera sostenible.'} 
+                        paragraph2={'Dedica su vida a cultivar productos con autenticidad y respeto por la naturaleza. Su vínculo con el campo va más allá de una labor: es un legado que ha cuidado generación tras generación, buscando siempre sembrar historia y dignidad en cada cosecha. Cada semilla que deposita en la tierra es un acto de esperanza. Es el guardián que protege la identidad de su territorio, innovando sin olvidar sus raíces, y demostrando que el verdadero valor de la agricultura está en el respeto, el esfuerzo y el amor por el campo.'}
                         button={'Soy Agricultor'} onClick={goToFarmsView}
                     />
 
@@ -43,7 +43,7 @@ export const UsersSection = () => {
                         icon={'👨‍🍳'}
                         title={'El Sabio del Sabor Rural'} 
                         paragraph1={'Lleva el campo a la mesa, con respeto por los alimentos y sus orígenes.'} 
-                        paragraph2={'Este cliente es una primera productora gastronómica que busca dar valor a los alimentos de tierra, convierte en sabores del pueblo, que la historia y lo rural en el corazón del presente. Busca preparar comidas típicas, recetas tradicionales, transformar platos, con ingredientes autóctonos que han logrado disfrutar por generaciones y también el territorio.'}
+                        paragraph2={'Lleva los sabores del campo a la mesa, respetando cada ingrediente y su origen. Con amor por la tradición y un toque de creatividad, convierte los productos de la tierra en platos especiales que cuentan historias. Cada receta rescata sabores de antes y los comparte con nuevas generaciones, haciendo que cada comida sea una forma de valorar el trabajo del campo y la cultura de cada territorio.'}
                         button={'Soy Restaurante'} onClick={goToRestaurantsView}
                     />
 
@@ -52,7 +52,7 @@ export const UsersSection = () => {
                         icon={'👤'}
                         title={'Consumidor Final'} 
                         paragraph1={'"Quien elige con consciencia, transforma territorios"'} 
-                        paragraph2={'Un Profesional Agrícola de más cultiva productos desde hace más de 15 años. Conocimientos del campo son su visión de futuro. Que su grano de frijol, de manza esta libre de químicos. Con su familia como motor, que en las tradiciones, en el valor del esfuerzo y el territorio que aporta tierra donde la historia y la tradición territorial atraviesa historia y dignidad.'}
+                        paragraph2={'Con cada elección construye un puente invisible entre el campo y la mesa. Dedica su atención a reconocer el origen de lo que consume, valorando el esfuerzo detrás de cada fruto, cada plato, cada historia. No busca solo alimentarse, sino dar sentido al trabajo de quienes cultivan la tierra y a quienes transforman sus frutos con creatividad y respeto. Su mirada va más allá del producto final: ve en cada ingrediente una cadena de manos y corazones que han trabajado para llevarle lo mejor de la naturaleza.'}
                         button={'Soy Consumidor'} onClick={goToStories}
                     />
                 </div>

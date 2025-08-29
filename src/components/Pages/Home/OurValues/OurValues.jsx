@@ -13,13 +13,13 @@ export const OurValues = () => {
               El Valor de Nuestro Territorio
             </h2>
             
-            <p className="text-gray-700 text-lg leading-relaxed font-body">
+            <p className="text-gray-700 text-lg leading-relaxed font-body text-justify">
               Cada producto tiene una historia que contar. Desde las montañas de los Andes 
               hasta los valles fértiles, nuestros campesinos no sólo cultivan alimentos, sino 
               cultura, tradición y vida.
             </p>
             
-            <p className="text-gray-700 text-lg leading-relaxed font-body">
+            <p className="text-gray-700 text-lg leading-relaxed font-body text-justify">
               En Tremendo Territorio, cada bocado de comida viene con la historia completa: quién 
               la cultivó, cómo la cultivó, y por qué es especial. Porque cuando sabes de dónde 
               viene tu comida, cada bocado sabe mejor.

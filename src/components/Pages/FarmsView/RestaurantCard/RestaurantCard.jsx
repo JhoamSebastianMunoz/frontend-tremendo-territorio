@@ -113,7 +113,7 @@ export const RestaurantCard = ({
                         </h3>
                         <div className="flex items-center gap-2 text-primary-first text-sm">
                             <span>📍</span>
-                            <span className="font-medium font-body">
+                            <span className="font-medium font-body ">
                                 <HighlightText text={distance} highlight={searchTerm} />
                             </span>
                         </div>
@@ -121,7 +121,7 @@ export const RestaurantCard = ({
                 </div>
 
                 {/* Ubicación (dirección) del restaurante */}
-                <p className="text-gray-600 text-sm italic mb-4 font-body leading-relaxed">
+                <p className="text-gray-600 text-sm italic mb-4 font-body leading-relaxed text-justify">
                     <HighlightText text={location} highlight={searchTerm} />
                 </p>
 

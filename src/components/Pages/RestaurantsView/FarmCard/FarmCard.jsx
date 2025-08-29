@@ -148,7 +148,7 @@ export const FarmCard = ({
                 </div>
 
                 {/* Descripción de la finca */}
-                <p className="text-gray-600 text-sm italic mb-4 font-body leading-relaxed">
+                <p className="text-gray-600 text-sm italic mb-4 font-body leading-relaxed text-justify">
                     <HighlightText text={location} highlight={searchTerm} />
                 </p>
 

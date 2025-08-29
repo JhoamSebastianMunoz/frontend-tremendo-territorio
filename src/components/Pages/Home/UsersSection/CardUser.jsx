@@ -15,10 +15,10 @@ export const CardUser = ({icon, title, paragraph1, paragraph2, button, ...props}
       </div>
 
       <h2 className="text-xl font-bold text-gray-800 mb-4 font-subtitle">{title}</h2>
-      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-body">
+      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-body text-justify">
         {paragraph1}
       </p>
-      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-body">
+      <p className="text-sm text-gray-600 mb-6 leading-relaxed font-body text-justify">
         {paragraph2}
       </p>
 

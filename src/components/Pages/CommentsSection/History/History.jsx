@@ -13,7 +13,7 @@ export const History = () => {
             </h2>
 
             {/* Texto descriptivo con la historia del agricultor */}
-            <p className="text-primary-first text-lg leading-relaxed italic font-body">
+            <p className="text-primary-first text-lg leading-relaxed italic font-body text-justify">
                 "Soy Juan De Dios Herrera, llevo 18 años cultivando esta tierra hermosa de Barichara que heredé de mi abuelo.
                 Desde niño aprendí los secretos de la agricultura tradicional santandereana. Mi finca La Esperanza ha sido
                 testigo de generaciones de trabajo honesto y dedicado. Cultivo más de 15 variedades diferentes, desde granos

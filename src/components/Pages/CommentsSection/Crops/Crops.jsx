@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
 
 export const Crops = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -7,7 +8,7 @@ export const Crops = () => {
 
   // Lista de productos/cultivos con información detallada
   const products = [
-    {   
+    {  
       category: 'Legumbres y Granos Verdes',
       name: 'Maíz',
       variety: 'Maíz Criollo Amarillo',
@@ -17,25 +18,25 @@ export const Crops = () => {
       harvestDate: '20 Agosto 2025',
       quantity: '2.5 Toneladas',
       seedOrigin: 'Semillas Ancestrales Valle del Cauca',
-      contact: 'Jorge Ramírez - Tel: 312 456 7890',
+      contact: {name:'Jorge Ramírez', phone:'3116957990'},
       cycle: '120 días',
       status: 'En cosecha'
     },
-    {   
+    {  
       category: 'Frutas Tropicales Exóticas',
       name: 'Cereza',
-      variety: 'Maíz Criollo Amarillo',
+      variety: 'Cereza del Café',
       method: 'Cultivo Tradicional Orgánico',
       seedType: 'Semilla Comercial',
       plantingDate: '15 Abril 2025',
       harvestDate: '20 Agosto 2025',
       quantity: '2.5 Toneladas',
       seedOrigin: 'Semillas Ancestrales Valle del Cauca',
-      contact: 'Jorge Ramírez - Tel: 312 456 7890',
+      contact: {name:'Jorge Ramírez', phone:'3116957990'},
       cycle: '120 días',
       status: 'En cosecha'
     },
-    { 
+    {
       category: 'Hortalizas de Hoja',
       name: 'Lechugas',
       variety: 'Lechuga Crespa Verde',
@@ -45,11 +46,11 @@ export const Crops = () => {
       harvestDate: '15 Agosto 2025',
       quantity: '800 Unidades',
       seedOrigin: 'Semillas del Huerto SAS',
-      contact: 'María González - Tel: 301 234 5678',
+      contact: {name:'María González', phone:'3012345678'},
       cycle: '75 días',
       status: 'Listo para cosecha'
     },
-    { 
+    {
       category: 'Hortalizas de Hoja',
       name: 'Espinaca',
       variety: 'Espinaca Baby Leaf',
@@ -59,11 +60,11 @@ export const Crops = () => {
       harvestDate: '25 Julio 2025',
       quantity: '150 Kg',
       seedOrigin: 'Cooperativa Agrícola La Esperanza',
-      contact: 'Carlos Vega - Tel: 315 678 9012',
+      contact: {name:'Carlos Vega', phone:'3113383510'},
       cycle: '45 días',
       status: 'En crecimiento'
     },
-    { 
+    {
       category: 'Hortalizas de Fruto',
       name: 'Tomate',
       variety: 'Tomate Chonto Híbrido',
@@ -73,11 +74,11 @@ export const Crops = () => {
       harvestDate: '10 Agosto 2025',
       quantity: '1.8 Toneladas',
       seedOrigin: 'Agrosemillas del Valle',
-      contact: 'Ana Morales - Tel: 317 890 1234',
+      contact: {name:'Ana Morales', phone:'3113383510'},
       cycle: '110 días',
       status: 'Floración'
     },
-    { 
+    {
       category: 'Bulbos y Tallos',
       name: 'Cebolla',
       variety: 'Cebolla Cabezona Blanca',
@@ -87,11 +88,11 @@ export const Crops = () => {
       harvestDate: '15 Agosto 2025',
       quantity: '950 Kg',
       seedOrigin: 'Semillas Nativas del Quindío',
-      contact: 'Pedro López - Tel: 320 123 4567',
+      contact: {name:'Pedro López', phone:'3116957990'},
       cycle: '160 días',
       status: 'Desarrollo de bulbo'
     },
-    { 
+    {
       category: 'Hortalizas de Fruto',
       name: 'Pimentón',
       variety: 'Pimentón Dulce California',
@@ -101,11 +102,11 @@ export const Crops = () => {
       harvestDate: '28 Agosto 2025',
       quantity: '600 Kg',
       seedOrigin: 'Semillas Premium Andinas',
-      contact: 'Lucía Herrera - Tel: 318 345 6789',
+      contact: {name:'Lucía Herrera', phone:'3113383510'},
       cycle: '108 días',
       status: 'Formación de fruto'
     },
-    { 
+    {
       category: 'Hortalizas de Raíz y Tubérculos',
       name: 'Papas',
       variety: 'Papa Criolla',
@@ -115,11 +116,11 @@ export const Crops = () => {
       harvestDate: '05 Julio 2025',
       quantity: '3.2 Toneladas',
       seedOrigin: 'Tubérculos Semilla Boyacá',
-      contact: 'Roberto Silva - Tel: 314 567 8901',
+      contact: {name:'Roberto Silva', phone:'3116957990'},
       cycle: '130 días',
       status: 'Cosechado'
     },
-    { 
+    {
       category: 'Condimentos y Aromáticas Frescas',
       name: 'Cilantro',
       variety: 'Cilantro Liso Nacional',
@@ -129,11 +130,11 @@ export const Crops = () => {
       harvestDate: '20 Julio 2025',
       quantity: '80 Kg',
       seedOrigin: 'Semillas Orgánicas Colombia',
-      contact: 'Elena Ruiz - Tel: 311 678 9012',
+      contact: {name:'Elena Ruiz', phone:'3113383510'},
       cycle: '50 días',
       status: 'Listo para corte'
     },
-    { 
+    {
       category: 'Condimentos y Aromáticas Frescas',
       name: 'Perejil',
       variety: 'Perejil Crespo',
@@ -143,11 +144,11 @@ export const Crops = () => {
       harvestDate: '30 Julio 2025',
       quantity: '45 Kg',
       seedOrigin: 'Hierbas Frescas del Campo',
-      contact: 'Miguel Torres - Tel: 319 234 5678',
+      contact: {name:'Miguel Torres', phone: '3116957990'},
       cycle: '75 días',
       status: 'En desarrollo'
     },
-    { 
+    {
       category: 'Legumbres y Granos Verdes',
       name: 'Frijol',
       variety: 'Frijol Calima Rojo',
@@ -157,7 +158,7 @@ export const Crops = () => {
       harvestDate: '15 Agosto 2025',
       quantity: '1.1 Toneladas',
       seedOrigin: 'Semillas Criollas del Tolima',
-      contact: 'Carmen Díaz - Tel: 316 789 0123',
+      contact: {name:'Carmen Díaz' , phone: '3116957990'},
       cycle: '147 días',
       status: 'Llenado de vaina'
     }
@@ -239,7 +240,7 @@ export const Crops = () => {
   };
 
   // Obtener categorías únicas dinámicamente desde los productos
-  const categories = Object.values(categoryMapping).filter(category => 
+  const categories = Object.values(categoryMapping).filter(category =>
     products.some(product => categoryMapping[product.category]?.id === category.id)
   );
 
@@ -255,32 +256,41 @@ export const Crops = () => {
     setSearchTerm('');
   };
 
-  const filteredProducts = selectedCategory 
-    ? products.filter(product => 
-        product.category === Object.keys(categoryMapping).find(key => 
+  // Función para manejar clic directo en producto desde la vista principal
+  const handleProductSelect = (product) => {
+    const category = Object.values(categoryMapping).find(cat => 
+      categoryMapping[product.category]?.id === cat.id
+    );
+    setSelectedCategory(category);
+    setSelectedCrop(product);
+  };
+
+  const filteredProducts = selectedCategory
+    ? products.filter(product =>
+        product.category === Object.keys(categoryMapping).find(key =>
           categoryMapping[key].id === selectedCategory.id
         ) && product.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
 
   return (
-    <div className="min-h-screen bg-white rounded-3xl p-8 shadow-xl font-body ">
+    <div className="min-h-screen bg-white rounded-3xl p-8 shadow-xl font-body">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">🌱</span>
+              <div className="w-14 h-14 bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg flex items-center justify-center p-1 m-4">
+                <span className="text-white font-bold"><img src="https://res.cloudinary.com/dppf30duk/image/upload/v1756132120/Logo_TremendoTerritorio-29_hfi2iw.png" alt="logotipo de Tremendo Territorio" /></span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold font-title bg-primary-first bg-clip-text text-transparent">
+                <h1 className="text-2xl font-bold font-title text-primary-third">
                   Mis Cultivos
                 </h1>
-                <p className="text-sm text-gray-500">Sistema de Trazabilidad Agrícola</p>
+                <p className="text-sm font-subtitle text-gray-500">Sistema de Trazabilidad Agrícola</p>
               </div>
             </div>
-            
+           
             {(selectedCategory || selectedCrop) && (
               <button
                 onClick={selectedCrop ? () => setSelectedCrop(null) : handleBackToCategories}
@@ -306,17 +316,16 @@ export const Crops = () => {
                       <span className="text-white font-bold text-2xl">{selectedCrop.name.charAt(0)}</span>
                     </div>
                     <div>
-                      <h3 className="text-3xl font-bold text-gray-800 mb-1">
+                      <h3 className="text-3xl font-bold font-subtitle text-gray-800 mb-1">
                         {selectedCrop.name}
                       </h3>
-                      <p className="text-lg text-gray-600 font-medium">{selectedCrop.variety}</p>
-                      <div className={`inline-block px-3 py-1 rounded-full text-sm font-medium mt-2 ${getStatusColor(selectedCrop.status)}`}>
+                      <p className="text-lg text-gray-600 font-body font-medium">{selectedCrop.variety}</p>
+                      <div className={`inline-block px-3 py-1 rounded-full text-sm font-medium font-body mt-2 ${getStatusColor(selectedCrop.status)}`}>
                         {selectedCrop.status}
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    {/* Botón para regresar a categorías principales */}
                     <button
                       onClick={() => {
                         setSelectedCrop(null);
@@ -327,43 +336,12 @@ export const Crops = () => {
                       title="Volver a todas las categorías"
                     >
                       <span>⟨⟨</span>
-                      <span>Categorías</span>
+                      <span className='font-body'>Categorías</span>
                     </button>
-
-                    {/* Navegación entre cultivos */}
-                    <div className="flex items-center gap-1 mr-4 border-l border-gray-200 pl-4">
-                      <button
-                        onClick={() => {
-                          const currentIndex = filteredProducts.findIndex(p => p === selectedCrop);
-                          const prevIndex = currentIndex > 0 ? currentIndex - 1 : filteredProducts.length - 1;
-                          setSelectedCrop(filteredProducts[prevIndex]);
-                        }}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all"
-                        title="Cultivo anterior"
-                      >
-                        <span>←</span>
-                      </button>
-                      
-                      <span className="text-sm text-gray-500 px-2">
-                        {filteredProducts.findIndex(p => p === selectedCrop) + 1} de {filteredProducts.length}
-                      </span>
-                      
-                      <button
-                        onClick={() => {
-                          const currentIndex = filteredProducts.findIndex(p => p === selectedCrop);
-                          const nextIndex = currentIndex < filteredProducts.length - 1 ? currentIndex + 1 : 0;
-                          setSelectedCrop(filteredProducts[nextIndex]);
-                        }}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all"
-                        title="Siguiente cultivo"
-                      >
-                        <span>→</span>
-                      </button>
-                    </div>
-                    
-                    <button 
+                   
+                    <button
                       onClick={() => setSelectedCrop(null)}
-                      className="text-gray-400 hover:text-gray-600 text-2xl font-bold p-2"
+                      className="text-gray-400 hover:text-gray-600 text-2xl font-bold font-body p-2"
                       title="Cerrar detalles"
                     >
                       ✕
@@ -375,104 +353,66 @@ export const Crops = () => {
                   {/* Información de cultivo */}
                   <div className="space-y-4">
                     <h4 className="font-bold text-xl text-gray-800 mb-4 flex items-center gap-2">
-                      <span className="w-6 h-6 bg-green-500 rounded text-white text-center text-xs leading-6">i</span>
+                      <span className="w-6 h-6 bg-green-500 font-subtitle rounded text-white text-center text-xs leading-6">i</span>
                       Información de Cultivo
                     </h4>
-                    
+                   
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium text-gray-500">Método de Cultivo:</span>
-                      <p className="text-gray-800 font-medium">{selectedCrop.method}</p>
+                      <span className="text-sm font-medium text-gray-500 font-subtitle ">Método de Cultivo:</span>
+                      <p className="text-gray-800 font-medium font-body">{selectedCrop.method}</p>
                     </div>
-                    
+                   
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium text-gray-500">Tipo de Semilla:</span>
-                      <p className="text-gray-800 font-medium">{selectedCrop.seedType}</p>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">Tipo de Semilla:</span>
+                      <p className="text-gray-800 font-medium font-body">{selectedCrop.seedType}</p>
                     </div>
-                    
+                   
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium text-gray-500">Ciclo de Cultivo:</span>
-                      <p className="text-gray-800 font-medium">{selectedCrop.cycle}</p>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">Ciclo de Cultivo:</span>
+                      <p className="text-gray-800 font-medium font-body">{selectedCrop.cycle}</p>
                     </div>
 
                     <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border border-green-200">
-                      <span className="text-sm font-medium text-gray-500">Cantidad Esperada:</span>
-                      <p className="text-gray-800 font-bold text-xl">{selectedCrop.quantity}</p>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">Cantidad Esperada:</span>
+                      <p className="text-gray-800 font-bold font-body text-xl">{selectedCrop.quantity}</p>
                     </div>
                   </div>
 
                   {/* Fechas y origen */}
                   <div className="space-y-4">
-                    <h4 className="font-bold text-xl text-gray-800 mb-4 flex items-center gap-2">
-                      <span className="w-6 h-6 bg-blue-500 rounded text-white text-center text-xs leading-6">F</span>
+                    <h4 className="font-bold font-subtitle text-xl text-gray-800 mb-4 flex items-center gap-2">
+                      <span className="w-6 h-6 bg-blue-500 rounded text-white font-subtitle text-center text-xs leading-6">F</span>
                       Fechas y Origen
                     </h4>
-                    
+                   
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium text-gray-500">Fecha de Siembra:</span>
-                      <p className="text-gray-800 font-medium">{selectedCrop.plantingDate}</p>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">Fecha de Siembra:</span>
+                      <p className="text-gray-800 font-medium font-body">{selectedCrop.plantingDate}</p>
                     </div>
-                    
+                   
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium text-gray-500">Fecha de Cosecha:</span>
-                      <p className="text-gray-800 font-medium">{selectedCrop.harvestDate}</p>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">Fecha de Cosecha:</span>
+                      <p className="text-gray-800 font-medium font-body">{selectedCrop.harvestDate}</p>
                     </div>
 
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium text-gray-500">Origen de Semilla:</span>
-                      <p className="text-gray-800 font-medium text-sm">{selectedCrop.seedOrigin}</p>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">Origen de Semilla:</span>
+                      <p className="text-gray-800 font-medium font-body text-sm">{selectedCrop.seedOrigin}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Contacto del proveedor */}
                 <div className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border-l-4 border-blue-500">
-                  <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                  <h4 className="font-bold font-subtitle text-gray-800 mb-3 flex items-center gap-2">
                     <span className="w-6 h-6 bg-purple-500 rounded text-white text-center text-xs leading-6">T</span>
                     Contacto Proveedor de Semillas
                   </h4>
-                  <p className="text-gray-700">{selectedCrop.contact}</p>
-                </div>
-
-                {/* Navegación rápida entre cultivos */}
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                  <div className="flex justify-between items-center mb-3">
-                    <h4 className="font-medium text-gray-700">
-                      Otros cultivos en {selectedCategory?.displayName}
-                    </h4>
-                    <button
-                      onClick={() => {
-                        setSelectedCrop(null);
-                        setSelectedCategory(null);
-                        setSearchTerm('');
-                      }}
-                      className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
-                    >
-                      Ver todas las categorías
-                      <span>→</span>
-                    </button>
-                  </div>
-                  <div className="flex gap-2 overflow-x-auto pb-2">
-                    {filteredProducts.map((product, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setSelectedCrop(product)}
-                        className={`flex-shrink-0 p-3 rounded-xl border-2 transition-all duration-200 ${
-                          product === selectedCrop
-                            ? `${selectedCategory?.borderColor} ${selectedCategory?.bgColor} ${selectedCategory?.textColor} font-bold`
-                            : 'border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50'
-                        }`}
-                        title={`${product.name} - ${product.status}`}
-                      >
-                        <div className="flex flex-col items-center gap-1">
-                          <div className={`w-8 h-8 ${product === selectedCrop ? selectedCategory?.accentColor : 'bg-gray-300'} rounded-lg flex items-center justify-center`}>
-                            <span className="text-white font-bold text-sm">{product.name.charAt(0)}</span>
-                          </div>
-                          <span className="text-xs whitespace-nowrap max-w-16 overflow-hidden text-ellipsis">
-                            {product.name}
-                          </span>
-                        </div>
-                      </button>
-                    ))}
+                  <div className='flex items-center gap-4'>
+                    <p className="text-gray-700 font-body">{selectedCrop.contact.name} </p>
+                    <div className='w-36 h-auto'>
+                      <ButtonWhatsApp nameClient={selectedCrop.contact.name} userMessage={''} phone={selectedCrop.contact.phone}></ButtonWhatsApp>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -481,65 +421,103 @@ export const Crops = () => {
         )}
 
         {!selectedCategory ? (
-          /* Vista de Categorías */
+          /* Vista de Categorías Mejorada */
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold font-subtitle text-gray-900 mb-4">
                 Sistema de Trazabilidad Agrícola
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto font-body">
                 Gestiona y monitorea tus cultivos por categorías con información detallada de trazabilidad
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category) => {
-                const categoryProducts = products.filter(p => 
+                const categoryProducts = products.filter(p =>
                   categoryMapping[p.category]?.id === category.id
                 );
-                
+               
                 return (
                   <div
                     key={category.id}
-                    onClick={() => handleCategorySelect(category)}
-                    className={`${category.bgColor} ${category.borderColor} border-2 rounded-2xl p-6 cursor-pointer 
-                             transform transition-all duration-300 hover:scale-105 hover:shadow-xl 
-                             group relative overflow-hidden`}
+                    className={`${category.bgColor} ${category.borderColor} border-2 rounded-2xl p-6
+                               transform transition-all duration-300 hover:scale-105 hover:shadow-xl
+                               group relative overflow-hidden`}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 
+                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0
                                    group-hover:opacity-10 transition-opacity duration-300`} />
-                    
+                   
                     <div className="relative z-10">
-                      <div className={`w-16 h-16 ${category.accentColor} rounded-xl flex items-center justify-center mb-4 
-                                     group-hover:scale-110 transition-transform duration-300`}>
-                        <span className="text-white text-2xl font-bold">{category.displayName.charAt(0)}</span>
+                      {/* Header de la categoría */}
+                      <div 
+                        onClick={() => handleCategorySelect(category)}
+                        className="cursor-pointer"
+                      >
+                        <div className={`w-16 h-16 ${category.accentColor} rounded-xl flex items-center justify-center mb-4
+                                       group-hover:scale-110 transition-transform duration-300`}>
+                          <span className="text-white text-2xl font-bold">{category.displayName.charAt(0)}</span>
+                        </div>
+                       
+                        <h3 className={`text-xl font-bold ${category.textColor} font-subtitle mb-2`}>
+                          {category.displayName}
+                        </h3>
+                       
+                        <p className="text-gray-600 text-sm mb-4 font-body">
+                          {categoryProducts.length} cultivos activos
+                        </p>
                       </div>
-                      
-                      <h3 className={`text-xl font-bold ${category.textColor} mb-2`}>
-                        {category.displayName}
-                      </h3>
-                      
-                      <p className="text-gray-600 text-sm mb-3">
-                        {categoryProducts.length} cultivos activos
-                      </p>
 
-                      {/* Preview de cultivos */}
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {categoryProducts.slice(0, 4).map((product, idx) => (
-                          <div key={idx} className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-xs font-bold text-gray-600 shadow-sm">
-                            {product.name.charAt(0)}
-                          </div>
-                        ))}
-                        {categoryProducts.length > 4 && (
-                          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xs font-bold text-gray-600">
-                            +{categoryProducts.length - 4}
-                          </div>
-                        )}
+                      {/* Lista de productos en la categoría */}
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold font-subtitle text-gray-700 border-b border-gray-200 pb-1">
+                          Cultivos:
+                        </h4>
+                        
+                        <div className="grid grid-cols-1 gap-2 max-h-40 overflow-y-auto">
+                          {categoryProducts.map((product, idx) => (
+                            <div
+                              key={idx}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleProductSelect(product);
+                              }}
+                              className="flex items-center justify-between p-2 bg-white/70 rounded-lg 
+                                       hover:bg-white hover:shadow-sm transition-all duration-200 cursor-pointer
+                                       group/product"
+                            >
+                              <div className="flex items-center gap-2">
+                                <div className={`w-8 h-8 ${category.accentColor} rounded-lg flex items-center justify-center`}>
+                                  <span className="text-white font-bold text-xs">{product.name.charAt(0)}</span>
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <p className="text-sm font-medium text-gray-800 truncate">
+                                    {product.name}
+                                  </p>
+                                  <p className="text-xs text-gray-500 truncate">
+                                    {product.quantity}
+                                  </p>
+                                </div>
+                              </div>
+                              
+                              <div className="flex items-center gap-1">
+                                <div className={`w-2 h-2 rounded-full ${getStatusColor(product.status).split(' ')[0]}`}></div>
+                                <span className="opacity-0 group-hover/product:opacity-100 text-xs text-gray-400 transition-opacity">
+                                  →
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                      
-                      <div className={`mt-4 text-sm ${category.textColor} font-medium 
-                                     group-hover:translate-x-2 transition-transform duration-300`}>
-                        Ver cultivos →
+                     
+                      <div 
+                        onClick={() => handleCategorySelect(category)}
+                        className={`mt-4 text-sm ${category.textColor} font-medium cursor-pointer
+                                   group-hover:translate-x-2 transition-transform duration-300 flex items-center justify-between font-body`}
+                      >
+                        <span>Ver todos los cultivos</span>
+                        <span>→</span>
                       </div>
                     </div>
                   </div>
@@ -548,7 +526,7 @@ export const Crops = () => {
             </div>
           </div>
         ) : (
-          /* Vista de Productos por Categoría */
+          /* Vista de Productos por Categoría (sin cambios) */
           <div className="space-y-8">
             {/* Header de categoría seleccionada */}
             <div className={`${selectedCategory.bgColor} ${selectedCategory.borderColor} border-2 rounded-2xl p-6`}>
@@ -565,7 +543,7 @@ export const Crops = () => {
                   </p>
                 </div>
               </div>
-              
+             
               {/* Barra de búsqueda */}
               <div className="relative">
                 <input
@@ -573,7 +551,7 @@ export const Crops = () => {
                   placeholder={`Buscar cultivos en ${selectedCategory.displayName.toLowerCase()}...`}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2
                            focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 />
               </div>
@@ -585,20 +563,20 @@ export const Crops = () => {
                 <div
                   key={index}
                   onClick={() => setSelectedCrop(product)}
-                  className={`bg-white ${selectedCategory.borderColor} border-2 rounded-2xl p-6 
+                  className={`bg-white ${selectedCategory.borderColor} border-2 rounded-2xl p-6
                            transform transition-all duration-300 hover:scale-105 hover:shadow-xl
                            group cursor-pointer relative overflow-hidden`}
                 >
                   {/* Indicador de categoría */}
                   <div className={`absolute top-0 right-0 w-6 h-6 ${selectedCategory.accentColor} rounded-bl-lg`} />
-                  
+                 
                   {/* Cultivo visual */}
                   <div className="text-center mb-4">
                     <div className={`w-16 h-16 ${selectedCategory?.accentColor} rounded-xl flex items-center justify-center mb-2 mx-auto group-hover:scale-110 transition-transform duration-300`}>
                       <span className="text-white font-bold text-xl">{product.name.charAt(0)}</span>
                     </div>
                   </div>
-                  
+                 
                   {/* Información del cultivo */}
                   <div className="space-y-3">
                     <div>
@@ -609,19 +587,19 @@ export const Crops = () => {
                         {product.variety}
                       </p>
                     </div>
-                    
+                   
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-sm">
                         <span className="w-4 h-4 bg-gray-400 rounded text-white text-center text-xs leading-4">Q</span>
-                        <span className="text-gray-600">{product.quantity}</span>
+                        <span className="text-gray-600 font-body">{product.quantity}</span>
                       </div>
-                      
+                     
                       <div className="flex items-center gap-2 text-sm">
                         <span className="w-4 h-4 bg-gray-400 rounded text-white text-center text-xs leading-4">T</span>
-                        <span className="text-gray-600">{product.cycle}</span>
+                        <span className="text-gray-600 font-body">{product.cycle}</span>
                       </div>
                     </div>
-                    
+                   
                     <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(product.status)}`}>
                       {product.status}
                     </div>
@@ -632,7 +610,7 @@ export const Crops = () => {
 
             {filteredProducts.length === 0 && searchTerm && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">
+                <p className="text-gray-500 text-lg font-body">
                   No se encontraron cultivos que coincidan con "{searchTerm}"
                 </p>
               </div>
@@ -643,4 +621,3 @@ export const Crops = () => {
     </div>
   );
 };
-

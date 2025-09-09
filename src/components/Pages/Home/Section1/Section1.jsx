@@ -24,9 +24,9 @@ export const Section1 = () => {
             {/* Contenido principal */}
             <div className="relative z-10 text-center px-8 max-w-6xl mx-auto">
                 {/* Título principal */}
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-title text-white mb-8 leading-tight">
-                    Tremendo Territorio
-                </h1>
+                <div className='m-auto flex justify-center items-center'>
+                    <img src="https://res.cloudinary.com/dppf30duk/image/upload/v1757461223/Logo_TremendoTerritorio-06_klsytt.png" alt="logotipo de Tremendo Territorio" />
+                </div>
 
                 {/* Subtítulo */}
                 <h2 className="text-2xl md:text-3xl lg:text-4xl text-white mb-12 font-subtitle leading-relaxed">

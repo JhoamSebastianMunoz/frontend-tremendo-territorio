@@ -8,7 +8,7 @@ export const GetElementsProvider = ({children}) => {
     const [error, setError ] =useState(null);
     const [isLoading, setIsLoading ] = useState(true);
 
-    const URLLogo = 'https://res.cloudinary.com/dppf30duk/image/upload/v1755639138/Logo_TremendoTerritorio-03_ai32lo.png';
+    const URLLogo = 'https://res.cloudinary.com/dppf30duk/image/upload/v1757461645/Logo_TremendoTerritorio-30_oopkqe.png';
 
     useEffect(()=>{
         const fetchLogo = async () =>{

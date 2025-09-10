@@ -97,7 +97,6 @@ export const Header = () => {
                                                 <Link
                                                     to="/commentsSection"
                                                     className="block px-4 py-2 text-gray-800 hover:bg-primary-fifth hover:text-white transition-colors duration-200 font-medium font-subtitle"
-                                                    onClick={() => setIsInteractDropdownOpen(false)}
                                                 >
                                                     Reseñas
                                                 </Link>
@@ -244,7 +243,6 @@ export const Header = () => {
                                                 className="block px-4 py-2 text-white hover:text-primary-fifth hover:bg-primary-second rounded transition-colors duration-200 font-medium font-subtitle"
                                                 onClick={() => {
                                                     setIsMenuOpen(false);
-                                                    setIsMobileInteractDropdownOpen(false);
                                                 }}
                                             >
                                                 Administrar
@@ -291,16 +289,7 @@ export const Header = () => {
                 <Route path='/contactUs' element={<ContactUs/>} />
                 <Route path='/loginScreen' element={<LoginScreen/>} />
                 <Route path='/register' element={<Register/>} />
-                
-                {/* Rutas protegidas */}
-                <Route 
-                    path='/commentsSection' 
-                    element={
-                        <ProtectedRoute>
-                            <CommentsSection/>
-                        </ProtectedRoute>
-                    } 
-                />
+                <Route path='/commentsSection' element={<CommentsSection/>}/>
                 <Route 
                     path='/admin' 
                     element={

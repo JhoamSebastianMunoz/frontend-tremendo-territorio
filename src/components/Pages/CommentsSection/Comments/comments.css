@@ -1,0 +1,13 @@
+
+/* evita animaciones/hovers costosos mientras modal abierto */
+.media-modal-open * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* si quieres pausar animaciones concretas, crea selectores específicos */
+.media-modal-open .some-hover-class *:hover {
+  transform: none !important;
+  transition: none !important;
+  animation-play-state: paused !important;
+}

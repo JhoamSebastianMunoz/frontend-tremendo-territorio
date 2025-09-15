@@ -19,7 +19,7 @@ export const CommentsProvider = ({children}) => {
         authorInitials: "NL",
         date: "Hace 1 mes",
         rating: 4,
-        text: "Trabajamos con Juan De Dios para nuestro menú vegetariano y sus productos son simplemente extraordinarios. Sus tomates, cilantro y perejil tienen un sabor auténtico que complementa perfectamente nuestras preparaciones light. Es un agricultor comprometido con la calidad y la sostenibilidad. Sus ingredientes frescos nutren tanto el cuerpo como el espíritu."
+        text: "Trabajamos con Juan De Dios para nuestro menú vegetariano y sus productos son simplemente extraordinarios. Sus tomates, cilantro y perejil tienen un sabor auténtico que complementa perfectamente nuestras preparaciones light. Es un agricultor comprometido con la calidad y la sostenibilidad. Sus ingredientes frescos nutren tanto el cuerpo como el espíritu, comparto un poco de mi experiencia de mi día a día como agricultor: https://youtu.be/6Pl47vwGDYw?si=GPnBXaVGqzT2oO1U"
     },
     {
         id: 3,

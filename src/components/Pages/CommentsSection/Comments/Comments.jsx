@@ -1,13 +1,11 @@
-// Componente principal optimizado EnhancedComments
 import React, { useState, useContext, useEffect, useCallback, useMemo, useRef } from 'react';
 import { CommentsContext } from '../../../../contexts/Comments/Comments';
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { RatingStars } from '../../../Shared/RatingStars/RatingStars';
 import { SocialMediaPreview } from './SocialMediaPreview';
 import { LinkDetector } from './linkDetector';
-import { useMediaModal } from '../../../../hooks/useGetElements/useMediaModal/useMediaModal';
+import { useMediaModal } from '../../../../hooks/useMediaModal/useMediaModal';
 
-import { createPortal } from 'react-dom';
 
 export const Comments = () => {
   const { renderStar } = useContext(RatingContext);

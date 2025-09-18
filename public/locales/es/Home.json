@@ -1,0 +1,101 @@
+{
+    "section1": {
+        "subtitle": "Conectamos al Campo con Quienes Quieren Conocerlo y Dignificarlo",
+        "p": "Seremos una plataforma reconocida por dignificar y visibilizar las historias, relaciones y saberes de las comunidades rurales, generando valor comunitario y fortaleciendo la identidad territorial a través de la conexión de narrativas humanas y culturales.",
+        "button": "Descubre las Historias"
+    },
+    "OurObjectives": {
+        "title": "Nuestros Objetivos",
+        "p1":"Impulsamos el aprendizaje sobre cultivos y territorios, conectando a campesinos con consumidores y gestionando sus saberes.",
+        "p2":"Recogemos historias de cambio y aprendizaje para visibilizar la vida en el campo y fomentar la autonomía campesina.",
+        "p3":"Facilitamos encuentros para la asociatividad entre cultivadores y restaurantes.",
+        "p4":"Trabajamos por la dignidad del campesinado mediante la reducción de intermediarios y la medición del impacto de su labor.",
+        "img":{
+            "alt":"Manos plantando en la tierra - agricultura sostenible"
+        }
+    },
+    "UsersSection":{
+        "title":"Tres Mundos, Miles de Historias",
+        "p":"Conectamos a quienes cultivan la tierra, transforman los alimentos y los disfrutan.",
+        "CardUserFarm":{
+            "title":"Guardián de la Tierra",
+            "paragraph1":"Dedica su vida crear productos cultivados de manera sostenible.",
+            "paragraph2":"Dedica su vida a cultivar productos con autenticidad y respeto por la naturaleza. Su vínculo con el campo va más allá de una labor: es un legado que ha cuidado generación tras generación, buscando siempre sembrar historia y dignidad en cada cosecha. Cada semilla que deposita en la tierra es un acto de esperanza. Es el guardián que protege la identidad de su territorio, innovando sin olvidar sus raíces, y demostrando que el verdadero valor de la agricultura está en el respeto, el esfuerzo y el amor por el campo.",
+            "button":"Soy Agricultor"
+        },
+        "CardUserRestaurant":{
+            "title":"El Sabio del Sabor Rural",
+            "paragraph1":"Lleva el campo a la mesa, con respeto por los alimentos y sus orígenes.",
+            "paragraph2": "Lleva los sabores del campo a la mesa, respetando cada ingrediente y su origen. Con amor por la tradición y un toque de creatividad, convierte los productos de la tierra en platos especiales que cuentan historias. Cada receta rescata sabores de antes y los comparte con nuevas generaciones, haciendo que cada comida sea una forma de valorar el trabajo del campo y la cultura de cada territorio.",
+            "button": "Soy Restaurante"
+        },
+        "CardUserConsumer":{
+            "title":"Consumidor Final",
+            "paragraph1":"Quien elige con consciencia, transforma territorios ",
+            "paragraph2":"Con cada elección construye un puente invisible entre el campo y la mesa. Dedica su atención a reconocer el origen de lo que consume, valorando el esfuerzo detrás de cada fruto, cada plato, cada historia. No busca solo alimentarse, sino dar sentido al trabajo de quienes cultivan la tierra y a quienes transforman sus frutos con creatividad y respeto. Su mirada va más allá del producto final: ve en cada ingrediente una cadena de manos y corazones que han trabajado para llevarle lo mejor de la naturaleza.",
+            "button":"Soy Consumidor"
+        }
+    },
+    "UniqueFeatures":{
+        "title":"Características Únicas",
+        "p":"Tecnología al servicio del territorio y sus historias.",
+        "CardUniqueFeatures1":{
+            "alt":"icono de la Trazabilidad Visual",
+            "title":"Trazabilidad Visual",
+            "paragraph":"Videos del proceso completo desde la siembra hasta el plato."
+        },
+        "CardUniqueFeatures2":{
+            "alt":"icono de la Conexión Local",
+            "title":"Conexión Local",
+            "paragraph":"Radio de 20km para fortalecer economías locales."
+        },
+        "CardUniqueFeatures3":{
+            "alt":"icono de las Narrativas ",
+            "title":"Narrativas Territoriales",
+            "paragraph":"Historias que conectan el territorio con cada bocado."
+        },
+        "CardUniqueFeatures4":{
+            "alt":"icono del Agricultor",
+            "title":"Valor del Campesino",
+            "paragraph":"Valor y reconocimiento justo al productor."
+        },
+        "CardUniqueFeatures5":{
+            "alt":"icono de asociatividad",
+            "title":"Asociatividad",
+            "paragraph":"Fortalecimiento del tejido social campesino."
+        },
+        "CardUniqueFeatures6":{
+            "alt":"icono de Colombia",
+            "title":"Colombia",
+            "paragraph":"Dignificamos a quienes alimentan al país."
+        }
+    },
+    "OurValues":{
+        "title":"El Valor de Nuestro Territorio",
+        "p1":"Cada producto tiene una historia que contar. Desde las montañas de los Andes hasta los valles fértiles, nuestros campesinos no sólo cultivan alimentos, sino cultura, tradición y vida.",
+        "p2":"En Tremendo Territorio, cada bocado de comida viene con la historia completa: quién la cultivó, cómo la cultivó, y por qué es especial. Porque cuando sabes de dónde viene tu comida, cada bocado sabe mejor.",
+        "img1":{
+            "alt":"Campo" 
+        },
+        "span":"Del Campo a tu Mesa",
+        "img2":{
+            "alt":"Mesa"  
+        },
+        "CardOurValues1":{
+            "title":"20",
+            "paragraph":"km de Radio"
+        },
+        "CardOurValues2":{
+            "title":"100%",
+            "paragraph":"Trazabilidad"
+        },
+        "CardOurValues3":{
+            "title":"Infinito",
+            "paragraph":"Historias"
+        },
+        "CardOurValues4":{
+            "title":"Corazón",
+            "paragraph":"Amor Local"
+        }
+    }
+}

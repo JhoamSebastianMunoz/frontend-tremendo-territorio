@@ -1,0 +1,101 @@
+{
+    "section1": {
+        "subtitle": "We connect the countryside with those who want to discover and dignify it.",
+        "p": "We will be a platform recognized for dignifying and making visible the stories, relationships, and knowledge of rural communities, generating community value and strengthening territorial identity through the connection of human and cultural narratives.",
+        "button": "Discover the Stories"
+    },
+    "OurObjectives": {
+        "title": "Our Objectives",
+        "p1": "We promote learning about crops and territories, connecting farmers with consumers and managing their knowledge.",
+        "p2": "We collect stories of change and learning to make rural life visible and foster farmers’ autonomy.",
+        "p3": "We facilitate meetings for partnerships between growers and restaurants.",
+        "p4": "We work for the dignity of farmers by reducing intermediaries and measuring the impact of their work.",
+        "img":{
+            "alt":"Hands planting in the earth - sustainable agriculture"
+        }
+    },
+    "UsersSection": {
+        "title": "Three Worlds, Thousands of Stories",
+        "p": "We connect those who cultivate the land, transform food, and enjoy it.",
+        "CardUserFarm": {
+            "title": "Guardian of the Land",
+            "paragraph1": "Devotes their life to creating sustainably grown products.",
+            "paragraph2": "They dedicate their life to cultivating products with authenticity and respect for nature. Their bond with the countryside goes beyond work: it is a legacy cared for generation after generation, always seeking to sow history and dignity in every harvest. Each seed placed in the soil is an act of hope. They are the guardian who protects the identity of their territory, innovating without forgetting their roots, and proving that the true value of agriculture lies in respect, effort, and love for the land.",
+            "button": "I Am a Farmer"
+        },
+        "CardUserRestaurant": {
+            "title": "The Sage of Rural Flavor",
+            "paragraph1": "Brings the countryside to the table, with respect for food and its origins.",
+            "paragraph2": "They bring the flavors of the countryside to the table, respecting every ingredient and its origin. With love for tradition and a touch of creativity, they turn the products of the land into special dishes that tell stories. Each recipe rescues flavors of the past and shares them with new generations, making every meal a way to value the work of the countryside and the culture of each territory.",
+            "button": "I Am a Restaurant"
+        },
+        "CardUserConsumer": {
+            "title": "Final Consumer",
+            "paragraph1": "The one who chooses with awareness transforms territories.",
+            "paragraph2": "With every choice, they build an invisible bridge between the countryside and the table. They devote their attention to recognizing the origin of what they consume, valuing the effort behind each fruit, each dish, each story. They don’t just seek to be nourished, but to give meaning to the work of those who cultivate the land and those who transform its fruits with creativity and respect. Their vision goes beyond the final product: they see in each ingredient a chain of hands and hearts that have worked to bring them the best of nature.",
+            "button": "I Am a Consumer"
+        }
+    },
+    "UniqueFeatures": {
+        "title": "Unique Features",
+        "p": "Technology at the service of the territory and its stories.",
+        "CardUniqueFeatures1": {
+            "alt": "Visual Traceability icon",
+            "title": "Visual Traceability",
+            "paragraph": "Videos of the entire process from sowing to the plate."
+        },
+        "CardUniqueFeatures2": {
+            "alt": "Local Connection icon",
+            "title": "Local Connection",
+            "paragraph": "20 km radius to strengthen local economies."
+        },
+        "CardUniqueFeatures3": {
+            "alt": "Territorial Narratives icon",
+            "title": "Territorial Narratives",
+            "paragraph": "Stories that connect the territory with every bite."
+        },
+        "CardUniqueFeatures4": {
+            "alt": "Farmer icon",
+            "title": "Farmer’s Value",
+            "paragraph": "Fair value and recognition for the producer."
+        },
+        "CardUniqueFeatures5": {
+            "alt": "Associativity icon",
+            "title": "Associativity",
+            "paragraph": "Strengthening the social fabric of farmers."
+        },
+        "CardUniqueFeatures6": {
+            "alt": "Colombia icon",
+            "title": "Colombia",
+            "paragraph": "We dignify those who feed the country."
+        }
+    },
+    "OurValues": {
+        "title": "The Value of Our Territory",
+        "p1": "Every product has a story to tell. From the Andes mountains to fertile valleys, our farmers not only cultivate food, but also culture, tradition, and life.",
+        "p2": "At Tremendo Territorio, every bite of food comes with the full story: who grew it, how they grew it, and why it is special. Because when you know where your food comes from, every bite tastes better.",
+        "img1": {
+            "alt": "Countryside"
+        },
+        "span":"From the Field to Your Table",
+        "img2": {
+            "alt": "Table"
+        },
+        "CardOurValues1": {
+            "title": "20",
+            "paragraph": "km Radius"
+        },
+        "CardOurValues2": {
+            "title": "100%",
+            "paragraph": "Traceability"
+        },
+        "CardOurValues3": {
+            "title": "Infinite",
+            "paragraph": "Stories"
+        },
+        "CardOurValues4": {
+            "title": "Heart",
+            "paragraph": "Local Love"
+        }
+    }
+}

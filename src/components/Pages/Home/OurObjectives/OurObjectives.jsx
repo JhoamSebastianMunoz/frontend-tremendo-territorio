@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 export const OurObjectives = () => {
+    const {t, i18n } = useTranslation(["Home"]);
+
     return (
+        <Suspense fallback={<p>loading translation...</p>}>
         <div className="bg-gradient-to-br from-yellow-100 via-yellow-50 to-orange-50 py-16 px-8"
         style={{
             backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
@@ -14,24 +19,24 @@ export const OurObjectives = () => {
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
                         <h2 className="text-4xl lg:text-5xl font-bold font-subtitle text-primary-first mb-8">
-                            Nuestros Objetivos
+                            {t("OurObjectives.title")}
                         </h2>
                         
                         <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-body text-justify">
                             <p>
-                                Impulsamos el aprendizaje sobre cultivos y territorios, conectando a campesinos con consumidores y gestionando sus saberes.
+                                {t("OurObjectives.p1")}
                             </p>
 
                             <p>
-                                Recogemos historias de cambio y aprendizaje para visibilizar la vida en el campo y fomentar la autonomía campesina.
+                                {t("OurObjectives.p2")}
                             </p>
 
                             <p>
-                                Facilitamos encuentros para la asociatividad entre cultivadores y restaurantes.
+                                {t("OurObjectives.p3")}
                             </p>
                             
                             <p>
-                                Trabajamos por la dignidad del campesinado mediante la reducción de intermediarios y la medición del impacto de su labor.
+                                {t("OurObjectives.p4")}
                             </p>
                         </div>
                     </div>
@@ -40,7 +45,7 @@ export const OurObjectives = () => {
                         <div className="rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                             <img 
                                 src="https://res.cloudinary.com/dppf30duk/image/upload/v1755647582/tremendo-territorio_htvjhj.jpg" 
-                                alt="Manos plantando en la tierra - agricultura sostenible"
+                                alt={t("OurObjectives.img.alt")}
                                 className="w-full h-96 object-cover"
                             />
                         </div>
@@ -52,5 +57,6 @@ export const OurObjectives = () => {
                 </div>
             </div>
         </div>
+        </Suspense>
     );
 };

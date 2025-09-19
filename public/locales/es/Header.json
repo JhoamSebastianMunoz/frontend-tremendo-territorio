@@ -1,0 +1,13 @@
+{   
+    "img":{
+        "alt":"logotipo de Tremendo Territorio"
+    },
+    "Home":"Conócenos",
+    "button":"Interactuar",
+    "FarmsView":"Agricultor",
+    "RestaurantsView":"Restaurante",
+    "CommentsSection":"Reseñas",
+    "Admin":"Administrar",
+    "ContactUs":"Contáctanos",
+    "span":"Cerrar Sesión"
+}

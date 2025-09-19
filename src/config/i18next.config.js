@@ -10,8 +10,9 @@ i18n
     debug: false,
     
     // Configuración de namespaces
-    ns: ['translation', 'Home'], 
-    defaultNS: 'translation',
+    ns: ['Header', 'Home'], 
+    defaultNS: 'Header',
+    
     
     interpolation: {
       escapeValue: false,

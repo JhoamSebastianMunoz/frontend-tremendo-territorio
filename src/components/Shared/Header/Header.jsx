@@ -12,6 +12,7 @@ import { RestaurantsView } from '../../Pages/RestaurantsView/RestaurantsView';
 import { ProtectedRoute } from '../Auth/ProtectedRoute';
 import { useGetElements } from '../../../hooks/useGetElements/useGetElements';
 import { useAuth } from '../../../contexts/Auth/AuthContext';
+import { ButtonLanguage } from '../buttons/ButtonLanguage/ButtonLanguage';
 
 export const Header = () => {
     // Uso del Contexto para el uso del logo
@@ -25,6 +26,14 @@ export const Header = () => {
     const [isInteractDropdownOpen, setIsInteractDropdownOpen] = useState(false);
     const [isMobileInteractDropdownOpen, setIsMobileInteractDropdownOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const [currentLanguage, setCurrentLanguage] = useState('es');
+    
+    const handleLanguageChange = (langCode) => {
+        setCurrentLanguage(langCode);
+        console.log(`Cambiando idioma a: ${langCode}`);
+    };
+
+
 
     const handleLogout = () => {
         logout();
@@ -121,6 +130,10 @@ export const Header = () => {
                                     Contáctanos
                                 </Link>
                             </li>
+                            <ButtonLanguage
+                                currentLanguage={currentLanguage}
+                                onLanguageChange={handleLanguageChange}
+                            />
 
                             {/* Usuario autenticado - Desktop */}
                             {isAuthenticated && user && (
@@ -260,6 +273,10 @@ export const Header = () => {
                                         Contáctanos
                                     </Link>
                                 </li>
+                                <ButtonLanguage
+                                    currentLanguage={currentLanguage}
+                                    onLanguageChange={handleLanguageChange}
+                                />
 
                                 {/* Usuario autenticado - Mobile */}
                                 {isAuthenticated && user && (

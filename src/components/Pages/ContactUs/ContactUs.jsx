@@ -1,8 +1,11 @@
-import React from 'react';
-import  { Links } from '../../Shared/Footer/Links'
+import React, {Suspense} from 'react';
+import  { Links } from '../../Shared/Footer/Links';
+import { useTranslation } from 'react-i18next';
 
 export const ContactUs = () => {
+  const { t, i18n } = useTranslation(["ContactUs"])
   return (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div className="min-h-screen flex flex-col"
     style={{
                 backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
@@ -16,9 +19,9 @@ export const ContactUs = () => {
           <div className="p-8">
             {/* Encabezado */}
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold font-subtitle text-gray-800 mb-2">¡Contáctanos!</h2>
+              <h2 className="text-3xl font-bold font-subtitle text-gray-800 mb-2">{t("title")}</h2>
               <p className="text-xl text-primary-first font-body">
-                Conectando historias, territorio y sabores
+                {t("subtitle")}
               </p>
             </div>
 
@@ -27,7 +30,7 @@ export const ContactUs = () => {
               {/* Información de contacto */}
               <div className="text-center">
                 <h3 className="text-2xl font-subtitle text-gray-800 mb-4">
-                  Tremendo Territorio
+                  {t("h3")}
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-center space-x-3">
@@ -62,13 +65,13 @@ export const ContactUs = () => {
               {/* Redes sociales */}
               <div className="text-center">
                 <h3 className="text-2xl font-bold font-subtitle text-gray-800 mb-6">
-                  Síguenos en nuestras redes
+                  {t("h3_2")}
                 </h3>
                 <div className="flex justify-center space-x-6">
                   <Links />
                 </div>
                 <p className="text-gray-600 font-body text-sm mt-4">
-                  Mantente conectado con nosotros y descubre más sobre nuestro territorio
+                  {t("p")}
                 </p>
               </div>
 
@@ -78,11 +81,10 @@ export const ContactUs = () => {
               {/* Mensaje adicional */}
               <div className="text-center bg-green-50 p-6 rounded-2xl">
                 <h4 className="text-lg font-semibold font-body text-gray-800 mb-2">
-                  ¿Tienes alguna pregunta?
+                  {t("h4")}
                 </h4>
                 <p className="text-gray-600 font-body text-sm">
-                  No dudes en contactarnos. Estamos aquí para ayudarte a descubrir 
-                  las mejores experiencias de nuestro territorio.
+                  {t("p_2")}
                 </p>
               </div>
             </div>
@@ -90,5 +92,6 @@ export const ContactUs = () => {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 };

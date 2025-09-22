@@ -1,0 +1,81 @@
+{   
+    "button": {
+        "span": "Back to Traceability"
+    },
+    "div": "Meet the person who grows your food",
+    "MainSection": {
+        "span_location": "San José Village, Barichara, Santander",
+        "div_comments_length": "restaurant reviews"
+    },
+    "History": {
+        "span_title": "My Story",
+        "p_history": "'I am Juan De Dios Herrera, and I have been cultivating this beautiful land of Barichara for 18 years, inherited from my grandfather. Since childhood, I learned the secrets of traditional Santander agriculture. My farm, La Esperanza, has witnessed generations of honest and dedicated work. I grow more than 15 different varieties, from ancestral grains to fresh vegetables that go directly to the restaurants of this magical town. Every seed I sow carries love for this land and the commitment to feed the families of Barichara with fresh, high-quality products. My greatest satisfaction is knowing that my crops are part of the traditional dishes that delight visitors from all over the world.'"
+    },
+    "Crops": {
+        "title": "My Crops",
+        "subtitle": "Agricultural Traceability System",
+        "span_selectedCrop_1": "Back to products",
+        "span_selectedCrop_2": "Back to categories",
+        "button": "Back to all categories",
+        "span_category": "Categories",
+        "button_close": "Close details",
+        "Growing_information": {
+        "subtitle": "Growing Information",
+        "span_method": "Growing Method:",
+        "span_type": "Seed Type:",
+        "span_cycle": "Growing Cycle:",
+        "span_amount": "Expected Quantity:"
+        },
+        "Dates_and_origin": {
+        "subtitle": "Dates and Origin",
+        "span_plantingDate": "Planting Date:",
+        "span_harvestDate": "Harvest Date:",
+        "span_seedOrigin": "Seed Origin:"
+        },
+        "supplierContact": {
+        "subtitle": "Seed Supplier Contact"
+        },
+        "categoryCard": {
+        "title": "Agricultural Traceability System",
+        "subtitle": "Manage and monitor your crops by categories with detailed traceability information",
+        "p": "active crops",
+        "h4": "Crops:",
+        "span": "View all crops"
+        },
+        "Products_by_category": {
+        "p": "crops in this category"
+        },
+        "filtered": {
+        "p": "No crops found matching"
+        }
+    },
+    "Comments": {
+        "title": "User Reviews",
+        "h3": "No reviews yet",
+        "p": "Be the first to share your experience",
+        "button": {
+        "span": "Write a Review"
+        },
+        "showCommentForm": {
+        "subtitle": "Add New Review",
+        "label_1": "Name of Restaurant, Farmer, or User *",
+        "input_1": {
+            "placeholder": "E.g., Daniel Lopez, La Mesa Restaurant"
+        },
+        "subtitle_2": "Rating",
+        "stars": "out of 5 stars",
+        "subtitle_3": "Your Review *",
+        "div": "You can include links from YouTube, Instagram, Facebook, TikTok, Spotify, Vimeo, and more",
+        "textarea": {
+            "placeholder": "Share your experience with this farmer... You can also include social media links or videos"
+        },
+        "button_comment": "Post Review",
+        "button_close": "Cancel"
+        }
+    },
+    "Statistics": {
+        "div": "Average Rating",
+        "div_2": "Restaurants reviewing",
+        "div_3": "Recommendation"
+    }
+}

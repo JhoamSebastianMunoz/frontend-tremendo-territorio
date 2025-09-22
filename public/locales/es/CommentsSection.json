@@ -1,0 +1,81 @@
+{   
+    "button":{
+        "span":"Volver a Trazabilidad"
+    },
+    "div":"Conoce a quien cultiva tu comida",
+    "MainSection":{
+        "span_location":"Vereda San José, Barichara, Santander",
+        "div_comments_length":"reseñas de restaurantes"
+    },
+    "History":{
+        "span_title":"Mi Historia",
+        "p_history":"'Soy Juan De Dios Herrera, llevo 18 años cultivando esta tierra hermosa de Barichara que heredé de mi abuelo. Desde niño aprendí los secretos de la agricultura tradicional santandereana. Mi finca La Esperanza ha sido testigo de generaciones de trabajo honesto y dedicado. Cultivo más de 15 variedades diferentes, desde granos ancestrales hasta hortalizas frescas que llegan directamente a los restaurantes del pueblo mágico. Cada semilla que siembro lleva el amor por esta tierra y el compromiso de alimentar a las familias de Barichara con productos frescos y de calidad. Mi mayor satisfacción es saber que mis cultivos forman parte de los platos tradicionales que deleitan a visitantes de todo el mundo.'"
+    },
+    "Crops":{
+        "title":"Mis Cultivos",
+        "subtitle":"Sistema de Trazabilidad Agrícola",
+        "span_selectedCrop_1":"Volver a productos",
+        "span_selectedCrop_2":"Volver a categorías",
+        "button":"Volver a todas las categorías",
+        "span_category":"Categorías",
+        "button_close":"Cerrar detalles",
+        "Growing_information":{
+            "subtitle":"Información de Cultivo",
+            "span_method":"Método de Cultivo:",
+            "span_type":"Tipo de Semilla:",
+            "span_cycle":"Ciclo de Cultivo:",
+            "span_amount":"Cantidad Esperada:"
+        },
+        "Dates_and_origin":{
+            "subtitle":"Fechas y Origen",
+            "span_plantingDate":"Fecha de Siembra:",
+            "span_harvestDate":"Fecha de Cosecha:",
+            "span_seedOrigin":"Origen de Semilla:"
+        },
+        "supplierContact":{
+            "subtitle":"Contacto Proveedor de Semillas"
+        },
+        "categoryCard":{
+            "title":"Sistema de Trazabilidad Agrícola",
+            "subtitle":"Gestiona y monitorea tus cultivos por categorías con información detallada de trazabilidad",
+            "p":"cultivos activos",
+            "h4":"Cultivos:",
+            "span":"Ver todos los cultivos"
+        },
+        "Products_by_category":{
+            "p":"cultivos en esta categoría"
+        },
+        "filtered":{
+            "p":"No se encontraron cultivos que coincidan con"
+        }
+    },
+    "Comments":{
+        "title":"Reseñas sobre el usuario",
+        "h3":"Aún no hay reseñas",
+        "p":"Sé el primero en compartir tu experiencia",
+        "button":{
+            "span":"Escribir Reseña"
+        },
+        "showCommentForm":{
+            "subtitle":"Agregar Nueva Reseña",
+            "label_1":"Nombre del Restaurante, Agricultor o Usuario *",
+            "input_1":{
+                "placeholder":"Ej: Daniel Lopez, Restaurante La Mesa"
+            },
+            "subtitle_2":"Calificación",
+            "stars":"de 5 estrellas",
+            "subtitle_3":"Tu Reseña *",
+            "div":"Puedes incluir enlaces de YouTube, Instagram, Facebook, TikTok, Spotify, Vimeo y más",
+            "textarea":{
+                "placeholder":"Comparte tu experiencia con este agricultor... También puedes incluir enlaces de redes sociales o videos"
+            },
+            "button_comment":"Publicar Reseña",
+            "button_close":"Cancelar"
+        }
+    },
+    "Statistics":{
+        "div":"Calificación promedio",
+        "div_2":"Restaurantes que reseñan",
+        "div_3":"Recomendación"
+    }
+}

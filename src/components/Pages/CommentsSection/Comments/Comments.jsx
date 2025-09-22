@@ -1,13 +1,15 @@
-import React, { useState, useContext, useEffect, useCallback, useMemo, useRef } from 'react';
+import React, { useState, useContext, useEffect, useCallback, useMemo, useRef, Suspense } from 'react';
 import { CommentsContext } from '../../../../contexts/Comments/Comments';
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { RatingStars } from '../../../Shared/RatingStars/RatingStars';
 import { SocialMediaPreview } from './SocialMediaPreview';
 import { LinkDetector } from './linkDetector';
 import { useMediaModal } from '../../../../hooks/useMediaModal/useMediaModal';
+import { useTranslation } from 'react-i18next';
 
 
 export const Comments = () => {
+  const { t, i18next } = useTranslation(["CommentsSection"])
   const { renderStar } = useContext(RatingContext);
   const { comments, setComments } = useContext(CommentsContext);
   const { isModalOpen, currentMedia, openMedia, closeMedia } = useMediaModal();
@@ -61,6 +63,7 @@ export const Comments = () => {
     const { processedText, detectedLinks } = processTextWithLinks(comment.text);
    
     return (
+      <Suspense fallback={<p>Loading translation</p>}>
       <div>
         <p className="text-primary-third leading-relaxed font-body mb-3">
           "{processedText}"
@@ -78,14 +81,16 @@ export const Comments = () => {
           </div>
         )}
       </div>
+      </Suspense>
     );
   });
 
   return (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div className="bg-white rounded-3xl p-8 shadow-xl">
       <h2 className="text-3xl font-bold text-primary-third mb-6 font-subtitle flex items-center space-x-2">
         <span>💬</span>
-        <span>Reseñas sobre el usuario</span>
+        <span>{t("Comments.title")}</span>
       </h2>
        
       <div className="space-y-6 mb-8 comments-container">
@@ -121,10 +126,10 @@ export const Comments = () => {
           <div className="text-center py-12">
             <div className="text-6xl mb-4">💬</div>
             <h3 className="text-xl font-semibold text-gray-600 mb-2">
-              Aún no hay reseñas
+              {t("Comments.h3")}
             </h3>
             <p className="text-gray-500">
-              Sé el primero en compartir tu experiencia
+              {t("Comments.p")}
             </p>
           </div>
         )}
@@ -137,7 +142,7 @@ export const Comments = () => {
             className="bg-primary-second hover:bg-primary-sixth text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-body flex items-center mx-auto space-x-2"
           >
             <span>✏️</span>
-            <span>Escribir Reseña</span>
+            <span>{t("Comments.button.span")}</span>
           </button>
         </div>
       )}
@@ -145,26 +150,26 @@ export const Comments = () => {
       {showCommentForm && (
         <div className="mt-8 bg-primary-fifth rounded-2xl p-6 border-2 border-primary-second">
           <h3 className="text-xl font-bold text-primary-first mb-4 font-body">
-            Agregar Nueva Reseña
+            {t("Comments.showCommentForm.subtitle")}
           </h3>
            
           <div className="space-y-4">
             <div>
               <label className="block text-primary-first font-semibold mb-2 font-subtitle">
-                Nombre del Restaurante, Agricultor o Usuario *
+                {t("Comments.showCommentForm.label_1")}
               </label>
               <input
                 type="text"
                 value={newComment.authorName}
                 onChange={(e) => setNewComment({...newComment, authorName: e.target.value})}
                 className="w-full px-4 py-3 border border-primary-fourth rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-second focus:border-primary-second font-body"
-                placeholder="Ej: Daniel Lopez, Restaurante La Mesa"
+                placeholder={t("Comments.showCommentForm.input_1.placeholder")}
               />
             </div>
            
             <div>
               <label className="block text-primary-first font-semibold mb-2 font-subtitle">
-                Calificación
+                {t("Comments.showCommentForm.subtitle_2")}
               </label>
               <div className="flex items-center space-x-2">
                 <RatingStars
@@ -172,18 +177,18 @@ export const Comments = () => {
                   onChange={e => setNewComment({...newComment, rating: e})}
                 />
                 <span className="ml-4 text-primary-first font-body">
-                  {newComment.rating} de 5 estrellas
+                  {newComment.rating} {t("Comments.showCommentForm.stars")}
                 </span>
               </div>
             </div>
            
             <div>
               <label className="block text-primary-first font-semibold mb-2 font-subtitle">
-                Tu Reseña *
+                {t("Comments.showCommentForm.subtitle_3")}
               </label>
               <div className="mb-2">
                 <small className="text-primary-second font-body">
-                  💡 Puedes incluir enlaces de YouTube, Instagram, Facebook, TikTok, Spotify, Vimeo y más
+                  💡 {t("Comments.showCommentForm.div")}
                 </small>
               </div>
               <textarea
@@ -191,7 +196,7 @@ export const Comments = () => {
                 onChange={(e) => setNewComment({...newComment, text: e.target.value})}
                 rows="4"
                 className="w-full px-4 py-3 border border-primary-fourth rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-second focus:border-primary-second resize-none font-body"
-                placeholder="Comparte tu experiencia con este agricultor... También puedes incluir enlaces de redes sociales o videos"
+                placeholder={t("Comments.showCommentForm.textarea.placeholder")}
               />
             </div>
            
@@ -201,20 +206,20 @@ export const Comments = () => {
                 onClick={handleSubmitComment}
                 disabled={!newComment.authorName.trim() || !newComment.text.trim()}
                 className="flex-1 bg-primary-second hover:bg-primary-first text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-body disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-              >
-                Publicar Reseña
+              >{t("Comments.showCommentForm.button_comment")}
               </button>
               <button
                 type="button"
                 onClick={handleCancelComment}
                 className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 font-body"
               >
-                Cancelar
+                {t("Comments.showCommentForm.button_close")}
               </button>
             </div>
           </div>
         </div>
       )}
     </div>
+    </Suspense> 
   );
 };

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
+import { useTranslation } from 'react-i18next';
 
 export const Crops = () => {
+  const { t , i18n } = useTranslation(["CommentsSection"])
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedCrop, setSelectedCrop] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -274,6 +276,7 @@ export const Crops = () => {
     : [];
 
   return (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div className="min-h-screen bg-white rounded-3xl p-8 shadow-xl font-body">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200">
@@ -285,9 +288,9 @@ export const Crops = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold font-title text-primary-third">
-                  Mis Cultivos
+                  {t("Crops.title")}
                 </h1>
-                <p className="text-sm font-subtitle text-gray-500">Sistema de Trazabilidad Agrícola</p>
+                <p className="text-sm font-subtitle text-gray-500">{t("Crops.subtitle")}</p>
               </div>
             </div>
            
@@ -297,7 +300,7 @@ export const Crops = () => {
                 className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
               >
                 <span>←</span>
-                {selectedCrop ? 'Volver a productos' : 'Volver a categorías'}
+                {selectedCrop ? t("Crops.span_selectedCrop_1") : t("Crops.span_selectedCrop_2")}
               </button>
             )}
           </div>
@@ -333,16 +336,16 @@ export const Crops = () => {
                         setSearchTerm('');
                       }}
                       className="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all mr-2"
-                      title="Volver a todas las categorías"
+                      title={t("Crops.button")}
                     >
                       <span>⟨⟨</span>
-                      <span className='font-body'>Categorías</span>
+                      <span className='font-body'>{t("Crops.span_category")}</span>
                     </button>
                    
                     <button
                       onClick={() => setSelectedCrop(null)}
                       className="text-gray-400 hover:text-gray-600 text-2xl font-bold font-body p-2"
-                      title="Cerrar detalles"
+                      title={t("Crops.button_close")}
                     >
                       ✕
                     </button>
@@ -354,26 +357,26 @@ export const Crops = () => {
                   <div className="space-y-4">
                     <h4 className="font-bold text-xl text-gray-800 mb-4 flex items-center gap-2">
                       <span className="w-6 h-6 bg-green-500 font-subtitle rounded text-white text-center text-xs leading-6">i</span>
-                      Información de Cultivo
+                      {t("Crops.Growing_information.subtitle")}
                     </h4>
                    
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium text-gray-500 font-subtitle ">Método de Cultivo:</span>
+                      <span className="text-sm font-medium text-gray-500 font-subtitle ">{t("Crops.Growing_information.span_method")}</span>
                       <p className="text-gray-800 font-medium font-body">{selectedCrop.method}</p>
                     </div>
                    
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium font-subtitle text-gray-500">Tipo de Semilla:</span>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">{t("Crops.Growing_information.span_type")}</span>
                       <p className="text-gray-800 font-medium font-body">{selectedCrop.seedType}</p>
                     </div>
                    
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium font-subtitle text-gray-500">Ciclo de Cultivo:</span>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">{t("Crops.Growing_information.span_cycle")}</span>
                       <p className="text-gray-800 font-medium font-body">{selectedCrop.cycle}</p>
                     </div>
 
                     <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border border-green-200">
-                      <span className="text-sm font-medium font-subtitle text-gray-500">Cantidad Esperada:</span>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">{t("Crops.Growing_information.span_amount")}</span>
                       <p className="text-gray-800 font-bold font-body text-xl">{selectedCrop.quantity}</p>
                     </div>
                   </div>
@@ -382,21 +385,21 @@ export const Crops = () => {
                   <div className="space-y-4">
                     <h4 className="font-bold font-subtitle text-xl text-gray-800 mb-4 flex items-center gap-2">
                       <span className="w-6 h-6 bg-blue-500 rounded text-white font-subtitle text-center text-xs leading-6">F</span>
-                      Fechas y Origen
+                      {t("Crops.Dates_and_origin.subtitle")}
                     </h4>
                    
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium font-subtitle text-gray-500">Fecha de Siembra:</span>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">{t("Crops.Dates_and_origin.span_plantingDate")}</span>
                       <p className="text-gray-800 font-medium font-body">{selectedCrop.plantingDate}</p>
                     </div>
                    
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium font-subtitle text-gray-500">Fecha de Cosecha:</span>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">{t("Crops.Dates_and_origin.span_harvestDate")}</span>
                       <p className="text-gray-800 font-medium font-body">{selectedCrop.harvestDate}</p>
                     </div>
 
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <span className="text-sm font-medium font-subtitle text-gray-500">Origen de Semilla:</span>
+                      <span className="text-sm font-medium font-subtitle text-gray-500">{t("Crops.Dates_and_origin.span_seedOrigin")}</span>
                       <p className="text-gray-800 font-medium font-body text-sm">{selectedCrop.seedOrigin}</p>
                     </div>
                   </div>
@@ -406,7 +409,7 @@ export const Crops = () => {
                 <div className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border-l-4 border-blue-500">
                   <h4 className="font-bold font-subtitle text-gray-800 mb-3 flex items-center gap-2">
                     <span className="w-6 h-6 bg-purple-500 rounded text-white text-center text-xs leading-6">T</span>
-                    Contacto Proveedor de Semillas
+                    {t("Crops.supplierContact.subtitle")}
                   </h4>
                   <div className='flex items-center gap-4'>
                     <p className="text-gray-700 font-body">{selectedCrop.contact.name} </p>
@@ -425,10 +428,10 @@ export const Crops = () => {
           <div className="space-y-8">
             <div className="text-center">
               <h2 className="text-3xl font-bold font-subtitle text-gray-900 mb-4">
-                Sistema de Trazabilidad Agrícola
+                {t("Crops.categoryCard.title")}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto font-body">
-                Gestiona y monitorea tus cultivos por categorías con información detallada de trazabilidad
+                {t("Crops.categoryCard.subtitle")}
               </p>
             </div>
 
@@ -464,14 +467,14 @@ export const Crops = () => {
                         </h3>
                        
                         <p className="text-gray-600 text-sm mb-4 font-body">
-                          {categoryProducts.length} cultivos activos
+                          {categoryProducts.length} {t("Crops.categoryCard.p")}
                         </p>
                       </div>
 
                       {/* Lista de productos en la categoría */}
                       <div className="space-y-2">
                         <h4 className="text-sm font-semibold font-subtitle text-gray-700 border-b border-gray-200 pb-1">
-                          Cultivos:
+                          {t("Crops.categoryCard.h4")}
                         </h4>
                         
                         <div className="grid grid-cols-1 gap-2 max-h-40 overflow-y-auto">
@@ -516,7 +519,7 @@ export const Crops = () => {
                         className={`mt-4 text-sm ${category.textColor} font-medium cursor-pointer
                                    group-hover:translate-x-2 transition-transform duration-300 flex items-center justify-between font-body`}
                       >
-                        <span>Ver todos los cultivos</span>
+                        <span>{t("Crops.categoryCard.span")}</span>
                         <span>→</span>
                       </div>
                     </div>
@@ -539,7 +542,7 @@ export const Crops = () => {
                     {selectedCategory.displayName}
                   </h2>
                   <p className="text-gray-600">
-                    {filteredProducts.length} cultivos en esta categoría
+                    {filteredProducts.length} {t("Crops.Products_by_category.p")}
                   </p>
                 </div>
               </div>
@@ -611,7 +614,7 @@ export const Crops = () => {
             {filteredProducts.length === 0 && searchTerm && (
               <div className="text-center py-12">
                 <p className="text-gray-500 text-lg font-body">
-                  No se encontraron cultivos que coincidan con "{searchTerm}"
+                  {t("Crops.filtered.p")} "{searchTerm}"
                 </p>
               </div>
             )}
@@ -619,5 +622,6 @@ export const Crops = () => {
         )}
       </main>
     </div>
+    </Suspense>
   );
 };

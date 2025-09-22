@@ -1,12 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, Suspense } from 'react'
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { CommentsContext } from '../../../../contexts/Comments/Comments';
 import { Carousel } from '../MainSection/Carousel/Carousel';
 import { ButtonInstagram } from '../../../Shared/buttons/ButtonInstagram/ButtonInstagram';
 import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
 import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
+import { useTranslation } from 'react-i18next';
 
 export const MainSection = () => {
+  const { t, i18next } = useTranslation(["CommentsSection"])
+  
   //Contexto de los comentarios
   const { comments } = useContext(CommentsContext);
   //contexto de estrellas
@@ -19,6 +22,7 @@ export const MainSection = () => {
   const phone = "+573232967700";
 
   return (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div className="bg-white rounded-3xl p-8 shadow-xl border-4 border-primary-fifth">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
@@ -40,7 +44,7 @@ export const MainSection = () => {
           {/* Ubicación */}
           <div className="text-primary-first mb-4 font-body flex items-center justify-center lg:justify-start space-x-2">
             <span>📍</span>
-            <span>Vereda San José, Barichara, Santander</span>
+            <span>{t("MainSection.span_location")}</span>
           </div>
 
           {/* Rating y reseñas */}
@@ -49,7 +53,7 @@ export const MainSection = () => {
               {renderStar(Math.round(Number(qualificationAverage)))}
             </div>
             <div className="text-xl font-bold text-primary-sixth font-body">{qualificationAverage}</div>
-            <div className="text-primary-first text-sm font-body">{comments.length} reseñas de restaurantes</div>
+            <div className="text-primary-first text-sm font-body">{comments.length} {t("MainSection.div_comments_length")}</div>
           </div>
 
           {/* Botones de redes sociales y contacto */}
@@ -71,5 +75,6 @@ export const MainSection = () => {
         </div>
       </div>
     </div>
+    </Suspense>
   )
 }

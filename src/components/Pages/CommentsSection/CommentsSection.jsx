@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { MainSection } from './MainSection/MainSection'; 
 import { History } from './History/History'; 
@@ -6,9 +6,12 @@ import { Crops } from './Crops/Crops';
 import { Comments } from './Comments/Comments';
 import { Statistics } from './Statistics/Statistics'; 
 import { ButtonPrimary } from '../../Shared/buttons/ButtonPrimary/ButtonPrimary';
+import { useTranslation } from 'react-i18next';
 
 // Componente principal que agrupa toda la vista de comentarios y detalles del agricultor
 export const CommentsSection = React.memo(() => {
+
+  const { t, i18next } = useTranslation(["CommentsSection"])
   
   const navigate = useNavigate(); // Inicializa la función de navegación
 
@@ -31,6 +34,7 @@ export const CommentsSection = React.memo(() => {
   }, [navigate]);
 
   return (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div 
       className="min-h-screen bg-gradient-to-br from-primary-fifth to-primary-fourth"
       style={backgroundStyles}
@@ -46,13 +50,13 @@ export const CommentsSection = React.memo(() => {
               onClick={goToRestaurantsView}
             >
               <span>←</span>
-              <span>Volver a Trazabilidad</span>
+              <span>{t("button.span")}</span>
             </ButtonPrimary>
           </div>
 
           {/* Frase inspiradora en el header */}
-          <div className="text-primary-fifth italic font-body">
-            "Conoce a quien cultiva tu comida"
+          <div className="text-primary-third italic font-body">
+            {t("div")}
           </div>
         </div>
       </div>
@@ -77,5 +81,6 @@ export const CommentsSection = React.memo(() => {
 
       </div>
     </div>
+    </Suspense>
   );
 });

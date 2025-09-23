@@ -171,12 +171,12 @@ export const LinkDetector = {
       hoverColor: 'hover:from-gray-500 hover:to-gray-700'
     };
 
-    return {
+    return {      
       platform,
       id,
       url,
       embedUrl: this.getEmbedUrl(platform, id, url),
-      title: `Contenido de ${config.name}`,
+      title: `${config.name}`,
       config,
       canEmbed: this.canEmbed(platform, url)
     };

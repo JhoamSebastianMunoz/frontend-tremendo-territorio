@@ -71,6 +71,33 @@
         },
         "button_comment": "Post Review",
         "button_close": "Cancel"
+        },
+        "SocialMediaPreview": {
+            "subtitle": "Content from",
+            "p": "Click to play",
+            "Loader": {
+                "p": "Loading content",
+                "p_2": "from"
+            },
+            "linkDetector":{
+                "title":"Content of"
+            },
+            "modal": {
+                "button": "Open original"
+            },
+            "video_content": {
+                "h3": "Oops! Cannot be displayed",
+                "p": "This content cannot be played directly, but you can open it on",
+                "button": "Open on",
+                "iframe": {
+                "title": "Content from"
+                }
+            },
+            "video_footer": {
+                "span": "Safe playback",
+                "span_close": "Press ESC to close",
+                "button_close": "Close"
+            }
         }
     },
     "Statistics": {

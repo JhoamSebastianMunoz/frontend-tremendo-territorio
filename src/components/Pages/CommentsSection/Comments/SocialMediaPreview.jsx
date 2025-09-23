@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef, Suspense } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 
 export const SocialMediaPreview = React.memo(({ link, onClose }) => {
+  const { t, i18n } = useTranslation(["CommentsSection"])
   const [isExpanded, setIsExpanded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [embedError, setEmbedError] = useState(false);
@@ -74,6 +76,7 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
   // Vista compacta minimalista y llamativa
   if (!isExpanded) {
     return (
+      <Suspense fallback={<p>Loading translate...</p>}>
       <div 
         className={`group relative overflow-hidden rounded-2xl bg-gradient-to-r ${platform.color} p-1 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 cursor-pointer ${platform.borderColor} border-2`}
         onMouseEnter={() => setIsHovered(true)}
@@ -93,10 +96,10 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
             {/* Información */}
             <div className="flex-1">
               <h4 className="font-bold text-gray-800 text-lg mb-1 group-hover:text-gray-900 transition-colors">
-                Contenido de {platform.name}
+                {t("Comments.SocialMediaPreview.subtitle")} {platform.name}
               </h4>
               <p className="text-gray-600 text-sm mb-2">
-                Haz clic para reproducir
+                {t("Comments.SocialMediaPreview.p")}
               </p>
               {/* Barra de progreso animada */}
               <div className="w-full bg-gray-200 rounded-full h-1 overflow-hidden">
@@ -117,11 +120,13 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
           </div>
         </div>
       </div>
+      </Suspense>
     );
   }
 
   // Modal expandido con diseño mejorado
   const modal = (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div
       className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50"
       onClick={handleOverlayClick}
@@ -135,8 +140,8 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
               <div className={`absolute inset-2 rounded-full bg-gradient-to-r ${platform.color} animate-spin border-4 border-transparent border-t-white`}></div>
             </div>
             <div className="text-center">
-              <p className="text-white font-semibold text-lg mb-1">Cargando contenido</p>
-              <p className="text-white/70 text-sm">de {platform.name}</p>
+              <p className="text-white font-semibold text-lg mb-1">{t("Comments.SocialMediaPreview.Loader.p")}</p>
+              <p className="text-white/70 text-sm">{t("Comments.SocialMediaPreview.Loader.p_2")} {platform.name}</p>
             </div>
           </div>
         </div>
@@ -157,7 +162,7 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
                 <span className="text-xl">{platform.icon}</span>
               </div>
               <div>
-                <h3 className="font-bold text-xl">{link.title}</h3>
+                <h3 className="font-bold text-xl">{t("Comments.SocialMediaPreview.linkDetector.title" )} {link.title}</h3>
                 <p className="text-white/80 text-sm">{platform.name}</p>
               </div>
             </div>
@@ -167,7 +172,7 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
                 onClick={handleOpenExternal}
                 className="px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-xl text-sm font-medium transition-colors duration-200"
               >
-                Abrir original
+                {t("Comments.SocialMediaPreview.modal.button")}
               </button>
               <button 
                 onClick={handleClose}
@@ -186,15 +191,15 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
               <div className={`w-24 h-24 bg-gradient-to-r ${platform.color} rounded-full flex items-center justify-center text-white mb-6 shadow-xl`}>
                 <span className="text-3xl">{platform.icon}</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">¡Ups! No se puede mostrar</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-800">{t("Comments.SocialMediaPreview.video_content.h3")}</h3>
               <p className="text-gray-600 text-center mb-6 max-w-md">
-                Este contenido no se puede reproducir directamente, pero puedes abrirlo en {platform.name}
+                {t("Comments.SocialMediaPreview.video_content.p")} {platform.name}
               </p>
               <button 
                 onClick={handleOpenExternal}
                 className={`px-8 py-3 bg-gradient-to-r ${platform.color} text-white rounded-xl font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200`}
               >
-                Abrir en {platform.name}
+                {t("Comments.SocialMediaPreview.video_content.button")} {platform.name}
               </button>
             </div>
           ) : (
@@ -207,7 +212,7 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               onLoad={handleIframeLoad}
               onError={handleIframeError}
-              title={`Contenido de ${platform.name}`}
+              title={`{t("Comments.SocialMediaPreview.video_content.iframe.title")} ${platform.name}`}
               sandbox="allow-scripts allow-same-origin allow-presentation allow-forms"
               style={{
                 border: 'none',
@@ -227,20 +232,21 @@ export const SocialMediaPreview = React.memo(({ link, onClose }) => {
           <div className="flex items-center space-x-3 text-sm text-gray-600">
             <span className="flex items-center space-x-1">
               <span>🔒</span>
-              <span>Reproducción segura</span>
+              <span>{t("Comments.SocialMediaPreview.video_footer.span")}</span>
             </span>
             <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-            <span>Presiona ESC para cerrar</span>
+            <span>{t("Comments.SocialMediaPreview.video_footer.span_close")}</span>
           </div>
           <button 
             onClick={handleClose}
             className="px-6 py-2 bg-gray-200 hover:bg-gray-300 rounded-xl text-gray-700 font-medium transition-colors duration-200"
           >
-            Cerrar
+            {t("Comments.SocialMediaPreview.video_footer.button_close")}
           </button>
         </div>
       </div>
     </div>
+    </Suspense>
   );
 
   return createPortal(modal, document.body);

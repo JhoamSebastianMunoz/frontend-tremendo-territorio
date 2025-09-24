@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { CheckCircle, Eye, EyeOff } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ButtonPrimary } from '../../Shared/buttons/ButtonPrimary/ButtonPrimary';
 import { useAuth } from '../../../contexts/Auth/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 export const LoginScreen = () => {
+  const {t, i18n } = useTranslation(["LoginScreen"])
   // Estados para manejar el flujo de autenticación
   const [pin, setPin] = useState(['', '', '', '']);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -182,6 +184,7 @@ export const LoginScreen = () => {
   const isFormComplete = selectedImage;
 
   return (
+    <Suspense fallback={<p>Loading translation</p>}>
     <div
       className="min-h-screen bg-gradient-to-b from-primary-first via-primary-second to-primary-third flex flex-col"
       style={{
@@ -199,8 +202,8 @@ export const LoginScreen = () => {
            
             {/* Encabezado de bienvenida */}
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2 font-title">¡Hola de nuevo!</h2>
-              <p className="text-xl text-primary-first font-semibold font-subtitle">Inicia Sesión</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2 font-title">{t("welcome_header.title")}</h2>
+              <p className="text-xl text-primary-first font-semibold font-subtitle">{t("welcome_header.subtitle")}</p>
             </div>
 
             {/* Mensaje de error */}
@@ -215,7 +218,7 @@ export const LoginScreen = () => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-lg font-semibold text-gray-700 mb-4 text-center font-subtitle">
-                    Ingresa tu PIN de 4 dígitos
+                    {t("PIN_entry.label")}
                   </label>
                  
                   {/* Inputs de PIN */}
@@ -247,7 +250,7 @@ export const LoginScreen = () => {
                     disabled={isLoading}
                   >
                     {showPin ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
-                    {showPin ? 'Ocultar PIN' : 'Mostrar PIN'}
+                    {showPin ? t("button.doNotShowPin") : t("button.showPin")}
                   </button>
                 </div>
 
@@ -266,10 +269,10 @@ export const LoginScreen = () => {
                     {isLoading ? (
                       <div className="flex items-center justify-center">
                         <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                        Verificando PIN...
+                        {t("continue_button.isLoading")}
                       </div>
                     ) : (
-                      'Continuar'
+                      t("continue_button.buttonPrimary")
                     )}
                   </ButtonPrimary>
                 </div>
@@ -282,16 +285,16 @@ export const LoginScreen = () => {
                     onClick={handleBackToPin}
                     className="text-primary-first hover:text-primary-second font-medium transition-colors font-body"
                   >
-                    ← Cambiar PIN
+                    ← {t("image_selection.buttonPrimary")}
                   </ButtonPrimary>
                   <p className="text-sm text-gray-600 mt-2 font-subtitle">
-                    PIN verificado correctamente
+                    {t("image_selection.p")}
                   </p>
                 </div>
 
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center font-subtitle">
-                    Selecciona tu imagen de seguridad
+                    {t("image_selection.h3")}
                   </h3>
 
                   {/* Grid de imágenes de seguridad */}
@@ -340,10 +343,10 @@ export const LoginScreen = () => {
                     {isLoading ? (
                       <div className="flex items-center justify-center">
                         <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                        Ingresando...
+                        {t("login_button.isLoading")}...
                       </div>
                     ) : (
-                      'Ingresar'
+                      t("login_button.buttonPrimary")
                     )}
                   </ButtonPrimary>
                 </div>
@@ -353,15 +356,15 @@ export const LoginScreen = () => {
             {/* Links adicionales */}
             <div className="mt-6 text-center space-y-3">
               <button className="text-primary-first hover:text-primary-second font-medium transition-colors font-body">
-                ¿Olvidaste tu PIN?
+                ¿{t("additional_links.button")}?
               </button>
               <div className="text-gray-500 font-body">
-                ¿No tienes cuenta?{' '}
+                ¿{t("additional_links.div")}?{' '}
                 <button
                   onClick={goToRegister}
                   className="text-primary-first hover:text-primary-second font-medium font-subtitle transition-colors"
                 >
-                  Crear una cuenta nueva
+                  {t("additional_links.button_2")}
                 </button>
               </div>
             </div>
@@ -369,5 +372,6 @@ export const LoginScreen = () => {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 };

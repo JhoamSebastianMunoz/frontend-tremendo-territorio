@@ -1,0 +1,31 @@
+{   
+    "welcome_header":{
+        "title":"¡Hola de nuevo!",
+        "subtitle":"Inicia Sesión"
+    },
+    "PIN_entry":{
+        "label":"Ingresa tu PIN de 4 dígitos"
+    },
+    "button":{
+    "doNotShowPin":"Ocultar PIN",
+    "showPin":"Mostrar PIN"
+    },
+    "continue_button":{
+        "isLoading":"Verificando PIN...",
+        "buttonPrimary":"Continuar"
+    },
+    "image_selection":{
+        "buttonPrimary":" Cambiar PIN",
+        "p":"PIN verificado correctamente",
+        "h3":"Selecciona tu imagen de seguridad"
+    },
+    "login_button":{
+        "isLoading":"Ingresando",
+        "buttonPrimary":"Ingresar"
+    },
+    "additional_links":{
+        "button":"Olvidaste tu PIN",
+        "div":"No tienes cuenta",
+        "button_2":"Crear una cuenta nueva"
+    }
+}

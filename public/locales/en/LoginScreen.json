@@ -1,0 +1,31 @@
+{   
+  "welcome_header": {
+    "title": "Welcome back!",
+    "subtitle": "Log In"
+  },
+  "PIN_entry": {
+    "label": "Enter your 4-digit PIN"
+  },
+  "button": {
+    "doNotShowPin": "Hide PIN",
+    "showPin": "Show PIN"
+  },
+  "continue_button": {
+    "isLoading": "Verifying PIN...",
+    "buttonPrimary": "Continue"
+  },
+  "image_selection": {
+    "buttonPrimary": "Change PIN",
+    "p": "PIN verified successfully",
+    "h3": "Select your security image"
+  },
+  "login_button": {
+    "isLoading": "Logging in",
+    "buttonPrimary": "Log In"
+  },
+  "additional_links": {
+    "button": "Forgot your PIN",
+    "div": "Don’t have an account",
+    "button_2": "Create a new account"
+  }
+}

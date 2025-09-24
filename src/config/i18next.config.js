@@ -10,7 +10,7 @@ i18n
     debug: false,
     
     // Configuración de namespaces
-    ns: ['Header','Footer', 'Home','ContactUs', 'CommentsSection'], 
+    ns: ['Header','Footer', 'Home','ContactUs', 'CommentsSection', 'LoginScreen'], 
     defaultNS: 'Header',
     
     

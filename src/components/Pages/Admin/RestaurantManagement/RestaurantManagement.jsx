@@ -1,10 +1,13 @@
-import React, { useContext, useState } from 'react'
-import { GetAdminContext } from '../../../../contexts/GetDataAdmin/GetDataAdmin'
-import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary'
-import { Contact } from 'lucide-react'
+import React, { useContext, useState, Suspense } from 'react';
+import { GetAdminContext } from '../../../../contexts/GetDataAdmin/GetDataAdmin';
+import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary';
+import { Contact } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 
 export const RestaurantManagement = () => {
+
+    const { t, i18n } = useTranslation(["Admin"])
     const {showNotification} = useContext(GetAdminContext)
     
     const [ searchTerm, setSearchTerm ] = useState('')
@@ -41,15 +44,15 @@ export const RestaurantManagement = () => {
     )
 
     return (
-    <>
+    <Suspense fallback={<p>Loading translation...</p>}>
         <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">🍽️ Lista de Restaurantes</h3>
+            <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">🍽️ {t("RestaurantManagement.subtitle")}</h3>
             <div className='mb-4' >
                 <input
                     type="text" 
                     value={searchTerm}
                     onChange={(e) =>  setSearchTerm(e.target.value)}
-                    placeholder='🔍 Buscar por nombre del restaurante'
+                    placeholder={t("RestaurantManagement.filtered_input.placeholder")}
                     className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-second font-body"
                     />
             </div>
@@ -59,19 +62,19 @@ export const RestaurantManagement = () => {
             <ButtonSecondary
                 onClick={() => showNotification('Función para agregar restaurante')}
             >
-                ➕ Agregar Restaurante
+                ➕ {t("RestaurantManagement.add_button")}
             </ButtonSecondary>
             </div>
             <div className="overflow-x-auto">
                 <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
                 <thead>
                     <tr className='bg-primary-first'>
-                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Nombre</th>
-                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Ubicación</th>
-                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Contacto</th>
-                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Productos Requeridos</th>
-                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Estado</th>
-                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Acciones</th>
+                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("RestaurantManagement.section_table.name_th")}</th>
+                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("RestaurantManagement.section_table.location_th")}</th>
+                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("RestaurantManagement.section_table.contact_th")}</th>
+                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("RestaurantManagement.section_table.required_products_th")}</th>
+                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("RestaurantManagement.section_table.state_th")}</th>
+                        <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("RestaurantManagement.section_table.action_th")}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,15 +88,15 @@ export const RestaurantManagement = () => {
                             <span className="px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800 font-body">{restaurant.state}</span>
                         </td>
                         <td className="px-6 py-4 border-b border-gray-200">
-                            <button className="mr-2 bg-primary-first text-white px-4 py-2 rounded-lg font-body hover:opacity-80">{restaurant.action}</button>
-                            <button className="bg-red-600 text-white px-4 py-2 rounded-lg font-body hover:opacity-80">Suspender</button>
+                            <button className="mr-2 bg-primary-first text-white px-4 py-2 rounded-lg font-body hover:opacity-80">{t("RestaurantManagement.edit_button")}</button>
+                            <button className="bg-red-600 text-white px-4 py-2 rounded-lg font-body hover:opacity-80">{t("RestaurantManagement.suspend_button")}</button>
                         </td>
                     </tr>                  
                 ))}
                 {filteredRestaurants.length === 0 && (
                     <tr>
                         <td colSpan="6" className="text-center py-6 text-gray-500 font-body">
-                            No se encontraron restaurantes con ese nombre.
+                            {t("RestaurantManagement.td")}
                         </td>
                     </tr>
                 )}
@@ -101,6 +104,6 @@ export const RestaurantManagement = () => {
                 </table>
             </div>
         </div>
-    </>
+    </Suspense>
     )
 }

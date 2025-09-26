@@ -1,14 +1,17 @@
-import React, {  useContext } from 'react';
+import React, {  useContext, Suspense } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { GetAdminContext } from  '../../../contexts/GetDataAdmin/GetDataAdmin'
-import { RestaurantManagement } from './RestaurantManagement/RestaurantManagement'
-import { FarmerManagement } from './FarmerManagement/FarmerManagement'
-import { ConnectionsReport } from './ConnectionsReport/ConnectionsReport'
+import { GetAdminContext } from  '../../../contexts/GetDataAdmin/GetDataAdmin';
+import { RestaurantManagement } from './RestaurantManagement/RestaurantManagement';
+import { FarmerManagement } from './FarmerManagement/FarmerManagement';
+import { ConnectionsReport } from './ConnectionsReport/ConnectionsReport';
+import { useTranslation } from 'react-i18next'; 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Admin = () => {
+
+  const { t, i18n } = useTranslation(["Admin"])
   const { activeTab,
             data, 
             showTab,
@@ -16,6 +19,7 @@ export const Admin = () => {
             chartOptions } = useContext(GetAdminContext)
 
   return (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div className="min-h-screen"     style={{
                 backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905827/Texturas-01_at6bal.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
                 backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
@@ -30,17 +34,17 @@ export const Admin = () => {
             Tremendo Territorio
           </h1>
           <p className="text-gray-600 text-xl font-body">
-            Panel Administrativo - Conectando campesinos con restaurantes locales
+            {t("subtitle")}
           </p>
         </div>
 
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-3 mb-8">
           {[
-            { id: 'dashboard', label: '📊 Informe' },
-            { id: 'restaurantes', label: '🍽️ Restaurantes' },
-            { id: 'agricultores', label: '👨‍🌾 Agricultores' },
-            { id: 'reportes', label: '📈 Reportes' }
+            { id: 'dashboard', label: t("navigation_tabs.dashboard_label") },
+            { id: 'restaurantes', label: t("navigation_tabs.restaurant_label") },
+            { id: 'agricultores', label: t("navigation_tabs.farm_label") },
+            { id: 'reportes', label: t("navigation_tabs.report_label") }
           ].map(tab => (
             <button
               key={tab.id}
@@ -62,10 +66,10 @@ export const Admin = () => {
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { number: data.restaurantes, label: 'Restaurantes Registrados' },
-                { number: data.agricultores, label: 'Agricultores Activos' },
-                { number: data.platos, label: 'Platos con Trazabilidad' },
-                { number: data.productos, label: 'Productos Disponibles' }
+                { number: data.restaurantes, label: t("Dashboard.KPI_cards.restaurant_label") },
+                { number: data.agricultores, label: t("Dashboard.KPI_cards.farm_label") },
+                { number: data.platos, label: t("Dashboard.KPI_cards.food_plates_label")  },
+                { number: data.productos, label: t("Dashboard.KPI_cards.available_products_label")  }
               ].map((kpi, index) => (
                 <div key={index} className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-first to-primary-second"></div>
@@ -82,32 +86,32 @@ export const Admin = () => {
             {/* Charts and Map */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 Productos Más Solicitados</h3>
+                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 {t("Dashboard.charts_and_map.subtitle_chart")}</h3>
                 <div className="h-80">
                   <Doughnut data={chartData} options={chartOptions} />
                 </div>
               </div>
 
               <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">🗺️ Mapa de Zonas Activas</h3>
+                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">🗺️ {t("Dashboard.charts_and_map.subtitle_map")}</h3>
                 <div className="h-auto  rounded-2xl flex items-center justify-center">
-                  <img src="https://res.cloudinary.com/dppf30duk/image/upload/v1753919506/mapa-colombia_ivkhxi.jpg" alt="Mapa de Colombia" />
+                  <img src="https://res.cloudinary.com/dppf30duk/image/upload/v1753919506/mapa-colombia_ivkhxi.jpg" alt={t("Dashboard.charts_and_map.img_map.alt")}/>
                 </div>
               </div>
             </div>
 
             {/* Transactions Table */}
             <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">🔄 Últimas Conexiones</h3>
+              <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">🔄 {t("Dashboard.transactions_table.subtitle")}</h3>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
                   <thead>
                     <tr className='bg-primary-first'>
-                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Fecha</th>
-                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Restaurante</th>
-                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Agricultor</th>
-                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Producto</th>
-                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Estado</th>
+                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("Dashboard.transactions_table.date_th")}</th>
+                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("Dashboard.transactions_table.restaurant_th")}</th>
+                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("Dashboard.transactions_table.farm_th")}</th>
+                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("Dashboard.transactions_table.product_th")}</th>
+                      <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("Dashboard.transactions_table.state_th")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -146,5 +150,6 @@ export const Admin = () => {
         )}
       </div>
     </div>
+    </Suspense>
   );
 };

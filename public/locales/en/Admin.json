@@ -1,0 +1,97 @@
+{
+    "subtitle":"Admin Panel - Connecting farmers with local restaurants",
+    "navigation_tabs":{
+        "dashboard_label":"📊 Report",
+        "restaurant_label":"🍽️ Restaurants",
+        "farm_label":"👨‍🌾 Farmers",
+        "report_label":"📈 Reports"
+    },
+    "Dashboard":{
+        "KPI_cards":{
+            "restaurant_label":"Registered Restaurants",
+            "farm_label":"Active Farmers",
+            "food_plates_label":"Dishes with Traceability",
+            "available_products_label":"Available Products"
+        },
+        "charts_and_map":{
+            "subtitle_chart": "Most Requested Products",
+            "subtitle_map":"Active Zones Map",
+            "img_map":{
+                "alt":"Map of Colombia"
+            }
+        },
+        "transactions_table":{
+            "subtitle":"Latest Connections",
+            "date_th":"Date",
+            "restaurant_th":"Restaurant",
+            "farm_th":"Farmer",
+            "product_th":"Product",
+            "state_th":"Status"
+        }
+    },
+    "RestaurantManagement":{
+        "subtitle":"Restaurant List",
+        "filtered_input":{
+            "placeholder":"🔍 Search by restaurant name..."
+        },
+        "add_button":"Add Restaurant",
+        "section_table":{
+            "name_th":"Name",
+            "location_th":"Location",
+            "contact_th":"Contact",
+            "required_products_th":"Required Products",
+            "state_th":"Status",
+            "action_th":"Actions"
+        },
+        "edit_button":"Edit",
+        "suspend_button":"Suspend",
+        "td":"No restaurants found with that name."
+    },
+    "FarmerManagement":{
+        "subtitle":"Farmer List",
+        "filtered_input":{
+            "placeholder":"🔍 Search by farmer name..."
+        },
+        "add_button":"Add Farmer",
+        "section_table":{
+            "name_th":"Name",
+            "location_th":"Location",
+            "product_you_grow_th":"Products Grown",
+            "available_amount_th":"Available Quantity",
+            "verification_th":"Verification",
+            "action_th":"Actions"
+        },
+        "filteredFarmers":{
+            "span":{
+                "verified":"Verified",
+                "not_verified":"Pending"
+            }
+        },
+        "edit_button":"Edit",
+        "see_profile_button":"View Profile",
+        "td":"No farmers found with that name."
+    },
+    "ConnectionsReport":{
+        "subtitle":"Report Generation",
+        "type_report":{
+            "label":"Report Type",
+            "option":"Connections Report"
+        },
+        "period":{
+            "label":"Period",
+            "option_1":"Last Week",
+            "option_2":"Last Month",
+            "option_3":"Last Quarter",
+            "option_4":"Last Year"
+        },
+        "filter_by_area":{
+            "label":"Filter by Area",
+            "option_1":"All areas"
+        },
+        "PDF_button":"Generate PDF",
+        "Excel_button":"Generate Excel",
+        "subtitle_2":"Harvests vs Demands Calendar",
+        "p":"Interactive Calendar View",
+        "small":"Shows scheduled harvests vs restaurant demands"
+    }
+}

@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, Suspense } from 'react';
 import { GetAdminContext } from '../../../../contexts/GetDataAdmin/GetDataAdmin';
 import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary';
+import { useTranslation } from 'react-i18next';
 
 export const FarmerManagement = () => {
+    const {t , i18n } = useTranslation(["Admin"])
     const { showNotification } = useContext(GetAdminContext);
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -36,9 +38,10 @@ export const FarmerManagement = () => {
     );
 
     return (
+        <Suspense fallback={<p>Loading translation...</p>} >
         <div>
             <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl">
-                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">👨‍🌾 Lista de Agricultores</h3>
+                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">👨‍🌾 {t("FarmerManagement.subtitle")}</h3>
 
                 {/* Campo de Búsqueda */}
                 <div className="mb-4">
@@ -46,7 +49,7 @@ export const FarmerManagement = () => {
                         type="text"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        placeholder="🔍 Buscar por nombre del agricultor..."
+                        placeholder={t("FarmerManagement.filtered_input.placeholder")}
                         className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-second font-body"
                     />
                 </div>
@@ -57,7 +60,7 @@ export const FarmerManagement = () => {
                     onClick={() => showNotification('Función para agregar campesino')}
                     className="mb-6 bg-gradient-to-r from-primary-first to-primary-second text-white py-3 px-6 rounded-xl font-semibold hover:transform hover:-translate-y-1 transition-all duration-300 shadow-lg font-body"
                 >
-                    ➕ Agregar Agricultor
+                    ➕ {t("FarmerManagement.add_button")}
                 </ButtonSecondary>
                 </div>
 
@@ -66,12 +69,12 @@ export const FarmerManagement = () => {
                     <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
                         <thead>
                             <tr className='bg-primary-first'>
-                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Nombre</th>
-                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Ubicación</th>
-                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Productos que Cultiva</th>
-                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Cantidad Disponible</th>
-                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Verificación</th>
-                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">Acciones</th>
+                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("FarmerManagement.section_table.name_th")}</th>
+                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("FarmerManagement.section_table.location_th")}</th>
+                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("FarmerManagement.section_table.product_you_grow_th")}</th>
+                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("FarmerManagement.section_table.available_amount_th")}</th>
+                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("FarmerManagement.section_table.verification_th")}</th>
+                                <th className="px-6 py-4 text-left text-white font-semibold font-subtitle">{t("FarmerManagement.section_table.action_th")}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,12 +90,12 @@ export const FarmerManagement = () => {
                                                 ? 'bg-green-100 text-green-800'
                                                 : 'bg-red-100 text-red-800'
                                         }`}>
-                                            {farmer.verification ? 'Verificado' : 'Pendiente'}
+                                            {farmer.verification ? t("FarmerManagement.filteredFarmers.span.verified") : t("FarmerManagement.filteredFarmers.span.not_verified")}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4 border-b border-gray-200">
-                                        <button className="mr-2 bg-primary-first text-white px-4 py-2 rounded-lg font-body hover:opacity-80">Ver Perfil</button>
-                                        <button className="bg-primary-second text-white px-4 py-2 rounded-lg font-body hover:opacity-80">Editar</button>
+                                        <button className="mr-2 bg-primary-first text-white px-4 py-2 rounded-lg font-body hover:opacity-80">{t("FarmerManagement.see_profile_button")}</button>
+                                        <button className="bg-primary-second text-white px-4 py-2 rounded-lg font-body hover:opacity-80">{t("FarmerManagement.edit_button")}</button>
                                     </td>
                                 </tr>
                             ))}
@@ -100,7 +103,7 @@ export const FarmerManagement = () => {
                             {filteredFarmers.length === 0 && (
                                 <tr>
                                     <td colSpan="6" className="text-center py-6 text-gray-500 font-body">
-                                        No se encontraron agricultores con ese nombre.
+                                        {t("FarmerManagement.td")}
                                     </td>
                                 </tr>
                             )}
@@ -109,5 +112,6 @@ export const FarmerManagement = () => {
                 </div>
             </div>
         </div>
+        </Suspense>
     );
 };

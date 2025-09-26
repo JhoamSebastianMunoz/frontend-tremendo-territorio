@@ -1,0 +1,97 @@
+{
+    "subtitle":"Panel Administrativo - Conectando campesinos con restaurantes locales",
+    "navigation_tabs":{
+        "dashboard_label":"📊 Informe",
+        "restaurant_label":"🍽️ Restaurantes",
+        "farm_label":"👨‍🌾 Agricultores",
+        "report_label":"📈 Reportes"
+    },
+    "Dashboard":{
+        "KPI_cards":{
+            "restaurant_label":"Restaurantes Registrados",
+            "farm_label":"Agricultores Activos",
+            "food_plates_label":"Platos con Trazabilidad",
+            "available_products_label":"Productos Disponibles"
+        },
+        "charts_and_map":{
+            "subtitle_chart": "Productos Más Solicitados",
+            "subtitle_map":"Mapa de Zonas Activas",
+            "img_map":{
+                "alt":"Mapa de Colombia"
+            }
+        },
+        "transactions_table":{
+            "subtitle":"Últimas Conexiones",
+            "date_th":"Fecha",
+            "restaurant_th":"Restaurante",
+            "farm_th":"Agricultor",
+            "product_th":"Producto",
+            "state_th":"Estado"
+        }
+    },
+    "RestaurantManagement":{
+        "subtitle":"Lista de Restaurantes",
+        "filtered_input":{
+            "placeholder":"🔍 Buscar por nombre del restaurante..."
+        },
+        "add_button":"Agregar Restaurante",
+        "section_table":{
+            "name_th":"Nombre",
+            "location_th":"Ubicación",
+            "contact_th":"Contacto",
+            "required_products_th":"Productos Requeridos",
+            "state_th":"Estado",
+            "action_th":"Acciones"
+        },
+        "edit_button":"Editar",
+        "suspend_button":"Suspender",
+        "td":"No se encontraron restaurantes con ese nombre."
+    },
+    "FarmerManagement":{
+        "subtitle":"Lista de Agricultores",
+        "filtered_input":{
+            "placeholder":"🔍 Buscar por nombre del agricultor..."
+        },
+        "add_button":"Agregar Agricultor",
+        "section_table":{
+            "name_th":"Nombre",
+            "location_th":"Ubicación",
+            "product_you_grow_th":"Productos que Cultiva",
+            "available_amount_th":"Cantidad Disponible",
+            "verification_th":"Verificación",
+            "action_th":"Acciones"
+        },
+        "filteredFarmers":{
+            "span":{
+                "verified":"Verificado",
+                "not_verified":"Pendiente"
+            }
+        },
+        "edit_button":"Editar",
+        "see_profile_button":"Ver Perfil",
+        "td":"No se encontraron agricultores con ese nombre."
+    },
+    "ConnectionsReport":{
+        "subtitle":"Generación de Reportes",
+        "type_report":{
+            "label":"Tipo de Reporte",
+            "option":"Reporte de Conexiones"
+        },
+        "period":{
+            "label":"Período",
+            "option_1":"Última Semana",
+            "option_2":"Último Mes",
+            "option_3":"Último Trimestre",
+            "option_4":"Último Año"
+        },
+        "filter_by_area":{
+            "label":"Filtrar por Zona",
+            "option_1":"Todas las zonas"
+        },
+        "PDF_button":"Generar PDF",
+        "Excel_button":"Generar Excel",
+        "subtitle_2":"Calendario de Cosechas vs Demandas",
+        "p":"Vista de Calendario Interactivo",
+        "small":"Muestra cosechas programadas vs demandas de restaurantes"
+    }
+}

@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, Suspense } from 'react';
 import { GetContext } from '../../../../contexts/UsersInformation/UsersInformation';
 import { ImageCarousel } from '../../../Shared/ImageCarousel/ImageCarousel';
 import { ButtonPrimary } from '../../../Shared/buttons/ButtonPrimary/ButtonPrimary';
 import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonSecondary';
+import { useTranslation } from 'react-i18next';
 
 export const FarmProfileForm = () => {
+    const { t, i18n } = useTranslation(["FarmsView"])
     // Extraer valores del contexto con destructuring organizado
     const {
         // Estados principales
@@ -38,21 +40,22 @@ export const FarmProfileForm = () => {
 
     // Configuración de pestañas para el formulario de finca
     const tabs = [
-        { id: 'personal', label: 'Datos Personales', icon: '👦🏾' },
-        { id: 'farm', label: 'Finca', icon: '🏡' },
-        { id: 'images', label: 'Imágenes', icon: '📸' }
+        { id: 'personal', label: t("FarmProfileForm.tabs.label_1"), icon: '👦🏾' },
+        { id: 'farm', label: t("FarmProfileForm.tabs.label_2"), icon: '🏡' },
+        { id: 'images', label: t("FarmProfileForm.tabs.label_3"), icon: '📸' }
     ];
 
     return (
+        <Suspense fallback={<p>Loading translation...</p>}>
         <div className="bg-primary-fifth">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header del formulario */}
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-subtitle font-bold text-primary-first mb-2">
-                        Actualizar Perfil
+                        {t("FarmProfileForm.subtitle")}
                     </h1>
                     <p className="text-gray-600 text-lg font-body">
-                        Mantén actualizada la información de tu finca
+                        {t("FarmProfileForm.p")}
                     </p>
                 </div>
 
@@ -80,21 +83,21 @@ export const FarmProfileForm = () => {
                         <div className="bg-white rounded-3xl p-8 shadow-xl">
                             <h2 className="text-2xl font-bold text-primary-first mb-6 flex items-center">
                                 <span className="mr-3 font-subtitle">👦🏾</span>
-                                Información Personal
+                                {t("FarmProfileForm.personal_data.subtitle")}
                             </h2>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Campo: Nombre */}
                                 <div>
                                     <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                        Nombre *
+                                        {t("FarmProfileForm.personal_data.div_1.label")} *
                                     </label>
                                     <input
                                         type="text"
                                         value={personalData.firstName}
                                         onChange={(e) => handlePersonalDataChange('firstName', e.target.value)}
                                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                        placeholder="Tu nombre"
+                                        placeholder={t("FarmProfileForm.personal_data.div_1.placeholder")}
                                         required
                                     />
                                 </div>
@@ -102,14 +105,14 @@ export const FarmProfileForm = () => {
                                 {/* Campo: Apellido */}
                                 <div>
                                     <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                        Apellido *
+                                        {t("FarmProfileForm.personal_data.div_2.label")} *
                                     </label>
                                     <input
                                         type="text"
                                         value={personalData.lastName}
                                         onChange={(e) => handlePersonalDataChange('lastName', e.target.value)}
                                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                        placeholder="Tu apellido"
+                                        placeholder={t("FarmProfileForm.personal_data.div_2.placeholder")}
                                         required
                                     />
                                 </div>
@@ -117,14 +120,14 @@ export const FarmProfileForm = () => {
                                 {/* Campo: Cédula */}
                                 <div>
                                     <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                        Cédula *
+                                        {t("FarmProfileForm.personal_data.div_3.label")} *
                                     </label>
                                     <input
                                         type="text"
                                         value={personalData.idNumber}
                                         onChange={(e) => handlePersonalDataChange('idNumber', e.target.value)}
                                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                        placeholder="12345678"
+                                        placeholder={t("FarmProfileForm.personal_data.div_3.placeholder")}
                                         required
                                     />
                                 </div>
@@ -132,28 +135,28 @@ export const FarmProfileForm = () => {
                                 {/* Campo: Email */}
                                 <div>
                                     <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                        Correo Electrónico (opcional)
+                                        {t("FarmProfileForm.personal_data.div_4.label")}
                                     </label>
                                     <input
                                         type="email"
                                         value={personalData.email}
                                         onChange={(e) => handlePersonalDataChange('email', e.target.value)}
                                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                        placeholder="tu@email.com"
+                                        placeholder={t("FarmProfileForm.personal_data.div_4.placeholder")}
                                     />
                                 </div>
 
                                 {/* Campo: Teléfono */}
                                 <div>
                                     <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                        Teléfono *
+                                        {t("FarmProfileForm.personal_data.div_5.label")} *
                                     </label>
                                     <input
                                         type="tel"
                                         value={personalData.phone}
                                         onChange={(e) => handlePersonalDataChange('phone', e.target.value)}
                                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                        placeholder="+57 300 123 4567"
+                                        placeholder={t("FarmProfileForm.personal_data.div_5.placeholder")}
                                         required
                                     />
                                 </div>
@@ -166,7 +169,7 @@ export const FarmProfileForm = () => {
                         <div className="bg-white rounded-3xl p-8 shadow-xl">
                             <h2 className="text-2xl font-bold font-subtitle text-primary-first mb-6 flex items-center">
                                 <span className="mr-3">🏡</span>
-                                Información de la Finca
+                                {t("FarmProfileForm.farm_data.subtitle")}
                             </h2>
 
                             <div className="space-y-6">
@@ -175,14 +178,14 @@ export const FarmProfileForm = () => {
                                     {/* Campo: Nombre de la finca */}
                                     <div className="md:col-span-2">
                                         <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                            Nombre de la Finca *
+                                            {t("FarmProfileForm.farm_data.div_1.label")} *
                                         </label>
                                         <input
                                             type="text"
                                             value={farmData.farmName}
                                             onChange={(e) => handleFarmDataChange('farmName', e.target.value)}
                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                            placeholder="Nombre de tu finca"
+                                            placeholder={t("FarmProfileForm.farm_data.div_1.placeholder")}
                                             required
                                         />
                                     </div>
@@ -190,28 +193,28 @@ export const FarmProfileForm = () => {
                                     {/* Campo: Descripción */}
                                     <div className="md:col-span-2">
                                         <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                            Descripción
+                                            {t("FarmProfileForm.farm_data.div_2.label")}
                                         </label>
                                         <textarea
                                             value={farmData.description}
                                             onChange={(e) => handleFarmDataChange('description', e.target.value)}
                                             rows={4}
                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 resize-none"
-                                            placeholder="Describe tu finca, especialidades, tipo de cultivos..."
+                                            placeholder={t("FarmProfileForm.farm_data.div_2.placeholder")}
                                         />
                                     </div>
 
                                     {/* Campo: Ubicación */}
                                     <div className="md:col-span-2">
                                         <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                            Ubicación *
+                                            {t("FarmProfileForm.farm_data.div_3.label")} *
                                         </label>
                                         <input
                                             type="text"
                                             value={farmData.location}
                                             onChange={(e) => handleFarmDataChange('location', e.target.value)}
                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                            placeholder="Dirección completa de la finca"
+                                            placeholder={t("FarmProfileForm.farm_data.div_3.placeholder")}
                                             required
                                         />
                                     </div>
@@ -220,7 +223,7 @@ export const FarmProfileForm = () => {
                                 {/* SUBSECCIÓN: Productos ofrecidos dinámicos */}
                                 <div className="md:col-span-2">
                                     <h3 className="text-xl font-semibold font-subtitle text-gray-800 mb-4 flex items-center">
-                                        Productos de la Finca
+                                        {t("FarmProfileForm.farm_data.subtitle_2")}
                                     </h3>
 
                                     <div className="space-y-4">
@@ -229,14 +232,14 @@ export const FarmProfileForm = () => {
                                                 {/* Header del producto con opción de eliminar */}
                                                 <div className="flex justify-between items-center mb-4">
                                                     <h4 className="text-lg font-medium font-subtitle text-gray-700">
-                                                        Producto {index + 1}
+                                                        {t("FarmProfileForm.farm_data.subtitle_3")} {index + 1}
                                                     </h4>
                                                     {farmData.offers.length > 1 && (
                                                         <button
                                                             type="button"
                                                             onClick={() => removeFarmProduct(product.id)}
                                                             className="font-body text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all duration-200"
-                                                            title="Eliminar producto"
+                                                            title={t("FarmProfileForm.farm_data.delete_button.title")}
                                                         >
                                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -250,42 +253,42 @@ export const FarmProfileForm = () => {
                                                     {/* Nombre del producto */}
                                                     <div>
                                                         <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                                            Producto que ofrece *
+                                                            {t("FarmProfileForm.farm_data.product_fields.div_1.label")} *
                                                         </label>
                                                         <input
                                                             type="text"
                                                             value={product.productName}
                                                             onChange={(e) => handleFarmProductChange(product.id, 'productName', e.target.value)}
                                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                                            placeholder="ej: Yuca, Tomate, Maíz..."
+                                                            placeholder={t("FarmProfileForm.farm_data.product_fields.div_1.placeholder")}
                                                         />
                                                     </div>
 
                                                     {/* Unidad de medida */}
                                                     <div>
                                                         <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                                            Unidad de medida *
+                                                            {t("FarmProfileForm.farm_data.product_fields.div_2.label")} *
                                                         </label>
                                                         <input
                                                             type="text"
                                                             value={product.unitOfMeasurement}
                                                             onChange={(e) => handleFarmProductChange(product.id, 'unitOfMeasurement', e.target.value)}
                                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                                            placeholder="ej: kg, g, lb, ton..."
+                                                            placeholder={t("FarmProfileForm.farm_data.product_fields.div_2.placeholder")}
                                                         />
                                                     </div>
 
                                                     {/* Capacidad de producción */}
                                                     <div>
                                                         <label className="block text-gray-700 font-medium font-subtitle mb-2">
-                                                            Capacidad de producción *
+                                                            {t("FarmProfileForm.farm_data.product_fields.div_3.label")} *
                                                         </label>
                                                         <input
                                                             type="number"
                                                             value={product.productionCapacity}
                                                             onChange={(e) => handleFarmProductChange(product.id, 'productionCapacity', e.target.value)}
                                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300"
-                                                            placeholder="ej: 100"
+                                                            placeholder={t("FarmProfileForm.farm_data.product_fields.div_3.placeholder")}
                                                             min="0"
                                                         />
                                                     </div>
@@ -300,7 +303,7 @@ export const FarmProfileForm = () => {
                                             type="button"
                                             onClick={addNewFarmProduct}
                                         >
-                                            ➕ Agregar otro producto
+                                            ➕ {t("FarmProfileForm.farm_data.add_button")}
                                         </ButtonSecondary>
                                     </div>
                                 </div>
@@ -313,13 +316,13 @@ export const FarmProfileForm = () => {
                         <div className="bg-white rounded-3xl p-8 shadow-xl">
                             <h2 className="text-2xl font-bold text-primary-first mb-6 flex items-center">
                                 <span className="mr-3">📸</span>
-                                Imágenes de la Finca o Área de Cosecha
+                                {t("FarmProfileForm.images_farms.subtitle")}
                             </h2>
 
                             {/* Vista previa del carrusel si hay imágenes */}
                             {images.length > 0 && (
                                 <div className="mb-8">
-                                    <h3 className="text-lg font-medium text-gray-700 mb-4">Vista Previa</h3>
+                                    <h3 className="text-lg font-medium text-gray-700 mb-4">{t("FarmProfileForm.images_farms.ImageCarousel")}</h3>
                                     <ImageCarousel images={images} />
                                 </div>
                             )}
@@ -344,11 +347,11 @@ export const FarmProfileForm = () => {
                                                 onClick={() => fileInputRef.current?.click()}
                                                 disabled={uploading}
                                             >
-                                                {uploading ? 'Subiendo...' : 'Seleccionar Imágenes'}
+                                                {uploading ? t("FarmProfileForm.images_farms.selected_image_button.uploading") : t("FarmProfileForm.images_farms.selected_image_button.not_uploading")}
                                             </ButtonSecondary>
                                         </div>
                                         <p className="text-gray-500 text-sm">
-                                            Selecciona múltiples imágenes de tu finca
+                                            {t("FarmProfileForm.images_farms.p")}
                                         </p>
                                     </div>
                                 </div>
@@ -357,7 +360,7 @@ export const FarmProfileForm = () => {
                                 {images.length > 0 && (
                                     <div>
                                         <h3 className="text-lg font-medium text-gray-700 mb-4">
-                                            Imágenes Cargadas ({images.length})
+                                            {t("FarmProfileForm.images_farms.uploaded_images")} ({images.length})
                                         </h3>
                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                             {images.map((image, index) => (
@@ -395,15 +398,16 @@ export const FarmProfileForm = () => {
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
-                                    Actualizando Perfil...
+                                    {t("FarmProfileForm.images_farms.form_submission.isSubmitting")}
                                 </span>
                             ) : (
-                                '📩 Actualizar Perfil'
+                                `📩 ${t("FarmProfileForm.images_farms.form_submission.not_isSubmitting")}`
                             )}
                         </button>
                     </div>
                 </form>
             </div>
         </div>
+        </Suspense>
     );
 };

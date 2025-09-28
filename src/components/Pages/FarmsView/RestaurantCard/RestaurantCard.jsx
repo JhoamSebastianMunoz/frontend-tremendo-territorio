@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { ImageCarousel } from '../../../Shared/ImageCarousel/ImageCarousel';
 import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
 import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
+import { useTranslation } from 'react-i18next';
 
 // Componente auxiliar para resaltar texto que coincida con una búsqueda
 const HighlightText = ({ text, highlight }) => {
@@ -69,6 +70,7 @@ export const RestaurantCard = ({
         return titles[category] || category.charAt(0).toUpperCase() + category.slice(1);
     };
 
+    const { t, i18n } = useTranslation(["FarmsView"])
     // Prepara el array de imágenes a mostrar en el carrusel
     const carouselImages = images.length > 0
         ? images
@@ -83,6 +85,7 @@ export const RestaurantCard = ({
 
     // Estructura de la tarjeta visual
     return (
+        <Suspense fallback={<p>Loading translation...</p>}>
         <div className="bg-white rounded-2xl shadow-lg border-2 border-primary-fifth hover:border-primary-first transition-all duration-300 overflow-hidden group hover:shadow-xl transform hover:-translate-y-2">
 
             {/* Carrusel de imágenes */}
@@ -128,7 +131,7 @@ export const RestaurantCard = ({
                 {/* Lista de productos requeridos */}
                 <div className="mb-6">
                     <h4 className="text-primary-first font-semibold mb-3 font-subtitle">
-                        Requerimos:
+                        {t("RestaurantCard.List_of_required_products")}
                     </h4>
 
                     <div className="space-y-3">
@@ -165,7 +168,7 @@ export const RestaurantCard = ({
                 <div className="flex flex-col gap-2">
                     <ButtonWhatsApp 
                     nameClient={nameRestaurant} 
-                    userMessage='¡Hola! Soy productor agrícola y me interesa conocer más sobre los productos que necesitan en' 
+                    userMessage={t("RestaurantCard.ButtonWhatsApp.userMessage")} 
                     phone={phone}/>
                     
                     <ButtonCall className='w-full bg-primary-first font-body hover:bg-primary-third text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-4 transform hover:scale-105'
@@ -173,5 +176,6 @@ export const RestaurantCard = ({
                 </div>
             </div>
         </div>
+        </Suspense>
     );
 };

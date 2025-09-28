@@ -1,0 +1,140 @@
+{
+    "tab_navigation":{
+        "div":{
+            "label_1":"User Data",
+            "label_2":"Statistics",
+            "label_3":"Restaurant Requirements"
+        }
+    },
+    "FarmProfileForm":{
+        "tabs":{
+            "label_1":"Personal Data",
+            "label_2":"Farm",
+            "label_3":"Images"
+        },
+        "subtitle":"Update Profile",
+        "p":"Keep your farm information up to date",
+        "personal_data":{
+            "subtitle":"Personal Information",
+            "div_1":{
+                "label":"First Name",
+                "placeholder":"Your first name"
+            },
+            "div_2":{
+                "label":"Last Name",
+                "placeholder":"Your last name"
+            },
+            "div_3":{
+                "label":"ID",
+                "placeholder":"12345678"
+            },
+            "div_4":{
+                "label":"Email (optional)",
+                "placeholder":"your@email.com"
+            },
+            "div_5":{
+                "label":"Phone",
+                "placeholder":"+57 300 123 4567"
+            }
+        },
+        "farm_data":{
+            "subtitle":"Farm Information",
+            "div_1":{
+                "label":"Farm Name",
+                "placeholder":"Your farm name"
+            },
+            "div_2":{
+                "label":"Description",
+                "placeholder":"Describe your farm, specialties, types of crops..."
+            },
+            "div_3":{
+                "label":"Location",
+                "placeholder":"Full farm address"
+            },
+            "subtitle_2":"Farm Products",
+            "subtitle_3":"Product",
+            "delete_button":{
+                "title":"Delete product"
+            },
+            "product_fields":{
+                "div_1":{
+                    "label":"Product offered",
+                    "placeholder":"e.g.: Cassava, Tomato, Corn..."
+                },
+                "div_2":{
+                    "label":"Unit of measurement",
+                    "placeholder":"e.g.: kg, g, lb, ton..."
+                },
+                "div_3":{
+                    "label":"Production capacity",
+                    "placeholder":"e.g.: 100"
+                }
+            },
+            "add_button":"Add another product"
+        },
+        "images_farms":{
+            "subtitle":"Farm or Harvest Area Images",
+            "ImageCarousel":"Preview",
+            "selected_image_button":{
+                "uploading":"Uploading...",
+                "not_uploading":"Select Images"
+            },
+            "p":"Select multiple images of your farm",
+            "uploaded_images":"Uploaded Images",
+            "form_submission":{
+                "isSubmitting":"Updating Profile...",
+                "not_isSubmitting":"Update Profile"
+            }
+        }
+    },
+    "statistics_section":{
+        "KPI_cards":{
+            "label_1":"Registered Restaurants",
+            "label_2":"Active Farmers",
+            "label_3":"Dishes with Traceability",
+            "label_4":"Available Products"
+        },
+        "doughnut":"Products in Demand"
+    },
+    "requirements_section":{
+        "input":{
+            "placeholder":"Search by restaurant, location or products (e.g.: Lettuce, Tomatoes, El Sembrador...)"
+        },
+        "filteredRestaurants":{
+            "isFilteredRestaurants_1":"Showing",
+            "isFilteredRestaurants_2":"restaurants",
+            "not_isFilteredRestaurants_1":"of",
+            "not_isFilteredRestaurants_2":"restaurants found"
+        },
+        "not_isFilteredRestaurants":{
+            "subtitle":"No results found",
+            "p":"We couldn't find restaurants that match"
+        },
+        "search_button":"View all restaurants"
+    },
+    "RestaurantCard":{
+        "List_of_required_products":"We require:",
+        "ButtonWhatsApp":{
+            "userMessage":"Hello! I am a farmer and I am interested in learning more about the products you need at"
+        }
+    },
+    "div":"'Proud to farm for Colombia, united by land and tradition'",
+    "MainSection":{
+        "title":"Direct from the Farm",
+        "subtitle":"Connecting the farm with the table",
+        "subtitle_2":"Nearby Restaurants",
+        "p":"Find restaurants in your area looking for fresh, responsibly grown products. Contact them directly to negotiate your agricultural products and build lasting connections that benefit both the countryside and local gastronomy.",
+        "card_1":{
+            "subtitle":"Direct Connection",
+            "p":"No intermediaries, direct negotiation between producers and restaurants"
+        },
+        "card_2":{
+            "subtitle":"20km Radius",
+            "p":"We strengthen local economies by prioritizing proximity"
+        },
+        "card_3":{
+            "subtitle":"Fresh Products",
+            "p":"Guaranteed quality directly from the farm to your kitchen"
+        }
+    }
+}

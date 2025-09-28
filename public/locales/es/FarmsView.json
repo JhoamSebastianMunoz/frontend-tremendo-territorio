@@ -1,0 +1,140 @@
+{
+    "tab_navigation":{
+        "div":{
+            "label_1":"Datos del Usuario",
+            "label_2":"Estadísticas",
+            "label_3":"Requerimientos de Restaurantes"
+        }
+    },
+    "FarmProfileForm":{
+        "tabs":{
+            "label_1":"Datos Personales",
+            "label_2":"Finca",
+            "label_3":"Imágenes"
+        },
+        "subtitle":"Actualizar Perfil",
+        "p":"Mantén actualizada la información de tu finca",
+        "personal_data":{
+            "subtitle":"Información Personal",
+            "div_1":{
+                "label":"Nombre",
+                "placeholder":"Tu nombre"
+            },
+            "div_2":{
+                "label":"Apellido",
+                "placeholder":"Tu apellido"
+            },
+            "div_3":{
+                "label":"Cédula",
+                "placeholder":"12345678"
+            },
+            "div_4":{
+                "label":"Correo Electrónico (opcional)",
+                "placeholder":"tu@email.com"
+            },
+            "div_5":{
+                "label":"Teléfono",
+                "placeholder":"+57 300 123 4567"
+            }
+        },
+        "farm_data":{
+            "subtitle":"Información de la Finca",
+            "div_1":{
+                "label":"Nombre de la Finca",
+                "placeholder":"Nombre de tu finca"
+            },
+            "div_2":{
+                "label":"Descripción",
+                "placeholder":"Describe tu finca, especialidades, tipo de cultivos..."
+            },
+            "div_3":{
+                "label":"Ubicación",
+                "placeholder":"Dirección completa de la finca"
+            },
+            "subtitle_2":"Productos de la Finca",
+            "subtitle_3":"Producto",
+            "delete_button":{
+                "title":"Eliminar producto"
+            },
+            "product_fields":{
+                "div_1":{
+                    "label":"Producto que ofrece",
+                    "placeholder":"ej: Yuca, Tomate, Maíz..."
+                },
+                "div_2":{
+                    "label":"Unidad de medida",
+                    "placeholder":"ej: kg, g, lb, ton..."
+                },
+                "div_3":{
+                    "label":"Capacidad de producción",
+                    "placeholder":"ej: 100"
+                }
+            },
+            "add_button":"Agregar otro producto"
+        },
+        "images_farms":{
+            "subtitle":"Imágenes de la Finca o Área de Cosecha",
+            "ImageCarousel":"Vista Previa",
+            "selected_image_button":{
+                "uploading":"Subiendo...'",
+                "not_uploading":"Seleccionar Imágenes"
+            },
+            "p":"Selecciona múltiples imágenes de tu finca",
+            "uploaded_images":"Imágenes Cargadas",
+            "form_submission":{
+                "isSubmitting":"Actualizando Perfil...",
+                "not_isSubmitting":"Actualizar Perfil"
+            }
+        }
+    },
+    "statistics_section":{
+        "KPI_cards":{
+            "label_1":"Restaurantes Registrados",
+            "label_2":"Agricultores Activos",
+            "label_3":"Platos con Trazabilidad",
+            "label_4":"Productos Disponibles"
+        },
+        "doughnut":"Productos en Demanda"
+    },
+    "requirements_section":{
+        "input":{
+            "placeholder":"Buscar por restaurante, ubicación o productos (ej: Lechugas, Tomates, El Sembrador...)"
+        },
+        "filteredRestaurants":{
+            "isFilteredRestaurants_1":"Mostrando",
+            "isFilteredRestaurants_2":"restaurantes",
+            "not_isFilteredRestaurants_1":"de",
+            "not_isFilteredRestaurants_2":"restaurantes encontrados"
+        },
+        "not_isFilteredRestaurants":{
+            "subtitle":"No se encontraron resultados",
+            "p":"No encontramos restaurantes que coincidan con"
+        },
+        "search_button":"Ver todos los restaurantes"
+    },
+    "RestaurantCard":{
+        "List_of_required_products":"Requerimos:",
+        "ButtonWhatsApp":{
+            "userMessage":"¡Hola! Soy productor agrícola y me interesa conocer más sobre los productos que necesitan en"
+        }
+    },
+    "div":"'Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición'",
+    "MainSection":{
+        "title":"Campo Directo",
+        "subtitle":"Conectando el campo con la mesa",
+        "subtitle_2":"Restaurantes Cercanos",
+        "p":"Encuentra restaurantes en tu zona que buscan productos frescos y cultivados de forma responsable. Contacta directamente para negociar tus productos agrícolas y crear conexiones duraderas que beneficien tanto al campo como a la gastronomía local.",
+        "card_1":{
+            "subtitle":"Conexión Directa",
+            "p":"Sin intermediarios, negociación directa entre productores y restaurantes"
+        },
+        "card_2":{
+            "subtitle":"Radio de 20km",
+            "p":"Fortalecemos las economías locales priorizando la cercanía"
+        },
+        "card_3":{
+            "subtitle":"Productos Frescos",
+            "p":"Calidad garantizada directamente desde el campo a tu cocina"
+        }
+    }
+}

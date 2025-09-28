@@ -1,9 +1,10 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext, Suspense } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { MainSection } from './MainSection/MainSection';
 import { RestaurantCard } from './RestaurantCard/RestaurantCard';
-import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin'
-import { FarmProfileForm } from './FarmProfileForm/FarmProfileForm'
+import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin';
+import { FarmProfileForm } from './FarmProfileForm/FarmProfileForm';
+import { useTranslation } from 'react-i18next';
 
 // Componente para resaltar los términos buscados en un texto
 const HighlightText = ({ text, highlight }) => {
@@ -31,6 +32,7 @@ const HighlightText = ({ text, highlight }) => {
 };
 
 export const FarmsView = () => {
+    const { t, i18n } = useTranslation(["FarmsView"])
     // Estado para el término de búsqueda
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -157,15 +159,16 @@ export const FarmsView = () => {
     };
 
 return (
+    <Suspense fallback={<p>Loading translation...</p>}>
     <div className="bg-primary-fifth">
         
         {/* Botones de navegación entre pestañas */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center gap-2 flex-wrap px-4 my-6 bg-white rounded-2xl p-2 shadow-lg">
             {[
-                {id: 'profile', label: 'Datos del Usuario'},
-                {id: 'statistics', label: 'Estadísticas'},
-                {id: 'requirements', label: 'Requerimientos de Restaurantes'}
+                {id: 'profile', label: t("tab_navigation.div.label_1")},
+                {id: 'statistics', label: t("tab_navigation.div.label_2")},
+                {id: 'requirements', label: t("tab_navigation.div.label_3")}
             ].map(tab =>(
                 <button
                     key={tab.id}
@@ -198,10 +201,10 @@ return (
             {/* KPI Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {[
-                    { number: data.restaurantes, label: 'Restaurantes Registrados' },
-                    { number: data.agricultores, label: 'Agricultores Activos' },
-                    { number: data.platos, label: 'Platos con Trazabilidad' },
-                    { number: data.productos, label: 'Productos Disponibles' }
+                    { number: data.restaurantes, label: t("statistics_section.KPI_cards.label_1") },
+                    { number: data.agricultores, label: t("statistics_section.KPI_cards.label_2") },
+                    { number: data.platos, label: t("statistics_section.KPI_cards.label_3") },
+                    { number: data.productos, label: t("statistics_section.KPI_cards.label_4") }
                     ].map((kpi, index) => (
                     <div key={index} className="bg-white bg-opacity-95 font-subtitle backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-first to-primary-second">
@@ -221,7 +224,7 @@ return (
             <div className='flex justify-center items-center' >
                 <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
                     <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                        <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 Productos en Demanda</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 {t("statistics_section.doughnut")}</h3>
                         <div className="h-80">
                             <Doughnut data={chartData} options={chartOptions} />
                         </div>
@@ -242,7 +245,7 @@ return (
                         <div className="relative">
                             <input
                                 type="text"
-                                placeholder="Buscar por restaurante, ubicación o productos (ej: Lechugas, Tomates, El Sembrador...)"
+                                placeholder={t("requirements_section.input.placeholder")}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full font-body px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 placeholder-gray-500 shadow-lg bg-white"
@@ -264,8 +267,8 @@ return (
                         <div className="text-center mt-3">
                             <span className="text-primary-first font-medium font-body">
                                 {filteredRestaurants.length === restaurantsData.length 
-                                    ? `Mostrando ${restaurantsData.length} restaurantes`
-                                    : `${filteredRestaurants.length} de ${restaurantsData.length} restaurantes encontrados`
+                                    ? `${t("requirements_section.filteredRestaurants.isFilteredRestaurants_1")} ${restaurantsData.length} ${t("requirements_section.filteredRestaurants.isFilteredRestaurants_2")}`
+                                    : `${filteredRestaurants.length} ${t("requirements_section.filteredRestaurants.not_isFilteredRestaurants_1")} ${restaurantsData.length} ${t("requirements_section.filteredRestaurants.not_isFilteredRestaurants_2")}`
                                 }
                             </span>
                         </div>
@@ -277,16 +280,16 @@ return (
                     <div className="text-center py-12">
                         <div className="text-6xl mb-4">🔍</div>
                         <h3 className="text-2xl font-bold text-primary-first mb-2 font-body">
-                            No se encontraron resultados
+                            {t("requirements_section.not_isFilteredRestaurants.subtitle")}
                         </h3>
                         <p className="text-gray-600 font-body mb-4">
-                            No encontramos restaurantes que coincidan con "{searchTerm}"
+                            {t("requirements_section.not_isFilteredRestaurants.p")} "{searchTerm}"
                         </p>
                         <button
                             onClick={clearSearch}
                             className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-body"
                         >
-                            Ver todos los restaurantes
+                            {t("requirements_section.search_button")}
                         </button>
                     </div>
                 )}
@@ -314,7 +317,7 @@ return (
                 backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
             }}>
                     <div className="text-lg font-medium font-body">
-                        "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾
+                        {t("div")} 🌾
                     </div>
                 </div>
             </div>
@@ -323,5 +326,6 @@ return (
         {/*sección principal */}
         <MainSection />
     </div>
+    </Suspense>
     );
 };

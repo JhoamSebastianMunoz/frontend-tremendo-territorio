@@ -318,7 +318,9 @@ export const Header = () => {
                 <Route
                     path='/restaurantsView'
                     element={
+                        <ProtectedRoute>
                             <RestaurantsView/>
+                        </ProtectedRoute>
                     }
                 />
             </Routes>

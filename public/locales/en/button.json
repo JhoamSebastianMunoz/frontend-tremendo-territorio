@@ -1,0 +1,18 @@
+{
+    "ButtonCall": {
+        "span": "Call"
+    },
+    "ButtonInstagram": {
+        "img":{
+            "alt": "Instagram Image"
+        }
+    },
+    "ButtonWhatsApp": {
+        "handleWhatsApp":{
+            "message": "Could we arrange a meeting?"
+        },
+        "img":{
+            "alt": "WhatsApp Logo"
+        }
+    }
+}

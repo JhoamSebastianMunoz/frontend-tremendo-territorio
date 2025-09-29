@@ -310,15 +310,15 @@ export const Header = () => {
                 <Route
                     path='/farmsView'
                     element={
+                        <ProtectedRoute>
                             <FarmsView/>
+                        </ProtectedRoute>
                     }
                 />
                 <Route
                     path='/restaurantsView'
                     element={
-                        <ProtectedRoute>
                             <RestaurantsView/>
-                        </ProtectedRoute>
                     }
                 />
             </Routes>

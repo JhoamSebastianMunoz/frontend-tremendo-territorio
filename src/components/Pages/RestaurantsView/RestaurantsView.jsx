@@ -1,9 +1,10 @@
-import { RestaurantProfileForm } from './RestaurantProfileForm/RestaurantProfileForm'
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext, Suspense } from 'react';
+import { RestaurantProfileForm } from './RestaurantProfileForm/RestaurantProfileForm';
 import { Doughnut } from 'react-chartjs-2';
-import { MainSection } from './MainSection/MainSection'
-import { FarmCard } from './FarmCard/FarmCard'
-import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin'
+import { MainSection } from './MainSection/MainSection';
+import { FarmCard } from './FarmCard/FarmCard';
+import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin';
+import { useTranslation } from 'react-i18next';
 
 // Componente que resalta texto coincidente con el término de búsqueda
 const HighlightText = ({ text, highlight }) => {
@@ -30,6 +31,7 @@ const HighlightText = ({ text, highlight }) => {
 };
 
 export const RestaurantsView = () => {
+    const { t, i18n } = useTranslation(["RestaurantsView"])
     // Estado que gestiona la pestaña activa (perfil, estadísticas u ofertas)
     const [activeTab, setActiveTab] = useState('offers')
 
@@ -153,15 +155,16 @@ export const RestaurantsView = () => {
     };
     
     return (
+        <Suspense fallback={<p>Loading translation...</p>}>
         <div className='bg-primary-fifth'>
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Navegación por pestañas */}
                 <div className="flex justify-center gap-2 flex-wrap px-4 my-6 bg-white rounded-2xl p-2 shadow-lg">
                     {[
-                        {id: 'profile', label:'Datos del Usuario'},
-                        {id: 'statistics', label: 'Estadísticas'},
-                        {id: 'offers', label: 'Ofertas de Agricultores'}
+                        {id: 'profile', label: t("tab_navigation.div.label_1")},
+                        {id: 'statistics', label: t("tab_navigation.div.label_2")},
+                        {id: 'offers', label: t("tab_navigation.div.label_3")}
                     ].map(tab =>(
                         <button
                             key={tab.id}
@@ -191,10 +194,10 @@ export const RestaurantsView = () => {
                             {/* Tarjetas de métricas clave */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {[
-                                    { number: data.restaurantes, label: 'Restaurantes Registrados' },
-                                    { number: data.agricultores, label: 'Agricultores Activos' },
-                                    { number: data.platos, label: 'Platos con Trazabilidad' },
-                                    { number: data.productos, label: 'Productos Disponibles' }
+                                    { number: data.restaurantes, label: t("statistics_section.KPI_cards.label_1") },
+                                    { number: data.agricultores, label: t("statistics_section.KPI_cards.label_2") },
+                                    { number: data.platos, label: t("statistics_section.KPI_cards.label_3") },
+                                    { number: data.productos, label: t("statistics_section.KPI_cards.label_4") }
                                 ].map((kpi, index) => (
                                     <div key={index} className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-6 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 text-center relative overflow-hidden">
                                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-first to-primary-second"></div>
@@ -213,7 +216,7 @@ export const RestaurantsView = () => {
                         <div className='flex justify-center items-center'>
                             <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
                                 <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
-                                    <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 Productos en Oferta</h3>
+                                    <h3 className="text-2xl font-bold mb-6 text-gray-800 font-subtitle">📈 {t("statistics_section.doughnut")}</h3>
                                     <div className="h-80">
                                         <Doughnut data={chartData} options={chartOptions} />
                                     </div>
@@ -233,7 +236,7 @@ export const RestaurantsView = () => {
                                     <div className="relative">
                                         <input 
                                             type="text" 
-                                            placeholder='Buscar por agricultor, ubicación o productos(ej: Frijol, Maíz, Yuca...) '
+                                            placeholder={t("requirements_section.input.placeholder")}
                                             value={searchTerm}
                                             onChange={(e) => setSearchTerm(e.target.value)}
                                             className="w-full px-6 py-4 pl-14 pr-12 rounded-full border-2 border-primary-fifth focus:border-primary-first focus:ring-4 focus:ring-primary-first focus:ring-opacity-20 outline-none transition-all duration-300 text-gray-700 font-body placeholder-gray-500 shadow-lg bg-white font-primary-brand"
@@ -255,8 +258,8 @@ export const RestaurantsView = () => {
                                     <div className="text-center mt-3">
                                         <span className="text-primary-first font-medium font-body">
                                             {filteredFarms.length === farmsData.length 
-                                                ? `Mostrando ${farmsData.length} Agricultores`
-                                                : `${filteredFarms.length} de ${farmsData.length} Agricultores encontrados`
+                                                ? `${t("requirements_section.filteredFarms.isFilteredFarms_1")} ${farmsData.length} ${t("requirements_section.filteredFarms.isFilteredFarms_2")}`
+                                                : `${filteredFarms.length} ${t("requirements_section.filteredFarms.not_isFilteredFarms_1")} ${farmsData.length} ${t("requirements_section.filteredFarms.not_isFilteredFarms_2")}`
                                             }
                                         </span>
                                     </div>
@@ -268,16 +271,16 @@ export const RestaurantsView = () => {
                                 <div className="text-center py-12">
                                     <div className="text-6xl mb-4">🔍</div>
                                     <h3 className="text-2xl font-bold text-primary-first mb-2 font-body">
-                                        No se encontraron resultados
+                                        {t("requirements_section.not_isFilteredFarm.subtitle")}
                                     </h3>
                                     <p className="text-gray-600 font-body mb-4">
-                                        No encontramos agricultores que coincidan con "{searchTerm}"
+                                        {t("requirements_section.not_isFilteredFarm.p")} "{searchTerm}"
                                     </p>
                                     <button
                                         onClick={clearSearch}
                                         className="bg-primary-first hover:bg-primary-third text-white px-6 py-3 rounded-full font-medium transition-all duration-300 font-primary-brand"
                                     >
-                                        Ver todos los agricultores
+                                        {t("requirements_section.search_button")}
                                     </button>
                                 </div>
                             )}
@@ -305,7 +308,7 @@ export const RestaurantsView = () => {
                                 backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
                             }}>
                                 <div className="text-lg font-medium font-body">
-                                    "Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición" 🌾
+                                    {t("div")} 🌾
                                 </div>
                             </div>
                         </div>
@@ -315,5 +318,6 @@ export const RestaurantsView = () => {
             {/* Renderiza la sección principal (título, presentación, etc.) */}
             <MainSection/>
         </div>
+        </Suspense>
     );
 };

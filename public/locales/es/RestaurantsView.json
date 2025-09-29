@@ -1,0 +1,169 @@
+{
+    "tab_navigation":{
+        "div":{
+            "label_1":"Datos del Usuario",
+            "label_2":"Estadísticas",
+            "label_3":"Ofertas de Agricultores"
+        }
+    },
+    "RestaurantProfileForm":{
+        "tabs":{
+            "label_1":"Datos Personales",
+            "label_2":"Restaurante",
+            "label_3":"Imágenes"
+        },
+        "subtitle":"Actualizar Perfil",
+        "p":"Mantén actualizada la información de tu restaurante",
+        "personal_data":{
+            "subtitle":"Información Personal",
+            "div_1":{
+                "label":"Nombre",
+                "placeholder":"Tu nombre"
+            },
+            "div_2":{
+                "label":"Apellido",
+                "placeholder":"Tu apellido"
+            },
+            "div_3":{
+                "label":"Cédula",
+                "placeholder":"12345678"
+            },
+            "div_4":{
+                "label":"Correo Electrónico (opcional)",
+                "placeholder":"tu@email.com"
+            },
+            "div_5":{
+                "label":"Teléfono",
+                "placeholder":"+57 300 123 4567"
+            }
+        },
+        "restaurant_data":{
+            "subtitle":"Información del Restaurante",
+            "div_1":{
+                "label":"Nombre del Restaurante",
+                "placeholder":"Nombre de tu restaurante"
+            },
+            "div_2":{
+                "label":"Descripción",
+                "placeholder":"Describe tu restaurante, especialidades, ambiente..."
+            },
+            "div_3":{
+                "label":"Ubicación",
+                "placeholder":"Dirección completa del restaurante"
+            },
+            "div_4":{
+                "label":"Horario de Apertura"
+            },  
+            "div_5":{
+                "label":"Horario de Cierre"
+            }, 
+            "div_6":{
+                "label":"Capacidad (personas)"
+            }, 
+            "div_7":{
+                "label":"Teléfono del Restaurante",
+                "placeholder":"+57 1 234 5678"
+            }, 
+            "div_8":{
+                "label":"Red Social",
+                "placeholder":"ej para instagram: @TremendoTerritorio"
+            },            
+            "subtitle_2":"Productos Requeridos en el Restaurante",         
+            "subtitle_3":"Producto",
+            "delete_button":{
+                "title":"Eliminar producto"
+            },
+            "product_fields":{
+                "div_1":{
+                    "label":"Producto que requiere",
+                    "placeholder":"ej: Yuca, Tomate, Maíz..."
+                },
+                "div_2":{
+                    "label":"Unidad de medida",
+                    "placeholder":"ej: kg, g, lb, ton..."
+                },
+                "div_3":{
+                    "label":"Cantidad Requerida",
+                    "placeholder":"ej: 100"
+                }
+            },
+            "add_button":"Agregar otro producto"
+        },
+        "images_restaurant":{
+            "subtitle":"Imágenes del Restaurante",
+            "ImageCarousel":"Vista Previa",
+            "selected_image_button":{
+                "uploading":"Subiendo...",
+                "not_uploading":"Seleccionar Imágenes"
+            },
+            "p":"Selecciona múltiples imágenes de tu restaurante",
+            "uploaded_images":"Imágenes Cargadas",
+            "form_submission":{
+                "isSubmitting":"Actualizando Perfil...",
+                "not_isSubmitting":"Actualizar Perfil"
+            }
+        }
+    },
+    "statistics_section":{
+        "KPI_cards":{
+            "label_1":"Restaurantes Registrados",
+            "label_2":"Agricultores Activos",
+            "label_3":"Platos con Trazabilidad",
+            "label_4":"Productos Disponibles"
+        },
+        "doughnut":"Productos en Oferta"
+    },
+    "requirements_section":{
+        "input":{
+            "placeholder":"Buscar por agricultor, ubicación o productos(ej: Frijol, Maíz, Yuca...)"
+        },
+        "filteredFarms":{
+            "isFilteredFarms_1":"Mostrando",
+            "isFilteredFarms_2":"Agricultores",
+            "not_isFilteredFarms_1":"de",
+            "not_isFilteredFarms_2":"Agricultores encontrados"
+        },
+        "not_isFilteredFarm":{
+            "subtitle":"No se encontraron resultados",
+            "p":"No encontramos agricultores que coincidan con"
+        },
+        "search_button":"Ver todos los agricultores"
+    },
+    "FarmCard":{
+        "List_of_offer_products":"Ofrecemos:",
+        "ButtonWhatsApp":{
+            "userMessage":"¡Hola! Soy un Restaurante del Territorio de Barichara y me interesa conocer más sobre los productos que estás ofertando"
+        },
+        "subtitle":"Calificar:",
+        "textarea":{
+            "placeholder":"🖋 Escribe tu comentario..."
+        },
+        "send_button":{
+            "console.log":{
+                "rating":"Enviar calificación: ",
+                "comment":"Comentario:"
+            },
+            "p":"Enviar"
+        },
+        "see_comments":"Ver Comentarios"
+    },
+    "div":"'Orgullosos de cultivar para Colombia, unidos por la tierra y la tradición'",
+    "MainSection":{
+        "title":"Campo Directo",
+        "subtitle":"Conectando el campo con la mesa",
+        "subtitle_2":"Agricultores Cercanos",
+        "p":"Encuentra agricultores en tu zona que disponen de productos frescos y cultivados de forma responsable. Contacta directamente para negociar los productos agrícolas y crear conexiones duraderas que beneficien tanto al campo como a la gastronomía local.",
+        "card_1":{
+            "subtitle":"Conexión Directa",
+            "p":"Sin intermediarios, negociación directa entre productores y restaurantes"
+        },
+        "card_2":{
+            "subtitle":"Radio de 20km",
+            "p":"Fortalecemos las economías locales priorizando la cercanía"
+        },
+        "card_3":{
+            "subtitle":"Productos Frescos",
+            "p":"Calidad garantizada directamente desde el campo a tu cocina"
+        }
+    }
+}

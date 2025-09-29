@@ -1,0 +1,169 @@
+{
+    "tab_navigation": {
+        "div": {
+            "label_1": "User Data",
+            "label_2": "Statistics",
+            "label_3": "Farmers' Offers"
+        }
+    },
+    "RestaurantProfileForm": {
+        "tabs": {
+            "label_1": "Personal Data",
+            "label_2": "Restaurant",
+            "label_3": "Images"
+        },
+        "subtitle": "Update Profile",
+        "p": "Keep your restaurant information up to date",
+        "personal_data": {
+            "subtitle": "Personal Information",
+            "div_1": {
+                "label": "First Name",
+                "placeholder": "Your first name"
+            },
+            "div_2": {
+                "label": "Last Name",
+                "placeholder": "Your last name"
+            },
+            "div_3": {
+                "label": "ID",
+                "placeholder": "12345678"
+            },
+            "div_4": {
+                "label": "Email (optional)",
+                "placeholder": "your@email.com"
+            },
+            "div_5": {
+                "label": "Phone",
+                "placeholder": "+57 300 123 4567"
+            }
+        },
+        "restaurant_data": {
+            "subtitle": "Restaurant Information",
+            "div_1": {
+                "label": "Restaurant Name",
+                "placeholder": "Your restaurant name"
+            },
+            "div_2": {
+                "label": "Description",
+                "placeholder": "Describe your restaurant, specialties, atmosphere..."
+            },
+            "div_3": {
+                "label": "Location",
+                "placeholder": "Full address of the restaurant"
+            },
+            "div_4": {
+                "label": "Opening Time"
+            },
+            "div_5": {
+                "label": "Closing Time"
+            },
+            "div_6": {
+                "label": "Capacity (people)"
+            },
+            "div_7": {
+                "label": "Restaurant Phone",
+                "placeholder": "+57 1 234 5678"
+            },
+            "div_8": {
+                "label": "Social Media",
+                "placeholder": "e.g., Instagram: @TremendoTerritorio"
+            },
+            "subtitle_2": "Products Required in the Restaurant",
+            "subtitle_3": "Product",
+            "delete_button": {
+                "title": "Delete product"
+            },
+            "product_fields": {
+                "div_1": {
+                    "label": "Product required",
+                    "placeholder": "e.g.: Cassava, Tomato, Corn..."
+                },
+                "div_2": {
+                    "label": "Unit of measurement",
+                    "placeholder": "e.g.: kg, g, lb, ton..."
+                },
+                "div_3": {
+                    "label": "Required Quantity",
+                    "placeholder": "e.g.: 100"
+                }
+            },
+            "add_button": "Add another product"
+        },
+        "images_restaurant": {
+            "subtitle": "Restaurant Images",
+            "ImageCarousel": "Preview",
+            "selected_image_button": {
+                "uploading": "Uploading...'",
+                "not_uploading": "Select Images"
+            },
+            "p": "Select multiple images of your restaurant",
+            "uploaded_images": "Uploaded Images",
+            "form_submission": {
+                "isSubmitting": "Updating Profile...",
+                "not_isSubmitting": "Update Profile"
+            }
+        }
+    },
+    "statistics_section": {
+        "KPI_cards": {
+            "label_1": "Registered Restaurants",
+            "label_2": "Active Farmers",
+            "label_3": "Dishes with Traceability",
+            "label_4": "Available Products"
+        },
+        "doughnut": "Products on Offer"
+    },
+    "requirements_section": {
+        "input": {
+            "placeholder": "Search by farmer, location or products (e.g., Beans, Corn, Cassava...)"
+        },
+        "filteredFarms": {
+            "isFilteredFarms_1": "Showing",
+            "isFilteredFarms_2": "Farmers",
+            "not_isFilteredFarms_1": "of",
+            "not_isFilteredFarms_2": "Farmers found"
+        },
+        "not_isFilteredFarm": {
+            "subtitle": "No results found",
+            "p": "We couldn't find farmers matching"
+        },
+        "search_button": "View all farmers"
+    },
+    "FarmCard": {
+        "List_of_offer_products": "We Offer:",
+        "ButtonWhatsApp": {
+            "userMessage": "Hello! I am a Restaurant from the Barichara Territory and I am interested in learning more about the products you are offering"
+        },
+        "subtitle": "Rate:",
+        "textarea": {
+            "placeholder": "🖋 Write your comment..."
+        },
+        "send_button": {
+            "console.log": {
+                "rating": "Send rating:",
+                "comment": "Comment:"
+            },
+            "p": "Send"
+        },
+        "see_comments": "See Comments"
+    },
+    "div": "'Proud to farm for Colombia, united by land and tradition'",
+    "MainSection": {
+        "title": "Farm Direct",
+        "subtitle": "Connecting the farm with the table",
+        "subtitle_2": "Nearby Farmers",
+        "p": "Find farmers in your area offering fresh, responsibly grown products. Contact them directly to negotiate agricultural products and build lasting connections that benefit both the countryside and local gastronomy.",
+        "card_1": {
+            "subtitle": "Direct Connection",
+            "p": "No intermediaries, direct negotiation between producers and restaurants"
+        },
+        "card_2": {
+            "subtitle": "20km Radius",
+            "p": "We strengthen local economies by prioritizing proximity"
+        },
+        "card_3": {
+            "subtitle": "Fresh Products",
+            "p": "Guaranteed quality directly from the farm to your kitchen"
+        }
+    }
+}

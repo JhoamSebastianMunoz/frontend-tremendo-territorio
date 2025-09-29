@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, Suspense } from 'react';
 import { RatingContext } from '../../../../contexts/Rating/Rating';
 import { useNavigate } from 'react-router-dom';
 import { ImageCarousel } from '../../../Shared/ImageCarousel/ImageCarousel';
@@ -7,6 +7,7 @@ import { ButtonSecondary } from '../../../Shared/buttons/ButtonSecondary/ButtonS
 import { RatingStars } from '../../../Shared/RatingStars/RatingStars';
 import { ButtonWhatsApp } from '../../../Shared/buttons/ButtonWhatsApp/ButtonWhatsApp';
 import { ButtonCall } from '../../../Shared/buttons/ButtonCall/ButtonCall';
+import { useTranslation } from 'react-i18next';
 
 
 // Componente para resaltar términos de búsqueda dentro de un texto
@@ -59,6 +60,8 @@ export const FarmCard = ({
         return icons[category] || '🌱';
     };
 
+    const { t, i18n } = useTranslation(["RestaurantsView"])
+
     // Mapea categorías a títulos legibles
     const getCategoryTitle = (category) => {
         const titles = {
@@ -101,6 +104,7 @@ export const FarmCard = ({
 
     // Renderizado del componente
     return (
+        <Suspense fallback={<p>Loading translation...</p>}>
         <div className="bg-white rounded-2xl shadow-lg border-2 border-primary-fifth hover:border-primary-first transition-all duration-300 overflow-hidden group hover:shadow-xl transform hover:-translate-y-2">
             
             {/* Sección del carrusel de imágenes */}
@@ -155,7 +159,7 @@ export const FarmCard = ({
                 {/* Lista de productos ofrecidos por categorías */}
                 <div className="mb-6">
                     <h4 className="text-primary-first font-semibold mb-3 font-subtitle">
-                        Ofrecemos:
+                        {t("FarmCard.List_of_offer_products")}
                     </h4>
                     <div className="space-y-3">
                         {Object.entries(offers).map(([category, products]) => (
@@ -191,7 +195,7 @@ export const FarmCard = ({
                 <div className="flex flex-col gap-2">
                     <ButtonWhatsApp 
                     nameClient={nameFarm}  
-                    userMessage='¡Hola! Soy un Restaurante del Territorio de Barichara y me interesa conocer más sobre los productos que estás ofertando ' 
+                    userMessage={t("FarmCard.ButtonWhatsApp.userMessage")}
                     phone={phone}/>
 
                     <ButtonCall className='w-full bg-primary-second font-body hover:bg-primary-sixth text-white py-2.5 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-4 transform hover:scale-105'
@@ -200,7 +204,7 @@ export const FarmCard = ({
             
                 <div className='flex mt-4'>
                         <p>
-                            Calificar: <RatingStars value={rating} onChange={setRating} />
+                            {t("FarmCard.subtitle")} <RatingStars value={rating} onChange={setRating} />
                         </p>
                 </div>
 
@@ -210,21 +214,22 @@ export const FarmCard = ({
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         className='w-full font-body p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-first'
-                        placeholder='🖋 Escribe tu comentario...'>
+                        placeholder={t("FarmCard.textarea.placeholder")}>
                         </textarea>
                         <ButtonPrimary
-                        onClick={() => console.log('Enviar calificación: ', rating, 'Comentario: ', comment)}>
-                            Enviar
+                        onClick={() => console.log(t("FarmCard.send_button.console.log.rating"), rating, t("FarmCard.send_button.console.log.comments"), comment)}>
+                            {t("FarmCard.send_button.p")}
                         </ButtonPrimary>
                     </div>
                     <div className=' m-4'>
                         <ButtonPrimary
                         onClick={goToCommentsSection}>
-                            Ver Comentarios
+                            {t("FarmCard.see_comments")}
                         </ButtonPrimary>
                     </div>
                 </div>
             </div>
         </div>
+        </Suspense>
     );
 };

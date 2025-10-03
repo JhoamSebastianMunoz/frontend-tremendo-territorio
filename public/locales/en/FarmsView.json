@@ -113,6 +113,11 @@
         "search_button":"View all restaurants"
     },
     "RestaurantCard":{
+        "schedules_and_capacity":{
+            "schedules_span":"Schedules:",
+            "capacity_span":"Capacity:",
+            "capacity_span_":"people"
+        },
         "List_of_required_products":"We require:",
         "ButtonWhatsApp":{
             "userMessage":"Hello! I am a farmer and I am interested in learning more about the products you need at"

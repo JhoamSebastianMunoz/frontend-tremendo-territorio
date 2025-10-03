@@ -113,6 +113,11 @@
         "search_button":"Ver todos los restaurantes"
     },
     "RestaurantCard":{
+        "schedules_and_capacity":{
+            "schedules_span":"Horario:",
+            "capacity_span":"Capacidad:",
+            "capacity_span_":"personas"
+        },
         "List_of_required_products":"Requerimos:",
         "ButtonWhatsApp":{
             "userMessage":"¡Hola! Soy productor agrícola y me interesa conocer más sobre los productos que necesitan en"

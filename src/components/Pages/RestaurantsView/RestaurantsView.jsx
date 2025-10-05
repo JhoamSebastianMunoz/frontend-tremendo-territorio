@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext, Suspense } from 'react';
+import React, { useState, useMemo, useContext, Suspense, useEffect } from 'react';
 import { RestaurantProfileForm } from './RestaurantProfileForm/RestaurantProfileForm';
 import { Doughnut } from 'react-chartjs-2';
 import { MainSection } from './MainSection/MainSection';
@@ -6,18 +6,15 @@ import { FarmCard } from './FarmCard/FarmCard';
 import { GetAdminContext } from '../../../contexts/GetDataAdmin/GetDataAdmin';
 import { useTranslation } from 'react-i18next';
 
-// Componente que resalta texto coincidente con el término de búsqueda
 const HighlightText = ({ text, highlight }) => {
     if (!highlight.trim()) {
         return <span>{text}</span>;
     }
-
     const regex = new RegExp(`(${highlight})`, 'gi');
     const parts = text.split(regex);
-
     return (
         <span>
-            {parts.map((part, index) => 
+            {parts.map((part, index) =>
                 regex.test(part) ? (
                     <mark key={index} className="bg-yellow-200 text-primary-first font-semibold rounded px-1">
                         {part}
@@ -31,125 +28,163 @@ const HighlightText = ({ text, highlight }) => {
 };
 
 export const RestaurantsView = () => {
-    const { t, i18n } = useTranslation(["RestaurantsView"])
-    // Estado que gestiona la pestaña activa (perfil, estadísticas u ofertas)
-    const [activeTab, setActiveTab] = useState('offers')
-
-    // Estado que almacena el término de búsqueda ingresado por el usuario
+    const { t, i18n } = useTranslation(["RestaurantsView"]);
+    const [activeTab, setActiveTab] = useState('offers');
     const [searchTerm, setSearchTerm] = useState('');
-
-    // Obtiene los datos del contexto del administrador (datos, gráfico y opciones del gráfico)
-    const { data, chartData, chartOptions } = useContext(GetAdminContext)
+    const { data, chartData, chartOptions } = useContext(GetAdminContext);
     
-    // Datos simulados de fincas/agricultores
-    const farmsData = [
-        {
-            id: 1,
-            images: [
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1751500396/campo-tremendo-territorio_ukcrnr.jpg',
-                    alt: 'finca 1 Barichara'
-                },
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca3_vny8ua.jpg',
-                    alt: 'finca 1 Barichara img 2'
-                },
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010243/finca6_vpizxa.jpg',
-                    alt: 'finca 1 Barichara img 3'
-                }
-            ],
-            nameFarm: 'Juan De Dios Herrera',
-            distance: 'vereda Carare, km 10.2-Barichara',
-            qualificationAverage: '4.9',
-            location: 'finca Aromas del Campo, Finca enfocada en el cultivo de frijoles, donde se cuidan cada etapa del proceso para ofrecer granos de excelente calidad, esenciales en la alimentación tradicional y saludable.',
-            icon: '🌾',
-            offers: {
-                legumbre: ['frijol'],
-            },
-            phone: '+573232967700',
-        },
-        {
-            id: 2,
-            images: [
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca4_j97aby.jpg',
-                    alt: 'Finca 2 Barichara'
-                },
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca1_r0wyty.jpg',
-                    alt: 'Finca 2 Barichara img 2'
-                }
-            ],
-            nameFarm: 'Marta Lucia Cardona',
-            distance: 'vereda Arbolito, km 4.2 -Barichara',
-            qualificationAverage: '4.7',
-            location: 'Finca La Piedra Viva, Finca especializada en el cultivo de maíz, comprometida con prácticas agrícolas responsables para ofrecer cosechas frescas y nutritivas que apoyan la seguridad alimentaria local. ',
-            icon: '🌿',
-            offers: {
-                grano: ['Maíz'],
-            },
-            phone: '+573116957990',
-        },
-        {
-            id: 3,
-            images: [
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca5_socla6.jpg',
-                    alt: 'Finca 3 Barichara'
-                },
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca2_rkna0k.jpg',
-                    alt: 'Finca 3 Barichara img 2'
-                },
-                {
-                    url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1746799978/samples/bike.jpg',
-                    alt: 'Finca 3 Barichara img 3'
-                }
-            ],
-            nameFarm: 'Eliecer Coronado',
-            distance: 'vereda butaregua, km 11.2-Barichara',
-            qualificationAverage: '4.0',
-            location: 'Finca Mirador del Sol, Finca dedicada al cultivo de yuca, donde se trabaja con técnicas sostenibles para obtener raíces de alta calidad, promoviendo la agricultura local y el desarrollo rural.',
-            icon: '🏠',
-            offers: {
-                granos: ['Maíz'],
-                tuberculos: ['Yuca'],
-            },
-            phone: '+573113383510',
-        }
-    ];
+    // Estados para manejar los datos del API
+    const [farmsData, setFarmsData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Filtra las fincas según el término de búsqueda ingresado
+    // Función para obtener ícono según descripción
+    const getIconByDescription = (description) => {
+        const lowerDesc = description.toLowerCase();
+        if (lowerDesc.includes('frijol') || lowerDesc.includes('legumbre')) return '🌾';
+        if (lowerDesc.includes('maíz') || lowerDesc.includes('grano')) return '🌿';
+        if (lowerDesc.includes('yuca') || lowerDesc.includes('tubérculo')) return '🏠';
+        return '🌱';
+    };
+
+    // Función para extraer ofertas de la descripción
+    const extractOffersFromDescription = (description) => {
+        const lowerDesc = description.toLowerCase();
+        const offers = {};
+
+        if (lowerDesc.includes('frijol')) {
+            offers.legumbre = ['Frijol'];
+        }
+        if (lowerDesc.includes('maíz')) {
+            offers.grano = ['Maíz'];
+        }
+        if (lowerDesc.includes('yuca')) {
+            offers.tuberculos = ['Yuca'];
+        }
+
+        if (Object.keys(offers).length === 0) {
+            offers.granos = ['Producto agrícola'];
+        }
+
+        return offers;
+    };
+
+    // Función para mapear teléfonos (datos mock)
+    const getPhoneByUserId = (userId) => {
+        const phones = {
+            2: '+573113383510',
+            6: '+573232967700',
+            7: '+573116957990'
+        };
+        return phones[userId] || '+573001234567';
+    };
+
+    // useEffect para obtener datos del API
+    useEffect(() => {
+        const fetchFarms = async () => {
+            try {
+                setLoading(true);
+                setError(null);
+                
+                const language = i18n.language === 'en' ? 'en' : 'es';
+                
+                const response = await fetch(
+                    'https://secuencia432-tremendoterritorio-production.up.railway.app/api/get-all-farms',
+                    {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Accept-Language': language
+                        }
+                    }
+                );
+                if (!response.ok) {
+                    throw new Error('Error al obtener las fincas');
+                }
+                const apiData = await response.json();
+                
+                // Mapear datos del API a la estructura del componente
+                const mappedFarms = apiData.map((farm, index) => ({
+                    id: farm.farm_id,
+                    images: farm.images && farm.images.length > 0 
+                        ? farm.images.map((img, imgIndex) => ({
+                            url: img.url || img,
+                            alt: `${farm.farm_name} - Imagen ${imgIndex + 1}`
+                        }))
+                        : [
+                            {
+                                url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1751500396/campo-tremendo-territorio_ukcrnr.jpg',
+                                alt: `${farm.farm_name} - Imagen por defecto`
+                            },
+                            {
+                                url: 'https://res.cloudinary.com/dppf30duk/image/upload/v1754010244/finca1_r0wyty.jpg',
+                                alt: `${farm.farm_name} - Imagen por defecto`
+                            }
+                        ],
+                    nameFarm: farm.user?.first_name 
+                        ? `${farm.user.first_name}${farm.user.last_name ? ' ' + farm.user.last_name : ''}`
+                        : farm.farm_name,
+                    distance: farm.location,
+                    qualificationAverage: '4.5',
+                    location: farm.description,
+                    icon: getIconByDescription(farm.description),
+                    offers: extractOffersFromDescription(farm.description),
+                    phone: getPhoneByUserId(farm.user?.id)
+                }));
+
+                setFarmsData(mappedFarms);
+            } catch (err) {
+                console.error('Error fetching farms:', err);
+                setError(err.message);
+                // En caso de error, usar datos mock como fallback
+                setFarmsData([
+                    {
+                        id: 1,
+                        images: [
+                            {
+                                url:  'https://res.cloudinary.com/dppf30duk/image/upload/v1751500396/campo-tremendo-territorio_ukcrnr.jpg',
+                                    
+                                alt: 'finca 1 Barichara'
+                            }
+                        ],
+                        nameFarm: 'Juan De Dios Herrera',
+                        distance: 'vereda Carare, km 10.2-Barichara',
+                        qualificationAverage: '4.9',
+                        location: 'finca Aromas del Campo, Finca enfocada en el cultivo de frijoles',
+                        icon: '🌾',
+                        offers: {
+                            legumbre: ['frijol'],
+                        },
+                        phone: '+573232967700',
+                    }
+                ]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFarms();
+    }, [i18n.language]);
+
+    // Filtra las fincas según el término de búsqueda
     const filteredFarms = useMemo(() => {
         if (!searchTerm.trim()) {
             return farmsData;
         }
-
         const searchLower = searchTerm.toLowerCase().trim();
         
         return farmsData.filter(farm => {
-            // Buscar por nombre del agricultor
             const nameMatch = farm.nameFarm.toLowerCase().includes(searchLower);
-            
-            // Buscar por ubicación
             const locationMatch = farm.distance.toLowerCase().includes(searchLower);
-            
-            // Buscar por productos requeridos
-            const productsMatch = Object.values(farm.offers).flat().some(product => 
+            const productsMatch = Object.values(farm.offers).flat().some(product =>
                 product.toLowerCase().includes(searchLower)
             );
-            
-            // Buscar por categorías de productos
-            const categoryMatch = Object.keys(farm.offers).some(category => 
+            const categoryMatch = Object.keys(farm.offers).some(category =>
                 category.toLowerCase().includes(searchLower)
             );
-
             return nameMatch || locationMatch || productsMatch || categoryMatch;
         });
     }, [searchTerm, farmsData]);
 
-    // Limpia el término de búsqueda
     const clearSearch = () => {
         setSearchTerm('');
     };
@@ -171,7 +206,7 @@ export const RestaurantsView = () => {
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex-1 min-w-32 py-3 px-4 rounded-xl font-medium font-subtitle transition-all duration-300 ${
                                 activeTab === tab.id
-                                    ? 'bg-primary-second font-body  text-white shadow-lg transform scale-105'
+                                    ? 'bg-primary-second font-body text-white shadow-lg transform scale-105'
                                     : 'text-gray-600 hover:bg-primary-sixth'
                             }`}
                         >
@@ -191,7 +226,6 @@ export const RestaurantsView = () => {
                 {activeTab === 'statistics' && (
                     <div>
                         <div className="my-4 space-y-8 gap-4">
-                            {/* Tarjetas de métricas clave */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {[
                                     { number: data.restaurantes, label: t("statistics_section.KPI_cards.label_1") },
@@ -211,8 +245,6 @@ export const RestaurantsView = () => {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Gráfico de productos en oferta */}
                         <div className='flex justify-center items-center'>
                             <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 m-4">
                                 <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300">
@@ -229,13 +261,12 @@ export const RestaurantsView = () => {
                 {/* Sección: Ofertas de Agricultores */}
                 {activeTab === 'offers' && (
                     <div>
-                        {/* Input de búsqueda */}
                         <div className="mt-4 pb-8">
                             <div className="flex flex-col gap-4 mb-8">
                                 <div className="relative max-w-2xl mx-auto w-full">
                                     <div className="relative">
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             placeholder={t("requirements_section.input.placeholder")}
                                             value={searchTerm}
                                             onChange={(e) => setSearchTerm(e.target.value)}
@@ -254,20 +285,40 @@ export const RestaurantsView = () => {
                                         )}
                                     </div>
                                     
+                                    {/* Estado de carga */}
+                                    {loading && (
+                                        <div className="text-center mt-3">
+                                            <span className="text-primary-first font-medium font-body">
+                                                {t("requirements_section.loading.loading")}
+                                            </span>
+                                        </div>
+                                    )}
+
+                                    {/* Estado de error */}
+                                    {error && (
+                                        <div className="text-center mt-3">
+                                            <span className="text-orange-600 font-medium font-body text-sm">
+                                                ⚠️ {t("requirements_section.loading.error")} - {error}
+                                            </span>
+                                        </div>
+                                    )}
+
                                     {/* Conteo de resultados */}
-                                    <div className="text-center mt-3">
-                                        <span className="text-primary-first font-medium font-body">
-                                            {filteredFarms.length === farmsData.length 
-                                                ? `${t("requirements_section.filteredFarms.isFilteredFarms_1")} ${farmsData.length} ${t("requirements_section.filteredFarms.isFilteredFarms_2")}`
-                                                : `${filteredFarms.length} ${t("requirements_section.filteredFarms.not_isFilteredFarms_1")} ${farmsData.length} ${t("requirements_section.filteredFarms.not_isFilteredFarms_2")}`
-                                            }
-                                        </span>
-                                    </div>
+                                    {!loading && (
+                                        <div className="text-center mt-3">
+                                            <span className="text-primary-first font-medium font-body">
+                                                {filteredFarms.length === farmsData.length
+                                                    ? `${t("requirements_section.filteredFarms.isFilteredFarms_1")} ${farmsData.length} ${t("requirements_section.filteredFarms.isFilteredFarms_2")}`
+                                                    : `${filteredFarms.length} ${t("requirements_section.filteredFarms.not_isFilteredFarms_1")} ${farmsData.length} ${t("requirements_section.filteredFarms.not_isFilteredFarms_2")}`
+                                                }
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
                             {/* Mensaje si no hay coincidencias */}
-                            {filteredFarms.length === 0 && searchTerm && (
+                            {!loading && filteredFarms.length === 0 && searchTerm && (
                                 <div className="text-center py-12">
                                     <div className="text-6xl mb-4">🔍</div>
                                     <h3 className="text-2xl font-bold text-primary-first mb-2 font-body">
@@ -286,7 +337,7 @@ export const RestaurantsView = () => {
                             )}
 
                             {/* Renderizado de tarjetas de agricultores */}
-                            {filteredFarms.length > 0 && (
+                            {!loading && filteredFarms.length > 0 && (
                                 <div className="grid gap-8 mb-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 bg-primary-fifth">
                                     {filteredFarms.map((farm) => (
                                         <FarmCard
@@ -298,14 +349,14 @@ export const RestaurantsView = () => {
                                 </div>
                             )}
 
-                            {/* Banner final de orgullo agrícola */}
-                            <div className=" text-white text-center py-6 px-4 rounded-2xl"
+                            {/* Banner final */}
+                            <div className="text-white text-center py-6 px-4 rounded-2xl"
                             style={{
-                                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-02_azkfwr.png')`, // Reemplaza 'textura.png' con el nombre exacto de tu archivo
-                                backgroundSize: 'cover', // o 'contain' si prefieres que se vea completa
-                                backgroundRepeat: 'repeat', // o 'no-repeat' si no quieres que se repita
+                                backgroundImage: `url('https://res.cloudinary.com/dppf30duk/image/upload/v1755905826/Texturas-02_azkfwr.png')`,
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'repeat',
                                 backgroundPosition: 'center',
-                                backgroundColor: '#5E5630' // Color de respaldo por si la imagen no carga
+                                backgroundColor: '#5E5630'
                             }}>
                                 <div className="text-lg font-medium font-body">
                                     {t("div")} 🌾
@@ -315,7 +366,6 @@ export const RestaurantsView = () => {
                     </div>
                 )}
             </div>
-            {/* Renderiza la sección principal (título, presentación, etc.) */}
             <MainSection/>
         </div>
         </Suspense>

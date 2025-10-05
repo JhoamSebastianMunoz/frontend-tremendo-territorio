@@ -117,7 +117,10 @@
         "input": {
             "placeholder": "Search by farmer, location or products (e.g., Beans, Corn, Cassava...)"
         },
-        "filteredFarms": {
+        "loading":{
+            "loading":"loading Farms...",
+            "error":"Displaying backup data"
+        },        "filteredFarms": {
             "isFilteredFarms_1": "Showing",
             "isFilteredFarms_2": "Farmers",
             "not_isFilteredFarms_1": "of",

@@ -117,6 +117,10 @@
         "input":{
             "placeholder":"Buscar por agricultor, ubicación o productos(ej: Frijol, Maíz, Yuca...)"
         },
+        "loading":{
+            "loading":"Cargando fincas...",
+            "error":"Mostrando datos de respaldo"
+        },
         "filteredFarms":{
             "isFilteredFarms_1":"Mostrando",
             "isFilteredFarms_2":"Agricultores",

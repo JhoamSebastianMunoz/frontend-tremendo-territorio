@@ -1,10 +1,19 @@
 # 🌱 Tremendo Territorio - Frontend
 
+> 🚚 **Aviso de migración — Start Up Secuencia 4321**: Por directrices de la Start Up, el proyecto **"Tremendo Territorio"** ha sido migrado al repositorio oficial **[tremendoterritorio/tremendoterritorio-frontend](https://github.com/tremendoterritorio/tremendoterritorio-frontend.git)**, donde actualmente se desarrolla el proyecto. El despliegue actualizado está disponible en **[https://tremendoterritoriofrontend.vercel.app/](https://tremendoterritoriofrontend.vercel.app/)**. La versión histórica (pre-migración) permanece disponible como referencia.
+
 Una plataforma web innovadora que conecta productores agrícolas colombianos con clientes y consumidores finales, promoviendo una economía de circuito corto que dignifica el campo y elimina intermediarios innecesarios.
 
 ## 🚀 Demo en Vivo
 
-- **Producción**: [https://tremendo-territorio.vercel.app](https://frontend-tremendo-territorio.vercel.app/)
+### 🟢 Versión Actual (Tremendoterritorio — estado actual del proyecto)
+
+- **Producción**: [https://tremendoterritoriofrontend.vercel.app/](https://tremendoterritoriofrontend.vercel.app/)
+- **Repositorio**: [GitHub](https://github.com/tremendoterritorio/tremendoterritorio-frontend.git)
+
+### 🟡 Versión Histórica (Pre-migración — referencia de cómo funcionaba antes)
+
+- **Producción**: [https://frontend-tremendo-territorio.vercel.app/](https://frontend-tremendo-territorio.vercel.app/)
 - **Repositorio**: [GitHub](https://github.com/JhoamSebastianMunoz/frontend-tremendo-territorio.git)
 
 ## 📋 Descripción del Proyecto
@@ -30,11 +39,11 @@ Eliminar sobrecostos de intermediarios y evitar que los transportadores compren 
 ### 👨‍💼 **Administrador**
 Gestiona la aplicación, su contenido y usuarios con privilegios especiales.
 
-### 🚜 **Productor Agrícola** 
+### 🚜 **Agricultor** 
 Trabajadores del campo con terreno y capacidad de cumplir demanda de cosecha.
 - **Necesidades**: Encontrar clientes potenciales, vender a precio justo, recibir apoyo técnico
 
-### 🏢 **Cliente**
+### 🏢 **Restaurantes**
 Restaurantes, fruver, empresas agropecuarias, mayoristas y minoristas.
 - **Necesidades**: Transparencia, cumplimiento de compromisos, identificar mejores proveedores
 
@@ -48,6 +57,7 @@ Personas que adquieren productos agrícolas para consumo personal.
 - **Styling**: TailwindCSS 3.4.17
 - **Routing**: React Router DOM 7.6.2
 - **Charts**: Chart.js 4.5.0 + React-ChartJS-2 5.3.0
+- **Internacionalización**: i18next 25.5.2 + react-i18next 15.7.3 (Español/Inglés)
 - **Icons**: Lucide React 0.525.0
 - **Deployment**: Vercel
 - **Package Manager**: npm
@@ -58,10 +68,14 @@ Personas que adquieren productos agrícolas para consumo personal.
 {
   "dependencies": {
     "chart.js": "^4.5.0",
+    "i18next": "^25.5.2",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "i18next-http-backend": "^3.0.2",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^15.7.3",
     "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
@@ -92,8 +106,8 @@ Personas que adquieren productos agrícolas para consumo personal.
 
 1. **Clona el repositorio**
    ```bash
-   git clone https://github.com/JhoamSebastianMunoz/frontend-tremendo-territorio.git
-   cd frontend-tremendo-territorio
+   git clone https://github.com/tremendoterritorio/tremendoterritorio-frontend.git
+   cd tremendoterritorio-frontend
    ```
 
 2. **Instala las dependencias**
@@ -136,6 +150,9 @@ Configuración optimizada para componentes responsivos
 
 ## 🌐 Despliegue en Vercel
 
+- **Despliegue actual**: [https://tremendoterritoriofrontend.vercel.app/](https://tremendoterritoriofrontend.vercel.app/)
+- **Despliegue histórico (pre-migración)**: [https://frontend-tremendo-territorio.vercel.app/](https://frontend-tremendo-territorio.vercel.app/)
+
 ### Deploy Automático
 El proyecto está configurado para deploy automático:
 - Cada push a `master` despliega automáticamente
@@ -146,20 +163,33 @@ npm run build
 npx vercel --prod
 ```
 
-### Configuración de Build
+### Configuración de Rewrite SPA (vercel.json)
 ```json
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "env": {
-    "VITE_API_URL": "@vite_api_url",
-    "VITE_MAPS_API_KEY": "@vite_maps_api_key"
-  }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
 ```
 
 ## 📊 Funcionalidades Implementadas
+
+### 🌐 **Internacionalización (i18n)**
+- Soporte multi-idioma Español/Inglés con i18next
+- Detección automática de idioma (localStorage y navegador)
+- Namespaces de traducción por vista (Header, Footer, Home, FarmsView, RestaurantsView, Admin, etc.)
+
+### 🔐 **Autenticación**
+- Login y registro de usuarios con AuthContext
+- Restricción de acceso a páginas protegidas
+
+### 📡 **Integración con API**
+- Consumo de endpoints de fincas (get-all-farms) y restaurantes
+- Servicios desacoplados (restaurantsService)
+- Gestión de datos con contexts (Auth, Comments, Rating, GetDataAdmin, GetElements, UsersInformation)
 
 ### 📈 **Dashboard de Analytics**
 - Gráficos de oferta y demanda
@@ -221,16 +251,14 @@ npx vercel --prod
 
 ## 👥 Equipo de Desarrollo
 
-- **Jhoam Sebastian Munoz** - *Desarrollador Frontend* - - *Desarrollador Backend* - [@JhoamSebastianMunoz](https://github.com/JhoamSebastianMunoz)
-- **Gisela Rivera Londoño** - *Desarrollador Frontend* - - *Desarrollador Backend* -
-[@JhoamSebastianMunoz](https://github.com/RiveraGisela) 
-- **Maria Camila Uribe** - *Desarrollador Backend* -
-[@MariaCamilaUribe](https://github.com/mcur1097)
+- **Jhoam Sebastian Munoz** - *Desarrollador Frontend* - *Desarrollador Backend* - [@JhoamSebastianMunoz](https://github.com/JhoamSebastianMunoz)
+- **Gisela Rivera Londoño** - *Desarrollador Frontend* - *Desarrollador Backend* - [@RiveraGisela](https://github.com/RiveraGisela)
+- **Maria Camila Uribe** - *Desarrollador Backend* - [@MariaCamilaUribe](https://github.com/mcur1097)
 
 ## 📞 Contacto
 
-- **Email**: [jhoamsebastian68@gmail.com]
-- **LinkedIn**: [www.linkedin.com/in/jhoam-sebastian-muñoz-betancourt]
+- **Email**: [jhoamsebastian68@gmail.com](mailto:jhoamsebastian68@gmail.com)
+- **LinkedIn**: [www.linkedin.com/in/jhoam-sebastian-muñoz-betancourt](https://www.linkedin.com/in/jhoam-sebastian-muñoz-betancourt)
 - **GitHub**: [@JhoamSebastianMunoz](https://github.com/JhoamSebastianMunoz)
 
 ## 🙏 Agradecimientos
